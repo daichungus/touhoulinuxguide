@@ -1,0 +1,115 @@
+/* Light mode */
+body {
+  background-color: whitesmoke;
+  color: black;
+  font-family: system-ui, sans-serif, Georgia, 'Times New Roman', Times, serif;
+  /*
+  font-size: 1rem;
+  max-width: 70ch;
+  margin: auto;
+  padding: 1rem;
+  */
+}
+
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: purple;
+}
+
+table, th, td {
+  border: 1px solid black;
+} 
+
+th, td {
+  text-align: center;
+  padding: 5px;
+}
+
+/* Code text classes */
+.block {
+  display: inline-block;
+  background-color: #f0f0f0;
+  font-family: monospace;
+  padding: 6px;
+  border-radius: 6px;
+  overflow-x: auto;
+  border: 1px solid #444;
+}
+
+.blocksmall {
+  display: inline-block;
+  background-color: #f0f0f0;
+  font-family: monospace;
+  padding: 1px 2px;
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: white;
+  }
+  
+  a:link {
+    color: #82aaff;
+  }
+
+  a:visited {
+    color: #c792ea;
+  }
+
+  a:hover {
+    color: #add8ff; 
+  }
+
+  code {
+    color: white;
+  }
+
+  table, th, td {
+    border: 1px solid white;
+  } 
+
+  .block {
+    display: inline-block;
+    background-color: #1e1e1e;
+    font-family: monospace;
+    padding: 6px;
+    border-radius: 6px;
+    overflow-x: auto;
+    border: 1px solid #444;
+  }
+
+  .blocksmall {
+    display: inline-block;
+    background-color: #1e1e1e;
+    font-family: monospace;
+    padding: 1px 2px;
+    border-radius: 4px;
+    border: 1px solid #444;
+  }
+}
+
+/* Serif override */
+.serif {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Classic boring HTML font */
+.classic {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.1em
+}
+
+/* For last updated stuff */
+.meta {
+  font-size: 0.85em;
+  color: gray;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
