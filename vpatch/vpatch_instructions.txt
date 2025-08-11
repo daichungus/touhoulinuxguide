@@ -1,0 +1,24 @@
+VsyncPatch
+
+
+With every newly installed patch, always make a backup copy of your score.dat files in case something weird ever happens. 
+This is just a general rule. While I don't think this progam has ever caused any data (scores, history, etc) to corrupt or reset, 
+It's always a good idea to keep a backup in case it does happen by other means.
+
+Modify the [Window] parameters to suit your liking. You can run it windowed, and if so you can control the window width/height
+as well as the position it appears on your screen and such. Pretty self-explanatory.
+
+There are patches for some games in both revision 4 and 7. Use the latest version of the patch for each game.
+
+Leave a copy of vpatch.exe, vpatch.ini and the corresponding dll file in your game folder.
+Do not have more than one vpatch_th**.dll file in one folder, or else a conflict might occur and the game won't launch.
+
+Rename each individual exe file to th**.exe, where the stars are the game number, except for EoSD and Uwabami Breakers, 
+which must be named 東方紅魔郷.exe and alcostg.exe, respectively. Naturally this will be true by default, but if you want 
+to run the english-patched game then you must rename the executable from th07e to th07, and so on.
+EoSD must also be launched using AppLocale / Locale Emulator, or by setting your system to a japanese locale.
+
+Start the game by launching vpatch.exe.
+
+
+Author: ◆swmpLV/75E (@kaei_adonis)
