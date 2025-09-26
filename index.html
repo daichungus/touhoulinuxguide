@@ -55,16 +55,17 @@
                 <p>Consult your distro's documentation or other online resources for a proper setup (e.g., RPM Fusion for Nvidia drivers on Fedora, multilib repo on Arch, etc.).</p>
                 <ol>
                     <li>Update your repository using your distro's included package manager.
-                        <p><b>Debian/Ubuntu/Linux Mint:</b><pre><code class="block">sudo apt update && sudo apt upgrade</code></pre></p>
+                        <p><b>Debian/Ubuntu/Linux Mint:</b><pre><code class="block">sudo apt update && sudo apt upgrade</code></pre></p> 
                         <p><b>Fedora:</b><pre><code class="block">sudo dnf update</code></pre></p>
                         <p><b>Arch:</b><pre><code class="block">sudo pacman -Syu</code></pre></p>
                     </li>
-                    <li>Install <a href="https://www.winehq.org/">Wine</a> and <a href="https://lutris.net/">Lutris</a>.
+                    <li>Install <a href="https://www.winehq.org/">Wine</a>* and <a href="https://lutris.net/">Lutris</a>.
                         <p><b>Debian/Ubuntu/Linux Mint:</b><pre><code class="block">sudo apt install wine lutris</code></pre></p>
                         <p><b>Fedora:</b><pre><code class="block">sudo dnf install wine lutris</code></pre></p>
                         <p><b>Arch:</b><pre><code class="block">sudo pacman -S wine wine-mono wine-gecko lutris</code></pre></p>
                     </li>
                 </ol>
+                <p>* If you want to use a newer version of Wine, consider <a href="https://wine.htmlvalidator.com/">installing the WineHQ version</a> on your system.</p>
         <hr class="light">
         <h1 id="installing-thcrap">Installing THCRAP patches</h1>
             <b>Skip to <a href="#running-touhou">this section</a> if you do not want to play with THCRAP patches, or if you already have THCRAP patches installed and do not want to install more.</b>
