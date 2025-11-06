@@ -1,83 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="canonical" href="https://daichungus.github.io/touhoulinuxguide/pc98.html">
-        <link href="./css/style.css" rel="stylesheet" type="text/css" media="all">
-        <link rel="icon" href="./image/favicon-alice98.ico" type="image/x-icon">
-        <title>PC-98 Touhou Linux Guide</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="A clean, no-nonsense guide to running PC-98 Touhou games on Linux using Neko Project II and Wine. Easy for new users, powerful for veterans.">
-        <meta name="keywords" content="Touhou Project, PC-98, PC-98 Touhou, Touhou Linux, Wine, Neko Project II, np21, anex86, Touhou, Touhou wine guide, PC-98 Touhou linux, Touhou Linux">
-        <meta name="author" content="Daichungus">
-        <meta name="robots" content="index, follow">
-        <meta property="og:title" content="PC-98 Touhou Linux Guide">
-        <meta property="og:description" content="A practical guide to running PC-98 Touhou on Linux without the bloat. Includes Wine and emulator setup.">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://daichungus.github.io/touhoulinuxguide/pc98.html">
-    </head>
-    <body class="classic">
-        <header>
-            <h1>PC-98 Touhou Linux Guide</h1>
-            <h2>By <a href="https://github.com/daichungus">Daichungus</a></h2>
-            <p id="last-updated" class="meta"></p>
-            <script src="./js/time.js"></script>
-        </header>
-            <h2>This guide is a work-in-progress!</h2>
-            <hr class="light">
-            <h1>Preparing your Linux environment</h1>
-                <i>This section is under construction</i>
-            <hr class="light">
-            <h1>Choosing an emulator</h1>
-                <p>There exists several emulators for the PC-98 platform.</p>
-                <h2>Neko Project II</h2>
-                    <h3>Neko Project 21/W</h3>
-                        <p>This version is under active development.</p>
-                        <p><a href="https://simk98.github.io/np21w/download.html">Download link page</a> (choose the one with "通常版です。ソースコード付きです。")</p>
-                    <h3>Neko Project II (original)</h3>
-                        <ul>
-                            <li><a href="https://nenecchi.kirara.st/#PC-98">Download link #1</a> (choose the most recent version of <code>np2fmgen.7z</code>)</li>
-                            <li><a href="https://github.com/spaztron64/th98tuc_site/raw/main/packages/2022_04_12/np21_nogame.zip">Download link #2</a></li>
-                            <li><a href="https://www.yui.ne.jp/np2/">Download link #3</a> (original, not recommended)</li>
-                        </ul>
-                    <h3>Neko Project II kai</h3>
-                        <ul>
-                            <li><a href="https://github.com/AZO234/NP2kai">Github repo</a> (source code and build instructions)</li>
-                        </ul>
-                <h2>Anex86</h2>
-                    <ul>
-                        <li><a href="https://www.zophar.net/pc98/anex86.html">Download link #1</a></li>
-                        <li><a href="https://archive.org/download/anex86/Anex86.rar">Download link #2</a></li>
-                    </ul>
-                <h2>DOSBox-X</h2>
-                    <ul>
-                        <li><a href="https://dosbox-x.com/">Official website</a></li>
-                        <li><a href="https://flathub.org/apps/com.dosbox_x.DOSBox-X">Flathub page</a></li>
-                        <li><a href="https://copr.fedorainfracloud.org/coprs/rob72/DOSBox-X/">Fedora Copr page</a></li>
-                    </ul>
-                <h2>T98-Next</h2>
-                    <ul>
-                        <li><a href="https://akiyuki.boy.jp/t98next/Next20100525.zip">Latest stable version download</a></li>
-                        <li><a href="https://www.zophar.net/pc98/t98-next.html">English translated version</a></li>
-                    </ul>
-            <hr class="light">
-            <h1>Adding and playing the Touhou games</h1>
-                <i>This section is under construction</i>
-                <p>Make sure to run this command for NP2 <pre><code class="block">winetricks ddr=gdi</code></pre></p>
-                <p>Make sure to set the CPU speed/cycle to be between <code class>24576</code> and <code>30000</code> cycles (2.4576 to 3 MHz)
-                for a smooth experience</p>
-            <hr class="light">
-            <h1>Additional Resources and References</h1>
-                <ul>
-                    <li><a href="https://nc-roadgeek.neocities.org/mima/pc98-neko">Feeva</a> | Neko Project II guide for Touhou</li>
-                    <li><a href="https://gang-fight.com/projects/98faq/">Gang Fight</a> | PC-98 Emulation for Beginners</li>
-                    <li><a href="https://46okumen.com/pc-98-emulation/">46 Okumen</a> | PC-98 Emulation</li>
-                    <li><a href="https://gu4n.github.io/br2/instructions.html">Gu4n</a> | T98-Next setup instructions</li>
-                    <li><a href="https://www.zophar.net/pc98.html">Zophar's Domain</a> | PC-98 emulators list</li>
-                    <li><a href="https://docs.libretro.com/library/neko_project_ii_kai/">Libretro</a> | NP2kai documentation</li>
-                    <li><a href="https://touhou-memories.com/post/190684950124/configure-anex86">Touhou Memories</a> | Anex86 configuration</li>
-                    <li><a href="https://dosbox-x.com/wiki/Guide%3APC%E2%80%9098-emulation-in-DOSBox%E2%80%90X">DOSBox-X | PC-98 setup</a></li>
-                    <li><a href="./index.html">Windows Touhou Linux Guide</a></li>
-                </ul>
-            <hr class="light">
-    </body>
+
+<head>
+    <link rel="canonical" href="https://daichungus.github.io/touhoulinuxguide/pc98.html">
+    <link href="./css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" href="./image/favicon-alice98.ico" type="image/x-icon">
+    <title>PC-98 Touhou Linux Guide</title>
+    <meta charset="UTF-8">
+    <meta name="description"
+        content="A clean, no-nonsense guide to running PC-98 Touhou games on Linux using Neko Project II and Wine. Easy for new users, powerful for veterans.">
+    <meta name="keywords"
+        content="Touhou Project, PC-98, PC-98 Touhou, Touhou Linux, Wine, Neko Project II, np21, anex86, Touhou, Touhou wine guide, PC-98 Touhou linux, Touhou Linux">
+    <meta name="author" content="Daichungus">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="PC-98 Touhou Linux Guide">
+    <meta property="og:description"
+        content="A practical guide to running PC-98 Touhou on Linux without the bloat. Includes Wine and emulator setup.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://daichungus.github.io/touhoulinuxguide/pc98.html">
+</head>
+
+<body class="classic">
+    <header>
+        <h1>PC-98 Touhou Linux Guide</h1>
+        <h2>By <a href="https://github.com/daichungus">Daichungus</a></h2>
+        <p id="last-updated" class="meta"></p>
+        <script src="./js/time.js"></script>
+    </header>
+    <h2>This guide is a work-in-progress!</h2>
+    <hr class="light">
+    <h1>Preparing your Linux environment</h1>
+    <i>This section is under construction</i>
+    <hr class="light">
+    <h1>Choosing an emulator</h1>
+    <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows.</p>
+    <p>However, they tend to have issues when running on Linux with Wine. 
+        As such, this guide will only cover two emulators:
+    </p>
+    <ul>
+        <li><a href="https://github.com/AZO234/NP2kai">Neko Project II Kai</a></li>
+        <li><a href="https://dosbox-x.com/">DOSBox-X</a></li>
+    </ul>
+    A list of PC-98 emulators can be found <a href="./emulators.html">here</a>.
+    <hr class="light">
+    <h1>Adding and playing the Touhou games</h1>
+    <i>This section is under construction</i>
+    <p>Make sure to run this command for NP2
+    <pre><code class="block">winetricks ddr=gdi</code></pre>
+    </p>
+    <p>Make sure to set the CPU speed/cycle to be between <code class>24576</code> and <code>30000</code> cycles (2.4576
+        to 3 MHz)
+        for a smooth experience</p>
+    <hr class="light">
+    <h1>Additional Resources and References</h1>
+    <ul>
+        <li><a href="https://dosbox-x.com/wiki/Guide%3APC%E2%80%9098-emulation-in-DOSBox%E2%80%90X">DOSBox-X | PC-98
+                setup</a></li>
+        <li><a href="https://maribelhearn.com/faq/pc98">Maribel Hearn</a> PC-98 Guide</li>
+        <li><a href="https://nc-roadgeek.neocities.org/mima/pc98-neko">Feeva</a> | Neko Project II guide for Touhou</li>
+        <li><a href="https://gang-fight.com/projects/98faq/">Gang Fight</a> | PC-98 Emulation for Beginners</li>
+        <li><a href="https://46okumen.com/pc-98-emulation/">46 Okumen</a> | PC-98 Emulation</li>
+        <li><a href="https://gu4n.github.io/br2/instructions.html">Gu4n</a> | T98-Next setup instructions</li>
+        <li><a href="https://www.zophar.net/pc98.html">Zophar's Domain</a> | PC-98 emulators list</li>
+        <li><a href="https://docs.libretro.com/library/neko_project_ii_kai/">Libretro</a> | NP2kai documentation</li>
+        <li><a href="https://touhou-memories.com/post/190684950124/configure-anex86">Touhou Memories</a> | Anex86
+            configuration</li>
+        <li><a href="./index.html">Windows Touhou on Linux Guide</a></li>
+    </ul>
+    <hr class="light">
+</body>
+
 </html>
