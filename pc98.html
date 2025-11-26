@@ -30,41 +30,116 @@
     <h2 style="color:orangered">This guide is a work-in-progress!</h2>
     <hr class="light">
     <h1>Preparing your Linux environment</h1>
-    <i style="color:orangered">This section is under construction</i>
+    <p>Most major distros should work well with this guide.</p>
+    <p>This guide has been personally tested with:
+    <ul>
+        <li>Linux Mint 22.2 Cinnamon Edition with integrated Intel graphics</li>
+    </ul>
+    </p>
+    <p>My only recommendation is to choose a well-known, widely-supported, and stable distro, which includes but is not
+        limited to the following:
+    </p>
+    <ul>
+        <li><a href="https://linuxmint.com/">Linux Mint</a></li>
+        <li><a href="https://ubuntu.com/desktop">Ubuntu</a></li>
+        <li><a href="https://fedoraproject.org/">Fedora</a></li>
+        <li><a href="https://www.debian.org/">Debian</a></li>
+    </ul>
     <hr class="light">
     <h1>Choosing an emulator</h1>
     <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows.</p>
     <p>However, they tend to have issues when running on Linux with Wine.
-        As such, this guide will only cover two emulators:
+        As such, this guide will only cover the use of two emulators, both natively supported on Linux:
     </p>
     <ul>
         <li><a href="https://github.com/AZO234/NP2kai">Neko Project II Kai</a></li>
         <li><a href="https://dosbox-x.com/">DOSBox-X</a></li>
     </ul>
-    A list of PC-98 emulators can be found <a href="./emulators.html">here</a>.
+    <p>A list of other PC-98 emulators can be found <a href="./pc98/emulators.html">here</a>.</p>
     <hr class="light">
-    <h1>Emulator setup</h1>
+    <h1>Installation and setup</h1>
+    <p>Before continuing, ensure you have the necessary graphics drivers and system firmware installed.</p>
+    <p>Consult your distro's documentation or other online resources for a proper setup (e.g., RPM Fusion for Nvidia
+        drivers on Fedora, multilib repo on Arch, etc.).
+    </p>
+    <ol>
+        <li>Update your repository using your distro's included package manager.
+            <p><b>Debian/Ubuntu/Linux Mint:</b>
+            <pre><code class="block">sudo apt update && sudo apt upgrade</code></pre>
+            </p>
+            <p><b>Fedora:</b>
+            <pre><code class="block">sudo dnf update</code></pre>
+            </p>
+            <p><b>Arch:</b>
+            <pre><code class="block">sudo pacman -Syu</code></pre>
+            </p>
+        </li>
+        <li><a href="https://flatpak.org/setup/">Install Flatpak</a>, based on your distribution's guidelines. 
+            If you do not wish to use Flatpak, skip this step.</li>
+    </ol>
+    <h1>Neko Project II Kai</h1>
+    <h2>Installation via RetroArch</h2>
+    <ol>
+        <li>Install RetroArch via <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flathub</a>* 
+            <p><b>Command Line</b>
+            <pre><code class="block">flatpak install flathub org.libretro.RetroArch</code></pre>
+            </p>
+        </li>
+        <li>Run RetroArch either by GUI or 
+            <pre><code class="block">flatpak run org.libretro.RetroArch</code></pre>
+        </li>
+        <li><p>In the Main Menu, select "Load Core", then "Download Core"</p></li>
+        <li>
+            <p>Scroll down the list to 
+            <b><code class="blocksmall">NEC - PC-98 (Neko Project II Kai)</code></b>. 
+            Click to install.
+            </p>
+        </li>
+    </ol>
+    <p>* This is the recommended method, as it helps avoids most inconsistencies between distributions and is generally easy to use.</p>
+    <h2>Settings to tweak</h2>
+    <ol>
+        <li>
+            <p>Go back* to the previous menu and select the respective core. On the Main Menu, "Start Core" will be in place of "Load Core".</p>
+        </li>
+        <li><p>Start the core without content and press <code>F1</code> to open the Quick Menu</p></li>
+        <li><p>
+            Select "Core Options", and apply these settings:
+            <ul>
+                <li>CPU Clock Multiplier = 52</li>
+                <li>RAM Size = 16</li>
+                <li>Sound Board = PC9801-26K+86</li>
+                <li>Volume VM = 128</li>
+                <li>Volume SSG = 128</li>
+                <li>Volume RHYTHM = 128</li>
+                <li>Sound Generator = Default</li>
+            </ul>
+            </p>
+        </li>
+        <li>Go back and restart the core as necessary.</li>
+    </ol>
+    <p>* Backspace on keyboard</p>
+    <h1>DOSBox-X</h1>
     <i style="color:orangered">This section is under construction</i>
+    <p>Set the CPU speed/cycle to be between <code class="blocksmall">24576</code> and <code class="blocksmall">30000</code> cycles
+    </p>
     <hr class="light">
     <h1>Adding and playing the Touhou games</h1>
     <i style="color:orangered">This section is under construction</i>
-    <p>Make sure to run this command for NP2 if using Wine:
-    <pre><code class="block">winetricks ddr=gdi</code></pre>
-    </p>
-    <p>Make sure to set the CPU speed/cycle to be between <code class>24576</code> and <code>30000</code> cycles (2.4576
-        to 3 MHz)
-        for a smooth experience</p>
+    <!--
+    <p>Make sure to run this command if using Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
+    -->
     <hr class="light">
     <h1>Additional Resources and References</h1>
     <ul>
         <li><a href="https://dosbox-x.com/wiki/Guide%3APC%E2%80%9098-emulation-in-DOSBox%E2%80%90X">DOSBox-X</a> | PC-98 setup</li>
         <li><a href="https://docs.libretro.com/library/neko_project_ii_kai/">RetroArch</a> | NP2 Kai page</li>
-        <li><a href="https://maribelhearn.com/faq/pc98">Maribel Hearn</a> PC-98 Guide</li>
+        <li><a href="https://maribelhearn.com/faq/pc98">Maribel Hearn</a> | PC-98 Guide</li>
         <li><a href="https://nc-roadgeek.neocities.org/mima/pc98-neko">Feeva</a> | Neko Project II guide for Touhou</li>
         <li><a href="https://gang-fight.com/projects/98faq/">Gang Fight</a> | PC-98 Emulation for Beginners</li>
         <li><a href="https://46okumen.com/pc-98-emulation/">46 Okumen</a> | PC-98 Emulation</li>
         <li><a href="https://gu4n.github.io/br2/instructions.html">Gu4n</a> | T98-Next setup instructions</li>
-        <li><a href="https://www.zophar.net/pc98.html">Zophar's Domain</a> | PC-98 emulators list</li>
+        <li><a href="https://www.zophar.net/pc98.html">Zophar's Domain</a> | PC-98 emulators for Windows</li>
         <li><a href="https://docs.libretro.com/library/neko_project_ii_kai/">Libretro</a> | NP2kai documentation</li>
         <li><a href="https://touhou-memories.com/post/190684950124/configure-anex86">Touhou Memories</a> | Anex86
             configuration</li>
