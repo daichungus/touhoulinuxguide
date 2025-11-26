@@ -1,1 +1,1 @@
-document.getElementById("last-updated").textContent = "Last updated at " + document.lastModified;
+document.getElementById("last-updated").textContent = "Last updated on " + document.lastModified;
