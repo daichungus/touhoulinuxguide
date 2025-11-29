@@ -61,37 +61,37 @@
         drivers on Fedora, multilib repo on Arch, etc.).
     </p>
     <ol>
-        <li>Update your repository using your distro's included package manager.
+        <li>Update your repository using your distro's package manager.
             <p><b>Debian/Ubuntu/Linux Mint</b>
                 <pre><code class="block">sudo apt update && sudo apt upgrade</code></pre>
             </p>
             <p><b>Fedora</b>
                 <pre><code class="block">sudo dnf update</code></pre>
             </p>
-            <p><b>Arch</b>
+            <p><b>Arch Linux</b>
                 <pre><code class="block">sudo pacman -Syu</code></pre>
             </p>
-            <p><b>Flatpak</b>
+            <p><b>Flatpak*</b>
                 <pre><code class="block">flatpak update</code></pre>
             </p>
         </li>
-        <li>Install <a href="https://www.winehq.org/">Wine</a>* and <a href="https://lutris.net/">Lutris</a>.
+        <li>Install <a href="https://www.winehq.org/">Wine</a>** and <a href="https://lutris.net/">Lutris</a>.
             <p><b>Debian/Ubuntu/Linux Mint</b>
                 <pre><code class="block">sudo apt install wine lutris</code></pre>
             </p>
             <p><b>Fedora</b>
                 <pre><code class="block">sudo dnf install wine lutris</code></pre>
             </p>
-            <p><b>Arch</b>
+            <p><b>Arch Linux</b>
                 <pre><code class="block">sudo pacman -S wine wine-mono wine-gecko lutris</code></pre>
             </p>
-            <p><b>Flatpak (for Lutris)</b>
+            <p><b>Flatpak* (for Lutris)</b>
                 <pre><code class="block">flatpak install flathub net.lutris.Lutris</code></pre>
             </p>
         </li>
     </ol>
-    <p>* If you want to use a newer version of Wine, consider <a href="https://wine.htmlvalidator.com/">installing the
-            version from the WineHQ repo</a> on your system.</p>
+    <p>* Consult the <a href="https://flatpak.org/setup/">official quick setup guide</a> if Flatpak is not already installed on your system</p>
+    <p>** If you want to use a newer version of Wine, consider <a href="https://wine.htmlvalidator.com/">adding the WineHQ repo</a> to your package manager.</p>
     <hr class="light">
     <h1 id="installing-thcrap">Installing THCRAP patches</h1>
     <b>Skip to <a href="#running-touhou">this section</a> if you do not want to play with THCRAP patches, or if you
