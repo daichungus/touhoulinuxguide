@@ -70,8 +70,8 @@
     <p>However, they tend to have issues and inconsistent behavior when running on Linux with Wine.</p>
     <p>This guide will only cover two Linux-native emulators in detail:</p>
     <ul>
-        <li>Neko Project II Kai (<a href="#np21kai-setup">skip to section</a>)</li>
-        <li>DOSBox-X (<a href="#dosboxx-setup">skip to section</a>)</li>
+        <li>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</li>
+        <li>DOSBox-X (<a href="#dosbox-x-setup">skip to setup</a>)</li>
     </ul>
     <p>A list of other PC-98 emulators can be found <a href="./pc98/emulators.html">here</a>.</p>
     <h2>Font files</h2>
@@ -87,7 +87,7 @@
     <h1 id="np21kai-setup">Neko Project II Kai</h1>
     <h2>Installation via RetroArch</h2>
     <ol>
-        <li>Install RetroArch as a <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flatpak</a><sup>*</sup> 
+        <li>Install RetroArch as a <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flatpak</a><sup style="color:limegreen">*</sup> 
             <pre><code class="block">flatpak install flathub org.libretro.RetroArch</code></pre>
             </p>
         </li>
@@ -101,7 +101,7 @@
             </p>
         </li>
     </ol>
-    <p><sup>*</sup> Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date.</p>
+    <p style="color:limegreen"><sup>*</sup> Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date version.</p>
     <p><sup>†</sup> Enter key on keyboard</p>
     <h2>Settings to adjust before playing</h2>
     <ol>
@@ -122,31 +122,28 @@
             </ul>
             </p>
         </li>
-        <li>Go back and restart/unload the core.</li>
+        <li><p>Go back and restart the core.</p></li>
+        <li><p>You're now ready to <a href="#running-pc98-touhou">run the games</a></p></li>
     </ol>
     <p><sup>*</sup> Backspace key on keyboard</p>
-    <p><b style="color:red"><sup>†</sup> These settings are mandatory for smooth gameplay.</b></p>
-    <h1 id="dosboxx-setup">DOSBox-X</h1>
+    <p><b style="color:red"><sup>†</sup> These settings are required for smooth gameplay.</b></p>
+    <h1 id="dosbox-x-setup">DOSBox-X</h1>
     <h2>Installation</h2>
-    <ol>
-        <li>
-            <p>Install DOSBox-X through your package manager</p>
-            <p><b>Debian/Ubuntu/Linux Mint</b>
-                <pre><code class="block">sudo apt install dosbox-x</code></pre>
-            </p>
-            <p><b>Fedora</b>
-                <pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
-                <pre><code class="block">sudo dnf install dosbox-x</code></pre>
-            </p>
-            <p><b>Arch</b>
-                <pre><code class="block">sudo pacman -S dosbox-x</code></pre>
-            </p>
-            <p><b>Flatpak<sup>*</sup></b>
-                <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
-            </p>
-        </li>
-    </ol>
-    <p><sup>*</sup> Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date.</p>
+    <p>Install DOSBox-X through your package manager</p>
+    <p><b>Flatpak<sup style="color:limegreen">*</sup></b>
+        <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
+    </p>
+    <p><b>Debian/Ubuntu/Linux Mint</b>
+        <pre><code class="block">sudo apt install dosbox-x</code></pre>
+    </p>
+    <p><b>Fedora</b>
+        <pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
+        <pre><code class="block">sudo dnf install dosbox-x</code></pre>
+    </p>
+    <p><b>Arch</b>
+        <pre><code class="block">sudo pacman -S dosbox-x</code></pre>
+    </p>
+    <p style="color:limegreen"><sup>*</sup> Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date version.</p>
     <h2>Settings to adjust before playing</h2>
     <h3>Configuration file</h3>
     <p>DOSBox-X relies on a configuration file to apply the correct settings for various types of programs.</p>
@@ -158,11 +155,10 @@
     <p>However, if the working directory contains a file named 
         <code class="blocksmall">dosbox-x.conf</code>, 
         the settings that it contains will override the respective ones in the default config file.</p>
-    <p><b style="color:orange">For this guide, a ready-to-use config file is available for <a href="./pc98/dosbox-x.conf" download>download</a>.
-        Simply save it to the same directory as your HDI files.
-    </b></p>
+    <h3><i><b style="color:limegreen">A ready-to-use config file is available for you to <a href="./pc98/dosbox-x.conf" download>download</a>;
+        Simply save it to the same directory as your HDI files.</b></i></h3>
     <p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
-    <h3>Working directory</h3>
+    <h3 id="working-directory">Working directory</h3>
     <p>The working directory is where DOSBox-X will run. By default, DOSBox-X will ask you to choose a directory in your system.<sup>*</sup></p>
     <p>If you intend on using DOSBox-X only to play the PC-98 Touhou games, 
         set the directory with the HDI files as the default working directory <b>in the default config file</b></p>
@@ -173,9 +169,9 @@ working directory default = /your/path/to/pc98touhou/</code></pre></p>
     <h3>Graphics</h3>
     <p>To always start in fullscreen, set:</p>
     <pre><code class="block">[sdl]
-fullscreen = false
+fullscreen = true
 fullresolution = desktop</code></pre>
-    <p>To ensure the graphics stay consistend, set:</p>
+    <p>To ensure the graphics stay consistent, set:</p>
     <pre><code class="block">[sdl]
 output = openglpp
 
@@ -193,8 +189,8 @@ machine = pc98</code></pre>
     <pre><code class="block">[cpu]
 cycles = 30000</code></pre>
     <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. 
-        The value of <code>30000</code> is suggested in this guide for ease of rememberance.</p>
-    <h3>Auto-execution</h3>
+        The value of <code>30000</code> is suggested in this guide for ease of remembrance.</p>
+    <h3 id="autoexec">Auto-execution</h3>
     <p>This is especially helpful if you intend on always using only one HDI file<sup>*</sup> and do not want to always type the commands by hand</p>
     <pre><code class="block">[autoexec]
 IMGMOUNT C TOUHOU.HDI
@@ -202,9 +198,9 @@ BOOT C:</code></pre>
     <p>Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your HDI file.</p>
     <p><sup>*</sup> For example, an HDI with all the PC-98 Touhou games or a full system</p>
     <hr class="light">
-    <h1>Running the PC-98 Touhou games</h1>
-    <p><b>It is highly recommended that you store your Touhou PC-98 files in a directory/folder like "Games" or "Touhou"</b></p>
-    <h2>Neko Project II Kai</h2>
+    <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
+    <p><i style="color:red"><b>It is highly recommended that you store your HDI files in a directory/folder like "Games" or "Touhou"</b></i></p>
+    <h2 id="np21kai-running">Neko Project II Kai</h2>
     <ol>
         <li><p>In the Main Menu, select "Load Core", then "NEC - PC-98 (Neko Project II Kai)"</p></li>
         <li><p><b>If it's your first time loading the HDI file:</b>
@@ -222,12 +218,12 @@ BOOT C:</code></pre>
         </li>
         <li><p>Enjoy!</p></li>
     </ol>
-    <h2>DOSBox-X</h2>
+    <h2 id="dosbox-x-running">DOSBox-X</h2>
     <ol>
         <li><p><b>Launch from desktop</b></p>
             <p>If prompted, select the directory/folder with your HDI files as your working directory.</p>
             <p><b>Run from Command Line</b></p>
-            <p>Navigate to the directory folder with the HDI files, then run</p>
+            <p>Navigate to the directory folder with the HDI file(s), then run</p>
             <ul>
                 <li><p><b>Non-Flatpak: </b><code class="blocksmall">dosbox-x</code></p></li>
                 <li><p><b>Flatpak: </b><code class="blocksmall">flatpak run com.dosbox_x.DOSBox-X</code></p></li>
@@ -267,10 +263,11 @@ BOOT C:</code></pre>
                 <li><p>If you want to use a different HDI file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
             </ul>
         </li>
+        <li><p>If you only use one HDI and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically 
+            <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.</p></li>
     </ul>
-    <!--
-    <p>Make sure to run this command if using Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
-    -->
+    <h3>Other</h3>
+    <p>Make sure to run this command if using emulators with Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
     <hr class="light">
     <h1>Additional Resources and References</h1>
     <ul>
