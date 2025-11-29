@@ -10,12 +10,12 @@
     <meta name="description"
         content="A clean, no-nonsense guide to running PC-98 Touhou games on Linux using Neko Project II and Wine. Easy for new users, powerful for veterans.">
     <meta name="keywords"
-        content="Touhou Project, PC-98, PC-98 Touhou, Touhou Linux, Wine, Neko Project II, np21, anex86, Touhou, Touhou wine guide, PC-98 Touhou linux, Touhou Linux">
+        content="Touhou, Touhou Project, PC-98, PC-98 Touhou, Touhou Linux, Wine, Neko Project II, np21, anex86, dosbox-x, Touhou Wine guide, PC-98 Touhou Linux">
     <meta name="author" content="Daichungus">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="PC-98 Touhou Linux Guide">
     <meta property="og:description"
-        content="A practical guide to running PC-98 Touhou on Linux without the bloat. Includes Wine and emulator setup.">
+        content="A practical guide to running the PC-98 Touhou games on Linux.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://daichungus.github.io/touhoulinuxguide/pc98.html">
 </head>
@@ -28,6 +28,7 @@
     <h2 style="color:orangered">This guide is a work-in-progress!</h2>
     <hr class="light">
     <h1>Preparing your Linux environment</h1>
+    <h2>Choosing a distro</h2>
     <p>Most major distros should work well with this guide.</p>
     <p>This guide has been personally tested with:
     <ul>
@@ -43,43 +44,51 @@
         <li><a href="https://fedoraproject.org/">Fedora</a></li>
         <li><a href="https://www.debian.org/">Debian</a></li>
     </ul>
-    <hr class="light">
-    <h1>Choosing an emulator</h1>
-    <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
-    <p>However, they tend to have issues when running on Linux with Wine.
-        As such, this guide will only cover the use of two emulators, both natively supported on Linux:
-    </p>
-    <ul>
-        <li><a href="https://github.com/AZO234/NP2kai">Neko Project II Kai</a></li>
-        <li><a href="https://dosbox-x.com/">DOSBox-X</a></li>
-    </ul>
-    <p>A list of other PC-98 emulators can be found <a href="./pc98/emulators.html">here</a>.</p>
-    <hr class="light">
-    <h1>Installation and setup</h1>
+    <h2>Installing required software</h2>
     <p>Before continuing, ensure you have the necessary graphics drivers and system firmware installed.</p>
     <p>Consult your distro's documentation or other online resources for a proper setup (e.g., RPM Fusion for Nvidia
         drivers on Fedora, multilib repo on Arch, etc.).
     </p>
     <ol>
         <li>Update your repository using your distro's included package manager.
-            <p><b>Debian/Ubuntu/Linux Mint:</b>
+            <p><b>Debian/Ubuntu/Linux Mint</b>
             <pre><code class="block">sudo apt update && sudo apt upgrade</code></pre>
             </p>
-            <p><b>Fedora:</b>
+            <p><b>Fedora</b>
             <pre><code class="block">sudo dnf update</code></pre>
             </p>
-            <p><b>Arch:</b>
+            <p><b>Arch</b>
             <pre><code class="block">sudo pacman -Syu</code></pre>
             </p>
         </li>
-        <li><a href="https://flatpak.org/setup/">Install Flatpak</a>, based on your distribution's guidelines. 
-            If you do not wish to use Flatpak, skip this step.</li>
+        <li><a href="https://flatpak.org/setup/">Install Flatpak</a> on your distribution. 
+            If you do not wish to use Flatpak or already have it, skip this step.</li>
     </ol>
-    <h1>Neko Project II Kai</h1>
+    <hr class="light">
+    <h1>Emulator installation and setup</h1>
+    <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
+    <p>However, they tend to have issues and inconsistent behavior when running on Linux with Wine.</p>
+    <p>This guide will only cover two Linux-native emulators in detail:</p>
+    <ul>
+        <li>Neko Project II Kai (<a href="#np21kai-setup">skip to section</a>)</li>
+        <li>DOSBox-X (<a href="#dosboxx-setup">skip to section</a>)</li>
+    </ul>
+    <p>A list of other PC-98 emulators can be found <a href="./pc98/emulators.html">here</a>.</p>
+    <h2>Font files</h2>
+    <p>Both Neko Project II Kai and DOSBox-X require the use of a font file.</p>
+    <p>Some popular font files are available to download from here:</p>
+    <ul>
+        <li><a href="./pc98/fontnp.bmp" download>Neko Project 21 font</a></li>
+        <li><a href="./pc98/anex86.bmp" download>Anex86 font</a></li>    
+        <li><a href="./pc98/FREECG98.BMP" download>FREECG98.BMP font</a></li>    
+    </ul>
+    <p>Move the font file to the same directory/folder as your PC-98 Touhou HDI file(s). 
+        You may have to rename your file to <code class="blocksmall">font.bmp</code> in order for the emulator to detect it.
+    </p>
+    <h1 id="np21kai-setup">Neko Project II Kai</h1>
     <h2>Installation via RetroArch</h2>
     <ol>
-        <li>Install RetroArch via <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flathub</a>* 
-            <p><b>Command Line</b>
+        <li>Install RetroArch as a Flatpak* via <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flathub</a>
             <pre><code class="block">flatpak install flathub org.libretro.RetroArch</code></pre>
             </p>
         </li>
@@ -94,8 +103,8 @@
             </p>
         </li>
     </ol>
-    <p>* This is the recommended method, as it helps avoids most inconsistencies between distributions and is generally easy to use.</p>
-    <h2>Settings to tweak</h2>
+    <p>* Recommended since it helps avoids most inconsistencies between distros.</p>
+    <h2>Settings to adjust before playing</h2>
     <ol>
         <li>
             <p>Go back* to the previous menu and select the respective core. On the Main Menu, "Start Core" will be in place of "Load Core".</p>
@@ -104,26 +113,63 @@
         <li><p>
             Select "Core Options", and apply these settings:
             <ul>
-                <li>CPU Clock Multiplier = 52</li>
-                <li>RAM Size = 16</li>
-                <li>Sound Board = PC9801-26K+86</li>
-                <li>Volume VM = 128</li>
-                <li>Volume SSG = 128</li>
-                <li>Volume RHYTHM = 128</li>
-                <li>Sound Generator = Default</li>
+                <li><b style="color:red">CPU Clock Multiplier<sup>†</sup></b> = <code class="blocksmall">52</code></li>
+                <li><b style="color:red">RAM Size<sup>†</sup></b> = <code class="blocksmall">16</code></li>
+                <li>Sound Board = <code class="blocksmall">PC9801-26K+86</code></li>
+                <li>Volume VM = <code class="blocksmall">128</code></li>
+                <li>Volume SSG = <code class="blocksmall">128</code></li>
+                <li>Volume RHYTHM = <code class="blocksmall">128</code></li>
+                <li>Sound Generator = <code class="blocksmall">Default</code></li>
             </ul>
             </p>
         </li>
-        <li>Go back and restart the core as necessary.</li>
+        <li>Go back and restart/unload the core.</li>
     </ol>
-    <p>* Backspace on keyboard</p>
-    <h1>DOSBox-X</h1>
+    <p>* Backspace key on keyboard</p>
+    <p><b style="color:red"><sup>†</sup> These settings are mandatory for smooth gameplay.</b></p>
+    <h1 id="dosboxx-setup">DOSBox-X</h1>
+    <h2>Installation</h2>
+    <ol>
+        <li>
+            <p>Install DOSBox-X through your package manager</p>
+            <p><b>Debian/Ubuntu/Linux Mint</b>
+                <pre><code class="block">sudo apt install dosbox-x</code></pre>
+            </p>
+            <p><b>Fedora</b>
+                <pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
+                <pre><code class="block">sudo dnf install dosbox-x</code></pre>
+            </p>
+            <p><b>Arch</b>
+                <pre><code class="block">sudo pacman -S dosbox-x</code></pre>
+            </p>
+            <p><b>Flatpak*</b>
+                <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
+            </p>
+        </li>
+    </ol>
+    <p>* Recommended since it helps avoids most inconsistencies between distros.</p>
+    <h2>Settings to adjust before playing</h2>
     <i style="color:orangered">This section is under construction</i>
-    <p>Set the CPU speed/cycle to be between <code class="blocksmall">24576</code> and <code class="blocksmall">30000</code> cycles
-    </p>
+    <h3>Configuration file</h3>
+    <p>An example configuration file can be downloaded from <a href="./pc98/dosbox-x.conf" download>here</a>.</p>
+    <h3>Working directory</h3>
+    <h3>Enabling PC-98 mode</h3>
+    <h3>CPU speed</h3>
+    <p style="color:red"><b>Set the CPU speed/cycle to <code class="blocksmall">30000</code> cycles</b></p>
     <hr class="light">
-    <h1>Adding and playing the Touhou games</h1>
+    <h1>Running the PC-98 Touhou games</h1>
+    <h2>Neko Project II Kai</h2>
     <i style="color:orangered">This section is under construction</i>
+    <h2>DOSBox-X</h2>
+    <i style="color:orangered">This section is under construction</i>   
+    <p>After opening DOSBox-X, select the directory/folder with your PC-98 Touhou games as your working directory.</p>
+    <p>Run these two commands separately in order:</p>
+    <pre><code class="block">IMGMOUNT C TOUHOU.HDI
+BOOT C:</code></pre>
+    <p>Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual filename<sup style="color:red">†</sup> of the game (or multi-game) HDI file you want to load.</p>
+    <p>To restart with the same HDI file, reboot the guest system (<b><code>F12+B</code></b>)</p>
+    <p>To switch to a different HDI file, reset the virtual machine (<b><code>F12+R</code></b>)</p>
+    <p><b style="color:red"><sup>†</sup> The filename is case-sensitive!</b></p>
     <!--
     <p>Make sure to run this command if using Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
     -->
