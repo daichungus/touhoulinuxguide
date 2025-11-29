@@ -28,12 +28,13 @@
     </header>
     <hr class="light">
     <h2 id="disclaimer">Disclaimer</h2>
-    <p>This guide focuses on using <b>Lutris with Wine*</b> for a simple and consistent experience.
+    <p>This is the guide for the Windows era games. The PC-98 era Touhou guide is <a href="./pc98.html">here</a>.</p>
+    <p>This guide focuses on using <b>Lutris with Wine<sup>*</sup></b> for a simple and consistent experience.
         It does <i>not</i> cover every setup or edge case.
     </p>
     <p>The goal here is to get most users running their Touhou games quickly and cleanly.</p>
     <p>If you're looking for more advanced or alternative methods, other resources may be better suited.</p>
-    <p>* The regular version of Wine may not work for your system, so this guide covers <a
+    <p><sup>*</sup> The regular version of Wine may not work for your system, so this guide covers <a
             href="#lutris-alternate-wine">alternate Wine versions</a> as well.</p>
     <hr class="light">
     <h1 id="linux-env-setup">Preparing your Linux environment</h1>
@@ -71,11 +72,11 @@
             <p><b>Arch Linux</b>
                 <pre><code class="block">sudo pacman -Syu</code></pre>
             </p>
-            <p><b>Flatpak*</b>
+            <p><b>Flatpak<sup>*</sup></b>
                 <pre><code class="block">flatpak update</code></pre>
             </p>
         </li>
-        <li>Install <a href="https://www.winehq.org/">Wine</a>** and <a href="https://lutris.net/">Lutris</a>.
+        <li>Install <a href="https://www.winehq.org/">Wine</a><sup>†</sup> and <a href="https://lutris.net/">Lutris</a>.
             <p><b>Debian/Ubuntu/Linux Mint</b>
                 <pre><code class="block">sudo apt install wine lutris</code></pre>
             </p>
@@ -85,13 +86,13 @@
             <p><b>Arch Linux</b>
                 <pre><code class="block">sudo pacman -S wine wine-mono wine-gecko lutris</code></pre>
             </p>
-            <p><b>Flatpak* (for Lutris)</b>
+            <p><b>Flatpak<sup>*</sup> (for Lutris)</b>
                 <pre><code class="block">flatpak install flathub net.lutris.Lutris</code></pre>
             </p>
         </li>
     </ol>
-    <p>* Consult the <a href="https://flatpak.org/setup/">official quick setup guide</a> if Flatpak is not already installed on your system</p>
-    <p>** If you want to use a newer version of Wine, consider <a href="https://wine.htmlvalidator.com/">adding the WineHQ repo</a> to your package manager.</p>
+    <p><sup>*</sup> Consult the <a href="https://flatpak.org/setup/">official quick setup guide</a> if Flatpak is not already installed on your system</p>
+    <p><sup>†</sup> If you want to use a newer version of Wine, consider <a href="https://wine.htmlvalidator.com/">adding the WineHQ repo</a> to your package manager.</p>
     <hr class="light">
     <h1 id="installing-thcrap">Installing THCRAP patches</h1>
     <b>Skip to <a href="#running-touhou">this section</a> if you do not want to play with THCRAP patches, or if you
@@ -107,18 +108,18 @@
     </p>
     <h2 id="wine-mono-thcrap-setup">Setting up Wine and Mono for THCRAP</h2>
     <ol>
-        <li>Create a new Wine prefix with the following command: *
+        <li>Create a new Wine prefix with the following command:<sup>*</sup> 
             <pre><code class="block">WINEPREFIX=$HOME/.wine-thcrap WINEARCH=win64 winecfg</code></pre>
         </li>
         <li><a href="https://dl.winehq.org/wine/wine-mono/">Download</a> the latest version of Mono.<sup>†</sup> Use <a
                 href="https://gitlab.winehq.org/wine/wine/-/wikis/Wine-Mono#prefix-local-install">this guide</a> to find
             the version you need.</li>
-        <li>Run the following command to install Mono to your newly-created prefix: <sup>‡</sup>
+        <li>Run the following command to install Mono to your newly-created prefix:<sup>‡</sup>
             <pre><code class="block">WINEPREFIX=$HOME/.wine-thcrap wine /path/to/wine-mono-VERSION-x86.msi</code></pre>
             (substitute the actual version number for <code>VERSION</code>)
         </li>
     </ol>
-    <p>* <code>winecfg</code> is recommended as you may need to adjust some settings. Otherwise you can just close the
+    <p><sup>*</sup> <code>winecfg</code> is recommended as you may need to adjust some settings. Otherwise you can just close the
         GUI window.</p>
     <p><sup>†</sup> The THCRAP configuration tool requires .NET, which Mono substitutes on Linux. Otherwise it will
         display an error saying that .NET is missing.</p>
@@ -151,7 +152,7 @@
         </li>
         <li>In the Game options tab:
             <ol>
-                <li>Set the executable path to <code class="blocksmall">/your/path/to/thcrap/thcrap.exe</code> *</li>
+                <li>Set the executable path to <code class="blocksmall">/your/path/to/thcrap/thcrap.exe</code><sup>*</sup></li>
                 <li>Set the working directory path to <code class="blocksmall">/your/path/to/thcrap/</code></li>
                 <li>Set the Wine prefix path to <code class="blocksmall">$HOME/.wine-thcrap</code></li>
             </ol>
@@ -159,7 +160,7 @@
         <li>Use System wine for the Runner option.</li>
         <li>Press the save button and ensure the THCRAP configuration tool runs properly.</li>
     </ol>
-    <p>* <code>thcrap.exe</code> is the THCRAP configuration tool, which allows you to download new patches and locate
+    <p><sup>*</sup> <code>thcrap.exe</code> is the THCRAP configuration tool, which allows you to download new patches and locate
         the games.
         Meanwhile, <code>thcrap_loader.exe</code> is the actual program that applies patches to the Touhou games.
     </p>
@@ -173,7 +174,7 @@
         <li>Run the THCRAP configuration tool via Lutris.</li>
         <li>On the welcome screen, click next. By default, THCRAP will ask you to choose a patch based on your system's
             default language.</li>
-        <li>Click on the "All patches" tab* if you want to:
+        <li>Click on the "All patches" tab<sup>*</sup> if you want to:
             <ul>
                 <li>Install multiple patches at the same time</li>
                 <li>Install non-language patches (music, sprite, gameplay)</li>
@@ -195,7 +196,7 @@
         <li>Choose the most convenient location for the patch's shortcut<sup>‡</sup> to be created in.</li>
         <li>You can now <a href="#running-touhou">run your Touhou game</a> with the installed patch.</li>
     </ol>
-    <p>* It may take a few seconds for the patch list when you click on the "All patches" tab. This is normal behavior.
+    <p><sup>*</sup> It may take a few seconds for the patch list when you click on the "All patches" tab. This is normal behavior.
     </p>
     <p><b style="color:red"><sup>†</sup> It is highly recommended that the thcrap folder be placed in the same directory
             as your Touhou games.</b></p>
@@ -330,12 +331,12 @@
                     </table>
                     </pre>
         </li>
-        <li>Copy or move the appropriate <code>vpatch_thXX.dll</code>*, <code>vpatch.exe</code>, and
+        <li>Copy or move the appropriate <code>vpatch_thXX.dll</code><sup>*</sup>, <code>vpatch.exe</code>, and
             <code>vpatch.ini</code> files into your Touhou game's folder.
         </li>
         <li>Rename the Touhou game's exe<sup style="color:red">†</sup> to <code>thXX.exe</code>.</li>
     </ol>
-    <p>* For EoSD, use <a
+    <p><sup>*</sup> For EoSD, use <a
             href="https://www.thpatch.net/w/images/1/1a/vpatch_th06_unicode.zip">vpatch_th06_unicode.dll</a> instead if
         you want to play with THCRAP.</p>
     <p><b style="color:red"><sup>†</sup>For EoSD, you must rename the exe to <code class="blocksmall">東方紅魔郷.exe</code>
@@ -388,7 +389,7 @@
             </ol>
         </li>
         <li>In the Runner options tab, choose your desired wine version.</li>
-        <li>Press the save button and ensure your game is running.*</li>
+        <li>Press the save button and ensure your game is running.<sup>*</sup></li>
     </ol>
     <h3 id="vpatch-touhou-lutris">Touhou with Vsync patch (vpatch)</h3>
     <ol>
@@ -396,7 +397,7 @@
         <li>Repeat the same <a href="#vanilla-touhou-lutris">first few steps</a> as running vanilla Touhou.</li>
         <li>Set the executable path to <code class="blocksmall">/your/path/to/Touhou/thXX/vpatch.exe</code></li>
         <li>Continue with the same steps as running vanilla Touhou.</li>
-        <li>Press the save button and ensure your game is running with vpatch.*</li>
+        <li>Press the save button and ensure your game is running with vpatch.<sup>*</sup></li>
     </ol>
     <h3 id="thcrap-touhou-lutris">Touhou with THCRAP patches</h3>
     <p>Follow this section if you have installed THCRAP patches.</p>
@@ -404,7 +405,7 @@
         <li>Repeat the <a href="#vanilla-touhou-lutris">first few steps</a> as running vanilla Touhou, but for the
             executable path in "Game options", locate <code>thcrap_loader.exe</code></li>
         <li>
-            <p>In the Arguments field, enter the <code>.js</code> file of your patch* and the game<sup>†</sup> you want
+            <p>In the Arguments field, enter the <code>.js</code> file of your patch<sup>*</sup> and the game<sup>†</sup> you want
                 to run it with.
             <p>Examples of arguments:
             <ul>
@@ -424,17 +425,17 @@
         </ul>
         </li>
     </ol>
-    <p>* You can find all of your installed patches in the <code>config</code> folder in the <code>thcrap</code> folder.
+    <p><sup>*</sup> You can find all of your installed patches in the <code>config</code> folder in the <code>thcrap</code> folder.
     </p>
     </p>
     <p><sup>†</sup> Game names are located in <code>games.js</code> within the <code>config</code> folder of the
         <code>thcrap</code> folder</p>
     <h2 id="running-touhou-cli">Running from the Command Line</h2>
-    <h3 id="vanilla-touhou-cli">Vanilla Touhou (no patches) *</h3>
+    <h3 id="vanilla-touhou-cli">Vanilla Touhou (no patches)<sup>*</sup></h3>
     <p>Replace <code>thXX.exe</code> with the executable for your specific game:
     <pre><code class="block">LANG=ja_JP.UTF-8 wine start /unix /your/path/to/Touhou/thXX/thXX.exe</code></pre>
     </p>
-    <h3 id="vpatch-touhou-cli">Touhou with Vsync patches (vpatch) *</h3>
+    <h3 id="vpatch-touhou-cli">Touhou with Vsync patches (vpatch)<sup>*</sup></h3>
     <p>Same as above, but use <code>vpatch.exe</code> instead:
     <pre><code class="block">LANG=ja_JP.UTF-8 wine start /unix /your/path/to/Touhou/thXX/vpatch.exe</code></pre>
     </p>
@@ -442,14 +443,14 @@
     <p>Replace <code>example.js</code> with your patch config, and <code>thXX</code> with your game's ID:
     <pre><code class="block">wine /your/path/to/thcrap/thcrap_loader.exe example.js thXX</code></pre>
     </p>
-    <p>* Due to how EoSD (th06) handles encoding and locale, running it directly from the command line
+    <p><sup>*</sup> Due to how EoSD (th06) handles encoding and locale, running it directly from the command line
         requires <code class="blocksmall">LANG=ja_JP.UTF-8 wine start /unix</code> before the path to it.
     </p>
     <hr class="light">
     <h1 id="backing-up-data">Backing up your save data</h1>
     <h2>Older Windows (th06 - th12)</h2>
-    <p><a href="#relevant-save-data">All relevant files</a> are located in the same folder as the game. *</p>
-    <p>* Or techically, wherever the game's .exe was last ran.</p>
+    <p><a href="#relevant-save-data">All relevant files</a> are located in the same folder as the game.<sup>*</sup></p>
+    <p><sup>*</sup> Or techically, wherever the game's .exe was last ran.</p>
     <h2>Newer Windows (th12.5 - )</h2>
     <p>
     <p>Starting with DS (<code>th125)</code>, all save data is stored in <code
@@ -461,13 +462,13 @@
         <li>Navigate to <code class="blocksmall">drive_c/users/yourname/AppData/Roaming/ShanghaiAlice</code> in your
             Wine prefix</li>
         <li>Open the <code>thXX</code> folder that corresponds with your Touhou game(s), then copy or move all <a
-                href="#relevant-save-data">relevant files</a> to a safe place. *</li>
+                href="#relevant-save-data">relevant files</a> to a safe place.<sup>*</sup></li>
     </ol>
-    <p>* It is recommended to copy the files to the location of the actual game for organizational purposes.</p>
+    <p><sup>*</sup> It is recommended to copy the files to the location of the actual game for organizational purposes.</p>
     <h2 id="relevant-save-data">Relevant files</h2>
     <p>Make sure to keep these files safe.
     <ul>
-        <li><code class="blocksmall">score.dat</code>*: Your saved scores and unlocks</li>
+        <li><code class="blocksmall">score.dat</code><sup>*</sup>: Your saved scores and unlocks</li>
         <li><code class="blocksmall">thXX_XX.rpy</code>: Replay files, located in the <code>replay</code> folder</li>
         <li><code class="blocksmall">thXX.cfg</code><sup>†</sup>: Your game settings (e.g. fullscreen vs windowed)</li>
         <li>Screenshots taken in-game with the Home key are located in the <code>snapshot</code> folder.</li>
@@ -544,7 +545,7 @@
             just English</li>
         <li><a href="https://wine.htmlvalidator.com/install-wine-on-linux-mint-22.html">Installing Wine on Linux</a> |
             Guides for installing Wine on various distros</li>
-        <li><a href="./pc98.html">PC-98 Touhou Linux Guide</a> (work-in-progress)</li>
+        <li><a href="./pc98.html">PC-98 Touhou Linux Guide</a></li>
         <li><a href="http://catb.org/~esr/faqs/smart-questions.html">Thrysus Enterprises</a> (don't bother them) | How
             To Ask Questions the Smart Way</li>
     </ul>

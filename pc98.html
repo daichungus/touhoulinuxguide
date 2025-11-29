@@ -3,6 +3,7 @@
 
 <head>
     <link rel="canonical" href="https://daichungus.github.io/touhoulinuxguide/pc98.html">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="./sitemap.xml">
     <link href="./css/style.css" rel="stylesheet" type="text/css" media="all">
     <link rel="icon" href="./image/pc98alice.ico" type="image/x-icon">
     <title>PC-98 Touhou Linux Guide</title>
@@ -27,6 +28,7 @@
     </header>
     <hr class="light">
     <h2 id="disclaimer">Disclaimer</h2>
+    <p>This is the guide for the PC-98 era games. The Windows era Touhou guide is <a href="./index.html">here</a>.</p>
     <p>This guide focuses on using <b>RetroArch and DOSBox-X</b> for a simple and consistent experience.
         It does <i>not</i> cover every setup or edge case.
     </p>
@@ -203,10 +205,10 @@ machine = pc98</code></pre>
     </p>
     <h3>CPU speed</h3>
     <p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
-    <p>For a consistently smooth experience<sup>*</sup>, set</p>
+    <p>For a consistently smooth experience,<sup>*</sup> set</p>
     <pre><code class="block">[cpu]
 cycles = 72000</code></pre>
-    <p>If your hardware allows it<sup>†</sup>, set</p>
+    <p>If your hardware allows it,<sup>†</sup> set</p>
     <pre><code class="block">[cpu]
 core = dynamic_x86</code></pre>
     <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. <code>72000</code> is suggested in this guide for most systems.</p>
@@ -303,6 +305,8 @@ BOOT C:</code></pre>
         <li><a href="https://docs.libretro.com/library/neko_project_ii_kai/">Libretro</a> | NP2kai documentation</li>
         <li><a href="https://touhou-memories.com/post/190684950124/configure-anex86">Touhou Memories</a> | Anex86 configuration</li>
         <li><a href="./index.html">Windows Touhou on Linux Guide</a></li>
+        <li><a href="http://catb.org/~esr/faqs/smart-questions.html">Thrysus Enterprises</a> (don't bother them) | How
+            To Ask Questions the Smart Way</li>
     </ul>
     <hr class="light">
     <footer>
