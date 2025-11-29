@@ -25,7 +25,13 @@
         <h1>PC-98 Touhou Linux Guide</h1>
         <h2>By <a href="https://daichungus.github.io">Daichungus</a></h2>
     </header>
-    <h2 style="color:orangered">This guide is a work-in-progress!</h2>
+    <hr class="light">
+    <h2 id="disclaimer">Disclaimer</h2>
+    <p>This guide focuses on using <b>RetroArch and DOSBox-X</b> for a simple and consistent experience.
+        It does <i>not</i> cover every setup or edge case.
+    </p>
+    <p>The goal here is to get most users running their PC-98 Touhou games quickly and cleanly.</p>
+    <p>If you're looking for more advanced or alternative methods, other resources may be better suited.</p>
     <hr class="light">
     <h1>Preparing your Linux environment</h1>
     <h2>Choosing a distro</h2>
@@ -67,11 +73,23 @@
     <hr class="light">
     <h1>Emulator installation and setup</h1>
     <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
-    <p>However, they tend to have issues and inconsistent behavior when running on Linux with Wine.</p>
-    <p>This guide will only cover two Linux-native emulators in detail:</p>
+    <p>However, they're more likely to have issues and inconsistent behavior when running on Linux with Wine.</p>
+    <p>As such, this guide will only cover two Linux-native emulators in detail:</p>
     <ul>
-        <li>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</li>
-        <li>DOSBox-X (<a href="#dosbox-x-setup">skip to setup</a>)</li>
+        <li><b>Neko Project II Kai</b> (<a href="#np21kai-setup">skip to setup</a>)
+            <ul>
+                <li><p>Considered more accurate</p></li>
+                <li><p>Great if you already use RetroArch</p></li>
+                <li><p>Better choice if you're doing serious runs</p></li>
+            </ul>
+        </li>
+        <li><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)
+            <ul>
+                <li><p>Fork of DOSBox</p></li>
+                <li><p>Great if you already emulate DOS or other PC-98 games</p></li>
+                <li><p>All-around good choice for most cases</p></li>
+            </ul>
+        </li>
     </ul>
     <p>A list of other PC-98 emulators can be found <a href="./pc98/emulators.html">here</a>.</p>
     <h2>Font files</h2>
@@ -187,9 +205,12 @@ machine = pc98</code></pre>
     <p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
     <p>For a consistently smooth experience<sup>*</sup>, set</p>
     <pre><code class="block">[cpu]
-cycles = 30000</code></pre>
-    <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. 
-        The value of <code>30000</code> is suggested in this guide for ease of remembrance.</p>
+cycles = 72000</code></pre>
+    <p>If your hardware allows it<sup>†</sup>, set</p>
+    <pre><code class="block">[cpu]
+core = dynamic_x86</code></pre>
+    <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. <code>72000</code> is suggested in this guide for most systems.</p>
+    <p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing with the same number of cycles.</p>
     <h3 id="autoexec">Auto-execution</h3>
     <p>This is especially helpful if you intend on always using only one HDI file<sup>*</sup> and do not want to always type the commands by hand</p>
     <pre><code class="block">[autoexec]
