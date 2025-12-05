@@ -9,12 +9,12 @@
     <title>PC-98 Touhou Linux Guide</title>
     <meta charset="UTF-8">
     <meta name="description"
-        content="A clean, no-nonsense guide to running PC-98 Touhou games on Linux using Neko Project II and Wine. Easy for new users, powerful for veterans.">
+        content="A no-nonsense guide to running the PC-98 era Touhou games on Linux using RetroArch and DOSBox-X.">
     <meta name="keywords"
-        content="Touhou, Touhou Project, PC-98, PC-98 Touhou, Touhou Linux, Wine, Neko Project II, np21, anex86, dosbox-x, Touhou Wine guide, PC-98 Touhou Linux">
+        content="Touhou, PC-98, PC-98 Touhou, Touhou Linux, Neko Project II, np21, retroarch, anex86, dosbox-x, Touhou guide, PC-98 Touhou Linux, emulation">
     <meta name="author" content="Daichungus">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="PC-98 Touhou Linux Guide">
+    <meta property="og:title" content="PC-98 Touhou Linux Guide">debian mirrors
     <meta property="og:description"
         content="A practical guide to running the PC-98 Touhou games on Linux.">
     <meta property="og:type" content="website">
@@ -75,7 +75,7 @@
     <hr class="light">
     <h1>Emulator installation and setup</h1>
     <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
-    <p>However, they're more likely to have issues and inconsistent behavior when running on Linux with Wine.</p>
+    <p>However, they're more likely to have issues and inconsistent behavior when running on Linux with Wine, especially for certain distributions.</p>
     <p>As such, this guide will only cover two Linux-native emulators in detail:</p>
     <ul>
         <li><b>Neko Project II Kai</b> (<a href="#np21kai-setup">skip to setup</a>)
@@ -263,9 +263,10 @@ BOOT C:</code></pre>
     </ol>
     <p><b style="color:red"><sup>*</sup> The filename is case-sensitive!</b></p>
     <p><sup>†</sup> Depending on the type of HDI file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
-    <h2>Important and useful tips</h2>
-    <p>HDI files contain everything!</p>
-    <h3>RetroArch</h3>
+    <hr class="light">
+    <h1>Important and useful tips</h1>
+    <p>Unless you're directly using the original PC-98 files, HDI files contain everything!</p>
+    <h2>RetroArch</h2>
     <ul>
         <li><p style="color:red">By default, pressing the Esc key twice will quit RetroArch!</p></li>
         <li>
@@ -277,7 +278,7 @@ BOOT C:</code></pre>
             </ul>
         </li>
     </ul>
-    <h3>DOSBox-X</h3>
+    <h2>DOSBox-X</h2>
     <ul>
         <li><p>Restarting the DOSBox-X instance will make it unable to mount any HDI file in your working directory.</p>
             <p>Instead:</p>
@@ -289,8 +290,10 @@ BOOT C:</code></pre>
         <li><p>If you only use one HDI and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically 
             <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.</p></li>
     </ul>
-    <h3>Other</h3>
-    <p>Make sure to run this command if using emulators with Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
+    <h2>Other</h2>
+    <p>Make sure to run this command before using older emulators with Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
+    <hr class="light">
+    <h1>Common Issues</h1>
     <hr class="light">
     <h1>Additional Resources and References</h1>
     <ul>
@@ -308,6 +311,14 @@ BOOT C:</code></pre>
         <li><a href="http://catb.org/~esr/faqs/smart-questions.html">Thrysus Enterprises</a> (don't bother them) | How
             To Ask Questions the Smart Way</li>
     </ul>
+    <hr class="light">
+    <h2>Special Thanks</h2>
+    <p>
+        <ul>
+            <li>PC-98 Touhou Discord server</li>
+        </ul>
+        For their feedback and guidance!
+    </p>
     <hr class="light">
     <footer>
         <p id="last-updated"></p>
