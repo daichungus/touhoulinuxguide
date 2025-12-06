@@ -209,12 +209,41 @@ BOOT C:</code></pre>
     </ol>
     <p><sup>†</sup> Enter key on keyboard</p>
     <h3 id="np21kai-arch">Arch Linux</h3>
-    <p>Install from the AUR<sup>*</sup></p>
-    <ul>
-        <li><a href="https://aur.archlinux.org/packages/xnp2kai-azo234">AUR #1</a></li>
-        <li><a href="https://aur.archlinux.org/packages/np2kai-git">AUR #2</a></li>
-    </ul>
-    <p><sup>*</sup> The AUR does not include fonts</p>
+    <p>If you're new to Arch, please consider first reading the Arch Wiki article on 
+        <a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>, 
+        along with the <a href="https://wiki.archlinux.org/title/Makepkg">article on makepkg</a>.
+    </p>
+    <ol>
+        <li>
+            <p>Install gtk2 from the <a href="https://aur.archlinux.org/packages/gtk2">AUR</a></p>
+            <ol>
+                <li><p>Clone git repo</p>
+                    <pre><code class="block">git clone https://aur.archlinux.org/gtk2.git</code></pre>
+                </li>
+                <li><p>Change directories and check <code>PKGBUILD</code></p>
+                    <pre><code class="block">cd gtk2 && less PKGBUILD</code></pre>
+                </li>
+                <li><p>Make the package, and watch the action</p>
+                    <pre><code class="block">makepkg -si gtk2</code></pre>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <p>Install from the <a href="https://aur.archlinux.org/packages/np2kai-git">AUR</a></p>
+            <ol>
+                <li><p>Clone git repo</p>
+                    <pre><code class="block">git clone https://aur.archlinux.org/np2kai-git.git</code></pre>
+                </li>
+                <li><p>Change directories and check <code>PKGBUILD</code></p>
+                    <pre><code class="block">cd np2kai-git && less PKGBUILD</code></pre>
+                </li>
+                <li><p>Make the package, and watch the action</p>
+                    <pre><code class="block">makepkg -si np21kai</code></pre>
+                </li>
+            </ol>
+        </li>
+        <li><p>Proceed with <a href="#adjust-settings-xnp21kai">adjusting the necessary settings</a>.</p></li>
+    </ol>
     <h3 id="np21kai-source">Building from source (xnp21kai)</h3>
     <p><i>The steps below are from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">README document</a>.</i></p>
     <ol>
