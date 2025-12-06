@@ -60,15 +60,12 @@
     </p>
     <ol>
         <li>Update your repository using your distro's included package manager.
-            <p><b>Debian/Ubuntu/Linux Mint</b>
+            <p><b>Debian/Ubuntu/Linux Mint</b></p>
             <pre><code class="block">sudo apt update && sudo apt upgrade</code></pre>
-            </p>
-            <p><b>Fedora</b>
+            <p><b>Fedora</b></p>
             <pre><code class="block">sudo dnf update</code></pre>
-            </p>
-            <p><b>Arch</b>
+            <p><b>Arch</b></p>
             <pre><code class="block">sudo pacman -Syu</code></pre>
-            </p>
         </li>
         <li><a href="https://flatpak.org/setup/">Install Flatpak</a> on your distribution. 
             If you do not wish to use Flatpak or already have it, skip this step.</li>
@@ -99,20 +96,18 @@
         <h1 id="dosbox-x-setup">DOSBox-X setup</h1>
     <h2>Installation</h2>
     <p>Install DOSBox-X through your package manager</p>
-    <p><b>Flatpak<sup style="color:limegreen">*</sup></b>
-        <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
-    </p>
-    <p><b>Debian/Ubuntu/Linux Mint</b>
-        <pre><code class="block">sudo apt install dosbox-x</code></pre>
-    </p>
-    <p><b>Fedora</b>
-        <pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
-        <pre><code class="block">sudo dnf install dosbox-x</code></pre>
-    </p>
-    <p><b>Arch</b>
-        <pre><code class="block">sudo pacman -S dosbox-x</code></pre>
-    </p>
-    <p style="color:limegreen"><sup>*</sup> Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date version.</p>
+    <p><b>Flatpak</b>    </p>
+    <p style="color:limegreen">Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date version.</p>
+    <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
+    <p><b>Debian/Ubuntu/Linux Mint</b></p>
+    <pre><code class="block">sudo apt install dosbox-x</code></pre>
+    <p><b>Fedora</b></p>
+    <pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
+    <pre><code class="block">sudo dnf install dosbox-x</code></pre>
+    <p><b>Arch</b></p>
+    <pre><code class="block">git clone https://aur.archlinux.org/dosbox-x.git</code></pre>
+    <pre><code class="block">cd dosbox-x && less PKGBUILD</code></pre>
+    <pre><code class="block">makepkg -si dosbox-x</code></pre>
     <h2>Settings to adjust before playing</h2>
     <h3>Configuration file</h3>
     <p>DOSBox-X relies on a configuration file to apply the correct settings for various types of programs.</p>
@@ -216,31 +211,15 @@ BOOT C:</code></pre>
     <ol>
         <li>
             <p>Install gtk2 from the <a href="https://aur.archlinux.org/packages/gtk2">AUR</a></p>
-            <ol>
-                <li><p>Clone git repo</p>
-                    <pre><code class="block">git clone https://aur.archlinux.org/gtk2.git</code></pre>
-                </li>
-                <li><p>Change directories and check <code>PKGBUILD</code></p>
-                    <pre><code class="block">cd gtk2 && less PKGBUILD</code></pre>
-                </li>
-                <li><p>Make the package, and watch the action</p>
-                    <pre><code class="block">makepkg -si gtk2</code></pre>
-                </li>
-            </ol>
+            <pre><code class="block">git clone https://aur.archlinux.org/gtk2.git</code></pre>
+            <pre><code class="block">cd gtk2 && less PKGBUILD</code></pre>
+            <pre><code class="block">makepkg -si gtk2</code></pre>
         </li>
         <li>
-            <p>Install from the <a href="https://aur.archlinux.org/packages/np2kai-git">AUR</a></p>
-            <ol>
-                <li><p>Clone git repo</p>
-                    <pre><code class="block">git clone https://aur.archlinux.org/np2kai-git.git</code></pre>
-                </li>
-                <li><p>Change directories and check <code>PKGBUILD</code></p>
-                    <pre><code class="block">cd np2kai-git && less PKGBUILD</code></pre>
-                </li>
-                <li><p>Make the package, and watch the action</p>
-                    <pre><code class="block">makepkg -si np21kai</code></pre>
-                </li>
-            </ol>
+            <p>Install np21kai from the <a href="https://aur.archlinux.org/packages/np2kai-git">AUR</a></p>
+            <pre><code class="block">git clone https://aur.archlinux.org/np2kai-git.git</code></pre>
+            <pre><code class="block">cd np2kai-git && less PKGBUILD</code></pre>
+            <pre><code class="block">makepkg -si np21kai</code></pre>
         </li>
         <li><p>Proceed with <a href="#adjust-settings-xnp21kai">adjusting the necessary settings</a>.</p></li>
     </ol>
