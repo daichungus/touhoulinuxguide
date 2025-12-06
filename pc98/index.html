@@ -94,32 +94,6 @@
     </ul>
     <p id="return-from-emulator"><b>A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</b></p>
     <hr class="light">
-    <h1>PC-98 files</h1>
-    <h2>ROM files</h2>
-    <p>You may need to install some PC-98 ROM files for your emulator to work properly.</p>
-    <p>NP2Kai on RetroArch and DOSBox-X both already include the necessary files.</p>
-    <p>However, xnp21kai does require these files:</p>
-    <ul>
-        <li><a href="./ROM/BIOS.ROM" download>BIOS.ROM</a></li>
-        <li><a href="./ROM/ITF.ROM" download>ITF.ROM</a></li>
-        <li><a href="./ROM/SOUND.ROM" download>SOUND.ROM</a></li>
-        <li><a href="./ROM/FONT.ROM" download>FONT.ROM</a> (see <a href="#fonts">next section</a>)</li>
-    </ul>
-    <p>For xnp21kai, download these to <code class="blocksmall">~/.config/xnp21kai/</code></p>
-    <h2 id="fonts">Fonts</h2>
-    <p>Both Neko Project II Kai and DOSBox-X require the a font file.</p>
-    <p>Some popular font files are available to download from here:</p>
-    <ul>
-        <li><a href="./fonts/FONTNP.BMP" download>Neko Project 21 font</a></li>
-        <li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>    
-        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font (DOSBox-X default)</a></li>
-        <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a></li>    
-    </ul>
-    <p>Move/copy the font file to the same directory/folder as your PC-98 Touhou HDI file(s).</p>
-    <p>For xnp21kai, place it in <code class="blocksmall">~/.config/xnp21kai</code>. If you are using a font besides
-        <code>FONT.ROM</code>, edit <code>fontile</code> in <code>xnp21kairc</code> to the <i><b>abosolute</b></i> filepath of the font.
-    </p>
-    <hr class="light">
         <h1 id="dosbox-x-setup">DOSBox-X setup</h1>
     <h2>Installation</h2>
     <p>Install DOSBox-X through your package manager</p>
@@ -151,6 +125,7 @@
     <h3><i><b style="color:limegreen">A ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
         Simply save it to the same directory as your HDI files.</b></i></h3>
     <p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
+    <p><b>Otherwise, <a href="#pc98-files">download a font</a> to the directory, then <a href="#dosbox-x-running">start running the games</a>.</b></p>
     <h3 id="working-directory">Working directory</h3>
     <p>The working directory is where DOSBox-X will run. By default, DOSBox-X will ask you to choose a directory in your system.<sup>*</sup></p>
     <p>If you intend on using DOSBox-X only to play the PC-98 Touhou games, 
@@ -302,27 +277,56 @@ BOOT C:</code></pre>
     <p><sup>*</sup> Backspace key on keyboard</p>
     <p><b style="color:red"><sup>†</sup> These settings are required for smooth gameplay.</b></p>
     <h3 id="adjust-settings-xnp21kai">xnp21kai</h3>
-    <p>In the menu bar, adjust these settings for a smooth experience. <b>To apply them, hit "Reset" in "Emulator"</b></p>
-    <ul>
-        <li>
-            <b>Emulator</b>
+    <ol>
+        <li><p>In the menu bar, adjust these settings for a smooth experience. <b>To apply them, hit "Reset" in "Emulator"</b></p>
             <ul>
-                <li><b>CPU</b><sup>*</sup> = <code class="blocksmall">2.4576MHz x 52</code></li>
-                <li>Architecture = <code class="blocksmall">PC-9801VX</code></li>
-                <li>Sampling Rate = <code class="blocksmall">44100 kHz</code></li>
-                <li><b>Buffer</b><sup style="color:red">†</sup> = <code class="blocksmall">20 ms</code></li>
+                <li>
+                    <b>Emulator</b>
+                    <ul>
+                        <li><b>CPU</b><sup>*</sup> = <code class="blocksmall">2.4576MHz x 52</code></li>
+                        <li>Architecture = <code class="blocksmall">PC-9801VX</code></li>
+                        <li>Sampling Rate = <code class="blocksmall">44100 kHz</code></li>
+                        <li><b>Buffer</b><sup style="color:red">†</sup> = <code class="blocksmall">20 ms</code></li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Device</b>
+                    <ul>
+                        <li>Sound = PC9801-86</li>
+                        <li>Memory = 16.6 MB</li>
+                    </ul>
+                </li>
             </ul>
         </li>
-        <li>
-            <b>Device</b>
-            <ul>
-                <li>Sound = PC9801-86</li>
-                <li>Memory = 16.6 MB</li>
-            </ul>
-        </li>
-    </ul>
+        <li><p>Install the <a href="#pc98-files">necessary ROM files</a> to <code class="blocksmall">~/.config/xnp21kai/</code></p></li>
+    </ol>
     <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
     <p style="color:red"><sup>†</sup> It has been known that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
+    <hr class="light">
+    <h1 id="pc98-files">PC-98 files</h1>
+    <h2>ROM files</h2>
+    <p>You may need to install some PC-98 ROM files for your emulator to work properly.</p>
+    <p>NP2Kai on RetroArch and DOSBox-X both already include the necessary files.</p>
+    <p>However, <b>xnp21kai does require these files</b>:</p>
+    <ul>
+        <li><a href="./ROM/BIOS.ROM" download>BIOS.ROM</a></li>
+        <li><a href="./ROM/ITF.ROM" download>ITF.ROM</a></li>
+        <li><a href="./ROM/SOUND.ROM" download>SOUND.ROM</a></li>
+        <li><a href="./ROM/FONT.ROM" download>FONT.ROM</a> (see <a href="#fonts">next section</a>)</li>
+    </ul>
+    <h2 id="fonts">Fonts</h2>
+    <p>Both Neko Project II Kai and DOSBox-X require the a font file.</p>
+    <p>Some popular font files are available to download from here:</p>
+    <ul>
+        <li><a href="./fonts/FONTNP.BMP" download>Neko Project 21 font</a></li>
+        <li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>    
+        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font (DOSBox-X default)</a></li>
+        <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a></li>    
+    </ul>
+    <p>Move/copy the font file to the same directory/folder as your PC-98 Touhou HDI file(s).</p>
+    <p>For xnp21kai, place it in <code class="blocksmall">~/.config/xnp21kai</code>. If you are using a font besides
+        <code>FONT.ROM</code>, edit <code>fontfile</code> in <code>xnp21kairc</code> to the <i><b>abosolute</b></i> filepath of the font.
+    </p>
     <hr class="light">
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
     <p><i style="color:red"><b>It is highly recommended that you store your HDI files in a directory/folder like "Games" or "Touhou"</b></i></p>
@@ -404,6 +408,7 @@ BOOT C:</code></pre>
     <h2>xnp21kai</h2>
     <ul>
         <li><p>Your window position and size is not remembered!</p></li>
+        <li><p>Your HDI file, however, is remembered!</p></li>
         <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai</p></li>
     </ul>
     <h2>RetroArch</h2>
