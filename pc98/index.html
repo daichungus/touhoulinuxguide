@@ -74,29 +74,39 @@
             If you do not wish to use Flatpak or already have it, skip this step.</li>
     </ol>
     <hr class="light">
-    <h1>Emulator installation and setup</h1>
+    <h1 id="emulator-list">Emulator installation and setup</h1>
     <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
     <p>However, they're more likely to have issues and inconsistent behavior when running on Linux with Wine, especially for certain distributions.</p>
     <p>As such, this guide will only cover two Linux-native emulators in detail:</p>
+    <h2>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</h2>
     <ul>
-        <li><b>Neko Project II Kai</b> (<a href="#np21kai-setup">skip to setup</a>)
-            <ul>
-                <li><p>Considered more accurate</p></li>
-                <li><p>Great if you already use RetroArch</p></li>
-                <li><p>Better choice if you're doing serious runs</p></li>
-            </ul>
-        </li>
-        <li><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)
-            <ul>
-                <li><p>Fork of DOSBox</p></li>
-                <li><p>Great if you already emulate DOS or other PC-98 games</p></li>
-                <li><p>All-around good choice for most cases</p></li>
-            </ul>
-        </li>
+        <li><p>Generally considered more accurate</p></li>
+        <li><p>Better choice if you're doing serious runs</p></li>
+        <li><p>Great if you already use RetroArch</p></li>
+        <li><p>Can be built from source as <b>xnp21kai</b></p></li>
     </ul>
-    <p>A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</p>
-    <h2>Font files</h2>
-    <p>Both Neko Project II Kai and DOSBox-X require the use of a font file.</p>
+    <h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
+    <ul>
+        <li><p>All-around good choice for most users</p></li>
+        <li><p>Great if you emulate other DOS systems</p></li>
+        <li><p>Fork of DOSBox</p></li>
+    </ul>
+    <p id="return-from-emulator"><b>A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</b></p>
+    <hr class="light">
+    <h1>PC-98 files</h1>
+    <h2>ROM files</h2>
+    <p>You may need to install some PC-98 ROM files for your emulator to work properly.</p>
+    <p>NP2Kai on RetroArch and DOSBox-X both already include the necessary files.</p>
+    <p>However, xnp21kai does require these files:</p>
+    <ul>
+        <li><a href="./ROM/BIOS.ROM" download>BIOS.ROM</a></li>
+        <li><a href="./ROM/ITF.ROM" download>ITF.ROM</a></li>
+        <li><a href="./ROM/SOUND.ROM" download>SOUND.ROM</a></li>
+        <li><a href="./ROM/FONT.ROM" download>FONT.ROM</a> (see <a href="#fonts">next section</a>)</li>
+    </ul>
+    <p>For xnp21kai, download these to <code class="blocksmall">~/.config/xnp21kai/</code></p>
+    <h2 id="fonts">Fonts</h2>
+    <p>Both Neko Project II Kai and DOSBox-X require the a font file.</p>
     <p>Some popular font files are available to download from here:</p>
     <ul>
         <li><a href="./fonts/FONTNP.BMP" download>Neko Project 21 font</a></li>
@@ -104,19 +114,33 @@
         <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font (DOSBox-X default)</a></li>
         <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a></li>    
     </ul>
-    <p>Move the font file to the same directory/folder as your PC-98 Touhou HDI file(s).</p>
+    <p>Move/copy the font file to the same directory/folder as your PC-98 Touhou HDI file(s).</p>
+    <p>For xnp21kai, place it in <code class="blocksmall">~/.config/xnp21kai</code>. If you are using a font besides
+        <code>FONT.ROM</code>, edit <code>fontile</code> in <code>xnp21kairc</code> to the <i><b>abosolute</b></i> filepath of the font.
+    </p>
     <hr class="light">
-    <h1 id="np21kai-setup">Neko Project II Kai</h1>
+    <h1 id="np21kai-setup">Neko Project II Kai setup</h1>
     <h2>Installation</h2>
     <p>There are many different ways to have NP21kai installed to your system.</p>
     <ul>
-        <li><a href="#np21kai-retroarch">RetroArch</a> (great if you already use it)</li>
-        <li><a href="#np21kai-arch">Arch Linux AUR package</a> (great if you use an Arch-based system)</li>
-        <li><a href="#np21kai-source">Building from source</a> (not recommended for beginners)</li>
+        <li>
+            <b>RetroArch</b> (<a href="#np21kai-retroarch">skipto</a>)
+            <p>Good choice if you already use it for other games, but not great if you're tight on storage.
+                Modern UI is biased towards controllers.
+            </p>
+        </li>
+        <li><b>AUR package</b> (<a href="#np21kai-arch">skipto</a>)
+            <p>Good choice if you use an Arch-based system. Doesn't help if you don't use Arch, by the way.</p>
+        </li>
+        <li><b>Building from source</b> (<a href="#np21kai-source">skipto</a>)
+            <p>Not recommended for users new to Linux or unfamiliar with CLI. Recommended for those
+                who want to save space or don't want to use all other options.
+            </p>
+        </li>
     </ul>
     <h3 id="np21kai-retroarch">RetroArch</h3>
     <ol>
-        <li>Install RetroArch as a <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flatpak</a>
+        <li><p>Install RetroArch as a <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flatpak</a>
             <pre><code class="block">flatpak install flathub org.libretro.RetroArch</code></pre>
             </p>
         </li>
@@ -129,19 +153,56 @@
             <b><code>NEC - PC-98 (Neko Project II Kai)</code></b>, then select to install it.
             </p>
         </li>
+        <li><p><a href="">Adjust settings before playing</a></p></li>
     </ol>
     <p><sup>†</sup> Enter key on keyboard</p>
     <h3 id="np21kai-arch">Arch Linux</h3>
-    <p>Download from the AUR<sup>*</sup></p>
+    <p>Install from the AUR<sup>*</sup></p>
     <ul>
         <li><a href="https://aur.archlinux.org/packages/xnp2kai-azo234">AUR #1</a></li>
         <li><a href="https://aur.archlinux.org/packages/np2kai-git">AUR #2</a></li>
     </ul>
     <p><sup>*</sup> The AUR does not include fonts</p>
-    <h3 id="np21kai-source">Building from source</h3>
-    <p><a href="https://github.com/AZO234/NP2kai?tab=readme-ov-file#x-with-gtk2-and-sdl">Follow the instructions</a> according to your distribution</p>
-    <h2>Settings to adjust before playing</h2>
-    <h3>RetroArch</h3>
+    <h3 id="np21kai-source">Building from source (xnp21kai)</h3>
+    <p><i>The steps below are from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">README document</a>.</i></p>
+    <ol>
+        <li><p>Install the required programs and libraries<sup style="color:red">*</sup></p>
+            <p><b>Debian/Ubuntu/Linux Mint</b></p>
+            <p><code class="block">sudo apt install git cmake ninja-build build-essential libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev 
+                libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev 
+                libfontconfig1-dev libssl-dev
+            </code></p>
+            <p><b>Fedora</b></p>
+            <p><code class="block">sudo dnf groupinstall "Development Tools"</code></p>
+            <p><code class="block">sudo dnf install gcc-c++ cmake libusb-devel SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel 
+                SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel
+            </code></p>
+            <p style="color:red"><sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
+            Always check what packages will be installed and removed before confirmation.   </p>
+        </li>
+        <li><p>Clone <a href="https://github.com/AZO234/NP2kai">the np21kai repo</a></p>
+            <pre><code class="block">git clone https://github.com/AZO234/NP2kai.git</code></pre>
+        </li>
+        <li><p>Navigate to the repo and make the work directory</p>
+            <pre><code class="block">cd NP2kai</code></pre>
+            <pre><code class="block">mkdir build</code></pre>
+            <pre><code class="block">cd build</code></pre>
+        </li>
+        <li><p>Generate the makefile</p>
+            <pre><code class="block">cmake .. -D BUILD_X=ON</code></pre>
+        </li>
+        <li><p>Make. Errors are normal.</p>
+            <pre><code class="block">make -j</code></pre>
+        </li>
+        <li><p>Install the binary (to <code>/usr/local/bin/</code>)</p>
+            <pre><code class="block">sudo make install</code></pre>
+        </li>
+        <li>Run the program, and <a href="#adjust-settings-xnp21kai">adjust settings</a>
+            <pre><code class="block">xnp21kai</code></pre>
+        </li>
+    </ol>
+    <h2 id="adjust-settings">Settings to adjust before playing</h2>
+    <h3 id="adjust-settings-retroarch">RetroArch</h3>
     <ol>
         <li>
             <p>Go back<sup>*</sup> to the previous menu and select the respective core. On the Main Menu, "Start Core" will be in place of "Load Core".</p>
@@ -165,9 +226,30 @@
     </ol>
     <p><sup>*</sup> Backspace key on keyboard</p>
     <p><b style="color:red"><sup>†</sup> These settings are required for smooth gameplay.</b></p>
-    <h3>Other</h3>
+    <h3 id="adjust-settings-xnp21kai">xnp21kai</h3>
+    <p>In the menu bar, adjust these settings for a smooth experience. <b>To apply them, hit "Reset" in "Emulator"</b></p>
+    <ul>
+        <li>
+            <b>Emulator</b>
+            <ul>
+                <li><b>CPU</b><sup>*</sup> = <code class="blocksmall">2.4576MHz x 52</code></li>
+                <li>Architecture = <code class="blocksmall">PC-9801VX</code></li>
+                <li>Sampling Rate = <code class="blocksmall">44100 kHz</code></li>
+                <li><b>Buffer</b><sup style="color:red">†</sup> = <code class="blocksmall">20 ms</code></li>
+            </ul>
+        </li>
+        <li>
+            <b>Device</b>
+            <ul>
+                <li>Sound = PC9801-86</li>
+                <li>Memory = 16.6 MB</li>
+            </ul>
+        </li>
+    </ul>
+    <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
+    <p style="color:red"><sup>†</sup> It has been known that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
     <hr class="light">
-    <h1 id="dosbox-x-setup">DOSBox-X</h1>
+    <h1 id="dosbox-x-setup">DOSBox-X setup</h1>
     <h2>Installation</h2>
     <p>Install DOSBox-X through your package manager</p>
     <p><b>Flatpak<sup style="color:limegreen">*</sup></b>
@@ -243,8 +325,8 @@ BOOT C:</code></pre>
     <hr class="light">
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
     <p><i style="color:red"><b>It is highly recommended that you store your HDI files in a directory/folder like "Games" or "Touhou"</b></i></p>
-    <h2 id="np21kai-running">Neko Project II Kai</h2>
-    <h3>RetroArch</h3>
+    <h2>Neko Project II Kai</h2>
+    <h3 id="np21kai-running-retroarch">RetroArch</h3>
     <ol>
         <li><p>In the Main Menu, select "Load Core", then "NEC - PC-98 (Neko Project II Kai)"</p></li>
         <li><p><b>If it's your first time loading the HDI file:</b>
@@ -261,8 +343,19 @@ BOOT C:</code></pre>
             </p>
         </li>
         <li><p>Enjoy!</p></li>
+        <li><p>To remove the HDI file, go into the Quick Menu and select "Close Content"</p></li>
     </ol>
-    <h3>Other</h3>
+    <h3 id="xnp21kai-running">xnp21kai</h3>
+    <ol>
+        <li><p>In the menu bar, select "HardDisk"</p></li>
+        <li><p>Choose <code>IDE0-0</code><sup>*</sup>, then "Open"</p></li>
+        <li><p>Find your Touhou HDI file and open it.</p></li>
+        <li><p>Reset the emulator.</p></li>
+        <li><p>Enjoy!</p></li>
+        <li><p>To remove<sup></sup> the HDI, simply choose "Remove" on the "hard disk" the HDI is located in and reset the emulator.</p></li>
+    </ol>
+    <p><sup>*</sup> <code>IDE0-0</code> acts like the <code>C:</code> drive, while <code>IDE0-1</code> is the <code>A:</code> drive.</p>
+    <p><sup>†</sup> To switch to another HDI, simply choose "Open" again.</p>
     <h2 id="dosbox-x-running">DOSBox-X</h2>
     <h3>GUI/Desktop</h3>
     <ol>
@@ -277,6 +370,7 @@ BOOT C:</code></pre>
             </p>
         </li>
         <li><p>Enjoy!</p></li>
+        <li><p><a href="#dosbox-tips">See next section</a> on how to remove or change the HDI file</p></li>
     </ol>
     <p><b style="color:red"><sup>*</sup> The filename is case-sensitive!</b></p>
     <p><sup>†</sup> Depending on the type of HDI file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
@@ -294,6 +388,23 @@ BOOT C:</code></pre>
     <hr class="light">
     <h1>Important and useful tips</h1>
     <p>Unless you're directly using the original PC-98 files, HDI files contain everything!</p>
+    <h2 id="dosbox-tips">DOSBox-X</h2>
+    <ul>
+        <li><p style="color:red">Restarting the DOSBox-X instance will make it unable to mount any HDI file in your working directory.</p>
+            <p>Instead:</p>
+            <ul>
+                <li><p>If you want to use the same HDI file, Reboot the guest system (<b><code>F12+B</code></b>).</p></li>
+                <li><p>If you want to use a different HDI file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
+            </ul>
+        </li>
+        <li><p>If you only use one HDI and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically 
+            <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.</p></li>
+    </ul>
+    <h2>xnp21kai</h2>
+    <ul>
+        <li><p>Your window position and size is not remembered!</p></li>
+        <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai</p></li>
+    </ul>
     <h2>RetroArch</h2>
     <ul>
         <li><p style="color:red">By default, pressing the Esc key twice will quit RetroArch!</p></li>
@@ -306,20 +417,8 @@ BOOT C:</code></pre>
             </ul>
         </li>
     </ul>
-    <h2>DOSBox-X</h2>
-    <ul>
-        <li><p style="color:red">Restarting the DOSBox-X instance will make it unable to mount any HDI file in your working directory.</p>
-            <p>Instead:</p>
-            <ul>
-                <li><p>If you want to use the same HDI file, Reboot the guest system (<b><code>F12+B</code></b>).</p></li>
-                <li><p>If you want to use a different HDI file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
-            </ul>
-        </li>
-        <li><p>If you only use one HDI and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically 
-            <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.</p></li>
-    </ul>
     <h2>Other</h2>
-    <p>Make sure to run this command before using older emulators with Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
+    <p>Make sure to run this command before using older emulators (np2, anex86, t98next) with Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
     <hr class="light">
     <h1>Common Issues</h1>
     <hr class="light">
