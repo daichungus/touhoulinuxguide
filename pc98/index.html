@@ -74,16 +74,17 @@
             If you do not wish to use Flatpak or already have it, skip this step.</li>
     </ol>
     <hr class="light">
-    <h1 id="emulator-list">Emulator installation and setup</h1>
+    <h1 id="emulator-list">Choosing an emulator</h1>
     <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
-    <p>However, they're more likely to have issues and inconsistent behavior when running on Linux with Wine, especially for certain distributions.</p>
-    <p>As such, this guide will only cover two Linux-native emulators in detail:</p>
+    <p>However, they're more likely to have issues and inconsistent behavior when running on Linux with Wine, especially on certain distributions.</p>
+    <p>As such, this guide will only cover two Linux-native emulators in detail. Choose the one that fits you the most:</p>
     <h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
     <ul>
         <li><p>All-around good choice for most users</p></li>
         <li><p>Cross-platform (Windows, Linux, MacOS, DOS)</p></li>
         <li><p>Great if you emulate other DOS systems</p></li>
-        <li><p>Fork of DOSBox</p></li>
+        <li><p>Included in many distros' repos</p></li>
+        <li><p>Has save states</p></li>
     </ul>
     <h2>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</h2>
     <ul>
@@ -91,6 +92,7 @@
         <li><p>Better choice if you're doing serious runs</p></li>
         <li><p>Great if you already use RetroArch (cross-platform)</p></li>
         <li><p>Can be built from source as <b>xnp21kai</b></p></li>
+        <li><p>Has an AUR package</p></li>
     </ul>
     <p id="return-from-emulator"><b>A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</b></p>
     <hr class="light">
@@ -407,9 +409,14 @@ BOOT C:</code></pre>
     </ul>
     <h2>xnp21kai</h2>
     <ul>
+        <li><p>To enable savestates, add the following line to <code>xnp21kairc</code>:
+            <pre><code class="blocksmall">STATSAVE = true</code></pre>
+            </p>
+        </li>
         <li><p>Your window position and size is not remembered!</p></li>
-        <li><p>Your HDI file, however, is remembered!</p></li>
+        <li><p>Your last used HDI file, however, is remembered!</p></li>
         <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai</p></li>
+        <li><p>There has been issues where closing the window via the "X" button may not cause the program to stop running.</p></li>
     </ul>
     <h2>RetroArch</h2>
     <ul>
@@ -424,7 +431,13 @@ BOOT C:</code></pre>
         </li>
     </ul>
     <h2>Other</h2>
-    <p>Make sure to run this command before using older emulators (np2, anex86, t98next) with Wine: <pre><code class="block">winetricks ddr=gdi</code></pre></p>
+    <ul>
+        <li>
+            <p>Make sure to run this command before using older emulators (np2, anex86, t98next) with Wine: 
+                <pre><code class="block">winetricks ddr=gdi</code></pre>
+            </p>
+        </li>
+    </ul>
     <hr class="light">
     <h1>Common Issues</h1>
     <hr class="light">
@@ -442,8 +455,6 @@ BOOT C:</code></pre>
         <li><a href="https://touhou-memories.com/post/190684950124/configure-anex86">Touhou Memories</a> | Anex86 configuration</li>
         <li><a href="https://pc98.ne.jp/reslib">PC-9800 Central Community</a> | Resource Library</li>
         <li><a href="../index.html">Windows Touhou on Linux Guide</a></li>
-        <li><a href="http://catb.org/~esr/faqs/smart-questions.html">Thrysus Enterprises</a> (don't bother them) | How
-            To Ask Questions the Smart Way</li>
     </ul>
     <hr class="light">
     <h2>Special Thanks</h2>
