@@ -78,18 +78,19 @@
     <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
     <p>However, they're more likely to have issues and inconsistent behavior when running on Linux with Wine, especially for certain distributions.</p>
     <p>As such, this guide will only cover two Linux-native emulators in detail:</p>
+    <h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
+    <ul>
+        <li><p>All-around good choice for most users</p></li>
+        <li><p>Cross-platform (Windows, Linux, MacOS, DOS)</p></li>
+        <li><p>Great if you emulate other DOS systems</p></li>
+        <li><p>Fork of DOSBox</p></li>
+    </ul>
     <h2>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</h2>
     <ul>
         <li><p>Generally considered more accurate</p></li>
         <li><p>Better choice if you're doing serious runs</p></li>
-        <li><p>Great if you already use RetroArch</p></li>
+        <li><p>Great if you already use RetroArch (cross-platform)</p></li>
         <li><p>Can be built from source as <b>xnp21kai</b></p></li>
-    </ul>
-    <h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
-    <ul>
-        <li><p>All-around good choice for most users</p></li>
-        <li><p>Great if you emulate other DOS systems</p></li>
-        <li><p>Fork of DOSBox</p></li>
     </ul>
     <p id="return-from-emulator"><b>A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</b></p>
     <hr class="light">
@@ -118,6 +119,80 @@
     <p>For xnp21kai, place it in <code class="blocksmall">~/.config/xnp21kai</code>. If you are using a font besides
         <code>FONT.ROM</code>, edit <code>fontile</code> in <code>xnp21kairc</code> to the <i><b>abosolute</b></i> filepath of the font.
     </p>
+    <hr class="light">
+        <h1 id="dosbox-x-setup">DOSBox-X setup</h1>
+    <h2>Installation</h2>
+    <p>Install DOSBox-X through your package manager</p>
+    <p><b>Flatpak<sup style="color:limegreen">*</sup></b>
+        <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
+    </p>
+    <p><b>Debian/Ubuntu/Linux Mint</b>
+        <pre><code class="block">sudo apt install dosbox-x</code></pre>
+    </p>
+    <p><b>Fedora</b>
+        <pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
+        <pre><code class="block">sudo dnf install dosbox-x</code></pre>
+    </p>
+    <p><b>Arch</b>
+        <pre><code class="block">sudo pacman -S dosbox-x</code></pre>
+    </p>
+    <p style="color:limegreen"><sup>*</sup> Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date version.</p>
+    <h2>Settings to adjust before playing</h2>
+    <h3>Configuration file</h3>
+    <p>DOSBox-X relies on a configuration file to apply the correct settings for various types of programs.</p>
+    <p>By default, DOSBox-X uses its own config file located at:</p>
+    <ul>
+        <li><p><b>Non-Flatpak: </b><code class="blocksmall">~/.config/dosbox-x/dosbox-x-(version).conf</code></p></li>
+        <li><p><b>Flatpak: </b><code class="blocksmall">~/.var/app/com.dosbox_x.DOSBox-X/config/dosbox-x/dosbox-x-(version).conf</code></p></li>
+    </ul>
+    <p>However, if the working directory contains a file named 
+        <code class="blocksmall">dosbox-x.conf</code>, 
+        the settings that it contains will override the respective ones in the default config file.</p>
+    <h3><i><b style="color:limegreen">A ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
+        Simply save it to the same directory as your HDI files.</b></i></h3>
+    <p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
+    <h3 id="working-directory">Working directory</h3>
+    <p>The working directory is where DOSBox-X will run. By default, DOSBox-X will ask you to choose a directory in your system.<sup>*</sup></p>
+    <p>If you intend on using DOSBox-X only to play the PC-98 Touhou games, 
+        set the directory with the HDI files as the default working directory <b>in the default config file</b></p>
+    <p><pre><code class="block">[dosbox]
+working directory option = default
+working directory default = /your/path/to/pc98touhou/</code></pre></p>
+    <p><sup>*</sup> If ran from the desktop. If it was ran in the terminal, DOSBox-X use the current directory as the working directory.</p>
+    <h3>Graphics</h3>
+    <p>To always start in fullscreen, set:</p>
+    <pre><code class="block">[sdl]
+fullscreen = true
+fullresolution = desktop</code></pre>
+    <p>To ensure the graphics stay consistent, set:</p>
+    <pre><code class="block">[sdl]
+output = openglpp
+
+[render]
+aspect = true
+aspect_ratio = -1:-1</code></pre>
+    <h3>Enabling PC-98 mode</h3>
+    <p>To always enable PC-98 mode, set
+    <pre><code class="block">[dosbox]
+machine = pc98</code></pre>
+    </p>
+    <h3>CPU speed</h3>
+    <p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
+    <p>For a consistently smooth experience,<sup>*</sup> set</p>
+    <pre><code class="block">[cpu]
+cycles = 72000</code></pre>
+    <p>If your hardware allows it,<sup>†</sup> set</p>
+    <pre><code class="block">[cpu]
+core = dynamic_x86</code></pre>
+    <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. <code>72000</code> is suggested in this guide for most systems.</p>
+    <p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing with the same number of cycles.</p>
+    <h3 id="autoexec">Auto-execution</h3>
+    <p>This is especially helpful if you intend on always using only one HDI file<sup>*</sup> and do not want to always type the commands by hand</p>
+    <pre><code class="block">[autoexec]
+IMGMOUNT C TOUHOU.HDI
+BOOT C:</code></pre>
+    <p>Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your HDI file.</p>
+    <p><sup>*</sup> For example, an HDI with all the PC-98 Touhou games or a full system</p>
     <hr class="light">
     <h1 id="np21kai-setup">Neko Project II Kai setup</h1>
     <h2>Installation</h2>
@@ -249,84 +324,39 @@
     <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
     <p style="color:red"><sup>†</sup> It has been known that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
     <hr class="light">
-    <h1 id="dosbox-x-setup">DOSBox-X setup</h1>
-    <h2>Installation</h2>
-    <p>Install DOSBox-X through your package manager</p>
-    <p><b>Flatpak<sup style="color:limegreen">*</sup></b>
-        <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
-    </p>
-    <p><b>Debian/Ubuntu/Linux Mint</b>
-        <pre><code class="block">sudo apt install dosbox-x</code></pre>
-    </p>
-    <p><b>Fedora</b>
-        <pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
-        <pre><code class="block">sudo dnf install dosbox-x</code></pre>
-    </p>
-    <p><b>Arch</b>
-        <pre><code class="block">sudo pacman -S dosbox-x</code></pre>
-    </p>
-    <p style="color:limegreen"><sup>*</sup> Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date version.</p>
-    <h2>Settings to adjust before playing</h2>
-    <h3>Configuration file</h3>
-    <p>DOSBox-X relies on a configuration file to apply the correct settings for various types of programs.</p>
-    <p>By default, DOSBox-X uses its own config file located at:</p>
-    <ul>
-        <li><p><b>Non-Flatpak: </b><code class="blocksmall">~/.config/dosbox-x/dosbox-x-(version).conf</code></p></li>
-        <li><p><b>Flatpak: </b><code class="blocksmall">~/.var/app/com.dosbox_x.DOSBox-X/config/dosbox-x/dosbox-x-(version).conf</code></p></li>
-    </ul>
-    <p>However, if the working directory contains a file named 
-        <code class="blocksmall">dosbox-x.conf</code>, 
-        the settings that it contains will override the respective ones in the default config file.</p>
-    <h3><i><b style="color:limegreen">A ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
-        Simply save it to the same directory as your HDI files.</b></i></h3>
-    <p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
-    <h3 id="working-directory">Working directory</h3>
-    <p>The working directory is where DOSBox-X will run. By default, DOSBox-X will ask you to choose a directory in your system.<sup>*</sup></p>
-    <p>If you intend on using DOSBox-X only to play the PC-98 Touhou games, 
-        set the directory with the HDI files as the default working directory <b>in the default config file</b></p>
-    <p><pre><code class="block">[dosbox]
-working directory option = default
-working directory default = /your/path/to/pc98touhou/</code></pre></p>
-    <p><sup>*</sup> If ran from the desktop. If it was ran in the terminal, DOSBox-X use the current directory as the working directory.</p>
-    <h3>Graphics</h3>
-    <p>To always start in fullscreen, set:</p>
-    <pre><code class="block">[sdl]
-fullscreen = true
-fullresolution = desktop</code></pre>
-    <p>To ensure the graphics stay consistent, set:</p>
-    <pre><code class="block">[sdl]
-output = openglpp
-
-[render]
-aspect = true
-aspect_ratio = -1:-1</code></pre>
-    <h3>Enabling PC-98 mode</h3>
-    <p>To always enable PC-98 mode, set
-    <pre><code class="block">[dosbox]
-machine = pc98</code></pre>
-    </p>
-    <h3>CPU speed</h3>
-    <p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
-    <p>For a consistently smooth experience,<sup>*</sup> set</p>
-    <pre><code class="block">[cpu]
-cycles = 72000</code></pre>
-    <p>If your hardware allows it,<sup>†</sup> set</p>
-    <pre><code class="block">[cpu]
-core = dynamic_x86</code></pre>
-    <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. <code>72000</code> is suggested in this guide for most systems.</p>
-    <p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing with the same number of cycles.</p>
-    <h3 id="autoexec">Auto-execution</h3>
-    <p>This is especially helpful if you intend on always using only one HDI file<sup>*</sup> and do not want to always type the commands by hand</p>
-    <pre><code class="block">[autoexec]
-IMGMOUNT C TOUHOU.HDI
-BOOT C:</code></pre>
-    <p>Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your HDI file.</p>
-    <p><sup>*</sup> For example, an HDI with all the PC-98 Touhou games or a full system</p>
-    <hr class="light">
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
     <p><i style="color:red"><b>It is highly recommended that you store your HDI files in a directory/folder like "Games" or "Touhou"</b></i></p>
-    <h2>Neko Project II Kai</h2>
-    <h3 id="np21kai-running-retroarch">RetroArch</h3>
+    <h1 id="dosbox-x-running">DOSBox-X</h1>
+    <h2>GUI/Desktop</h2>
+    <ol>
+        <li>
+            <p>If prompted, select the directory/folder with your HDI files as your working directory.</p>
+        </li>
+        <li><p>Wait for it to finish loading, then run these two commands in DOSBox-X:
+            <pre><code class="block">IMGMOUNT C TOUHOU.HDI</code></pre>
+            <pre><code class="block">BOOT C:</code></pre>
+            Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual 
+            filename<sup style="color:red">*</sup> of the HDI file<sup>†</sup> you want to load.
+            </p>
+        </li>
+        <li><p>Enjoy!</p></li>
+        <li><p><a href="#dosbox-tips">See next section</a> on how to remove or change the HDI file</p></li>
+    </ol>
+    <p><b style="color:red"><sup>*</sup> The filename is case-sensitive!</b></p>
+    <p><sup>†</sup> Depending on the type of HDI file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
+    <h2>Command Line</h2>
+    <ol>
+        <li>
+            <p>Navigate to the directory folder with your HDI(s) and config file, then run</p>
+            <ul>
+                <li><p><b>Non-Flatpak: </b><code class="blocksmall">dosbox-x</code></p></li>
+                <li><p><b>Flatpak: </b><code class="blocksmall">flatpak run com.dosbox_x.DOSBox-X</code></p></li>
+            </ul>
+        </li>
+        <li>Follow the same remaining steps as above</li>
+    </ol>
+    <h1>Neko Project II Kai</h1>
+    <h2 id="np21kai-running-retroarch">RetroArch</h2>
     <ol>
         <li><p>In the Main Menu, select "Load Core", then "NEC - PC-98 (Neko Project II Kai)"</p></li>
         <li><p><b>If it's your first time loading the HDI file:</b>
@@ -345,46 +375,17 @@ BOOT C:</code></pre>
         <li><p>Enjoy!</p></li>
         <li><p>To remove the HDI file, go into the Quick Menu and select "Close Content"</p></li>
     </ol>
-    <h3 id="xnp21kai-running">xnp21kai</h3>
+    <h2 id="xnp21kai-running">xnp21kai</h2>
     <ol>
         <li><p>In the menu bar, select "HardDisk"</p></li>
         <li><p>Choose <code>IDE0-0</code><sup>*</sup>, then "Open"</p></li>
         <li><p>Find your Touhou HDI file and open it.</p></li>
         <li><p>Reset the emulator.</p></li>
         <li><p>Enjoy!</p></li>
-        <li><p>To remove<sup></sup> the HDI, simply choose "Remove" on the "hard disk" the HDI is located in and reset the emulator.</p></li>
+        <li><p>To remove<sup>†</sup> the HDI, simply choose "Remove" on the "hard disk" the HDI is located in and reset the emulator.</p></li>
     </ol>
     <p><sup>*</sup> <code>IDE0-0</code> acts like the <code>C:</code> drive, while <code>IDE0-1</code> is the <code>A:</code> drive.</p>
     <p><sup>†</sup> To switch to another HDI, simply choose "Open" again.</p>
-    <h2 id="dosbox-x-running">DOSBox-X</h2>
-    <h3>GUI/Desktop</h3>
-    <ol>
-        <li>
-            <p>If prompted, select the directory/folder with your HDI files as your working directory.</p>
-        </li>
-        <li><p>Wait for it to finish loading, then run these two commands in DOSBox-X:
-            <pre><code class="block">IMGMOUNT C TOUHOU.HDI</code></pre>
-            <pre><code class="block">BOOT C:</code></pre>
-            Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual 
-            filename<sup style="color:red">*</sup> of the HDI file<sup>†</sup> you want to load.
-            </p>
-        </li>
-        <li><p>Enjoy!</p></li>
-        <li><p><a href="#dosbox-tips">See next section</a> on how to remove or change the HDI file</p></li>
-    </ol>
-    <p><b style="color:red"><sup>*</sup> The filename is case-sensitive!</b></p>
-    <p><sup>†</sup> Depending on the type of HDI file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
-    <h3>Command Line</h3>
-    <ol>
-        <li>
-            <p>Navigate to the directory folder with your HDI(s) and config file, then run</p>
-            <ul>
-                <li><p><b>Non-Flatpak: </b><code class="blocksmall">dosbox-x</code></p></li>
-                <li><p><b>Flatpak: </b><code class="blocksmall">flatpak run com.dosbox_x.DOSBox-X</code></p></li>
-            </ul>
-        </li>
-        <li>Follow the same steps as above</li>
-    </ol>
     <hr class="light">
     <h1>Important and useful tips</h1>
     <p>Unless you're directly using the original PC-98 files, HDI files contain everything!</p>
