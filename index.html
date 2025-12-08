@@ -41,13 +41,12 @@
     <h1 id="linux-env-setup">Preparing your Linux environment</h1>
     <h2 id="choosing-distro">Choosing a distro</h2>
     <p>Most major distros should work well with this guide.</p>
-    <p>This guide has been personally tested with:
+    <p>This guide has been personally tested with:</p>
     <ul>
         <li>Fedora 42 with KDE and Nvidia GPU</li>
         <li>Ubuntu 24.04 LTS with GNOME and integrated Intel graphics</li>
         <li>Linux Mint 22.2 Cinnamon Edition with Nvidia GPU and integrated Intel graphics</li>
     </ul>
-    </p>
     <p>My only recommendation is to choose a well-known, widely-supported, and stable distro, which includes but is not
         limited to the following:
     </p>
@@ -64,32 +63,24 @@
     </p>
     <ol>
         <li>Update your repository using your distro's package manager.
-            <p><b>Debian/Ubuntu/Linux Mint</b>
-                <pre><code class="block">sudo apt update && sudo apt upgrade</code></pre>
-            </p>
-            <p><b>Fedora</b>
+            <p><b>Debian/Ubuntu/Linux Mint</b></p>
+                <pre><code class="block">sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+            <p><b>Fedora</b></p>
                 <pre><code class="block">sudo dnf update</code></pre>
-            </p>
-            <p><b>Arch Linux</b>
+            <p><b>Arch Linux</b></p>
                 <pre><code class="block">sudo pacman -Syu</code></pre>
-            </p>
-            <p><b>Flatpak<sup>*</sup></b>
+            <p><b>Flatpak<sup>*</sup></b></p>
                 <pre><code class="block">flatpak update</code></pre>
-            </p>
         </li>
         <li>Install <a href="https://www.winehq.org/">Wine</a><sup>†</sup> and <a href="https://lutris.net/">Lutris</a>.
-            <p><b>Debian/Ubuntu/Linux Mint</b>
+            <p><b>Debian/Ubuntu/Linux Mint</b></p>
                 <pre><code class="block">sudo apt install wine lutris</code></pre>
-            </p>
-            <p><b>Fedora</b>
+            <p><b>Fedora</b></p>
                 <pre><code class="block">sudo dnf install wine lutris</code></pre>
-            </p>
-            <p><b>Arch Linux</b>
+            <p><b>Arch Linux</b></p>
                 <pre><code class="block">sudo pacman -S wine wine-mono wine-gecko lutris</code></pre>
-            </p>
-            <p><b>Flatpak<sup>*</sup> (for Lutris)</b>
+            <p><b>Flatpak<sup>*</sup> (for Lutris)</b></p>
                 <pre><code class="block">flatpak install flathub net.lutris.Lutris</code></pre>
-            </p>
         </li>
     </ol>
     <p><sup>*</sup> Consult the <a href="https://flatpak.org/setup/">official quick setup guide</a> if Flatpak is not already installed on your system</p>
@@ -100,16 +91,15 @@
         already have THCRAP patches installed and do not want to install more.</b>
     <p>If your Touhou game folders each have their own thcrap folders and English exe, it is recommended to delete them
         and follow this section.</p>
-    <p>Please note the following:
+    <p>Please note the following:</p>
     <ul>
         <li>Each <code>/your/path/to/</code> is a placeholder for where you installed the software.</li>
         <li>Each <code>XX</code> represents the numeral of the Touhou game, such as <code>06</code>. (e.g. th06 for
             EoSD)</li>
     </ul>
-    </p>
     <h2 id="wine-mono-thcrap-setup">Setting up Wine and Mono for THCRAP</h2>
     <ol>
-        <li>Create a new Wine prefix with the following command:<sup>*</sup> 
+        <li>Create a new Wine prefix with the following command:<sup>*</sup>
             <pre><code class="block">WINEPREFIX=$HOME/.wine-thcrap WINEARCH=win64 winecfg</code></pre>
         </li>
         <li><a href="https://dl.winehq.org/wine/wine-mono/">Download</a> the latest version of Mono.<sup>†</sup> Use <a
@@ -132,15 +122,16 @@
     <ol>
         <li>Download the main <a href="https://www.thpatch.net/wiki/Touhou_Patch_Center:Download"> THCRAP package from
                 thpatch.net</a></li>
-        <li>Unzip the package. There are two ways to do this:</li>
-        <ul>
-            <li>Use a GUI-based archive manager. Usually included with your distro. (Ark, File Roller, Engrampa, etc.)
-            </li>
-            <li>Use the <code>unzip</code> command. You may have to install it with your package manager. An example
-                command in use is shown below:
-                <pre><code class="block">unzip thcrap.zip -d $HOME/yourname/Downloads/thcrap</code></pre>
-            </li>
-        </ul>
+        <li>Unzip the package. There are two ways to do this:
+            <ul>
+                <li>Use a GUI-based archive manager. Usually included with your distro. (Ark, File Roller, Engrampa, etc.)
+                </li>
+                <li>Use the <code>unzip</code> command. You may have to install it with your package manager. An example
+                    command in use is shown below:
+                    <pre><code class="block">unzip thcrap.zip -d $HOME/yourname/Downloads/thcrap</code></pre>
+                </li>
+            </ul>
+        </li>
     </ol>
     <h3 id="thcrap-config-tool-lutris">Using Lutris</h3>
     <ol>
@@ -166,10 +157,8 @@
         Meanwhile, <code>thcrap_loader.exe</code> is the actual program that applies patches to the Touhou games.
     </p>
     <h3 id="thcrap-config-tool-cli">Using the command line</h3>
-    <p>Use the Wine prefix you created for THCRAP earlier. Run:
+    <p>Use the Wine prefix you created for THCRAP earlier. Run:</p>
     <pre><code class="block">WINEPREFIX=$HOME/.wine-thcrap wine /your/path/to/thcrap/thcrap.exe</code></pre>
-    </p>
-    </p>
     <h2 id="installing-patches-with-thcrap">Installing patches with the THCRAP configuration tool</h2>
     <ol>
         <li>Run the THCRAP configuration tool via Lutris.</li>
@@ -184,7 +173,7 @@
                         here.</a></li>
             </ul>
         </li>
-        <li>THCRAP will then ask you for the location of your games<b style="color:red"><sup>†</sup></b> after you click
+        <li>THCRAP will then ask you for the location of your games<b class="warning"><sup>†</sup></b> after you click
             "next".
             <ol>
                 <li>Select the "Find games in a specific folder" option.</li>
@@ -199,23 +188,22 @@
     </ol>
     <p><sup>*</sup> It may take a few seconds for the patch list when you click on the "All patches" tab. This is normal behavior.
     </p>
-    <p><b style="color:red"><sup>†</sup> It is highly recommended that the thcrap folder be placed in the same directory
-            as your Touhou games.</b></p>
+    <p class="warning"><b><sup>†</sup> It is highly recommended that the thcrap folder be placed in the same directory as your Touhou games.</b></p>
     <p><sup>‡</sup> This shortcut is purely optional, as what actually matters is the config file created for that
         patch. You can delete the shortcut if desired.</p>
     <h2 id="understanding-config-files">Understanding and editing the config files</h2>
     <p>Config files tell <code>thcrap_loader.exe</code> which patches to load in order. These are located in the
         <code>config</code> folder of the <code>thcrap</code> folder ending with <code>.js</code></p>
-    <p>Here are some examples of config files for various patches:
+    <p>Here are some examples of config files for various patches:</p>
     <ul>
         <li><a href="./example-configs/en.js">English patch</a>.</li>
         <li><a href="./example-configs/zh-hans.js">Simplified Chinese patch</a></li>
         <li><a href="./example-configs/patchy_chungus.js">Image replacement patch</a></li>
         <li><a href="./example-configs/stack_example.js">Multi-patch stack</a></li>
     </ul>
+    <p>If you have already have installed a few patches, this can be very useful for
+        <a href="https://www.thpatch.net/wiki/Touhou_Patch_Center:About#Patch_stacking">patch stacking</a>.
     </p>
-    <p>If you have already have installed a few patches, this can be very useful for <a
-            href="https://www.thpatch.net/wiki/Touhou_Patch_Center:About#Patch_stacking">patch stacking</a>.</p>
     <h3>About games.js</h3>
     <p><code>games.js</code> is a special config file. This file tells THCRAP all the known locations of your Touhou
         games.</p>
@@ -224,16 +212,24 @@
         can refer to that exe instead of the regular game exe within <code>games.js</code></p>
     <hr class="light">
     <h1 id="install-vpatch">Installing Vsync patches (vpatch)</h1>
-    <p>Information about the vsync patches is <a
-            href="https://en.touhouwiki.net/wiki/Game_Tools_and_Modifications#Vsync_Patches">located here</a></p>
+    <p>Information about the vsync patches is
+        <a href="https://en.touhouwiki.net/wiki/Game_Tools_and_Modifications#Vsync_Patches">located here</a>
+    </p>
     <ol>
-        <li><a href="https://maribelhearn.com/mirror/VsyncPatch.zip">Download</a> the vpatch archive (<a
-                href="http://ux.getuploader.com/swmplv75e/">old download</a>)</li>
-        <li>Unzip the vpatch archive. There are two ways to do this:
+        <li>
+            <p><a href="https://maribelhearn.com/mirror/VsyncPatch.zip">Download</a> the vpatch archive
+            (<a href="http://ux.getuploader.com/swmplv75e/">old download</a>)
+            </p>
+        </li>
+        <li><p>Unzip the vpatch archive. There are two ways to do this:</p>
             <ul>
-                <li>Use a GUI-based archive manager. Usually included with your distro. (Ark, File Roller, Engrampa,
-                    etc.)</li>
-                <li>Use the <code>unzip</code> command. An example command in use is shown below:
+                <li>
+                    <p>Use a GUI-based archive manager. Usually included with your distro.
+                        (Ark, File Roller, Engrampa, etc.)
+                    </p>
+                </li>
+                <li>
+                    <p>Use the <code>unzip</code> command. An example command in use is shown below:</p>
                     <pre><code class="block">unzip vpatch.zip -d $HOME/yourname/Downloads/vpatch</code></pre>
                 </li>
             </ul>
@@ -241,131 +237,133 @@
         <li>In the extracted <code>vpatch</code> folder, locate the appropriate <code>vpatch_thXX.dll</code> file for
             your game.
             <p>Provided below is a table for which vpatch folder to find your game's vpatch</p>
-            <pre>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Name</th>
-                                <th><code>thXX</code></th>
-                                <th>vpatch version</th>
-                                <th>.dll filename</th>
-                            </tr>
-                            <tr>
-                                <td>Embodiment of Scarlet Devil</td>
-                                <td>th06</td>
-                                <td>vpatch_rev4</td>
-                                <td>vpatch_th06.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Perfect Cherry Blossom</td>
-                                <td>th07</td>
-                                <td>vpatch_rev4</td>
-                                <td>vpatch_th07.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Imperishable Night</td>
-                                <td>th08</td>
-                                <td>vpatch_rev4</td>
-                                <td>vpatch_th08.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Phantasmagoria of Flower View</td>
-                                <td>th09</td>
-                                <td>vpatch_rev4</td>
-                                <td>vpatch_th09.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Shoot the Bullet</td>
-                                <td>th095</td>
-                                <td>vpatch_rev7</td>
-                                <td>vpatch_th095.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Mountain of Faith</td>
-                                <td>th10</td>
-                                <td>vpatch_rev7</td>
-                                <td>vpatch_th10.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Subterranean Animism</td>
-                                <td>th11</td>
-                                <td>vpatch_rev7</td>
-                                <td>vpatch_th11.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Undefined Fantastic Object</td>
-                                <td>th12</td>
-                                <td>vpatch_rev7</td>
-                                <td>vpatch_th12.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Double Spoiler</td>
-                                <td>th125</td>
-                                <td>vpatch_rev7</td>
-                                <td>vpatch_th125.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Great Fairy Wars</td>
-                                <td>th128</td>
-                                <td>vpatch_th12.8</td>
-                                <td>vpatch_th128.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Ten Desires</td>
-                                <td>th13</td>
-                                <td>vpatch_th13</td>
-                                <td>vpatch_th13.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Double Dealing Character</td>
-                                <td>th14</td>
-                                <td>vpatch_th14</td>
-                                <td>vpatch_th14.dll</td>
-                            </tr>
-                            <tr>
-                                <td>Legacy of Lunatic Kingdom</td>
-                                <td>th15</td>
-                                <td>vpatch_th15</td>
-                                <td>vpatch_th15.dll</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </pre>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th><code>thXX</code></th>
+                        <th>vpatch version</th>
+                        <th>.dll filename</th>
+                    </tr>
+                    <tr>
+                        <td>Embodiment of Scarlet Devil</td>
+                        <td>th06</td>
+                        <td>vpatch_rev4</td>
+                        <td>vpatch_th06.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Perfect Cherry Blossom</td>
+                        <td>th07</td>
+                        <td>vpatch_rev4</td>
+                        <td>vpatch_th07.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Imperishable Night</td>
+                        <td>th08</td>
+                        <td>vpatch_rev4</td>
+                        <td>vpatch_th08.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Phantasmagoria of Flower View</td>
+                        <td>th09</td>
+                        <td>vpatch_rev4</td>
+                        <td>vpatch_th09.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Shoot the Bullet</td>
+                        <td>th095</td>
+                        <td>vpatch_rev7</td>
+                        <td>vpatch_th095.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Mountain of Faith</td>
+                        <td>th10</td>
+                        <td>vpatch_rev7</td>
+                        <td>vpatch_th10.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Subterranean Animism</td>
+                        <td>th11</td>
+                        <td>vpatch_rev7</td>
+                        <td>vpatch_th11.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Undefined Fantastic Object</td>
+                        <td>th12</td>
+                        <td>vpatch_rev7</td>
+                        <td>vpatch_th12.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Double Spoiler</td>
+                        <td>th125</td>
+                        <td>vpatch_rev7</td>
+                        <td>vpatch_th125.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Great Fairy Wars</td>
+                        <td>th128</td>
+                        <td>vpatch_th12.8</td>
+                        <td>vpatch_th128.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Ten Desires</td>
+                        <td>th13</td>
+                        <td>vpatch_th13</td>
+                        <td>vpatch_th13.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Double Dealing Character</td>
+                        <td>th14</td>
+                        <td>vpatch_th14</td>
+                        <td>vpatch_th14.dll</td>
+                    </tr>
+                    <tr>
+                        <td>Legacy of Lunatic Kingdom</td>
+                        <td>th15</td>
+                        <td>vpatch_th15</td>
+                        <td>vpatch_th15.dll</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p></p>
         </li>
-        <li>Copy or move the appropriate <code>vpatch_thXX.dll</code><sup>*</sup>, <code>vpatch.exe</code>, and
-            <code>vpatch.ini</code> files into your Touhou game's folder.
+        <li>
+            <p>Copy or move the appropriate
+                <code>vpatch_thXX.dll</code><sup>*</sup>,
+                <code>vpatch.exe</code>,
+                and <code>vpatch.ini</code>
+                files into your Touhou game's folder.
+            </p>
         </li>
-        <li>Rename the Touhou game's exe<sup style="color:red">†</sup> to <code>thXX.exe</code>.</li>
+        <li>Rename the Touhou game's exe<sup class="warning">†</sup> to <code>thXX.exe</code>.</li>
     </ol>
     <p><sup>*</sup> For EoSD, use <a
             href="https://www.thpatch.net/w/images/1/1a/vpatch_th06_unicode.zip">vpatch_th06_unicode.dll</a> instead if
         you want to play with THCRAP.</p>
-    <p><b style="color:red"><sup>†</sup>For EoSD, you must rename the exe to <code class="blocksmall">東方紅魔郷.exe</code>
+    <p class="warning"><b><sup>†</sup>For EoSD, you must rename the exe to <code class="blocksmall">東方紅魔郷.exe</code>
             for vpatch to be applied.</b></p>
     <hr class="light">
     <h1 id="running-touhou">Running the Touhou games</h1>
-    <p>Please note the following:
+    <p>Please note the following:</p>
     <ul>
         <li>Each <code>/your/path/to/</code> is a placeholder for where you installed the software.</li>
         <li>Each <code>XX</code> represents the numeral of the Touhou game, such as <code>06</code>. (e.g. th06 for
             EoSD)</li>
     </ul>
-    </p>
     <h2 id="lutris-setup">Running with Lutris</h2>
     <p>Skip to <a href="#running-touhou-cli">this section</a> if you don't want to use Lutris.</p>
     <h3 id="lutris-alternate-wine">Installing alternate Wine versions</h3>
     <p>While this guide recommends using your system's latest version of Wine,
         Lutris does allow you to install alternative versions that may offer a better experience, such as Proton or
         wine-ge.</p>
-    <p>To install them:
+    <p>To install them:</p>
     <ol>
-        <li>Open Lutris settings (three lines in upper-right corner -> Preferences)</li>
+        <li>Open Lutris settings (three lines in upper-right corner &#8594; Preferences)</li>
         <li>Search for "wine" in the Runners tab</li>
         <li>Click on the "box" icon on the far-right side to open the Wine versions manager</li>
         <li>Install your desired version. This guide recommends <code class="blocksmall">wine-ge</code> for most cases.
         </li>
     </ol>
-    </p>
     <h3>Vanilla or Vpatch EoSD</h3>
     <ol>
         <li>While adding it to Lutris, go to the "Systems options" tab</li>
@@ -403,47 +401,38 @@
     <h3 id="thcrap-touhou-lutris">Touhou with THCRAP patches</h3>
     <p>Follow this section if you have installed THCRAP patches.</p>
     <ol>
-        <li>Repeat the <a href="#vanilla-touhou-lutris">first few steps</a> as running vanilla Touhou, but for the
-            executable path in "Game options", locate <code>thcrap_loader.exe</code></li>
-        <li>
-            <p>In the Arguments field, enter the <code>.js</code> file of your patch<sup>*</sup> and the game<sup>†</sup> you want
-                to run it with.
-            <p>Examples of arguments:
-            <ul>
-                <li>EoSD with the English patch: <code class="blocksmall">en.js th06</code></li>
-                <li>PCB with <a href="https://www.thpatch.net/wiki/Patch:Skipgame">Skipgame</a>: <code
-                        class="blocksmall">skipgame.js th07</code></li>
-                <li>MoF with user-made config: <code class="blocksmall">yourpatch.js th10</code></li>
-            </ul>
+        <li><p>Repeat the <a href="#vanilla-touhou-lutris">first few steps</a> as running vanilla Touhou,
+            but for the executable path in "Game options", locate <code>thcrap_loader.exe</code>
             </p>
         </li>
-        <li>Ensure the working directory is the folder that contains <code>thcrap_loader.exe</code></li>
-        <li>Press the save button and run your game for testing.
+        <li>
+            <p>In the Arguments field, enter the <code>.js</code> file of your patch<sup>*</sup> and the game<sup>†</sup> you want to run it with.</p>
+            <p>Examples of arguments:</p>
             <ul>
-                <li>There should be a small window that has the name "Touhou Community Reliant Automatic Patcher".</li>
+                <li><p>EoSD with the English patch: <code class="blocksmall">en.js th06</code></p></li>
+                <li><p>PCB with <a href="https://www.thpatch.net/wiki/Patch:Skipgame">Skipgame</a>:
+                    <code class="blocksmall">skipgame.js th07</code></p></li>
+                <li><p>MoF with user-made config: <code class="blocksmall">yourpatch.js th10</code></p></li>
+            </ul>
         </li>
-        <li>If your game loads with your desired patch, you've succeeded.</li>
-        </ul>
-        </li>
+        <li><p>Ensure the working directory is the folder that contains <code>thcrap_loader.exe</code></p></li>
+        <li><p>Press the save button and run your game for testing.<sup>‡</sup></p></li>
+        <li><p>If your game loads with your desired patch, you've succeeded.</p></li>
     </ol>
-    <p><sup>*</sup> You can find all of your installed patches in the <code>config</code> folder in the <code>thcrap</code> folder.
-    </p>
-    </p>
+    <p><sup>*</sup> You can find all of your installed patches in the <code>config</code> folder in the <code>thcrap</code> folder.</p>
     <p><sup>†</sup> Game names are located in <code>games.js</code> within the <code>config</code> folder of the
         <code>thcrap</code> folder</p>
+    <p><sup>‡</sup>There should be a small window that has the name "Touhou Community Reliant Automatic Patcher".</p>
     <h2 id="running-touhou-cli">Running from the Command Line</h2>
     <h3 id="vanilla-touhou-cli">Vanilla Touhou (no patches)<sup>*</sup></h3>
-    <p>Replace <code>thXX.exe</code> with the executable for your specific game:
+    <p>Replace <code>thXX.exe</code> with the executable for your specific game:</p>
     <pre><code class="block">LANG=ja_JP.UTF-8 wine start /unix /your/path/to/Touhou/thXX/thXX.exe</code></pre>
-    </p>
     <h3 id="vpatch-touhou-cli">Touhou with Vsync patches (vpatch)<sup>*</sup></h3>
-    <p>Same as above, but use <code>vpatch.exe</code> instead:
+    <p>Same as above, but use <code>vpatch.exe</code> instead:</p>
     <pre><code class="block">LANG=ja_JP.UTF-8 wine start /unix /your/path/to/Touhou/thXX/vpatch.exe</code></pre>
-    </p>
     <h3 id="thcrap-touhou-cli">Touhou with THCRAP patches</h3>
-    <p>Replace <code>example.js</code> with your patch config, and <code>thXX</code> with your game's ID:
+    <p>Replace <code>example.js</code> with your patch config, and <code>thXX</code> with your game's ID:</p>
     <pre><code class="block">wine /your/path/to/thcrap/thcrap_loader.exe example.js thXX</code></pre>
-    </p>
     <p><sup>*</sup> Due to how EoSD (th06) handles encoding and locale, running it directly from the command line
         requires <code class="blocksmall">LANG=ja_JP.UTF-8 wine start /unix</code> before the path to it.
     </p>
@@ -453,10 +442,7 @@
     <p><a href="#relevant-save-data">All relevant files</a> are located in the same folder as the game.<sup>*</sup></p>
     <p><sup>*</sup> Or technically, wherever the game's .exe was last ran.</p>
     <h2>Newer Windows (th12.5 - )</h2>
-    <p>
-    <p>Starting with DS (<code>th125)</code>, all save data is stored in <code
-            class="blocksmall">AppData/Roaming/ShanghaiAlice</code></p>
-    </p>
+    <p class="warning">Starting with DS (<code>th125</code>), all save data is stored in <code class="blocksmall">AppData/Roaming/ShanghaiAlice</code></p>
     <ol>
         <li>Locate the Wine prefix you used to run the game (usually located in your home folder as <code>.wine</code>)
         </li>
@@ -467,14 +453,13 @@
     </ol>
     <p><sup>*</sup> It is recommended to copy the files to the location of the actual game for organizational purposes.</p>
     <h2 id="relevant-save-data">Relevant files</h2>
-    <p>Make sure to keep these files safe.
+    <p>Make sure to keep these files safe.</p>
     <ul>
         <li><code class="blocksmall">score.dat</code><sup>*</sup>: Your saved scores and unlocks</li>
         <li><code class="blocksmall">thXX_XX.rpy</code>: Replay files, located in the <code>replay</code> folder</li>
         <li><code class="blocksmall">thXX.cfg</code><sup>†</sup>: Your game settings (e.g. fullscreen vs windowed)</li>
         <li>Screenshots taken in-game with the Home key are located in the <code>snapshot</code> folder.</li>
     </ul>
-    </p>
     <p>* <code>scorethXX.dat</code> starting with StB (<code>th095</code>)</p>
     <p><sup>†</sup> It's normal for the cfg file of EoSD to appear as <code class="blocksmall">“Œ•ûg–‚‹½.cfg</code></p>
     <hr class="light">
@@ -486,7 +471,7 @@
     <p>For more information, refer to <a href="https://www.thpatch.net/wiki/Touhou_Patch_Center:Wine_tips#Fixing">this
             guide</a>.</p>
     <h2 id="common-issues-eosd">EoSD displays error windows at startup</h2>
-    <p>Refer to <a href="https://maribelhearn.com/faq/eosd">this guide</a> for help
+    <p>Refer to <a href="https://maribelhearn.com/faq/eosd">this guide</a> for help.</p>
     <h2 id="common-issues-fullscreen">Fullscreen Issues</h2>
     <p>These two issues usually happen when running the Touhou games with regular/system Wine.
         Some good alternative runners includes GE-Proton and wine-ge, which should have little to no issues with the
@@ -502,29 +487,26 @@
         visuals with that runner.</p>
     <h2 id="common-issues-strange-text">Strange text</h2>
     <h3 id="common-issues-tofu">Missing text/tofu (⍰⍰⍰⍰)</h3>
-    <p>Install cjkfonts using winetricks:
+    <p>Install cjkfonts using winetricks:</p>
     <pre><code class="block">wine winetricks cjkfonts</code></pre>
-    </p>
     <h3 id="common-issues-mojibake">Mojibake (“Œ•û)</h3>
-    <p>
     <ol>
         <li>Verify that your system has a suitable Japanese locale
             <ul>
-                <li>This will list all existing Japanese locales:
+                <li>
+                    <p>This will list all existing Japanese locales:</p>
                     <pre><code class="block">locale -a | grep ja_JP</code></pre>
                 </li>
-                <li>If you don't see <code class="blocksmall">ja_JP.utf8</code> on this list, look up how to install new
-                    locales on your OS/distro.</li>
+                <li>
+                    <p>If you don't see <code class="blocksmall">ja_JP.utf8</code> on this list, look up how to install new locales on your distro.</p>
+                </li>
             </ul>
         </li>
-        <pre></pre>
         <li>Use the Japanese locale whenever you run Touhou games and installers through Wine via command line.
-            <p>Add this at the start of your command:
+            <p>Add this at the start of your command:</p>
             <pre><code class="block">LANG=ja_JP.UTF-8</code></pre>
-            </p>
         </li>
     </ol>
-    </p>
     <h2 id="common-issues-crusty-audio">Crusty/Low-quality audio</h2>
     <p><a href="#lutris-alternate-wine">Try an alternate wine version</a> besides your system's wine version.</p>
     <hr class="light">
@@ -550,15 +532,13 @@
     </ul>
     <hr class="light">
     <h2>Special Thanks</h2>
-    <p>
-        <ul>
-            <li>C0LDfinch</li>
-            <li>Yova</li>
-            <li>B0N</li>
-            <li>THCRAP community</li>
-        </ul>
-        For their feedback and guidance!
-    </p>
+    <ul>
+        <li>C0LDfinch</li>
+        <li>Yova</li>
+        <li>B0N</li>
+        <li>THCRAP community</li>
+    </ul>
+    <p>For their feedback and guidance!</p>
     <hr class="light">
     <footer>
         <p id="last-updated"></p>
