@@ -113,3 +113,11 @@ th, td {
   margin-top: -10px;
   margin-bottom: 20px;
 }
+
+.recommended {
+  color: limegreen;
+}
+
+.warning {
+  color: red;
+}
