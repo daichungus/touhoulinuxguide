@@ -131,7 +131,7 @@
     <pre><code class="block">[dosbox]
 working directory option = default
 working directory default = /your/path/to/pc98touhou/</code></pre>
-    <p><sup>*</sup> If ran from the desktop. If it was ran in the terminal, DOSBox-X use the current directory as the working directory.</p>
+    <p><sup>*</sup> If ran from the desktop. If it was ran in the terminal, DOSBox-X uses the current directory as the working directory.</p>
     <h3>Graphics</h3>
     <p>To always start in fullscreen, set:</p>
     <pre><code class="block">[sdl]
@@ -171,17 +171,18 @@ BOOT C:</code></pre>
     <p>There are many different ways to have NP21kai installed to your system.</p>
     <ul>
         <li>
-            <b>RetroArch</b> (<a href="#np21kai-retroarch">skipto</a>)
+            <h3>RetroArch (<a href="#np21kai-retroarch">skipto</a>)</h3>
             <p>Good choice if you already use it for other games, but not great if you're tight on storage.
                 Modern UI is biased towards controllers.
             </p>
         </li>
-        <li><b>AUR package</b> (<a href="#np21kai-arch">skipto</a>)
+        <li><h3>AUR package (<a href="#np21kai-arch">skipto</a>)</h3>
             <p>Good choice if you use an Arch-based system. Doesn't help if you don't use Arch, by the way.</p>
         </li>
-        <li><b>Building from source</b> (<a href="#np21kai-source">skipto</a>)
-            <p>Not recommended for users new to Linux or unfamiliar with CLI. Recommended for those
-                who want to save space or don't want to use all other options.
+        <li><h3>Building from source / xnp21kai (<a href="#np21kai-source">skipto</a>)</h3>
+            <p class="warning"><i><b>Has bugs and missing features.</b></i></p>
+            <p>Not recommended for users new to Linux or unfamiliar with CLI.
+                Only choose this if you have no other options.
             </p>
         </li>
     </ul>
@@ -439,6 +440,19 @@ BOOT C:</code></pre>
     </ul>
     <hr class="light">
     <h1>Common Issues</h1>
+    <p>This section is under expansion. Submit issues <a href="https://github.com/daichungus/touhoulinuxguide/issues">here</a>.</p>
+    <h2>xnp21kai</h2>
+    <h3>No sound</h3>
+    <p>Try stopping the program and run it again. (<code class="blocksmall">Ctrl+C</code> if launched from the terminal)</p>
+    <h3>Can't close/freezes</h3>
+    <p>Includes errors being thrown even when pressing <code class="blocksmall">Ctrl+C</code> in the terminal.
+        Unfortunately, This is arbitrary behavior that there is no exact solution to so far.
+    </p>
+    <p>Testing by the author suggests that directly running <code>xnp21kai</code> from <code>/usr/local/bin/</code>
+        may solve this issue if it repeatedly happens.
+    </p>
+    <h3>Fullscreen isn't fullscreen</h3>
+    <p>Unfortunately there is currently no option to scale up the display.</p>
     <hr class="light">
     <h1>Additional Resources and References</h1>
     <ul>
@@ -457,10 +471,10 @@ BOOT C:</code></pre>
     </ul>
     <hr class="light">
     <h2>Special Thanks</h2>
+    <p>The author would like to thank the following for their support:</p>
     <ul>
         <li>PC-98 Touhou Discord server</li>
     </ul>
-    <p>For their feedback and guidance!</p>
     <hr class="light">
     <footer>
         <p id="last-updated"></p>
