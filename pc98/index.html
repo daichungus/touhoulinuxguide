@@ -39,11 +39,10 @@
     <h1>Preparing your Linux environment</h1>
     <h2>Choosing a distro</h2>
     <p>Most major distros should work well with this guide.</p>
-    <p>This guide has been personally tested with:
+    <p>This guide has been personally tested with:</p>
     <ul>
         <li>Linux Mint 22.2 Cinnamon Edition with integrated Intel graphics</li>
     </ul>
-    </p>
     <p>My only recommendation is to choose a well-known, widely-supported, and stable distro, which includes but is not
         limited to the following:
     </p>
@@ -61,13 +60,13 @@
     <ol>
         <li>Update your repository using your distro's included package manager.
             <p><b>Debian/Ubuntu/Linux Mint</b></p>
-            <pre><code class="block">sudo apt update && sudo apt upgrade</code></pre>
+            <pre><code class="block">sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
             <p><b>Fedora</b></p>
             <pre><code class="block">sudo dnf update</code></pre>
             <p><b>Arch</b></p>
             <pre><code class="block">sudo pacman -Syu</code></pre>
         </li>
-        <li><a href="https://flatpak.org/setup/">Install Flatpak</a> on your distribution. 
+        <li><a href="https://flatpak.org/setup/">Install Flatpak</a> on your distribution.
             If you do not wish to use Flatpak or already have it, skip this step.</li>
     </ol>
     <hr class="light">
@@ -97,7 +96,7 @@
     <h2>Installation</h2>
     <p>Install DOSBox-X through your package manager</p>
     <p><b>Flatpak</b>    </p>
-    <p style="color:limegreen">Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date version.</p>
+    <p class="recommended">Recommended since it helps avoids most inconsistencies between distros and is the most up-to-date version.</p>
     <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
     <p><b>Debian/Ubuntu/Linux Mint</b></p>
     <pre><code class="block">sudo apt install dosbox-x</code></pre>
@@ -106,7 +105,7 @@
     <pre><code class="block">sudo dnf install dosbox-x</code></pre>
     <p><b>Arch</b></p>
     <pre><code class="block">git clone https://aur.archlinux.org/dosbox-x.git</code></pre>
-    <pre><code class="block">cd dosbox-x && less PKGBUILD</code></pre>
+    <pre><code class="block">cd dosbox-x &amp;&amp; less PKGBUILD</code></pre>
     <pre><code class="block">makepkg -si dosbox-x</code></pre>
     <h2>Settings to adjust before playing</h2>
     <h3>Configuration file</h3>
@@ -116,20 +115,22 @@
         <li><p><b>Non-Flatpak: </b><code class="blocksmall">~/.config/dosbox-x/dosbox-x-(version).conf</code></p></li>
         <li><p><b>Flatpak: </b><code class="blocksmall">~/.var/app/com.dosbox_x.DOSBox-X/config/dosbox-x/dosbox-x-(version).conf</code></p></li>
     </ul>
-    <p>However, if the working directory contains a file named 
-        <code class="blocksmall">dosbox-x.conf</code>, 
-        the settings that it contains will override the respective ones in the default config file.</p>
-    <h3><i><b style="color:limegreen">A ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
+    <p>However, if the working directory contains a file named
+        <code class="blocksmall">dosbox-x.conf</code>,
+        the settings that it contains will override the respective ones in the default config file.
+    </p>
+    <h3><i><b>A ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
         Simply save it to the same directory as your HDI files.</b></i></h3>
     <p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
     <p><b>Otherwise, <a href="#pc98-files">download a font</a> to the directory, then <a href="#dosbox-x-running">start running the games</a>.</b></p>
     <h3 id="working-directory">Working directory</h3>
     <p>The working directory is where DOSBox-X will run. By default, DOSBox-X will ask you to choose a directory in your system.<sup>*</sup></p>
-    <p>If you intend on using DOSBox-X only to play the PC-98 Touhou games, 
-        set the directory with the HDI files as the default working directory <b>in the default config file</b></p>
-    <p><pre><code class="block">[dosbox]
+    <p>If you intend on using DOSBox-X only to play the PC-98 Touhou games,
+        set the directory with the HDI files as the default working directory <b>in the default config file</b>
+    </p>
+    <pre><code class="block">[dosbox]
 working directory option = default
-working directory default = /your/path/to/pc98touhou/</code></pre></p>
+working directory default = /your/path/to/pc98touhou/</code></pre>
     <p><sup>*</sup> If ran from the desktop. If it was ran in the terminal, DOSBox-X use the current directory as the working directory.</p>
     <h3>Graphics</h3>
     <p>To always start in fullscreen, set:</p>
@@ -144,10 +145,9 @@ output = openglpp
 aspect = true
 aspect_ratio = -1:-1</code></pre>
     <h3>Enabling PC-98 mode</h3>
-    <p>To always enable PC-98 mode, set
+    <p>To always enable PC-98 mode, set</p>
     <pre><code class="block">[dosbox]
 machine = pc98</code></pre>
-    </p>
     <h3>CPU speed</h3>
     <p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
     <p>For a consistently smooth experience,<sup>*</sup> set</p>
@@ -187,38 +187,35 @@ BOOT C:</code></pre>
     </ul>
     <h3 id="np21kai-retroarch">RetroArch</h3>
     <ol>
-        <li><p>Install RetroArch as a <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flatpak</a>
+        <li><p>Install RetroArch as a <a href="https://flathub.org/en/apps/org.libretro.RetroArch">Flatpak</a></p>
             <pre><code class="block">flatpak install flathub org.libretro.RetroArch</code></pre>
-            </p>
         </li>
-        <li>Run RetroArch either by GUI or 
+        <li>Run RetroArch either by GUI or
             <pre><code class="block">flatpak run org.libretro.RetroArch</code></pre>
         </li>
         <li><p>In the Main Menu, select<sup>†</sup> "Load Core", then "Download Core"</p></li>
         <li>
-            <p>Scroll down the list to 
-            <b><code>NEC - PC-98 (Neko Project II Kai)</code></b>, then select to install it.
-            </p>
+            <p>Scroll down the list to <b>NEC - PC-98 (Neko Project II Kai)</b>, then select to install it.</p>
         </li>
         <li><p><a href="">Adjust settings before playing</a></p></li>
     </ol>
     <p><sup>†</sup> Enter key on keyboard</p>
     <h3 id="np21kai-arch">Arch Linux</h3>
-    <p>If you're new to Arch, please consider first reading the Arch Wiki article on 
-        <a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>, 
+    <p>If you're new to Arch, please consider first reading the Arch Wiki article on
+        <a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>,
         along with the <a href="https://wiki.archlinux.org/title/Makepkg">article on makepkg</a>.
     </p>
     <ol>
         <li>
             <p>Install gtk2 from the <a href="https://aur.archlinux.org/packages/gtk2">AUR</a></p>
             <pre><code class="block">git clone https://aur.archlinux.org/gtk2.git</code></pre>
-            <pre><code class="block">cd gtk2 && less PKGBUILD</code></pre>
+            <pre><code class="block">cd gtk2 &amp;&amp; less PKGBUILD</code></pre>
             <pre><code class="block">makepkg -si gtk2</code></pre>
         </li>
         <li>
             <p>Install np21kai from the <a href="https://aur.archlinux.org/packages/np2kai-git">AUR</a></p>
             <pre><code class="block">git clone https://aur.archlinux.org/np2kai-git.git</code></pre>
-            <pre><code class="block">cd np2kai-git && less PKGBUILD</code></pre>
+            <pre><code class="block">cd np2kai-git &amp;&amp; less PKGBUILD</code></pre>
             <pre><code class="block">makepkg -si np21kai</code></pre>
         </li>
         <li><p>Proceed with <a href="#adjust-settings-xnp21kai">adjusting the necessary settings</a>.</p></li>
@@ -226,18 +223,18 @@ BOOT C:</code></pre>
     <h3 id="np21kai-source">Building from source (xnp21kai)</h3>
     <p><i>The steps below are from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">README document</a>.</i></p>
     <ol>
-        <li><p>Install the required programs and libraries<sup style="color:red">*</sup></p>
+        <li><p>Install the required programs and libraries<sup class="warning">*</sup></p>
             <p><b>Debian/Ubuntu/Linux Mint</b></p>
-            <p><code class="block">sudo apt install git cmake ninja-build build-essential libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev 
-                libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev 
+            <p><code class="block">sudo apt install git cmake ninja-build build-essential libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
+                libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev
                 libfontconfig1-dev libssl-dev
             </code></p>
             <p><b>Fedora</b></p>
             <p><code class="block">sudo dnf groupinstall "Development Tools"</code></p>
-            <p><code class="block">sudo dnf install gcc-c++ cmake libusb-devel SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel 
+            <p><code class="block">sudo dnf install gcc-c++ cmake libusb-devel SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel
                 SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel
             </code></p>
-            <p style="color:red"><sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
+            <p class="warning"><sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
             Always check what packages will be installed and removed before confirmation.   </p>
         </li>
         <li><p>Clone <a href="https://github.com/AZO234/NP2kai">the np21kai repo</a></p>
@@ -268,24 +265,23 @@ BOOT C:</code></pre>
             <p>Go back<sup>*</sup> to the previous menu and select the respective core. On the Main Menu, "Start Core" will be in place of "Load Core".</p>
         </li>
         <li><p>Start the core without content and press <code>F1</code> to open the Quick Menu</p></li>
-        <li><p>
-            Select "Core Options", and apply these settings:
+        <li>
+            <p>Select "Core Options", and apply these settings:</p>
             <ul>
-                <li><b>CPU Clock Multiplier<sup style="color:red">†</sup></b> = <code class="blocksmall">52</code></li>
-                <li><b>RAM Size<sup style="color:red">†</sup></b> = <code class="blocksmall">16</code></li>
+                <li><b>CPU Clock Multiplier<sup class="warning">†</sup></b> = <code class="blocksmall">52</code></li>
+                <li><b>RAM Size<sup class="warning">†</sup></b> = <code class="blocksmall">16</code></li>
                 <li>Sound Board = <code class="blocksmall">PC9801-26K+86</code></li>
                 <li>Volume VM = <code class="blocksmall">128</code></li>
                 <li>Volume SSG = <code class="blocksmall">128</code></li>
                 <li>Volume RHYTHM = <code class="blocksmall">128</code></li>
                 <li>Sound Generator = <code class="blocksmall">Default</code></li>
             </ul>
-            </p>
         </li>
         <li><p>Go back and restart the core.</p></li>
         <li><p>You're now ready to <a href="#running-pc98-touhou">run the games</a></p></li>
     </ol>
     <p><sup>*</sup> Backspace key on keyboard</p>
-    <p><b style="color:red"><sup>†</sup> These settings are required for smooth gameplay.</b></p>
+    <p class="warning"><b><sup>†</sup> These settings are required for smooth gameplay.</b></p>
     <h3 id="adjust-settings-xnp21kai">xnp21kai</h3>
     <ol>
         <li><p>In the menu bar, adjust these settings for a smooth experience. <b>To apply them, hit "Reset" in "Emulator"</b></p>
@@ -296,7 +292,7 @@ BOOT C:</code></pre>
                         <li><b>CPU</b><sup>*</sup> = <code class="blocksmall">2.4576MHz x 52</code></li>
                         <li>Architecture = <code class="blocksmall">PC-9801VX</code></li>
                         <li>Sampling Rate = <code class="blocksmall">44100 kHz</code></li>
-                        <li><b>Buffer</b><sup style="color:red">†</sup> = <code class="blocksmall">20 ms</code></li>
+                        <li><b>Buffer</b><sup class="warning">†</sup> = <code class="blocksmall">20 ms</code></li>
                     </ul>
                 </li>
                 <li>
@@ -311,7 +307,7 @@ BOOT C:</code></pre>
         <li><p>Install the <a href="#pc98-files">necessary ROM files</a> to <code class="blocksmall">~/.config/xnp21kai/</code></p></li>
     </ol>
     <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
-    <p style="color:red"><sup>†</sup> It has been known that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
+    <p class="warning"><sup>†</sup> It has been known that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
     <hr class="light">
     <h1 id="pc98-files">PC-98 files</h1>
     <h2>ROM files</h2>
@@ -329,9 +325,9 @@ BOOT C:</code></pre>
     <p>Some popular font files are available to download from here:</p>
     <ul>
         <li><a href="./fonts/FONTNP.BMP" download>Neko Project 21 font</a></li>
-        <li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>    
+        <li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>
         <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font (DOSBox-X default)</a></li>
-        <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a></li>    
+        <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a></li>
     </ul>
     <p>Move/copy the font file to the same directory/folder as your PC-98 Touhou HDI file(s).</p>
     <p>For xnp21kai, place it in <code class="blocksmall">~/.config/xnp21kai</code>. If you are using a font besides
@@ -339,24 +335,23 @@ BOOT C:</code></pre>
     </p>
     <hr class="light">
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
-    <p><i style="color:red"><b>It is highly recommended that you store your HDI files in a directory/folder like "Games" or "Touhou"</b></i></p>
+    <p class="warning"><i><b>It is highly recommended that you store your HDI files in a directory/folder like "Games" or "Touhou"</b></i></p>
     <h1 id="dosbox-x-running">DOSBox-X</h1>
     <h2>GUI/Desktop</h2>
     <ol>
         <li>
             <p>If prompted, select the directory/folder with your HDI files as your working directory.</p>
         </li>
-        <li><p>Wait for it to finish loading, then run these two commands in DOSBox-X:
+        <li><p>Wait for it to finish loading, then run these two commands in DOSBox-X:</p>
             <pre><code class="block">IMGMOUNT C TOUHOU.HDI</code></pre>
             <pre><code class="block">BOOT C:</code></pre>
-            Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual 
-            filename<sup style="color:red">*</sup> of the HDI file<sup>†</sup> you want to load.
-            </p>
+            Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual
+            filename<sup class="warning">*</sup> of the HDI file<sup>†</sup> you want to load.
         </li>
         <li><p>Enjoy!</p></li>
         <li><p><a href="#dosbox-tips">See next section</a> on how to remove or change the HDI file</p></li>
     </ol>
-    <p><b style="color:red"><sup>*</sup> The filename is case-sensitive!</b></p>
+    <p class="warning"><b><sup>*</sup> The filename is case-sensitive!</b></p>
     <p><sup>†</sup> Depending on the type of HDI file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
     <h2>Command Line</h2>
     <ol>
@@ -373,18 +368,16 @@ BOOT C:</code></pre>
     <h2 id="np21kai-running-retroarch">RetroArch</h2>
     <ol>
         <li><p>In the Main Menu, select "Load Core", then "NEC - PC-98 (Neko Project II Kai)"</p></li>
-        <li><p><b>If it's your first time loading the HDI file:</b>
+        <li><p><b>If it's your first time loading the HDI file:</b></p>
             <ol>
                 <li><p>Select "Load Content"</p></li>
                 <li><p>Navigate to to directory with the file and select it</p></li>
             </ol>
-            </p>
-            <p><b>If you have loaded the HDI file before:</b>
+            <p><b>If you have loaded the HDI file before:</b></p>
             <ol>
                 <li><p>Select "Playlists", then "History"</p></li>
                 <li><p>Select the HDI file, then run it.</p></li>
             </ol>
-            </p>
         </li>
         <li><p>Enjoy!</p></li>
         <li><p>To remove the HDI file, go into the Quick Menu and select "Close Content"</p></li>
@@ -405,21 +398,20 @@ BOOT C:</code></pre>
     <p>Unless you're directly using the original PC-98 files, HDI files contain everything!</p>
     <h2 id="dosbox-tips">DOSBox-X</h2>
     <ul>
-        <li><p style="color:red">Restarting the DOSBox-X instance will make it unable to mount any HDI file in your working directory.</p>
+        <li><p class="warning">Restarting the DOSBox-X instance will make it unable to mount any HDI file in your working directory.</p>
             <p>Instead:</p>
             <ul>
                 <li><p>If you want to use the same HDI file, Reboot the guest system (<b><code>F12+B</code></b>).</p></li>
                 <li><p>If you want to use a different HDI file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
             </ul>
         </li>
-        <li><p>If you only use one HDI and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically 
+        <li><p>If you only use one HDI and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically
             <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.</p></li>
     </ul>
     <h2>xnp21kai</h2>
     <ul>
-        <li><p>To enable savestates, add the following line to <code>xnp21kairc</code>:
+        <li><p>To enable savestates, add the following line to <code>xnp21kairc</code>:</p>
             <pre><code class="blocksmall">STATSAVE = true</code></pre>
-            </p>
         </li>
         <li><p>Your window position and size is not remembered!</p></li>
         <li><p>Your last used HDI file, however, is remembered!</p></li>
@@ -428,7 +420,7 @@ BOOT C:</code></pre>
     </ul>
     <h2>RetroArch</h2>
     <ul>
-        <li><p style="color:red">By default, pressing the Esc key twice will quit RetroArch!</p></li>
+        <li><p class="warning">By default, pressing the Esc key twice will quit RetroArch!</p></li>
         <li>
             <p>It's recommended to set your HDI file(s) as favorites to access them faster in the future.</p>
             <p>There are two ways of adding them to your favorites:</p>
@@ -441,9 +433,8 @@ BOOT C:</code></pre>
     <h2>Other</h2>
     <ul>
         <li>
-            <p>Make sure to run this command before using older emulators (np2, anex86, t98next) with Wine: 
-                <pre><code class="block">winetricks ddr=gdi</code></pre>
-            </p>
+            <p>Make sure to run this command before using older emulators (np2, anex86, t98next) with Wine:</p>
+            <pre><code class="block">winetricks ddr=gdi</code></pre>
         </li>
     </ul>
     <hr class="light">
@@ -466,12 +457,10 @@ BOOT C:</code></pre>
     </ul>
     <hr class="light">
     <h2>Special Thanks</h2>
-    <p>
-        <ul>
-            <li>PC-98 Touhou Discord server</li>
-        </ul>
-        For their feedback and guidance!
-    </p>
+    <ul>
+        <li>PC-98 Touhou Discord server</li>
+    </ul>
+    <p>For their feedback and guidance!</p>
     <hr class="light">
     <footer>
         <p id="last-updated"></p>
