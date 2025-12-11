@@ -471,13 +471,13 @@
         <li><p>Screenshots taken in-game with the Home key are located in the <code>snapshot</code> folder.</p></li>
     </ul>
     <p><sup>*</sup> <code class="blocksmall">scorethXX.dat</code> starting with <i>Shoot the Bullet</i> (<code>th095</code>)</p>
-    <p><sup>†</sup> It's normal for the cfg file of EoSD to appear as <code class="blocksmall">“Œ•ûg–‚‹½.cfg</code></p>
+    <p><sup>†</sup> It's normal for the name of EoSD's cfg file to consist of <a href="https://wikipedia.org/wiki/Mojibake">mojibake</a>.</p>
     <hr class="light">
     <h1 id="common-issues">Common Issues</h1>
     <h2 id="common-fixes-hammer">Common fixes</h2>
     <p>Lutris-related issues can be solved easier by running <code>lutris -d</code> in your terminal.</p>
-    <p>A common fix is to create a new Wine prefix. For Touhou games after th12.5, make sure to save your important
-        information before deleting the old Wine prefix.</p>
+    <p>A common fix is to create a new Wine prefix. For Touhou games after th12.5, make sure to
+        <a href="#backing-up-data">save your important information</a> before deleting the old Wine prefix.</p>
     <p>For more information, refer to <a href="https://www.thpatch.net/wiki/Touhou_Patch_Center:Wine_tips#Fixing">this
             guide</a>.</p>
     <h2 id="common-issues-eosd">EoSD displays error windows at startup</h2>
@@ -493,13 +493,13 @@
         Currently there are no solutions besides switching to an Xorg session in the login screen.
     </p>
     <h3 id="common-issues-fullscreen-stretched">Stretched out</h3>
-    <p>Typically happens when you enable DXVK in original Wine. Fixes the non-up-scaling issue but also causes stretched
-        visuals with that runner.</p>
+    <p>Typically happens when you enable DXVK in original Wine.
+        Fixes the non-up-scaling issue but also causes stretched visuals with that runner.</p>
     <h2 id="common-issues-strange-text">Strange text</h2>
     <h3 id="common-issues-tofu">Missing text/tofu (⍰⍰⍰⍰)</h3>
     <p>Install cjkfonts using winetricks:</p>
     <pre><code class="block">wine winetricks cjkfonts</code></pre>
-    <h3 id="common-issues-mojibake">Mojibake (“Œ•û)</h3>
+    <h3 id="common-issues-mojibake"><a href="https://wikipedia.org/wiki/Mojibake">Mojibake</a> (“Œ•û)</h3>
     <ol>
         <li>Verify that your system has a suitable Japanese locale
             <ul>
