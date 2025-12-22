@@ -27,18 +27,19 @@
     <header>
         <h1>Touhou Linux Guide</h1>
         <h2>By <a href="https://daichungus.github.io">Daichungus</a></h2>
-        <p>Submit issues and contribute: <a href="https://github.com/daichungus/touhoulinuxguide"><u>Source</u></a></p>
+        <p>Submit issues, contribute, or complain <a href="https://github.com/daichungus/touhoulinuxguide"><u>here</u></a>.</p>
         <p>This is the guide for the Windows era games. <a href="./pc98">The PC-98 era Touhou guide is here</a>.</p>
     </header>
     <hr class="light">
     <h2 id="disclaimer">Disclaimer</h2>
-    <p>This guide focuses on using <b>Lutris with Wine<sup>*</sup></b> for a simple and consistent experience.
+    <p>This guide focuses on using <b>Lutris with Wine<sup>*</sup></b> for a relatively straightforward and consistent experience.
         It does <i>not</i> cover every setup or edge case.
     </p>
-    <p>The goal here is to get most users running their Touhou games quickly and cleanly.</p>
+    <p>The goal here is to get most users running their Touhou games without too much headaches.</p>
     <p>If you're looking for more advanced or alternative methods, other resources may be better suited.</p>
-    <p><sup>*</sup> The regular version of Wine may not work for your system, so this guide covers <a
-            href="#lutris-alternate-wine">alternate Wine versions</a> as well.</p>
+    <p><b><sup>*</sup></b> The regular version of Wine may not always work for your system, so this guide touches on
+        <a href="#lutris-alternate-wine">alternate Wine versions</a> as well.
+    </p>
     <hr class="light">
     <h1 id="linux-env-setup">Preparing your Linux environment</h1>
     <h2 id="choosing-distro">Choosing a distro</h2>
@@ -105,7 +106,7 @@
     </ul>
     <h2 id="wine-mono-thcrap-setup">Setting up Wine and Mono for THCRAP</h2>
     <ol>
-        <li><p>Create a new Wine prefix with the following command:<sup>*</sup></p>
+        <li><p>Create a new Wine prefix<sup>*</sup> with the following command:</p>
             <pre><code class="block">WINEPREFIX=$HOME/.wine-thcrap WINEARCH=win64 winecfg</code></pre>
         </li>
         <li><p><a href="https://dl.winehq.org/wine/wine-mono/">Download</a> the latest version of Mono.<sup>†</sup>
@@ -118,24 +119,26 @@
             <p>(substitute the actual version number for <code>VERSION</code>)</p>
         </li>
     </ol>
-    <p><sup>*</sup> <code>winecfg</code> is recommended as you may need to adjust some settings. Otherwise you can just close the
-        GUI window.</p>
+    <p><sup>*</sup> Though it may seem redundant, this helps reduce the likelihood of issues when different Wine versions are used with the same prefix.</p>
     <p><sup>†</sup> The THCRAP configuration tool requires .NET, which Mono substitutes on Linux. Otherwise it will
         display an error saying that .NET is missing.</p>
-    <p><sup>‡</sup> Directly installing Mono to the prefix avoids unforseen distro-related issues.
-        If you have wine-mono installed system-wide, THCRAP will only display a pink screen before closing itself.
-        This is usually because of broken packages in many distros (namely Fedora).
+    <p><sup>‡</sup> Directly installing Mono to the prefix can help avoid unforseen distro-related issues.
+        If you have wine-mono installed system-wide, THCRAP might only display a pink screen before closing itself.
     </p>
     <h2 id="thcrap-config-tool-setup">Setup of the THCRAP configuration tool</h2>
     <ol>
-        <li>Download the main <a href="https://www.thpatch.net/wiki/Touhou_Patch_Center:Download"> THCRAP package from
-                thpatch.net</a></li>
-        <li>Unzip the package. There are two ways to do this:
+        <li><p>Download the main
+            <a href="https://www.thpatch.net/wiki/Touhou_Patch_Center:Download"> THCRAP package from thpatch.net</a>
+            </p>
+        </li>
+        <li><p>Unzip the package. There are two ways to do this:</p>
             <ul>
-                <li>Use a GUI-based archive manager. Usually included with your distro. (Ark, File Roller, Engrampa, etc.)
+                <li>
+                    <p>Use a GUI-based archive manager that's usually included with your distro. (Ark, File Roller, Engrampa, etc.)</p>
                 </li>
-                <li>Use the <code>unzip</code> command. You may have to install it with your package manager. An example
-                    command in use is shown below:
+                <li>
+                    <p>Use the <code>unzip</code> command. You may have to install it with your package manager. An example
+                    command in use is shown below:</p>
                     <pre><code class="block">unzip thcrap.zip -d $HOME/yourname/Downloads/thcrap</code></pre>
                 </li>
             </ul>
