@@ -210,13 +210,13 @@ BOOT C:</code></pre>
         <li>Run RetroArch either by GUI or
             <pre><code class="block">flatpak run org.libretro.RetroArch</code></pre>
         </li>
-        <li><p>In the Main Menu, select<sup>†</sup> "Load Core", then "Download Core"</p></li>
+        <li><p>In the Main Menu, select<sup>*</sup> "Load Core", then "Download Core"</p></li>
         <li>
             <p>Scroll down the list to <b>NEC - PC-98 (Neko Project II Kai)</b>, then select to install it.</p>
         </li>
         <li><p><a href="">Adjust settings before playing</a></p></li>
     </ol>
-    <p><sup>†</sup> Enter key on keyboard</p>
+    <p><sup>*</sup> Enter key on keyboard</p>
     <h3 id="np21kai-arch">Arch Linux</h3>
     <p>If you're new to Arch, please consider first reading the Arch Wiki article on
         <a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>,
@@ -240,19 +240,24 @@ BOOT C:</code></pre>
     <h3 id="np21kai-source">Building from source (xnp21kai)</h3>
     <p><i>The steps below are from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">README document</a>.</i></p>
     <ol>
-        <li><p>Install the required programs and libraries<sup class="warning">*</sup></p>
-            <p><b>Debian/Ubuntu/Linux Mint</b></p>
+        <li>
+            <p>Install the required programs and libraries</p>
+            <p><b>Debian/Ubuntu/Linux Mint<sup>*</sup></b></p>
             <p><code class="block">sudo apt install git cmake ninja-build build-essential libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
                 libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev
                 libfontconfig1-dev libssl-dev
             </code></p>
-            <p><b>Fedora</b></p>
+            <p><b>Fedora <sup class="warning">†</sup></b></p>
             <p><code class="block">ssudo dnf group install "development-tools"</code></p>
             <p><code class="block">sudo dnf install gcc-c++ cmake /usr/lib64/libusb.so SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel
                 SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel
             </code></p>
-            <p class="warning"><sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
-            Always check what packages will be installed and removed before confirmation.   </p>
+            <p><sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
+            Always check what packages will be installed and removed before confirmation.
+            </p>
+            <p class="warning"><sup>†</sup> Currently does not work on the latest versions of Fedora,
+                as the makefile will return an Error 2 and hence the file project cannot be built.
+            </p>
         </li>
         <li><p>Clone <a href="https://github.com/AZO234/NP2kai">the np21kai repo</a></p>
             <pre><code class="block">git clone https://github.com/AZO234/NP2kai.git</code></pre>
