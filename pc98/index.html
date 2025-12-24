@@ -27,7 +27,7 @@
     <header>
         <h1>PC-98 Touhou Linux Guide</h1>
         <h2>By <a href="https://daichungus.github.io">Daichungus</a></h2>
-        <p>Submit issues, contribute, or complain <a href="https://github.com/daichungus/touhoulinuxguide"><u>here</u></a>.</p>
+        <p>Submit issues, contribute, or complain <a href="https://github.com/daichungus/touhoulinuxguide"><u>through the repo</u></a>.</p>
         <p>This is the guide for the PC-98 era games. <a href="../">The Windows era Touhou guide is here</a>.</p>
     </header>
     <hr class="light">
@@ -72,31 +72,35 @@
             <p><b>Arch</b></p>
             <pre><code class="block">sudo pacman -Syu</code></pre>
         </li>
-        <li><a href="https://flatpak.org/setup/">Install Flatpak</a> on your distribution.
-            If you do not wish to use Flatpak or already have it, skip this step.</li>
+        <li>
+            <a href="https://flatpak.org/setup/">Install Flatpak</a> on your distribution.
+            If you do not wish to use Flatpak or already have it, skip this step.
+        </li>
     </ol>
     <hr class="light">
     <h1 id="emulator-list">Choosing an emulator</h1>
+    <h3>Disclaimer</h3>
     <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
-    <p>However, they're more likely to have issues and inconsistent behavior when running on Linux with Wine, especially on certain distributions.</p>
-    <p>As such, this guide will only cover two Linux-native emulators in detail. Choose the one that fits you the most:</p>
+    <p>However, they're more likely to have issues and inconsistent behavior when running on Linux through Wine<sup>*</sup>,
+        especially on certain distributions and setups.</p>
+    <p>Hence this guide will mainly cover setup of two Linux-native emulators in detail:</p>
     <h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
     <ul>
-        <li><p>All-around good choice for most users</p></li>
+        <li><p>All-around decent choice for most users</p></li>
         <li><p>Cross-platform (Windows, Linux, MacOS, DOS)</p></li>
         <li><p>Great if you emulate other DOS systems</p></li>
         <li><p>Included in many distros' repos</p></li>
-        <li><p>Has save states</p></li>
+        <li><p>Can directly run the original game files</p></li>
     </ul>
     <h2>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</h2>
     <ul>
-        <li><p>Generally considered more accurate in terms of emulation</p></li>
-        <li><p>Better choice if you're doing serious runs</p></li>
-        <li><p>Great if you already use RetroArch (cross-platform)</p></li>
-        <li><p>Can be built from source as <b>xnp21kai</b></p></li>
-        <li><p>Has an AUR package</p></li>
+        <li><p>Considered a better choice for serious runs or more accurate emulation</p></li>
+        <li><p>Cross-platform as a RetroArch core</p></li>
+        <li><p>Great if you already use RetroArch</p></li>
+        <li><p>Can be built from source as <code>xnp21kai</code>, and has an AUR package</p></li>
+        <li><p>Only supports <code>.hdi</code> and <code>.fdi</code> files</p></li>
     </ul>
-    <p id="return-from-emulator"><b>A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</b></p>
+    <h3 id="return-from-emulator"><b><i>A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</i></b></h3>
     <hr class="light">
         <h1 id="dosbox-x-setup">DOSBox-X setup</h1>
     <h2>Installation</h2>
@@ -198,7 +202,7 @@ BOOT C:</code></pre>
         <li><h3>Building from source / xnp21kai (<a href="#np21kai-source">skipto</a>)</h3>
             <p class="warning"><i><b>Has bugs and missing features.</b></i></p>
             <p>Not recommended for users new to Linux or unfamiliar with CLI.
-                Only choose this if you have no other options.
+                Only choose this if you absolutely desire or have no other options.
             </p>
         </li>
     </ul>
@@ -329,7 +333,7 @@ BOOT C:</code></pre>
         <li><p>Install the <a href="#pc98-files">necessary ROM files</a> to <code class="blocksmall">~/.config/xnp21kai/</code></p></li>
     </ol>
     <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
-    <p class="warning"><sup>†</sup> It has been known that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
+    <p class="warning"><sup>†</sup> Testing by the author has shown that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
     <hr class="light">
     <h1 id="pc98-files">PC-98 files</h1>
     <h2>ROM files</h2>
@@ -357,9 +361,16 @@ BOOT C:</code></pre>
     </p>
     <hr class="light">
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
-    <p class="warning"><i><b>It is highly recommended that you store your HDI files in a directory/folder like "Games" or "Touhou"</b></i></p>
+    <h3>Disclaimer</h3>
+    <p>This guide assumes that you have acquired your copies of the PC-98 Touhou games as <code>.hdi</code> or <code>.fdi</code> file(s)</p>
+    <p>While the author has tested running the games from the original "loose" files
+        (such as those in the <a href="https://upload.thbwiki.cc/6/6b/53%E5%9B%9E%E4%BA%8C%E8%BD%A9%E7%9B%AE_%E6%97%A7%E4%BD%9C5in1.jpg">compilation disc</a>),
+        with DOSBox-X, most readers are unlikely to be in a similar situation.
+    </p>
+    <p>Therefore the following sections will not cover on how to run the games from the original files.</p>
+    <p>Regardless, it is highly recommended that you store your <code>.hdi</code> files in a directory/folder named "Games" or "Touhou" for ease of rememberance.</p>
     <h1 id="dosbox-x-running">DOSBox-X</h1>
-    <h2>GUI/Desktop</h2>
+    <h2 id="dosbox-x-running-gui">GUI/Desktop</h2>
     <ol>
         <li>
             <p>If prompted, select the directory/folder with your HDI files as your working directory.</p>
@@ -384,7 +395,7 @@ BOOT C:</code></pre>
                 <li><p><b>Flatpak: </b><code class="blocksmall">flatpak run com.dosbox_x.DOSBox-X</code></p></li>
             </ul>
         </li>
-        <li>Follow the same remaining steps as above</li>
+        <li>Follow the same remaining steps as <a href="#dosbox-x-running-gui">above</a></li>
     </ol>
     <h1>Neko Project II Kai</h1>
     <h2 id="np21kai-running-retroarch">RetroArch</h2>
@@ -416,8 +427,23 @@ BOOT C:</code></pre>
     <p><sup>*</sup> <code>IDE0-0</code> acts like the <code>C:</code> drive, while <code>IDE0-1</code> is the <code>A:</code> drive.</p>
     <p><sup>†</sup> To switch to another HDI, simply choose "Open" again.</p>
     <hr class="light">
+    <h1>Using savestates</h1>
+    <p class="warning"><i>Work in progress</i></p>
+    <p>
+        Savestates allow you to create a "snapshot" of your PC-98 system at any given time, so long as your <code>.hdi</code>
+        file still exists in the same location as when you last used it, and there's enough open slots left.
+    </p>
+    <p>In the context of the PC-98 Touhou games, savestates are useful for applications such as continuing where you left off in-game.</p>
+    <h2>DOSBox-X</h2>
+    <h2>Neko Project II Kai</h2>
+    <h3>RetroArch</h3>
+    <h3>xnp21kai</h3>
+    <p>To enable savestates, add the following line to <code>xnp21kairc</code></p>
+    <pre><code class="blocksmall">STATSAVE = true</code></pre>
+    <p>(Re)start the program. There should be a new section in the menu bar titled <code>STAT</code>. Under that, you can save and load two slots.</p>
+    <h2>Other</h2>
+    <hr class="light">
     <h1>Important and useful tips</h1>
-    <p>Unless you're directly using the original PC-98 files, HDI files contain everything!</p>
     <h2 id="dosbox-tips">DOSBox-X</h2>
     <ul>
         <li><p class="warning">Restarting the DOSBox-X instance will make it unable to mount any HDI file in your working directory.</p>
@@ -430,17 +456,8 @@ BOOT C:</code></pre>
         <li><p>If you only use one HDI and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically
             <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.</p></li>
     </ul>
-    <h2>xnp21kai</h2>
-    <ul>
-        <li><p>To enable savestates, add the following line to <code>xnp21kairc</code>:</p>
-            <pre><code class="blocksmall">STATSAVE = true</code></pre>
-        </li>
-        <li><p>Your window position and size is not remembered!</p></li>
-        <li><p>Your last used HDI file, however, is remembered!</p></li>
-        <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai</p></li>
-        <li><p>There has been issues where closing the window via the "X" button may not cause the program to stop running.</p></li>
-    </ul>
-    <h2>RetroArch</h2>
+    <h2>Neko Project II Kai</h2>
+    <h3>RetroArch</h3>
     <ul>
         <li><p class="warning">By default, pressing the Esc key twice will quit RetroArch!</p></li>
         <li>
@@ -452,16 +469,25 @@ BOOT C:</code></pre>
             </ul>
         </li>
     </ul>
+    <h3>xnp21kai</h3>
+    <ul>
+        <li><p>Your window position and size is not remembered!</p></li>
+        <li><p>Your last used HDI file, however, is remembered!</p></li>
+        <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai</p></li>
+        <li><p>There has been issues where closing the window via the "X" button may not cause the program to stop running.</p>
+            <p>If that happens, kill the program via the terminal or System Monitor.</p>
+        </li>
+    </ul>
     <h2>Other</h2>
     <ul>
         <li>
-            <p>Make sure to run this command before using older emulators (np2, anex86, t98next) with Wine:</p>
+            <p>Make sure to run this command before using older emulators (Neko Project II, Anex86, T98-Next, etc.) with Wine:</p>
             <pre><code class="block">winetricks ddr=gdi</code></pre>
         </li>
     </ul>
     <hr class="light">
     <h1>Common Issues</h1>
-    <p>This section is under expansion. Submit issues <a href="https://github.com/daichungus/touhoulinuxguide/issues">here</a>.</p>
+    <p>This section is under expansion. Submit issues and fixes <a href="https://github.com/daichungus/touhoulinuxguide/issues">through the repo</a>.</p>
     <h2>xnp21kai</h2>
     <h3>No sound</h3>
     <p>Try stopping the program and run it again. (<code class="blocksmall">Ctrl+C</code> if launched from the terminal)</p>
