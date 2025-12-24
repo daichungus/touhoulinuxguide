@@ -5,7 +5,7 @@
     <link rel="canonical" href="https://daichungus.github.io/touhoulinuxguide/pc98/emulators.html">
     <link href="../css/style.css" rel="stylesheet" type="text/css" media="all">
     <link rel="icon" href="../image/pc98alice.ico" type="image/x-icon">
-    <title>List of PC-98 emulators</title>
+    <title>List of known PC-98 emulators</title>
     <meta charset="UTF-8">
     <meta name="keywords"
         content="Touhou Project, PC-98, PC-98 Touhou, Touhou Linux, Wine, Neko Project II, np21, anex86, Touhou, Touhou wine guide, PC-98 Touhou linux, Touhou Linux">
@@ -17,27 +17,34 @@
 </head>
 
 <body class="classic">
-    <h1>List of PC-98 emulators</h1>
+    <h1>List of <i>known</i> PC-98 emulators</h1>
     <p><i>For more information, check out <a href="https://pc98.ne.jp/emu/">this list</a>.</i></p>
     <hr class="light">
-    <h1>DOSBox-X <b class="recommended">(recommended)</b></h1>
-    <p>Good for most users. Fork of DosBOX, under active development, natively runs on Linux, Windows, and Mac (Intel and ARM).</p>
+    <h1>DOSBox-X</h1>
+    <p class="recommended"><b><i>All-around good choice for most users.</i></b></p>
+    <p>Natively runs on Linux, Windows, and macOS.</p>
+    <p>Under active development. Open source.</p>
     <ul>
         <li><a href="https://dosbox-x.com/">Official website</a></li>
         <li><a href="https://flathub.org/apps/com.dosbox_x.DOSBox-X">Flathub page</a></li>
         <li><a href="https://copr.fedorainfracloud.org/coprs/rob72/DOSBox-X/">Fedora Copr page</a></li>
     </ul>
     <hr class="light">
-    <h1>Neko Project II series</h1>
-    <p>The most popular series of PC-98 emulators due to their relatively accurate emulation.</p>
+    <h1>Neko Project II</h1>
+    <p>The most popular family of PC-98 emulators due to their relatively accurate emulation.</p>
     <h2>Neko Project II kai</h2>
-    <p>Can be installed via RetroArch <b class="recommended">(recommended)</b>, under active development, natively runs on Linux.</p>
+    <p class="recommended"><b><i>Recommended for Linux and RetroArch users.</i></b></p>
+    <p>Natively runs on Linux (and multiple platforms as a RetroArch core)</p>
+    <p>Under active development. Open source.</p>
     <ul>
         <li><p><a href="https://github.com/AZO234/NP2kai">Github repo</a> (source code and build instructions)</p></li>
+        <li><p><a href="https://docs.libretro.com/library/neko_project_ii_kai/">Libretro Docs page</a><sup>*</sup></p></li>
     </ul>
+    <p><sup>*</sup> This is the documentation, not the install page! To install the core, do so in RetroArch!</p>
     <h2>Neko Project 21/W</h2>
+    <p class="recommended"><b><i>Recommended for Windows users.</i></b></p>
     <p>Natively runs on Windows (XP and later).</p>
-    <p>Under active development.</p>
+    <p>Under active development. Open source.</p>
     <ul>
         <li><a href="https://simk98.github.io/np21w/download.html">Download link page</a>
             (choose the one with "通常版です。ソースコード付きです。")
@@ -45,32 +52,38 @@
         <li><a href="https://github.com/SimK98/np21w">Github repo</a></li>
     </ul>
     <h2>Neko Project II fmgen</h2>
-    <p>Natively runs on Windows</p>
-    <p>A fork of Neko Project II 0.83 with the FM core replaced with FMGEN. Accurate OPN/OPNA emulation.</p>
+    <p class="recommended"><b><i>Recommended for Windows users.</i></b></p>
+    <p>Natively runs on Windows.</p>
+    <p>Under active development. Closed source.</p>
     <ul>
         <li><a href="https://nenecchi.kirara.st/#PC-98">Download link</a> (choose the most recent version of <code>np2fmgen.7z</code>)</li>
     </ul>
-    <h2>Neko Project II <b class="warning">(Obsolete)</b></h2>
+    <h2>Neko Project II</h2>
+    <p class="warning"><b><i>Obsolete. Not recommended.</i></b></p>
     <p>Natively runs on Windows and Mac (older Intel).</p>
-    <p>No longer under active development.</p>
+    <p>No longer under active development. Open source.</p>
     <ul>
         <li><a href="https://www.yui.ne.jp/np2/">Download link</a></li>
     </ul>
     <hr class="light">
-    <h1>Anex86 <b class="warning">(Obsolete)</b></h1>
+    <h1>Anex86</h1>
+    <p class="warning"><b><i>Situationally useful.</i></b></p>
     <p>Natively runs on Windows.</p>
-    <p>Runs faster on some hardware, less accurate emulation, good default font, no longer under active development.</p>
+    <p>No longer under active development. Closed source.</p>
     <ul>
-        <li><a href="https://www.zophar.net/pc98/anex86.html">Download link #1</a></li>
-        <li><a href="https://archive.org/download/anex86/Anex86.rar">Download link #2</a></li>
+        <li><a href="https://pc98.ne.jp/emu/dl/anex86.zip">Download link #1</a></li>
+        <li><a href="https://www.zophar.net/pc98/anex86.html">Download link #2</a></li>
+        <li><a href="https://archive.org/download/anex86/Anex86.rar">Download link #3</a></li>
     </ul>
     <hr class="light">
-    <h1>T98-Next <b class="warning">(Obsolete)</b></h1>
+    <h1>T98-Next</h1>
+    <p class="warning"><b><i>Not recommended, avoid if possible.</i></b></p>
     <p>Natively runs on Windows.</p>
-    <p>Good graphics and sound, but uses more resources for some, no longer under active development.</p>
+    <p>No longer under active development. Closed source.</p>
     <ul>
         <li><a href="https://akiyuki.boy.jp/t98next/Next20100525.zip">Latest stable version download</a></li>
         <li><a href="https://www.zophar.net/pc98/t98-next.html">English translated version</a></li>
+        <li><a href="https://pc98.ne.jp/emu/dl/t98next.zip">Download link #3</a></li>
     </ul>
     <hr class="light">
     <a href="./index.html">Return to previous page</a>
