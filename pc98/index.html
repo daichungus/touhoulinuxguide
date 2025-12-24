@@ -428,6 +428,22 @@ BOOT C:</code></pre>
     <p><sup>*</sup> <code>IDE0-0</code> acts like the <code>C:</code> drive, while <code>IDE0-1</code> is the <code>A:</code> drive.</p>
     <p><sup>†</sup> To switch to another <code>.hdi</code>, simply choose "Open" again.</p>
     <hr class="light">
+    <h1>Using savestates</h1>
+    <p class="warning"><i>Work in progress</i></p>
+    <p>
+        Savestates allow you to create a "snapshot" of your PC-98 system at any given time, so long as your <code>.hdi</code>
+        file still exists in the same location as when you last used it, and there's enough open slots left.
+    </p>
+    <p>In the context of the PC-98 Touhou games, savestates are useful for applications such as continuing where you left off in-game.</p>
+    <h2>DOSBox-X</h2>
+    <h2>Neko Project II Kai</h2>
+    <h3>RetroArch</h3>
+    <h3>xnp21kai</h3>
+    <p>To enable savestates, add the following line to <code>xnp21kairc</code></p>
+    <pre><code class="blocksmall">STATSAVE = true</code></pre>
+    <p>(Re)start the program. There should be a new section in the menu bar titled <code>STAT</code>. Under that, you can save and load two slots.</p>
+    <h2>Other</h2>
+    <hr class="light">
     <h1>Important and useful tips</h1>
     <h2 id="dosbox-tips">DOSBox-X</h2>
     <ul>
