@@ -139,13 +139,13 @@
         the settings that it contains will override the respective ones in the default config file.
     </p>
     <p class="recommended"><i><b>As such, a ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
-        Simply save it to the same directory as your HDI files.</b></i></p>
+        Simply save it to the same directory as your <code>.hdi</code> files.</b></i></p>
     <p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
     <p><b>Otherwise, <a href="#pc98-files">download a font</a> to the directory, then <a href="#dosbox-x-running">start running the games</a>.</b></p>
     <h3 id="working-directory">Working directory</h3>
     <p>The working directory is where DOSBox-X will run. By default, DOSBox-X will ask you to choose a directory in your system.<sup>*</sup></p>
     <p>If you intend on using DOSBox-X only to play the PC-98 Touhou games,
-        set the directory with the HDI files as the default working directory <b>in the default config file</b>
+        set the directory with the <code>.hdi</code> files as the default working directory <b>in the default config file</b>
     </p>
     <pre><code class="block">[dosbox]
 working directory option = default
@@ -178,12 +178,12 @@ core = dynamic_x86</code></pre>
     <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. <code>72000</code> is suggested in this guide for most systems.</p>
     <p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing with the same number of cycles.</p>
     <h3 id="autoexec">Auto-execution</h3>
-    <p>This is especially helpful if you intend on always using only one HDI file<sup>*</sup> and do not want to always type the commands by hand</p>
+    <p>This is especially helpful if you intend on always using only one <code>.hdi</code> file<sup>*</sup> and do not want to always type the commands by hand</p>
     <pre><code class="block">[autoexec]
 IMGMOUNT C TOUHOU.HDI
 BOOT C:</code></pre>
-    <p>Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your HDI file.</p>
-    <p><sup>*</sup> For example, an HDI with all the PC-98 Touhou games or a full system</p>
+    <p>Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your <code>.hdi</code> file.</p>
+    <p><sup>*</sup> For example, an <code>.hdi</code> with all the PC-98 Touhou games or a full system</p>
     <hr class="light">
     <h1 id="np21kai-setup">Neko Project II Kai setup</h1>
     <h2>Installation</h2>
@@ -355,7 +355,7 @@ BOOT C:</code></pre>
         <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font (DOSBox-X default)</a></li>
         <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a></li>
     </ul>
-    <p>Move/copy the font file to the same directory/folder as your PC-98 Touhou HDI file(s).</p>
+    <p>Move/copy the font file to the same directory/folder as your PC-98 Touhou <code>.hdi</code> file(s).</p>
     <p>For xnp21kai, place it in <code class="blocksmall">~/.config/xnp21kai</code>. If you are using a font besides
         <code>FONT.ROM</code>, edit <code>fontfile</code> in <code>xnp21kairc</code> to the <i><b>abosolute</b></i> filepath of the font.
     </p>
@@ -373,23 +373,23 @@ BOOT C:</code></pre>
     <h2 id="dosbox-x-running-gui">GUI/Desktop</h2>
     <ol>
         <li>
-            <p>If prompted, select the directory/folder with your HDI files as your working directory.</p>
+            <p>If prompted, select the directory/folder with your <code>.hdi</code> files as your working directory.</p>
         </li>
         <li><p>Wait for it to finish loading, then run these two commands in DOSBox-X:</p>
             <pre><code class="block">IMGMOUNT C TOUHOU.HDI</code></pre>
             <pre><code class="block">BOOT C:</code></pre>
             Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual
-            filename<sup class="warning">*</sup> of the HDI file<sup>†</sup> you want to load.
+            filename<sup class="warning">*</sup> of the <code>.hdi</code> file<sup>†</sup> you want to load.
         </li>
         <li><p>Enjoy!</p></li>
-        <li><p><a href="#dosbox-tips">See next section</a> on how to remove or change the HDI file</p></li>
+        <li><p><a href="#dosbox-tips">See next section</a> on how to remove or change the <code>.hdi</code> file</p></li>
     </ol>
     <p class="warning"><b><sup>*</sup> The filename is case-sensitive!</b></p>
-    <p><sup>†</sup> Depending on the type of HDI file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
+    <p><sup>†</sup> Depending on the type of <code>.hdi</code> file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
     <h2>Command Line</h2>
     <ol>
         <li>
-            <p>Navigate to the directory folder with your HDI(s) and config file, then run</p>
+            <p>Navigate to the directory folder with your <code>.hdi</code>(s) and config file, then run</p>
             <ul>
                 <li><p><b>Non-Flatpak: </b><code class="blocksmall">dosbox-x</code></p></li>
                 <li><p><b>Flatpak: </b><code class="blocksmall">flatpak run com.dosbox_x.DOSBox-X</code></p></li>
@@ -401,31 +401,31 @@ BOOT C:</code></pre>
     <h2 id="np21kai-running-retroarch">RetroArch</h2>
     <ol>
         <li><p>In the Main Menu, select "Load Core", then "NEC - PC-98 (Neko Project II Kai)"</p></li>
-        <li><p><b>If it's your first time loading the HDI file:</b></p>
+        <li><p><b>If it's your first time loading the <code>.hdi</code> file:</b></p>
             <ol>
                 <li><p>Select "Load Content"</p></li>
                 <li><p>Navigate to to directory with the file and select it</p></li>
             </ol>
-            <p><b>If you have loaded the HDI file before:</b></p>
+            <p><b>If you have loaded the <code>.hdi</code> file before:</b></p>
             <ol>
                 <li><p>Select "Playlists", then "History"</p></li>
-                <li><p>Select the HDI file, then run it.</p></li>
+                <li><p>Select the <code>.hdi</code> file, then run it.</p></li>
             </ol>
         </li>
         <li><p>Enjoy!</p></li>
-        <li><p>To remove the HDI file, go into the Quick Menu and select "Close Content"</p></li>
+        <li><p>To remove the <code>.hdi</code> file, go into the Quick Menu and select "Close Content"</p></li>
     </ol>
     <h2 id="xnp21kai-running">xnp21kai</h2>
     <ol>
         <li><p>In the menu bar, select "HardDisk"</p></li>
         <li><p>Choose <code>IDE0-0</code><sup>*</sup>, then "Open"</p></li>
-        <li><p>Find your Touhou HDI file and open it.</p></li>
+        <li><p>Find your Touhou <code>.hdi</code> file and open it.</p></li>
         <li><p>Reset the emulator.</p></li>
         <li><p>Enjoy!</p></li>
-        <li><p>To remove<sup>†</sup> the HDI, simply choose "Remove" on the "hard disk" the HDI is located in and reset the emulator.</p></li>
+        <li><p>To remove<sup>†</sup> the <code>.hdi</code>, simply choose "Remove" on the "hard disk" the <code>.hdi</code> is located in and reset the emulator.</p></li>
     </ol>
     <p><sup>*</sup> <code>IDE0-0</code> acts like the <code>C:</code> drive, while <code>IDE0-1</code> is the <code>A:</code> drive.</p>
-    <p><sup>†</sup> To switch to another HDI, simply choose "Open" again.</p>
+    <p><sup>†</sup> To switch to another <code>.hdi</code>, simply choose "Open" again.</p>
     <hr class="light">
     <h1>Using savestates</h1>
     <p class="warning"><i>Work in progress</i></p>
@@ -446,14 +446,14 @@ BOOT C:</code></pre>
     <h1>Important and useful tips</h1>
     <h2 id="dosbox-tips">DOSBox-X</h2>
     <ul>
-        <li><p class="warning">Restarting the DOSBox-X instance will make it unable to mount any HDI file in your working directory.</p>
+        <li><p class="warning">Restarting the DOSBox-X instance will make it unable to mount any <code>.hdi</code> file in your working directory.</p>
             <p>Instead:</p>
             <ul>
-                <li><p>If you want to use the same HDI file, Reboot the guest system (<b><code>F12+B</code></b>).</p></li>
-                <li><p>If you want to use a different HDI file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
+                <li><p>If you want to use the same <code>.hdi</code> file, Reboot the guest system (<b><code>F12+B</code></b>).</p></li>
+                <li><p>If you want to use a different <code>.hdi</code> file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
             </ul>
         </li>
-        <li><p>If you only use one HDI and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically
+        <li><p>If you only use one <code>.hdi</code> and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically
             <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.</p></li>
     </ul>
     <h2>Neko Project II Kai</h2>
@@ -461,18 +461,18 @@ BOOT C:</code></pre>
     <ul>
         <li><p class="warning">By default, pressing the Esc key twice will quit RetroArch!</p></li>
         <li>
-            <p>It's recommended to set your HDI file(s) as favorites to access them faster in the future.</p>
+            <p>It's recommended to set your <code>.hdi</code> file(s) as favorites to access them faster in the future.</p>
             <p>There are two ways of adding them to your favorites:</p>
             <ul>
                 <li><p>Quick Menu → Add to Favorites (while running)</p></li>
-                <li><p>Playlist → History → your HDI file(s) → Add to Favorites</p></li>
+                <li><p>Playlist → History → your <code>.hdi</code> file(s) → Add to Favorites</p></li>
             </ul>
         </li>
     </ul>
     <h3>xnp21kai</h3>
     <ul>
         <li><p>Your window position and size is not remembered!</p></li>
-        <li><p>Your last used HDI file, however, is remembered!</p></li>
+        <li><p>Your last used <code>.hdi</code> file, however, is remembered!</p></li>
         <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai</p></li>
         <li><p>There has been issues where closing the window via the "X" button may not cause the program to stop running.</p>
             <p>If that happens, kill the program via the terminal or System Monitor.</p>
