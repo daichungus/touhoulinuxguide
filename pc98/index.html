@@ -246,7 +246,7 @@ BOOT C:</code></pre>
     <ol>
         <li>
             <p>Install the required programs and libraries</p>
-            <p><b>Debian/Ubuntu/Linux Mint<sup>*</sup></b></p>
+            <p><b>Debian/Ubuntu/Linux Mint<sup class="warning">*</sup></b></p>
             <p><code class="block">sudo apt install git cmake ninja-build build-essential libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
                 libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev
                 libfontconfig1-dev libssl-dev
@@ -256,12 +256,6 @@ BOOT C:</code></pre>
             <p><code class="block">sudo dnf install gcc-c++ cmake /usr/lib64/libusb.so SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel
                 SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel
             </code></p>
-            <p><sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
-            Always check what packages will be installed and removed before confirmation.
-            </p>
-            <p class="warning"><sup>†</sup> Currently does not work on Fedora 43,
-                as the makefile will return an Error 2 and hence the file project cannot be built.
-            </p>
         </li>
         <li><p>Clone <a href="https://github.com/AZO234/NP2kai">the np21kai repo</a></p>
             <pre><code class="block">git clone https://github.com/AZO234/NP2kai.git</code></pre>
@@ -284,6 +278,13 @@ BOOT C:</code></pre>
             <pre><code class="block">xnp21kai</code></pre>
         </li>
     </ol>
+    <p class="warning">
+        <sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
+        Always check what packages will be installed and removed before confirmation.
+    </p>
+    <p class="warning">
+        <sup>†</sup> Currently does not work on Fedora 43, as the makefile will return an Error 2, therefore the file project cannot be built.
+    </p>
     <h2 id="adjust-settings">Settings to adjust before playing</h2>
     <h3 id="adjust-settings-retroarch">RetroArch</h3>
     <ol>
