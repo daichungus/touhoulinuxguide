@@ -29,6 +29,7 @@
 *.act binary
 *.jpg binary
 *.jpeg binary
+*.ico binary
 
 *.end binary
 *.flac binary
