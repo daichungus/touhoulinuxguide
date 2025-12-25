@@ -428,7 +428,7 @@ BOOT C:</code></pre>
     <p><sup>*</sup> <code>IDE0-0</code> acts like the <code>C:</code> drive, while <code>IDE0-1</code> is the <code>A:</code> drive.</p>
     <p><sup>†</sup> To switch to another <code>.hdi</code>, simply choose "Open" again.</p>
     <hr class="light">
-    <h1>Using savestates</h1>
+    <h1 id="savestates">Using savestates</h1>
     <p class="warning"><i>Work in progress</i></p>
     <p>
         Savestates allow you to create a "snapshot" of your PC-98 system at any given time, so long as your <code>.hdi</code>
@@ -436,6 +436,24 @@ BOOT C:</code></pre>
     </p>
     <p>In the context of the PC-98 Touhou games, savestates are useful for applications such as continuing where you left off in-game.</p>
     <h2>DOSBox-X</h2>
+    <h3>Manual methods</h3>
+    <p>To create a savestate, navigate to "Capture", then click on "Save state" <b><code class="blocksmall">F12 + S</code></b></p>
+    <p>You'll be prompted to give it a unique name.<sup class="warning">*</sup></p>
+    <p>To load a savestate, repeat the first step but click on "Load state" <b><code class="blocksmall">F12 + L</code></b> instead.</p>
+    <p>To store more than one savestate, navigate<sup>†</sup> to an empty slot in "Select save slot" under "Capture". DOSBox-X has 100 empty slots by default.</p>
+    <p>
+        To remove a slot's content without writing any data to it, click "Remove state in slot" under "Select save slot"
+        <i class="warning">after you've already selected the slot that you want to clear.</i>
+    </p>
+    <p class="warning">
+        <sup>*</sup> This will overwrite all data in the current selected save slot,
+        so make sure to navigate to the next empty slot if you want to save a new separate save state.
+    </p>
+    <p>
+        <sup>†</sup> For faster navigation, use <b><code class="blocksmall">F12 + .</code></b> for the next slot,
+        and <b><code class="blocksmall">F12 + ,</code></b> for the previous slot; both are relative to the current selected save slot.
+    </p>
+    <h3>Auto-saving</h3>
     <h2>Neko Project II Kai</h2>
     <h3>RetroArch</h3>
     <h3>xnp21kai</h3>
