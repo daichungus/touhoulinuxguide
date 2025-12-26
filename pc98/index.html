@@ -44,7 +44,7 @@
     <p>Most major <a href="https://wikipedia.org/wiki/Linux_distribution">distros</a> and
         <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environments</a>
         should work well with this guide.</p>
-    <p>My only recommendation is to choose a well-known, widely-supported, and stable distro, which includes but is not
+    <p>The author's only recommendation is to choose a well-known, widely-supported, and stable distro, which includes but is not
         limited to the following:
     </p>
     <ul>
@@ -447,17 +447,19 @@ BOOT C:</code></pre>
     <p><sup>†</sup> To switch to another <code>.hdi</code>, simply choose "Open" again.</p>
     <hr class="light">
     <h1 id="savestates">Using savestates</h1>
-    <p class="warning"><i>Work in progress</i></p>
+    <h2 class="warning"><i>This section is a work-in-progress</i></h2>
     <p>
         Savestates allow you to create a "snapshot" of your PC-98 system at any given time, so long as your <code>.hdi</code>
         file still exists in the same location as when you last used it, and there's enough open slots left.
     </p>
-    <p>In the context of the PC-98 Touhou games, savestates are useful for applications such as continuing where you left off in-game.</p>
-    <h2>DOSBox-X</h2>
-    <h3>Manual methods</h3>
+    <p>In the context of the PC-98 Touhou games, savestates are useful for applications such as continuing where you left off in-game, or practicing certain sections.</p>
+    <h1>DOSBox-X</h1>
+    <p>Savestates in DOSBox-X are known to have issues, such as buggy behavior after loading.</p>
+    <p>For most of the Touhou games, the author recommends pausing the game before creating a savestate.</p>
+    <h2>Creating savestates</h2>
+    <h3>Manual method</h3>
     <p>To create a savestate, navigate to "Capture", then click on "Save state" <b><code class="blocksmall">F12 + S</code></b></p>
     <p>You'll be prompted to give it a unique name.<sup class="warning">*</sup></p>
-    <p>To load a savestate, repeat the first step but click on "Load state" <b><code class="blocksmall">F12 + L</code></b> instead.</p>
     <p>To store more than one savestate, navigate<sup>†</sup> to an empty slot in "Select save slot" under "Capture". DOSBox-X has 100 empty slots by default.</p>
     <p>
         To remove a slot's content without writing any data to it, click "Remove state in slot" under "Select save slot"
@@ -465,13 +467,22 @@ BOOT C:</code></pre>
     </p>
     <p class="warning">
         <sup>*</sup> This will overwrite all data in the current selected save slot,
-        so make sure to navigate to the next empty slot if you want to save a new separate save state.
+        so make sure to navigate to the next empty slot if you want to create a separate save state.
     </p>
     <p>
         <sup>†</sup> For faster navigation, use <b><code class="blocksmall">F12 + .</code></b> for the next slot,
         and <b><code class="blocksmall">F12 + ,</code></b> for the previous slot; both are relative to the current selected save slot.
     </p>
     <h3>Auto-saving</h3>
+    <h2>Loading savestates</h2>
+    <p class="warning"><b>
+        Warning: Before loading a savestate, you must be currently running exactly the same game,
+        from exactly the same <code>.hdi</code> file that you want to load the savestate from.
+    </b></p>
+    <p>
+        To load a savestate, select "Load state" <b><code class="blocksmall">F12 + L</code></b>
+        on the selected slot that you want to load it from.
+    </p>
     <h2>Neko Project II Kai</h2>
     <h3>RetroArch</h3>
     <h3>xnp21kai</h3>
