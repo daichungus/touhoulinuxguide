@@ -176,13 +176,13 @@ cycles = 72000</code></pre>
     <pre><code class="block">[cpu]
 core = dynamic_x86</code></pre>
     <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. <code>72000</code> is suggested in this guide for most systems.</p>
-    <p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing with the same number of cycles.</p>
+    <p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing by the author with the same number of cycles.</p>
     <h3 id="autoexec">Auto-execution</h3>
-    <p>This is especially helpful if you intend on always using only one <code>.hdi</code> file<sup>*</sup> and do not want to always type the commands by hand</p>
+    <p>This is especially helpful if you intend on always using only one <code>.hdi</code> file<sup>*</sup> and do not want to always type the commands by hand every time you start DOSBox-X.</p>
     <pre><code class="block">[autoexec]
 IMGMOUNT C TOUHOU.HDI
 BOOT C:</code></pre>
-    <p>Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your <code>.hdi</code> file.</p>
+    <p>(Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your <code>.hdi</code> file.)</p>
     <p><sup>*</sup> For example, an <code>.hdi</code> with all the PC-98 Touhou games or a full system</p>
     <hr class="light">
     <h1 id="np21kai-setup">Neko Project II Kai setup</h1>
@@ -316,10 +316,10 @@ BOOT C:</code></pre>
                 <li><b>CPU Clock Multiplier<sup class="warning">†</sup></b> = <code class="blocksmall">52</code></li>
                 <li><b>RAM Size<sup class="warning">†</sup></b> = <code class="blocksmall">16</code></li>
                 <li>Sound Board = <code class="blocksmall">PC9801-26K+86</code></li>
-                <li>Volume VM = <code class="blocksmall">128</code></li>
+                <li>Volume FM = <code class="blocksmall">128</code></li>
                 <li>Volume SSG = <code class="blocksmall">128</code></li>
                 <li>Volume RHYTHM = <code class="blocksmall">128</code></li>
-                <li>Sound Generator = <code class="blocksmall">Default</code></li>
+                <li>Sound Generator = <code class="blocksmall">Default</code> (or fmgen if available)</li>
             </ul>
         </li>
         <li><p>Go back and restart the core.</p></li>
@@ -343,8 +343,8 @@ BOOT C:</code></pre>
                 <li>
                     <b>Device</b>
                     <ul>
-                        <li>Sound = PC9801-86</li>
-                        <li>Memory = 16.6 MB</li>
+                        <li>Sound = <code class="blocksmall">PC9801-86</code></li>
+                        <li>Memory = <code class="blocksmall">16.6 MB</code></li>
                     </ul>
                 </li>
             </ul>
@@ -352,32 +352,46 @@ BOOT C:</code></pre>
         <li><p>Install the <a href="#pc98-files">necessary ROM files</a> to <code class="blocksmall">~/.config/xnp21kai/</code></p></li>
     </ol>
     <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
-    <p class="warning"><sup>†</sup> Testing by the author has shown that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
+    <p class="warning"><sup>†</sup> Testing by the author in xnp21kai has shown that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
     <hr class="light">
-    <h1 id="pc98-files">PC-98 files</h1>
-    <h2>ROM files</h2>
+    <h1 id="pc98-files">ROM and font files</h1>
+    <h2 id="rom-files">ROM files</h2>
     <p>You may need to install some PC-98 ROM files for your emulator to work properly.</p>
-    <p>NP2Kai on RetroArch and DOSBox-X both already include the necessary files.</p>
-    <p>However, <b>xnp21kai does require these files</b>:</p>
+    <p>NP2Kai on RetroArch and DOSBox-X both already include most of the necessary files.</p>
+    <p>However, <b>xnp21kai requires these files in order to work</b>:</p>
     <ul>
         <li><a href="./ROM/BIOS.ROM" download>BIOS.ROM</a></li>
         <li><a href="./ROM/ITF.ROM" download>ITF.ROM</a></li>
         <li><a href="./ROM/SOUND.ROM" download>SOUND.ROM</a></li>
         <li><a href="./ROM/FONT.ROM" download>FONT.ROM</a> (see <a href="#fonts">next section</a>)</li>
     </ul>
-    <h2 id="fonts">Fonts</h2>
-    <p>Both Neko Project II Kai and DOSBox-X require the a font file.</p>
+    <h2 id="fonts">Font files</h2>
+    <p>Both Neko Project II Kai and DOSBox-X require a font file in order to properly display Japanese characters.</p>
     <p>Some popular font files are available to download from here:</p>
     <ul>
         <li><a href="./fonts/FONTNP.BMP" download>Neko Project 21 font</a></li>
         <li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>
-        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font (DOSBox-X default)</a></li>
-        <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a></li>
+        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font</a> (DOSBox-X default)</li>
+        <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a> (<code>FONT.ROM</code>)</li>
     </ul>
-    <p>Move/copy the font file to the same directory/folder as your PC-98 Touhou <code>.hdi</code> file(s).</p>
-    <p>For xnp21kai, place it in <code class="blocksmall">~/.config/xnp21kai</code>. If you are using a font besides
-        <code>FONT.ROM</code>, edit <code>fontfile</code> in <code>xnp21kairc</code> to the <i><b>abosolute</b></i> filepath of the font.
-    </p>
+    <h2>Installation</h2>
+    <h3>DOSBox-X</h3>
+    <p>Move/copy the font and ROM files to the same directory/folder as your PC-98 Touhou <code>.hdi</code> file(s).</p>
+    <h3>RetroArch</h3>
+    <ol>
+        <li>
+            <p>Navigate to <code class="blocksmall">~/.var/app/org.libretro.RetroArch/config/retroarch/system/</code></p>
+        </li>
+        <li>
+            <p>Create a folder called <code class="blocksmall">np2kai</code></p>
+        </li>
+        <li>
+            <p>Copy/move your font and ROM files to <code class="blocksmall">np2kai</code></p>
+        </li>
+    </ol>
+    <h3>xnp21kai</h3>
+    <p>Copy/move the font and ROM files into <code class="blocksmall">~/.config/xnp21kai</code>.</p>
+    <p>If you are using a font besides <code>FONT.ROM</code>, edit <code class="blocksmall">fontfile</code> in <code>xnp21kairc</code> to the <i><b>absolute</b></i> filepath of the font.</p>
     <hr class="light">
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
     <h3>Disclaimer</h3>
@@ -489,7 +503,6 @@ BOOT C:</code></pre>
     <p>To enable savestates, add the following line to <code>xnp21kairc</code></p>
     <pre><code class="blocksmall">STATSAVE = true</code></pre>
     <p>(Re)start the program. There should be a new section in the menu bar titled <code>STAT</code>. Under that, you can save and load two slots.</p>
-    <h2>Other</h2>
     <hr class="light">
     <h1>Important and useful tips</h1>
     <h2 id="dosbox-tips">DOSBox-X</h2>
