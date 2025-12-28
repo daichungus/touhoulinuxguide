@@ -296,8 +296,18 @@ BOOT C:</code></pre>
             <pre><code class="block">git -c protocol.file.allow=always submodule update --init cmake/sdl2-cmake-modules</code></pre>
             <pre><code class="block">sed 's|no-incompatible-function-pointer-types|no-incompatible-pointer-types -Wno-implicit-int|g' -i CMakeLists.txt</code></pre>
         </li>
-        <li><p>Create the <code>build</code> directory and create the CMake files.</p>
+        <li><p>Create the <code>build</code> directory and create the CMake files.<sup>†</sup></p>
             <pre><code class="block">mkdir build</code></pre>
+            <p><b>Default build of Neko Project II Kai (X and SDL)</b></p>
+            <p>
+                <b class="recommended"><i>Recommended for most users.</i></b>
+                The X version is for legacy support, while SDL is more modern (and the version used on RetroArch).
+            </p>
+            <pre><code class="block">cmake build -DBUILD_X=ON</code></pre>
+            <p><b>X only, no SDL</b></p>
+            <pre><code class="block">cmake -S . -B build -DBUILD_X=ON</code></pre>
+            <p><b>Almost all possible builds of Neko Project II Kai</b></p>
+            <p><i>Do this only if you want to mirror the AUR on a non-Arch distro or you want all versions, possibly for debugging.</i></p>
             <pre>
 <code class="block">cmake -S . -B build \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
@@ -317,28 +327,89 @@ BOOT C:</code></pre>
     -DUSE_VST3SDK=OFF \
     -G Ninja
 </code></pre>
+        <p>The following table contains not all, but noteworthy CMake options</p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>CMake flag</th>
+                    <th>Default value with just <code>cmake -D BUILD_X=ON</code></th>
+                    <th>Created program(s)</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>-DCMAKE_INSTALL_PREFIX</code></td>
+                    <td><code>/usr/local</code></td>
+                    <td></td>
+                    <td>
+                        Programs will be installed to <code>/usr/local/bin</code> when the install command is ran.
+                        The AUR installs them to <code>/usr/bin</code> instead.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>-DBUILD_X</code></td>
+                    <td><code>ON</code></td>
+                    <td><code>x*</code></td>
+                    <td>Creates X11 versions of the following programs.</td>
+                </tr>
+                <tr>
+                    <td><code>-DBUILD_SDL</code></td>
+                    <td><code>ON</code></td>
+                    <td><code>sdl*</code></td>
+                    <td>Creates SDL versions of the following programs.</td>
+                </tr>
+                <tr>
+                    <td><code>-DUSE_SDL2</code></td>
+                    <td><code>ON</code></td>
+                    <td></td>
+                    <td>Uses SDL2 for the SDL versions of the programs. If set to <code>OFF</code>, uses SDL1</td>
+                </tr>
+                <tr>
+                    <td><code>-DBUILD_I286</code></td>
+                    <td><code>OFF</code></td>
+                    <td><code>xnp2kai</code>, <code>sdlnp2kai</code></td>
+                    <td>If set to <code>ON</code>, creates the i286 version, which can only run 16-bit operating systems and programs.</td>
+                </tr>
+                <tr>
+                    <td><code>-DBUILD_HAXM</code></td>
+                    <td><code>OFF</code></td>
+                    <td><code>xnp21kai_HAXM</code>, <code>sdlnp21kai_HAXM</code></td>
+                    <td>
+                        If set to <code>ON</code>, creates a IA32 version with HAXM, which uses hardware virtualization.
+                        Only use this if you want to, and have an Intel CPU that supports HAXM.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         </li>
-        <li><p>Build the program. Errors and warnings are normal.</p>
+        <li>
+            <p>Build the program. Errors and warnings are normal.</p>
+            <p><b>Default (faster)</b></p>
+            <pre><code class="block">cd build/</code></pre>
+            <pre><code class="block">make -j</code></pre>
+            <p><b>Without going into <code>build/</code></b></p>
             <pre><code class="block">cmake --build build</code></pre>
         </li>
-        <li><p>Install the program(s)<sup>†</sup> to the system</p>
+        <li><p>Install the program(s) to the system</p>
+            <p><b>Default (while in <code>build/</code>)</b></p>
+            <pre><code class="block">sudo make install</code></pre>
+            <p><b>Without going into <code>build/</code></b></p>
             <pre><code class="block">sudo cmake --install build</code></pre>
         </li>
         <li>Run the program, and <a href="#adjust-settings-xnp21kai">adjust settings</a>
+            <p><b>X version</b></p>
             <pre><code class="block">xnp21kai</code></pre>
+            <p><b>SDL version</b></p>
+            <pre><code class="block">sdlnp21kai</code></pre>
         </li>
     </ol>
     <p class="warning">
         <sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
         Always check what packages will be installed and removed before confirmation.
     </p>
-    <p><sup>†</sup> Three programs should be installed:</p>
-    <ul>
-        <li>xNP21kai HAXM</li>
-        <li>xNP21kai + IA32</li>
-        <li>xNP2kai</li>
-    </ul>
-    <p>The author recommends running "xNP21kai + IA32" for consistency and stability.</p>
+    <p>
+        <sup>†</sup> The author recommends using the default build flag <code class="blocksmall">-DBUILD_X=ON</code> for simplicity.
+        You wouldn't want to have to keep track of three different emulators, eh?
+    </p>
     <h2 id="adjust-settings">Settings to adjust before playing</h2>
     <h3 id="adjust-settings-retroarch">RetroArch</h3>
     <ol>
