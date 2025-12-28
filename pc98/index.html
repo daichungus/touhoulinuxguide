@@ -324,9 +324,9 @@ BOOT C:</code></pre>
             <p><b>Optional, but more authentic (or loud) music experience:</b></p>
             <ul>
                 <li>Sound Board = <code class="blocksmall">PC9801-26K+86</code></li>
-                <li>Volume FM = <code class="blocksmall">128</code></li>
-                <li>Volume SSG = <code class="blocksmall">128</code></li>
-                <li>Volume RHYTHM = <code class="blocksmall">128</code></li>
+                <li>Volume FM = <code class="blocksmall">100</code></li>
+                <li>Volume SSG = <code class="blocksmall">100</code></li>
+                <li>Volume RHYTHM = <code class="blocksmall">100</code></li>
                 <li>Sound Generator = <code class="blocksmall">Default</code> (or fmgen if available)</li>
             </ul>
         </li>
@@ -484,7 +484,7 @@ BOOT C:</code></pre>
     <p>To store more than one savestate, navigate<sup>†</sup> to an empty slot in "Select save slot" under "Capture". DOSBox-X has 100 empty slots by default.</p>
     <p>
         To remove a slot's content without writing any data to it, click "Remove state in slot" under "Select save slot"
-        <i class="warning">after you've already selected the slot that you want to clear.</i>
+        <i>after you've already selected the slot that you want to clear.</i>
     </p>
     <p class="warning">
         <sup>*</sup> This will overwrite all data in the current selected save slot,
@@ -504,9 +504,23 @@ BOOT C:</code></pre>
         To load a savestate, select "Load state" <b><code class="blocksmall">F12 + L</code></b>
         on the selected slot that you want to load it from.
     </p>
-    <h2>Neko Project II Kai</h2>
-    <h3>RetroArch</h3>
-    <h3>xnp21kai</h3>
+    <h1>Neko Project II Kai</h1>
+    <h2>RetroArch</h2>
+    <p>Savestates can be stored in up to 1000 slots.</p>
+    <p><b><i>Before loading a savestate, you must be currently running the same <code>.hdi</code> file that you want to load the savestate from.</i></b></p>
+    <p></p>
+    <h3>In-game method:</h3>
+    <p><code class="blocksmall">F2</code> to quickly create a savestate to <i>the current</i> slot.</p>
+    <p><code class="blocksmall">F4</code> to quickly load a savestate from <i>the current</i> slot.</p>
+    <p>
+        <code class="blocksmall">F6</code> and <code class="blocksmall">F7</code> to navigate between slots.
+        A thumbnail of the slot's savestate will be shown for reference.
+    </p>
+    <h3>In-menu method:</h3>
+    <p>Go to "Save States", then click on "Save State" to create a savestate to the current slot.</p>
+    <p>To load a savestate from the current slot, click on "Load State".</p>
+    <p>To navigate between slots, enter "State Slot" and navigate to your desired slot.</p>
+    <h2>xnp21kai</h2>
     <p>To enable savestates, add the following line to <code>xnp21kairc</code></p>
     <pre><code class="blocksmall">STATSAVE = true</code></pre>
     <p>(Re)start the program. There should be a new section in the menu bar titled <code>STAT</code>. Under that, you can save and load two slots.</p>
