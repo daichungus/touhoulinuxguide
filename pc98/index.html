@@ -292,8 +292,6 @@ BOOT C:</code></pre>
         </li>
         <li><p>Navigate to the repo and prepare for building</p>
             <pre><code class="block">cd NP2kai</code></pre>
-            <pre><code class="block">git config submodule.cmake/sdl2-cmake-modules.url "${srcdir}/sdl2-cmake-modules"</code></pre>
-            <pre><code class="block">git -c protocol.file.allow=always submodule update --init cmake/sdl2-cmake-modules</code></pre>
             <pre><code class="block">sed 's|no-incompatible-function-pointer-types|no-incompatible-pointer-types -Wno-implicit-int|g' -i CMakeLists.txt</code></pre>
         </li>
         <li><p>Create the <code>build</code> directory and create the CMake files.<sup>†</sup></p>
