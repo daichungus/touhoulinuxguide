@@ -200,9 +200,9 @@ BOOT C:</code></pre>
             <p>Good choice if you use an Arch-based system. Doesn't help if you don't use Arch, by the way.</p>
         </li>
         <li><h3>Building from source / xnp21kai (<a href="#np21kai-source">skipto</a>)</h3>
-            <p class="warning"><i><b>Has bugs and missing features.</b></i></p>
-            <p>Not recommended for users new to Linux or unfamiliar with CLI.
-                Only choose this if you absolutely desire or have no other options.
+            <p class="warning"><i><b>Has bugs, missing features, and arbitrary behavior.</b></i></p>
+            <p>Not recommended for users new to Linux or users who are unfamiliar with CLI and building programs from source.
+                Only choose this if you absolutely desire so or have no other options.
             </p>
         </li>
     </ul>
@@ -269,32 +269,52 @@ BOOT C:</code></pre>
         <li>
             <p>Install the required programs and libraries</p>
             <p><b>Debian/Ubuntu/Linux Mint<sup class="warning">*</sup></b></p>
-            <p><code class="block">sudo apt install git cmake ninja-build build-essential libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
+            <p><code class="block">sudo apt install git cmake ninja-build build-essential nasm libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
                 libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev
                 libfontconfig1-dev libssl-dev
             </code></p>
-            <p><b>Fedora <sup class="warning">†</sup></b></p>
+            <p><b>Fedora</b></p>
             <p><code class="block">ssudo dnf group install "development-tools"</code></p>
-            <p><code class="block">sudo dnf install gcc-c++ cmake /usr/lib64/libusb.so SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel
-                SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel
-            </code></p>
+            <p>
+                <code class="block">sudo dnf install gcc-c++ cmake ninja-build nasm /usr/lib64/libusb.so SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel</code>
+            </p>
         </li>
         <li><p>Clone <a href="https://github.com/AZO234/NP2kai">the np21kai repo</a></p>
             <pre><code class="block">git clone https://github.com/AZO234/NP2kai.git</code></pre>
         </li>
-        <li><p>Navigate to the repo and make the work directory</p>
+        <li><p>Navigate to the repo and prepare for building</p>
             <pre><code class="block">cd NP2kai</code></pre>
+            <pre><code class="block">git config submodule.cmake/sdl2-cmake-modules.url "${srcdir}/sdl2-cmake-modules"</code></pre>
+            <pre><code class="block">git -c protocol.file.allow=always submodule update --init cmake/sdl2-cmake-modules</code></pre>
+            <pre><code class="block">sed 's|no-incompatible-function-pointer-types|no-incompatible-pointer-types -Wno-implicit-int|g' -i CMakeLists.txt</code></pre>
+        </li>
+        <li><p>Create the <code>build</code> directory and create the Cmake files.</p>
             <pre><code class="block">mkdir build</code></pre>
-            <pre><code class="block">cd build</code></pre>
+            <pre>
+<code class="block">cmake -S . -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_MANDIR=/usr/share/man/man1 \
+    -DBUILD_X=ON \
+    -DBUILD_SDL=ON \
+    -DBUILD_I286=ON \
+    -DBUILD_HAXM=ON \
+    -DUSE_X=ON \
+    -DUSE_SDL2=ON \
+    -DUSE_SDL=OFF \
+    -DUSE_SDL_MIXER=ON \
+    -DUSE_SDL_TTF=ON \
+    -DUSE_HAXM=OFF \
+    -DUSE_ASYNCCPU=ON \
+    -DUSE_VST3SDK=OFF \
+    -G Ninja
+</code></pre>
         </li>
-        <li><p>Generate the makefile</p>
-            <pre><code class="block">cmake .. -D BUILD_X=ON</code></pre>
+        <li><p>Build the program. Errors and warnings are normal.</p>
+            <pre><code class="block">cmake --build build</code></pre>
         </li>
-        <li><p>Make. Errors are normal.</p>
-            <pre><code class="block">make -j</code></pre>
-        </li>
-        <li><p>Install the binary (to <code>/usr/local/bin/</code>)</p>
-            <pre><code class="block">sudo make install</code></pre>
+        <li><p>Install the program<sup>†</sup> to the system</p>
+            <pre><code class="block">sudo cmake --install build</code></pre>
         </li>
         <li>Run the program, and <a href="#adjust-settings-xnp21kai">adjust settings</a>
             <pre><code class="block">xnp21kai</code></pre>
@@ -304,9 +324,13 @@ BOOT C:</code></pre>
         <sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
         Always check what packages will be installed and removed before confirmation.
     </p>
-    <p class="warning">
-        <sup>†</sup> Currently does not work on Fedora 43, as the makefile will return an Error 2, therefore the file project cannot be built.
-    </p>
+    <p><sup>†</sup> Three programs should be installed:</p>
+    <ul>
+        <li>xNP21kai HAXM</li>
+        <li>xNP21kai + IA32</li>
+        <li>xNP2kai</li>
+    </ul>
+    <p>The author recommends running "xNP21kai + IA32" for consistency and stability.</p>
     <h2 id="adjust-settings">Settings to adjust before playing</h2>
     <h3 id="adjust-settings-retroarch">RetroArch</h3>
     <ol>
