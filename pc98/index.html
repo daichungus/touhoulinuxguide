@@ -415,17 +415,24 @@ BOOT C:</code></pre>
         <li>
             <p>If prompted, select the directory/folder with your <code>.hdi</code> files as your working directory.</p>
         </li>
-        <li><p>Wait for it to finish loading, then run these two commands in DOSBox-X:</p>
+        <li><p>Wait for DOSBox-X to finish loading<sup>*</sup>, then run these two commands in DOSBox-X:</p>
             <pre><code class="block">IMGMOUNT C TOUHOU.HDI</code></pre>
             <pre><code class="block">BOOT C:</code></pre>
             Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual
-            filename<sup class="warning">*</sup> of the <code>.hdi</code> file<sup>†</sup> you want to load.
+            filename<sup class="warning">†</sup> of the <code>.hdi</code> file<sup>‡</sup> you want to load.
         </li>
         <li><p>Enjoy!</p></li>
-        <li><p><a href="#dosbox-tips">See next section</a> on how to remove or change the <code>.hdi</code> file</p></li>
+        <li>
+            <p><a href="#dosbox-x-savestates">See this section</a> for info on savestates.</p>
+            <p><a href="#dosbox-tips">See this section</a> on how to remove or change the <code>.hdi</code> file</p>
+        </li>
     </ol>
-    <p class="warning"><b><sup>*</sup> The filename is case-sensitive!</b></p>
-    <p><sup>†</sup> Depending on the type of <code>.hdi</code> file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
+    <p>
+        <sup>*</sup> You should see a CLI with <code class="blocksmall">Z:¥&gt;</code> as the prompt.
+        If not, check your <code>dosbox-x.conf</code> file to see that <code class="blocksmall">machine = pc98</code>.
+    </p>
+    <p class="warning"><b><sup>†</sup> The filename is case-sensitive!</b></p>
+    <p><sup>‡</sup> Depending on the type of <code>.hdi</code> file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
     <h2>Command Line</h2>
     <ol>
         <li>
@@ -462,7 +469,10 @@ BOOT C:</code></pre>
         <li><p>Find your Touhou <code>.hdi</code> file and open it.</p></li>
         <li><p>Reset the emulator.</p></li>
         <li><p>Enjoy!</p></li>
-        <li><p>To remove<sup>†</sup> the <code>.hdi</code>, simply choose "Remove" on the "hard disk" the <code>.hdi</code> is located in and reset the emulator.</p></li>
+        <li>
+            <p><a href="np21kai-savestates">See this section</a> for info on savestates.</p>
+            <p>To remove<sup>†</sup> the <code>.hdi</code>, simply choose "Remove" on the "hard disk" the <code>.hdi</code> is located in and reset the emulator.</p>
+        </li>
     </ol>
     <p><sup>*</sup> <code>IDE0-0</code> acts like the <code>C:</code> drive, while <code>IDE0-1</code> is the <code>A:</code> drive.</p>
     <p><sup>†</sup> To switch to another <code>.hdi</code>, simply choose "Open" again.</p>
@@ -474,7 +484,7 @@ BOOT C:</code></pre>
         file still exists in the same location as when you last used it, and there's enough open slots left.
     </p>
     <p>In the context of the PC-98 Touhou games, savestates are useful for applications such as continuing where you left off in-game, or practicing certain sections.</p>
-    <h1>DOSBox-X</h1>
+    <h1 id="dosbox-x-savestates">DOSBox-X</h1>
     <p>Savestates in DOSBox-X are known to have issues, such as buggy behavior after loading.</p>
     <p>For most of the Touhou games, the author recommends pausing the game before creating a savestate.</p>
     <h2>Creating savestates</h2>
@@ -504,7 +514,7 @@ BOOT C:</code></pre>
         To load a savestate, select "Load state" <b><code class="blocksmall">F12 + L</code></b>
         on the selected slot that you want to load it from.
     </p>
-    <h1>Neko Project II Kai</h1>
+    <h1 id="np21kai-savestates">Neko Project II Kai</h1>
     <h2>RetroArch</h2>
     <p>Savestates can be stored in up to 1000 slots.</p>
     <p><b><i>Before loading a savestate, you must be currently running the same <code>.hdi</code> file that you want to load the savestate from.</i></b></p>
@@ -535,8 +545,12 @@ BOOT C:</code></pre>
                 <li><p>If you want to use a different <code>.hdi</code> file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
             </ul>
         </li>
-        <li><p>If you only use one <code>.hdi</code> and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically
-            <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.</p></li>
+        <li>
+            <p>
+                If you only use one <code>.hdi</code> file and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically
+                <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.
+            </p>
+        </li>
     </ul>
     <h2>Neko Project II Kai</h2>
     <h3>RetroArch</h3>
@@ -570,6 +584,14 @@ BOOT C:</code></pre>
     <hr class="light">
     <h1>Common Issues</h1>
     <p>This section is under expansion. Submit issues and fixes <a href="https://github.com/daichungus/touhoulinuxguide/issues">through the repo</a>.</p>
+    <h2>RetroArch</h2>
+    <h3>Flatpak version can't go fullscreen in KDE</h3>
+    <p>Right click on the title bar of the window.</p>
+    <p>Go to "More Actions" → "Special Window actions".</p>
+    <p>In the new window, click "Add property" in the bottom left. Find "Fullscreen" in the list and add it.</p>
+    <p>Go back and make sure you set "Fullscreen" to "Yes".</p>
+    <p>If you have multiple monitors, and the program launches on the wrong one, you can also add "screen" property.</p>
+    <p>The changed settings can be found under System Settings → "Window Management" → "Window Rules" → Pencil icon of "Window settings for com.libretro.RetroArch".</p>
     <h2>xnp21kai</h2>
     <h3>No sound</h3>
     <p>Try stopping the program and run it again. (<code class="blocksmall">Ctrl+C</code> if launched from the terminal)</p>
