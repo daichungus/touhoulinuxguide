@@ -296,11 +296,11 @@ BOOT C:</code></pre>
             <pre><code class="block">git -c protocol.file.allow=always submodule update --init cmake/sdl2-cmake-modules</code></pre>
             <pre><code class="block">sed 's|no-incompatible-function-pointer-types|no-incompatible-pointer-types -Wno-implicit-int|g' -i CMakeLists.txt</code></pre>
         </li>
-        <li><p>Create the <code>build</code> directory and create the Cmake files.</p>
+        <li><p>Create the <code>build</code> directory and create the CMake files.</p>
             <pre><code class="block">mkdir build</code></pre>
             <pre>
 <code class="block">cmake -S . -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr/local \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_MANDIR=/usr/share/man/man1 \
     -DBUILD_X=ON \
@@ -321,7 +321,7 @@ BOOT C:</code></pre>
         <li><p>Build the program. Errors and warnings are normal.</p>
             <pre><code class="block">cmake --build build</code></pre>
         </li>
-        <li><p>Install the program<sup>†</sup> to the system</p>
+        <li><p>Install the program(s)<sup>†</sup> to the system</p>
             <pre><code class="block">sudo cmake --install build</code></pre>
         </li>
         <li>Run the program, and <a href="#adjust-settings-xnp21kai">adjust settings</a>
