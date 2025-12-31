@@ -74,8 +74,9 @@ SOFTWARE.
         <li><a href="https://linuxmint.com/">Linux Mint</a></li>
         <li><a href="https://ubuntu.com/desktop">Ubuntu</a></li>
         <li><a href="https://fedoraproject.org/">Fedora</a></li>
+        <li><a href="https://www.debian.org/">Debian</a></li>
     </ul>
-    <p>This guide has been personally tested with:</p>
+    <p>This guide has been personally tested by the author with the following distros:</p>
     <ul>
         <li>Linux Mint (22.2)</li>
         <li>Fedora (43)</li>
@@ -234,7 +235,7 @@ BOOT C:</code></pre>
             </p>
         </li>
     </ul>
-    <h3 id="np21kai-retroarch">RetroArch</h3>
+    <h2 id="np21kai-retroarch">RetroArch</h2>
     <p>
         You may want to familiarize yourself with the
         <a href="https://docs.libretro.com/image/guides/standard-key-bindings.png">RetroArch standard keyboard bindings</a>
@@ -271,7 +272,7 @@ BOOT C:</code></pre>
     </ol>
     <p><sup>*</sup> For consistency and ease of use, this guide recommends the stable version for most users.</p>
     <p><sup>†</sup> Enter key on a keyboard</p>
-    <h3 id="np21kai-arch">Arch Linux</h3>
+    <h2 id="np21kai-arch">AUR package (Arch Linux)</h2>
     <p>If you're new to Arch, please consider first reading the Arch Wiki article on
         <a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>,
         along with the <a href="https://wiki.archlinux.org/title/Makepkg">article on makepkg</a>.
@@ -284,27 +285,39 @@ BOOT C:</code></pre>
             <pre><code class="block">makepkg -si gtk2</code></pre>
         </li>
         <li>
-            <p>Install np21kai from the <a href="https://aur.archlinux.org/packages/np2kai-git">AUR</a></p>
+            <p>Clone the np21kai repo from the <a href="https://aur.archlinux.org/packages/np2kai-git">AUR</a></p>
             <pre><code class="block">git clone https://aur.archlinux.org/np2kai-git.git</code></pre>
+            <p>Check the PKGBUILD for security, and <a href="#cmake-options-table">modify the CMake flags</a> if desired. <sup>*</sup></p>
             <pre><code class="block">cd np2kai-git &amp;&amp; less PKGBUILD</code></pre>
             <pre><code class="block">makepkg -si np21kai</code></pre>
         </li>
         <li><p>Proceed with <a href="#adjust-settings-xnp21kai">adjusting the necessary settings</a>.</p></li>
     </ol>
-    <h3 id="np21kai-source">Building from source (xnp21kai)</h3>
+    <p><sup>*</sup> Currently as of writing, the <code>PKGBUILD</code> will create 6 versions of np21kai by default</p>
+    <ul>
+        <li><code>xnp2kai</code></li>
+        <li><code>xnp21kai</code></li>
+        <li><code>xnp21kai_HAXM</code></li>
+    </ul>
+    <p>and their SDL equivalents with the <code>sdl</code> prefix instead of <code>x</code>.</p>
+    <h2 id="np21kai-source">Building from source (xnp21kai)</h2>
     <p><i>
-        The steps below are referenced the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">original README document</a>
+        The steps below are referenced from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">original README document</a>
         and the <a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=np2kai-git">AUR PKGBUILD file</a>.
     </i></p>
     <ol>
         <li>
             <p>Install the required programs and libraries</p>
-            <p><b>Debian/Ubuntu/Linux Mint<sup class="warning">*</sup></b></p>
-            <p><code class="block">sudo apt install git cmake ninja-build build-essential nasm libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
+            <h3>Debian/Ubuntu/Linux Mint</h3>
+            <p class="warning"><i>
+                Installing these libraries may cause some of your programs or dependencies to be automatically removed.
+                Always check what packages will be installed and removed before confirmation.
+            </i></p>
+            <p><code class="block">sudo apt install git build-essential cmake ninja-build nasm libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
                 libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev
                 libfontconfig1-dev libssl-dev
             </code></p>
-            <p><b>Fedora</b></p>
+            <h3>Fedora</h3>
             <p><code class="block">sudo dnf group install "development-tools"</code></p>
             <p>
                 <code class="block">sudo dnf install gcc-c++ cmake ninja-build nasm /usr/lib64/libusb.so SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel</code>
@@ -316,19 +329,19 @@ BOOT C:</code></pre>
         <li><p>Navigate to the repo and prepare for building</p>
             <pre><code class="block">cd NP2kai</code></pre>
             <pre><code class="block">sed 's|no-incompatible-function-pointer-types|no-incompatible-pointer-types -Wno-implicit-int|g' -i CMakeLists.txt</code></pre>
-            <p>Without the <code>sed</code> command, the compiler might throw an "Error 2", preventing compilation.</p>
+            <p class="warning">Without the above <code>sed</code> command, the compiler might throw an <code>Error 2</code> message, halting the build process.</p>
         </li>
         <li><p>Create the <code>build</code> directory and create the CMake files.</p>
             <pre><code class="block">mkdir build</code></pre>
-            <p><b>Default build of Neko Project II Kai (X11 and SDL2)</b></p>
+            <h3>Default build command (X11 and SDL2)</h3>
             <p><b class="recommended"><i>Recommended for most users, for simplicity ;&#41;</i></b></p>
             <pre><code class="block">cmake build -DBUILD_X=ON</code></pre>
             <p>This will create <code>xnp21kai</code> (legacy X11 support), and <code>sdlnp21kai</code> (more modern version used by RetroArch).</p>
-            <p><b>X11 only, no SDL</b></p>
+            <h3>X11 only, no SDL</h3>
             <pre><code class="block">cmake -S . -B build -DBUILD_X=ON</code></pre>
-            <p><b>Full install of Neko Project II Kai (X11, SDL2, i286, HAXM)</b></p>
-            <p><i>Do this only if you want to mirror the AUR on a non-Arch distro or you want all versions, possibly for debugging.</i></p>
-            <p>You can also modify it as desired.</p>
+            <h3>Full install (X11, SDL2, i286, HAXM)</h3>
+            <p class="warning"><i>Do this only if you want to mirror the AUR on a non-Arch distro or you want all versions, possibly for your own testing.</i></p>
+            <p>You can also use this command as a reference for fine-tuning.</p>
             <pre>
 <code class="block">cmake -S . -B build \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
@@ -348,17 +361,18 @@ BOOT C:</code></pre>
     -DUSE_VST3SDK=OFF \
     -G Ninja
 </code></pre>
+        <h3 id="cmake-options-table">Handy CMake flag options</h3>
         <p>The following table contains not all, but noteworthy CMake options</p>
         <table>
             <tbody>
                 <tr>
-                    <th>CMake flag</th>
-                    <th>Default value with just <code>cmake -D BUILD_X=ON</code></th>
-                    <th>Created program(s)</th>
+                    <th>CMake flag (with <code class="blocksmall">-D</code> prefix)</th>
+                    <th>Default value with just <code class="blocksmall">cmake -D BUILD_X=ON</code></th>
+                    <th>Created program(s) if set to <code>ON</code></th>
                     <th>Description</th>
                 </tr>
                 <tr>
-                    <td><code>-DCMAKE_INSTALL_PREFIX</code></td>
+                    <td><code>CMAKE_INSTALL_PREFIX</code></td>
                     <td><code>/usr/local</code></td>
                     <td></td>
                     <td>
@@ -367,31 +381,31 @@ BOOT C:</code></pre>
                     </td>
                 </tr>
                 <tr>
-                    <td><code>-DBUILD_X</code></td>
+                    <td><code>BUILD_X</code></td>
                     <td><code>ON</code></td>
                     <td><code>x*</code></td>
                     <td>Creates X11 versions of the following programs.</td>
                 </tr>
                 <tr>
-                    <td><code>-DBUILD_SDL</code></td>
+                    <td><code>BUILD_SDL</code></td>
                     <td><code>ON</code></td>
                     <td><code>sdl*</code></td>
                     <td>Creates SDL versions of the following programs.</td>
                 </tr>
                 <tr>
-                    <td><code>-DUSE_SDL2</code></td>
+                    <td><code>USE_SDL2</code></td>
                     <td><code>ON</code></td>
                     <td></td>
                     <td>Uses SDL2 for the SDL versions of the programs. If set to <code>OFF</code>, uses SDL1</td>
                 </tr>
                 <tr>
-                    <td><code>-DBUILD_I286</code></td>
+                    <td><code>BUILD_I286</code></td>
                     <td><code>OFF</code></td>
                     <td><code>xnp2kai</code>, <code>sdlnp2kai</code></td>
                     <td>If set to <code>ON</code>, creates the i286 version, which can only run 16-bit operating systems and programs.</td>
                 </tr>
                 <tr>
-                    <td><code>-DBUILD_HAXM</code></td>
+                    <td><code>BUILD_HAXM</code></td>
                     <td><code>OFF</code></td>
                     <td><code>xnp21kai_HAXM</code>, <code>sdlnp21kai_HAXM</code></td>
                     <td>
@@ -404,29 +418,25 @@ BOOT C:</code></pre>
         </li>
         <li>
             <p>Build the program. Errors and warnings are normal.</p>
-            <p><b>Default (faster)</b></p>
+            <h3>Default (faster)</h3>
             <pre><code class="block">cd build/</code></pre>
             <pre><code class="block">make -j</code></pre>
-            <p><b>Without going into <code>build/</code></b></p>
+            <h3>Without going into <code>build/</code></h3>
             <pre><code class="block">cmake --build build</code></pre>
         </li>
         <li><p>Install the program(s) to the system</p>
-            <p><b>Default (while in <code>build/</code>)</b></p>
+            <h3>Default (while in <code>build/</code>)</h3>
             <pre><code class="block">sudo make install</code></pre>
-            <p><b>Without going into <code>build/</code></b></p>
+            <h3>Without going into <code>build/</code></h3>
             <pre><code class="block">sudo cmake --install build</code></pre>
         </li>
         <li>Run the program, and <a href="#adjust-settings-xnp21kai">adjust settings</a>
-            <p><b>X11 version</b></p>
+            <h3>X11 version</h3>
             <pre><code class="block">xnp21kai</code></pre>
-            <p><b>SDL2 version<sup>†</sup></b></p>
+            <h3>SDL2 version<sup>†</sup></h3>
             <pre><code class="block">sdlnp21kai</code></pre>
         </li>
     </ol>
-    <p class="warning">
-        <sup>*</sup> Installing these libraries may cause some of your programs or dependencies to be automatically removed.
-        Always check what packages will be installed and removed before confirmation.
-    </p>
     <p><b>
         <sup>†</sup> <code>sdlnp21kai</code> has some differences compared to <code>xnp21kai</code>,
         but the most important are as follows:
@@ -640,7 +650,6 @@ BOOT C:</code></pre>
     </ul>
     <hr class="light">
     <h1 id="savestates">Using savestates</h1>
-    <h2 class="warning"><i>This section is a work-in-progress</i></h2>
     <p>
         Savestates allow you to create a "snapshot" of your PC-98 system at any given time, so long as your <code>.hdi</code>
         file still exists in the same location as when you last used it, and there's enough open slots left.
@@ -667,6 +676,7 @@ BOOT C:</code></pre>
         and <b><code class="blocksmall">F12 + ,</code></b> for the previous slot; both are relative to the current selected save slot.
     </p>
     <h3>Auto-saving</h3>
+    <p class="warning"><i>This section is a work-in-progress</i></p>
     <h2>Loading savestates</h2>
     <p class="warning"><b>
         Warning: Before loading a savestate, you must be currently running exactly the same game,
