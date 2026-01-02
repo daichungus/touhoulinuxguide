@@ -132,7 +132,7 @@ SOFTWARE.
     <h2>Installation</h2>
     <p>Install DOSBox-X through your package manager</p>
     <p><b>Flatpak</b>    </p>
-    <p class="recommended"><i><b>Recommended option for most users</b></i><sup>*</sup></p>
+    <p class="recommended"><b>Recommended option for most users<sup>*</sup></b></p>
     <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
     <p><b>Debian/Ubuntu/Linux Mint</b></p>
     <pre><code class="block">sudo apt install dosbox-x</code></pre>
@@ -164,8 +164,11 @@ SOFTWARE.
         <code class="blocksmall">dosbox-x.conf</code>,
         the settings that it contains will override the respective ones in the default config file.
     </p>
-    <p class="recommended"><i><b>As such, a ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
-        Simply save it to the same directory as your <code>.hdi</code> files.</b></i></p>
+    <p class="recommended"><b>
+        As such, a ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
+        Simply save it to the same directory as your <code>.hdi</code> files.</b><br>
+        It is recommended though, that you look at the contents of it to have a basic understanding of what settings are applied.
+    </p>
     <p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
     <p><b>Otherwise, <a href="#pc98-files">download a font</a> to the directory, then <a href="#dosbox-x-running">start running the games</a>.</b></p>
     <h3 id="working-directory">Working directory</h3>
@@ -193,6 +196,20 @@ aspect_ratio = -1:-1</code></pre>
     <p>To always enable PC-98 mode, set</p>
     <pre><code class="block">[dosbox]
 machine = pc98</code></pre>
+    <h3>Keyboard</h3>
+    <p>
+        Some DOSBox-X packages (such as the Fedora COPR build) may not enable US keyboard layout in PC-98 mode by default,
+        as the PC-98 was originally meant to be used for Japanese keyboards.
+    </p>
+    <p>This guide assumes most readers are using a US or similar keyboard layout.</p>
+    <p>
+        If your DOSBox-X package does not enable the US layout by default (check in the default config file),
+        and you're using a US layout or similar, set
+    </p>
+    <pre><code class="block">[pc98]
+pc-98 force ibm keyboard layout = true
+pc-98 force JIS keyboard layour = false</code></pre>
+    <p>in either the default config file, or the provided <code>dosbox-x.conf</code> file.</p>
     <h3>CPU speed</h3>
     <p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
     <p>For a consistently smooth experience,<sup>*</sup> set</p>
@@ -217,7 +234,7 @@ BOOT C:</code></pre>
     <ul>
         <li>
             <h3>RetroArch (<a href="#np21kai-retroarch">skipto</a>)</h3>
-            <p class="recommended"><i><b>Recommended option for most users</b></i></p>
+            <p class="recommended"><b>Recommended option for most users</b></p>
             <p>
                 Great and stable choice, especially if you already use RetroArch for other games, but not great if you're tight on storage.
                 Modern UI navigation is biased towards controllers.
@@ -376,7 +393,7 @@ BOOT C:</code></pre>
                     <td><code>/usr/local</code></td>
                     <td></td>
                     <td>
-                        Programs will be installed to <code>/usr/local/bin</code> when the install command is ran.
+                        Programs will be installed to <code>/usr/local/bin</code> when the install command is ran.<br>
                         The AUR installs them to <code>/usr/bin</code> instead.
                     </td>
                 </tr>
@@ -401,15 +418,21 @@ BOOT C:</code></pre>
                 <tr>
                     <td><code>BUILD_I286</code></td>
                     <td><code>OFF</code></td>
-                    <td><code>xnp2kai</code>, <code>sdlnp2kai</code></td>
+                    <td>
+                        <code>xnp2kai</code>,
+                        <br><code>sdlnp2kai</code>
+                    </td>
                     <td>If set to <code>ON</code>, creates the i286 version, which can only run 16-bit operating systems and programs.</td>
                 </tr>
                 <tr>
                     <td><code>BUILD_HAXM</code></td>
                     <td><code>OFF</code></td>
-                    <td><code>xnp21kai_HAXM</code>, <code>sdlnp21kai_HAXM</code></td>
                     <td>
-                        If set to <code>ON</code>, creates a IA32 version with HAXM, which uses hardware virtualization.
+                        <code>xnp21kai_HAXM</code>,<br>
+                        <code>sdlnp21kai_HAXM</code>
+                    </td>
+                    <td>
+                        If set to <code>ON</code>, creates a IA32 version with HAXM, which uses hardware virtualization.<br>
                         Only use this if you want to, and have an Intel CPU that supports HAXM.
                     </td>
                 </tr>
@@ -479,7 +502,7 @@ BOOT C:</code></pre>
             </ul>
         </li>
         <li><p>Go back and restart the core.</p></li>
-        <li><p>You're now ready to <a href="#running-pc98-touhou">run the games</a></p></li>
+        <li><p>Install the <a href="#pc98-files">necessary font and ROM files</a></p></li>
     </ol>
     <p><sup>*</sup> Backspace key on keyboard</p>
     <h3 id="adjust-settings-xnp21kai">xnp21kai</h3>
@@ -504,7 +527,7 @@ BOOT C:</code></pre>
                 </li>
             </ul>
         </li>
-        <li><p>Install the <a href="#pc98-files">necessary ROM files</a> to <code class="blocksmall">~/.config/xnp21kai/</code></p></li>
+        <li><p>Install the <a href="#pc98-files">necessary font and ROM files</a> to <code class="blocksmall">~/.config/xnp21kai/</code></p></li>
     </ol>
     <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
     <p class="warning"><sup>†</sup> Testing by the author in xnp21kai has shown that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
@@ -523,7 +546,7 @@ BOOT C:</code></pre>
     <h1 id="pc98-files">ROM and font files</h1>
     <h2 id="rom-files">ROM files</h2>
     <p>You may need to install some PC-98 ROM files for your emulator to work properly.</p>
-    <p>NP2Kai on RetroArch and DOSBox-X both already include most of the necessary files.</p>
+    <p>NP2Kai on RetroArch and DOSBox-X both already include most of the necessary ROM files for basic operations.</p>
     <p>However, <b>xnp21kai requires these files in order to work</b>:</p>
     <ul>
         <li><a href="./ROM/BIOS.ROM" download>BIOS.ROM</a></li>
@@ -532,12 +555,12 @@ BOOT C:</code></pre>
         <li><a href="./ROM/FONT.ROM" download>FONT.ROM</a> (see <a href="#fonts">next section</a>)</li>
     </ul>
     <h2 id="fonts">Font files</h2>
-    <p>Both Neko Project II Kai and DOSBox-X require a font file in order to properly display Japanese characters.</p>
+    <p class="warning"><b>Both Neko Project II Kai and DOSBox-X require a font file in order to properly display Japanese characters.</b></p>
     <p>Some popular font files are available to download from here:</p>
     <ul>
         <li><a href="./fonts/FONTNP.BMP" download>Neko Project 21 font</a></li>
         <li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>
-        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font</a> (DOSBox-X default)</li>
+        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font</a> (Included with DOSBox-X)</li>
         <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a> (<code>FONT.ROM</code>)</li>
     </ul>
     <h2>Installation</h2>
@@ -557,11 +580,11 @@ BOOT C:</code></pre>
     </ol>
     <h3>xnp21kai</h3>
     <p>Copy/move the font and ROM files into <code class="blocksmall">~/.config/xnp21kai</code>.</p>
-    <p>If you are using a font besides <code>FONT.ROM</code>, edit <code class="blocksmall">fontfile</code> in <code>xnp21kairc</code> to the <i><b>absolute</b></i> filepath of the font.</p>
+    <p>If you are using a font besides <code>FONT.ROM</code>, edit <code class="blocksmall">fontfile</code> in <code class="blocksmall">xnp21kairc</code> to the <i><b>absolute</b></i> filepath of the font.</p>
     <h3>sdlnp21kai</h3>
     <p>
         Same as <code>xnp21kai</code>, but the directory is <code class="blocksmall">~/.config/sdlnp21kai</code>,
-        and the configuration file is <code class="blocksmall">np21kai.cfg</code> instead of <code>xnp21kairc</code>
+        and the configuration file is <code class="blocksmall">np21kai.cfg</code> instead of <code class="blocksmall">xnp21kairc</code>
     </p>
     <hr class="light">
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
@@ -587,7 +610,7 @@ BOOT C:</code></pre>
         </li>
         <li><p>Enjoy!</p></li>
         <li>
-            <p><a href="#dosbox-x-savestates">See this section</a> for info on savestates.</p>
+            <p><a href="#dosbox-x-savestates">See this section</a> for information about savestates.</p>
             <p><a href="#dosbox-tips">See this section</a> on how to remove or change the <code>.hdi</code> file</p>
         </li>
     </ol>
@@ -596,7 +619,10 @@ BOOT C:</code></pre>
         If not, check your <code>dosbox-x.conf</code> file to see that <code class="blocksmall">machine = pc98</code>.
     </p>
     <p class="warning"><b><sup>†</sup> The filename is case-sensitive!</b></p>
-    <p><sup>‡</sup> Depending on the type of <code>.hdi</code> file you obtained, you'll either directly boot into the game or a menu with the games listed.</p>
+    <p>
+        <sup>‡</sup> Depending on the type of <code>.hdi</code> file you obtained,
+        you'll either directly boot into the game or a menu with the games listed.
+    </p>
     <h2>Command Line</h2>
     <ol>
         <li>
@@ -624,7 +650,10 @@ BOOT C:</code></pre>
             </ol>
         </li>
         <li><p>Enjoy!</p></li>
-        <li><p>To remove the <code>.hdi</code> file, go into the Quick Menu and select "Close Content"</p></li>
+        <li>
+            <p><a href="#np21kai-savestates">See this section</a> for information about savestates.</p>
+            <p>To remove the <code>.hdi</code> file, go into the Quick Menu and select "Close Content"</p>
+        </li>
     </ol>
     <h2 id="xnp21kai-running">xnp21kai</h2>
     <ol>
@@ -634,7 +663,7 @@ BOOT C:</code></pre>
         <li><p>Reset the emulator.</p></li>
         <li><p>Enjoy!</p></li>
         <li>
-            <p><a href="#np21kai-savestates">See this section</a> for info on savestates.</p>
+            <p><a href="#np21kai-savestates">See this section</a> for information about savestates.</p>
             <p>To remove<sup>†</sup> the <code>.hdi</code>, simply choose "Remove" on the "hard disk" the <code>.hdi</code> is located in and reset the emulator.</p>
         </li>
     </ol>
@@ -676,12 +705,76 @@ BOOT C:</code></pre>
         and <b><code class="blocksmall">F12 + ,</code></b> for the previous slot; both are relative to the current selected save slot.
     </p>
     <h3>Auto-saving</h3>
-    <p class="warning"><i>This section is a work-in-progress</i></p>
+    <p>
+        DOSBox-X allows for automatic and periodic creations of savestates.
+        This means you can have something akin to "auto-save" in most modern video games.
+    </p>
+    <p>
+        To start creating auto-saves, navigate to "Capture", then "Auto-save settings".
+    </p>
+    <p>Below is a table of possible settings. Note that <code>x, y, z</code> are to be substituted for positive integer values.</p>
+    <table>
+        <tbody>
+            <tr>
+                <th>Time interval (secs)<sup>*</sup></th>
+                <th>Start slot</th>
+                <th>End slot</th>
+                <th>Savestates created</th>
+            </tr>
+            <tr>
+                <td><code>0</code></td>
+                <td><code>0</code></td>
+                <td><code>0</code></td>
+                <td>Default setting, does nothing regardless of the value of the time interval.</td>
+            </tr>
+            <tr>
+                <td>z</td>
+                <td><code>x</code></td>
+                <td><code>y</code></td>
+                <td>
+                    Iteratively create new savestates in slots <code>x</code> through <code>y</code>, inclusive, every <code>z</code> seconds.<br>
+                    If the current slot is within the range, saving will start on that slot.
+                </td>
+            </tr>
+            <tr>
+                <td>z</td>
+                <td><code>x</code></td>
+                <td><code>0</code></td>
+                <td>Create a savestate at slot <code>x</code> every <code>z</code> seconds.</td>
+            </tr>
+            <tr>
+                <td>z</td>
+                <td><code>0</code></td>
+                <td><code>0</code></td>
+                <td>Create a savestate at the current slot<sup class="warning">†</sup> every <code>z</code> seconds.</td>
+            </tr>
+            <tr>
+                <td>z</td>
+                <td><code>0</code></td>
+                <td><code>y</code></td>
+                <td>Create a savestate from the current slot<sup class="warning">†</sup> to slot <code>y</code>, inclusive, every <code>z</code> seconds.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        For the Touhou games, since this guide assumes most people are not directly using the original game files,
+        we can ignore settings for individual programs.
+    </p>
+    <p>
+        <sup>*</sup>
+        To reduce the possibility of your system slowing down, it's recommended that the shortest interval for
+        general use be <code class="blocksmall">60</code> seconds.<br>
+        <b>Please also note that this means the game will briefly pause when a new savestate is being created.</b>
+    </p>
+    <p class="warning">
+        <sup>†</sup>
+        Please ensure that you're not overwriting any slots you want to keep or manually save!
+    </p>
     <h2>Loading savestates</h2>
-    <p class="warning"><b>
-        Warning: Before loading a savestate, you must be currently running exactly the same game,
-        from exactly the same <code>.hdi</code> file that you want to load the savestate from.
-    </b></p>
+    <h3 class="warning">
+        Warning: Before loading a savestate, you <i>must</i> be currently running <i>exactly</i> the same game,
+        from <i>exactly</i> the same <code>.hdi</code> file when you created that savestate.
+    </h3>
     <p>
         To load a savestate, select "Load state" <b><code class="blocksmall">F12 + L</code></b>
         on the selected slot that you want to load it from.
@@ -689,7 +782,10 @@ BOOT C:</code></pre>
     <h1 id="np21kai-savestates">Neko Project II Kai</h1>
     <h2>RetroArch</h2>
     <p>Savestates can be stored in up to 1000 slots.</p>
-    <p><b><i>Before loading a savestate, you must be currently running the same <code>.hdi</code> file that you want to load the savestate from.</i></b></p>
+    <p><b><i>
+        Before loading a savestate, you must be currently running the same <code>.hdi</code> file that you want to load the savestate from.
+        Otherwise you'll only see a black screen.
+    </i></b></p>
     <p></p>
     <h3>In-game method:</h3>
     <p><code class="blocksmall">F2</code> to quickly create a savestate to <i>the current</i> slot.</p>
@@ -710,8 +806,11 @@ BOOT C:</code></pre>
     <h1>Important and useful tips</h1>
     <h2 id="dosbox-tips">DOSBox-X</h2>
     <ul>
-        <li><p class="warning">Restarting the DOSBox-X instance will make it unable to mount any <code>.hdi</code> file in your working directory.</p>
-            <p>Instead:</p>
+        <li>
+            <p class="warning">
+            "Restarting the DOSBox-X instance" from the menu will make it unable to mount any <code>.hdi</code> file in your working directory until you close the program.
+            </p>
+            Instead:<br>
             <ul>
                 <li><p>If you want to use the same <code>.hdi</code> file, Reboot the guest system (<b><code>F12+B</code></b>).</p></li>
                 <li><p>If you want to use a different <code>.hdi</code> file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
