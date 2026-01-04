@@ -261,34 +261,78 @@ BOOT C:</code></pre>
     <ol>
         <li>
             <p>Install RetroArch. Choose the version that suits you the most.</p>
+            <p>This guide recommends the latest stable version for most users for consistency and ease of use.</p>
             <ul>
                 <li>
                     <p><b>Flatpak</b></p>
+                    <p class="recommended"><b>Recommended for most users</b></p>
                     <pre><code class="block">flatpak install flathub org.libretro.RetroArch</code></pre>
                 </li>
                 <li><p><b><a href="https://store.steampowered.com/app/1118310/RetroArch/">Steam</a></b></p></li>
                 <li><p><b><a href="https://retroarchofficial.itch.io/retroarch">Itch.io</a></b></p></li>
                 <li>
-                    <p><b>Ubuntu/Linux Mint <sup>*</sup></b></p>
+                    <p><b>Ubuntu/Linux Mint</b></p>
                     <pre><code class="block">sudo add-apt-repository ppa:libretro/stable &amp;&amp; sudo apt-get update &amp;&amp; sudo apt-get install retroarch</code></pre>
                 </li>
                 <li>
-                    <p><b>Arch Linux <sup>*</sup></b></p>
-                    <pre><code class="block">sudo pacman -Sy retroarch</code></pre>
+                    <p><b>Fedora</b></p>
+                    <p><i>
+                        The default installation of RetroArch also installs a few emulators as weak dependencies.
+                        The command below installs RetroArch without those emulators.
+                    </i></p>
+                    <pre><code class="block">sudo dnf install retroarch retroarch-assets retroarch-database retroarch-filters --setopt=install_weak_deps=False</code></pre>
+                </li>
+                <li>
+                    <p><b>Arch Linux (<a href="https://wiki.archlinux.org/title/RetroArch">Wiki</a>)</b></p>
+                    <pre><code class="block">sudo pacman -Sy retroarch retroarch-assets-xmb retroarch-assets-ozone</code></pre>
                 </li>
             </ul>
         </li>
-        <li>Run RetroArch either by GUI or
+        <li>
+            <p>Run RetroArch either by GUI or in the terminal.</p>
+            <p><b>Flatpak</b></p>
             <pre><code class="block">flatpak run org.libretro.RetroArch</code></pre>
+            <p><b>Non-Flatpak</b></p>
+            <pre><code class="block">retroarch</code></pre>
         </li>
-        <li><p>In the Main Menu, select<sup>†</sup> "Load Core", then "Download Core"</p></li>
+        <li>
+            <p>
+                If you installed RetroArch through your distro's package manager,
+                follow the next set of instructions. Otherwise you can skip this part.
+            </p>
+            <ol>
+                <li>
+                    <p>
+                        In "Settings" → "User Interface" → "Menu Item Visibility", set
+                        <code class="blocksmall">Show 'Online Updater'</code> and
+                        <code class="blocksmall">Show 'Core Downloader'</code> to <code class="blocksmall">ON</code>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Close RetroArch (Esc key twice), then navigate to
+                        <code class="blocksmall">~/.config/retroarch</code>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Edit the following settings in <code class="blocksmall">retroarch.cfg</code>, as
+                        this will allow you to install cores without requiring root privileges.
+                    </p>
+                    <pre><code class="block">libretro_directory = "~/.config/retroarch/cores"</code></pre>
+                    <pre><code class="block">libretro_info_path = "~/.config/retroarch/cores/info"</code></pre>
+                </li>
+                <li><p>Launch RetroArch again and continue with the following steps.</p></li>
+            </ol>
+        </li>
+        <li>
+            <p>In the Main Menu, select (Enter/Return key) "Load Core", then "Download Core"</p>
+        </li>
         <li>
             <p>Scroll down the list to <b>NEC - PC-98 (Neko Project II Kai)</b>, then select to install it.</p>
         </li>
         <li><p><a href="">Adjust settings before playing</a></p></li>
     </ol>
-    <p><sup>*</sup> For consistency and ease of use, this guide recommends the stable version for most users.</p>
-    <p><sup>†</sup> Enter key on a keyboard</p>
     <h2 id="np21kai-arch">AUR package (Arch Linux)</h2>
     <p>If you're new to Arch, please consider first reading the Arch Wiki article on
         <a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>,
