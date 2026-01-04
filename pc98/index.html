@@ -545,46 +545,90 @@ BOOT C:</code></pre>
     <hr class="light">
     <h1 id="pc98-files">ROM and font files</h1>
     <h2 id="rom-files">ROM files</h2>
-    <p>You may need to install some PC-98 ROM files for your emulator to work properly.</p>
-    <p>NP2Kai on RetroArch and DOSBox-X both already include most of the necessary ROM files for basic operations.</p>
-    <p>However, <b>xnp21kai requires these files in order to work</b>:</p>
+    <p>You <i>may</i> need to install some PC-98 ROM files for your emulator to work properly. These can be found elsewhere online.</p>
+    <p>Neko Project II kai and DOSBox-X both already include most of the necessary ROM files for basic operations.</p>
     <ul>
-        <li><a href="./ROM/BIOS.ROM" download>BIOS.ROM</a></li>
-        <li><a href="./ROM/ITF.ROM" download>ITF.ROM</a></li>
-        <li><a href="./ROM/SOUND.ROM" download>SOUND.ROM</a></li>
-        <li><a href="./ROM/FONT.ROM" download>FONT.ROM</a> (see <a href="#fonts">next section</a>)</li>
+        <li><code>BIOS.ROM</code></li>
+        <li><code>ITF.ROM</code></li>
+        <li><code>SOUND.ROM</code></li>
+        <li><code>FONT.ROM</code> (see <a href="#fonts">next section</a>)</li>
     </ul>
+    <p>For the Touhou games, you don't need to install these ROM files. However...</p>
     <h2 id="fonts">Font files</h2>
-    <p class="warning"><b>Both Neko Project II Kai and DOSBox-X require a font file in order to properly display Japanese characters.</b></p>
+    <p><b>Both Neko Project II Kai and DOSBox-X require a font file in order to properly display Japanese characters.</b></p>
     <p>Some popular font files are available to download from here:</p>
+    <h3>Anex86-compatible fonts</h3>
+    <p class="recommended">Recommended for DOSBox-X</p>
     <ul>
-        <li><a href="./fonts/FONTNP.BMP" download>Neko Project 21 font</a></li>
+        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font</a><sup class="warning"><b>*</b></sup></li>
         <li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>
-        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font</a> (Included with DOSBox-X)</li>
-        <li><a href="./ROM/FONT.ROM" download>Original PC-98 font</a> (<code>FONT.ROM</code>)</li>
+    </ul>
+    <p><b class="warning"><sup>*</sup> The FREECG98 font does not work with Neko Project II Kai.</b></p>
+    <h3>Neko Project-compatible fonts</h3>
+    <p class="recommended">Recommended for Neko Project II Kai.</p>
+    <ul>
+        <li><a href="./fonts/FONT.BMP" download>Neko Project II font</a></li>
+        <li><a href="./fonts/FONTW.BMP" download>Neko Project 21/W font</a></li>
     </ul>
     <h2>Installation</h2>
     <h3>DOSBox-X</h3>
-    <p>Move/copy the font and ROM files to the same directory/folder as your PC-98 Touhou <code>.hdi</code> file(s).</p>
+    <p>If you have the original ROM files, simply copy/move them to the same directory as your PC-98 Touhou <code>.hdi</code> file(s).</p>
+    <p>Otherwise, DOSBox-X already includes <code>FREECG98.BMP</code> for convenience.</p>
+    <p>
+        To use a different compatible font:
+    </p>
+    <ol>
+        <li><p>Move/copy the file to the working directory.</p></li>
+        <li>
+            <p>
+                Edit the config file so that under the <code class="blocksmall">[pc98]</code> section,
+                <code class="blocksmall">pc-98 anex86 font</code> is set to the font's filename.
+            </p>
+        </li>
+    </ol>
     <h3>RetroArch</h3>
     <ol>
         <li>
-            <p>Navigate to <code class="blocksmall">~/.var/app/org.libretro.RetroArch/config/retroarch/system/</code></p>
+            <p>Navigate to the RetroArch system folder.</p>
+            <b>Flatpak</b>
+            <pre><code class="blocksmall">~/.var/app/org.libretro.RetroArch/config/retroarch/system/</code></pre>
+            <b>Non-Flatpak</b>
+            <pre><code class="blocksmall">~/.config/retroarch/system/</code></pre>
         </li>
         <li>
-            <p>Create a folder called <code class="blocksmall">np2kai</code></p>
+            <p>Create a directory called <code class="blocksmall">np2kai</code>.</p>
         </li>
         <li>
-            <p>Copy/move your font and ROM files to <code class="blocksmall">np2kai</code></p>
+            <p>
+                Copy/move the files to to <code class="blocksmall">np2kai</code>.
+            </p>
+            <p>
+                If you're using a compatible font besides <code>FONT.ROM</code>,
+                rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
+            </p>
         </li>
     </ol>
     <h3>xnp21kai</h3>
-    <p>Copy/move the font and ROM files into <code class="blocksmall">~/.config/xnp21kai</code>.</p>
-    <p>If you are using a font besides <code>FONT.ROM</code>, edit <code class="blocksmall">fontfile</code> in <code class="blocksmall">xnp21kairc</code> to the <i><b>absolute</b></i> filepath of the font.</p>
+    <p>Copy/move the font and ROM files to <code class="blocksmall">~/.config/xnp21kai</code>.</p>
+    <p>If you are using a compatible font besides <code>FONT.ROM</code>, there are two possible options:</p>
+    <ul>
+        <li>
+            <p>
+                Edit <code class="blocksmall">fontfile</code> in <code class="blocksmall">xnp21kairc</code>
+                to the <i><b>absolute</b></i> filepath of the font.
+            </p>
+        </li>
+        <li>
+            <p>
+                Copy/move the font file to <code class="blocksmall">~/.config/xnp21kai</code>.
+                Rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
+            </p>
+        </li>
+    </ul>
     <h3>sdlnp21kai</h3>
     <p>
-        Same as <code>xnp21kai</code>, but the directory is <code class="blocksmall">~/.config/sdlnp21kai</code>,
-        and the configuration file is <code class="blocksmall">np21kai.cfg</code> instead of <code class="blocksmall">xnp21kairc</code>
+        Similar to the process for <code>xnp21kai</code>, but the directory is <code class="blocksmall">~/.config/sdlnp21kai</code>,
+        and the configuration file is <code class="blocksmall">np21kai.cfg</code>.
     </p>
     <hr class="light">
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
@@ -595,12 +639,12 @@ BOOT C:</code></pre>
         with DOSBox-X, most readers are unlikely to be in a similar situation.
     </p>
     <p>Therefore the following sections will not cover on how to run the games from the original files.</p>
-    <p>Regardless, it is highly recommended that you store your <code>.hdi</code> files in a directory/folder named "Games" or "Touhou" for ease of rememberance.</p>
+    <p>Regardless, it is highly recommended that you store your <code>.hdi</code> files in a directory named "Games" or "Touhou" for ease of rememberance.</p>
     <h1 id="dosbox-x-running">DOSBox-X</h1>
     <h2 id="dosbox-x-running-gui">GUI/Desktop</h2>
     <ol>
         <li>
-            <p>If prompted, select the directory/folder with your <code>.hdi</code> files as your working directory.</p>
+            <p>If prompted, select the directory with your <code>.hdi</code> files as your working directory.</p>
         </li>
         <li><p>Wait for DOSBox-X to finish loading<sup>*</sup>, then run these two commands in DOSBox-X:</p>
             <pre><code class="block">IMGMOUNT C TOUHOU.HDI</code></pre>
