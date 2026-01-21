@@ -397,7 +397,7 @@ BOOT C:</code></pre>
             <pre><code class="block">mkdir build</code></pre>
             <h3>Default build command (X11 and SDL2)</h3>
             <p><b class="recommended"><i>Recommended for most users, for simplicity ;&#41;</i></b></p>
-            <pre><code class="block">cmake build -DBUILD_X=ON</code></pre>
+            <pre><code class="block">cmake . -DBUILD_X=ON</code></pre>
             <p>This will create <code>xnp21kai</code> (legacy X11 support), and <code>sdlnp21kai</code> (more modern version used by RetroArch).</p>
             <h3>X11 only, no SDL</h3>
             <pre><code class="block">cmake -S . -B build -DBUILD_X=ON</code></pre>
