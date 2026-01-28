@@ -217,6 +217,23 @@ machine = pc98</code></pre>
 pc-98 force ibm keyboard layout = true
 pc-98 force JIS keyboard layour = false</code></pre>
     <p>in either the default config file, or the provided <code>dosbox-x.conf</code> file.</p>
+    <h3>Refresh rate</h3>
+    <p>
+        By default, the refresh rate of DOSBox-X is "unlocked".
+        This means the program is not limited in the number of frames per second (fps) it can produce.
+    </p>
+    <p>
+        For the Touhou games, this means that they will only run around 56 - 57 fps<sup>*</sup>
+        unless the following setting is applied:
+    </p>
+    <pre><code class="block">[video]
+forcerate = 60
+</code></pre>
+    <p>Which will force the games to consistently run at 60 Hz (and thus 60 fps), if possible.</p>
+    <p>
+        <sup>*</sup> While the main gameplay should not be severely impacted,
+        most eyes will percieve the slightly lower framerates as possibly an undesirable trait.
+    </p>
     <h3>CPU speed</h3>
     <p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
     <p>For a consistently smooth experience,<sup>*</sup> set</p>
@@ -688,8 +705,9 @@ BOOT C:</code></pre>
     <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
     <h3>Disclaimer</h3>
     <p>This guide assumes that you have acquired your copies of the PC-98 Touhou games as <code>.hdi</code> or <code>.fdi</code> file(s)</p>
-    <p>While the author has tested running the games from the original "loose" files
-        (such as those in the <a href="https://upload.thbwiki.cc/6/6b/53%E5%9B%9E%E4%BA%8C%E8%BD%A9%E7%9B%AE_%E6%97%A7%E4%BD%9C5in1.jpg">compilation disc</a>),
+    <p>
+        While the author has tested running the games from the original "loose" files
+        (such as those in the <a href="secret.txt">compilation disc</a>),
         with DOSBox-X, most readers are unlikely to be in a similar situation.
     </p>
     <p>Therefore the following sections will not cover on how to run the games from the original files.</p>
