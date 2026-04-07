@@ -243,7 +243,10 @@ cycles = 74000</code></pre>
     <p>If your hardware allows it,<sup>†</sup> set</p>
     <pre><code class="block">[cpu]
 core = dynamic_x86</code></pre>
-    <p><sup>*</sup> In testing, most values between <code>10000</code> and <code>100000</code> worked well for the Touhou games. <code>74000</code> is suggested in this guide for most systems.</p>
+    <p>
+		<sup>*</sup> In testing, most values between <code>24000</code> and <code>100000</code> worked well for the Touhou games.
+		<code>74000</code> is suggested in this guide for most systems, though you may need to adjust should resource usage be a concern.
+	</p>
     <p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing by the author with the same number of cycles.</p>
     <h3 id="autoexec">Auto-execution</h3>
     <p>This is especially helpful if you intend on always using only one <code>.hdi</code> file<sup>*</sup> and do not want to always type the commands by hand every time you start DOSBox-X.</p>
@@ -268,13 +271,15 @@ BOOT C:</code></pre>
         <li>
             <h3>AUR package (<a href="#np21kai-arch">skipto</a>)</h3>
             <p>Good choice if you use an Arch-based system. Doesn't help if you don't use Arch, by the way.</p>
+			<p>However, the AUR package merely helps automate building from source (see below).</p>
         </li>
         <li>
             <h3>Building from source / xnp21kai (<a href="#np21kai-source">skipto</a>)</h3>
             <p class="warning"><i><b>
-				Has bugs, missing features, and arbitrary behavior. Latest version may unable to be built at all.
+				Does not have a "stable" branch or binary releases. Will have bugs, missing features, and arbitrary behavior.
 			</b></i></p>
-            <p>Not recommended for users new to Linux or users who are unfamiliar with CLI and building programs from source.
+            <p>
+				Not recommended for users new to Linux, users who are unfamiliar with building programs from source, or those who prefer stable programs.
                 Only choose this if you absolutely desire so or have no other options.
             </p>
         </li>
