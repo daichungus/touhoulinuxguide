@@ -113,16 +113,19 @@ SOFTWARE.
     <h1 id="emulator-list">Choosing an emulator</h1>
     <h3>Disclaimer</h3>
     <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
-    <p>However, they're more likely to have issues and inconsistent behavior when running on Linux through Wine<sup>*</sup>,
-        especially on certain distributions and setups.</p>
-    <p>Hence this guide will mainly cover setup of two Linux-native emulators in detail:</p>
+    <p>
+        However, they're more likely to have issues and inconsistent behavior when running on Linux through Wine<sup>*</sup>,
+        especially on certain distributions and setups.
+    </p>
+    <p>Some, such as Anex86, T98-Next, and the original Neko Project II, are more than 20 years old!</p>
+    <p><b>Hence, this guide will mainly cover setup of two Linux-native emulators in detail:</b></p>
     <h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
     <ul>
         <li><p>All-around decent choice for most users</p></li>
-        <li><p>Cross-platform (Windows, Linux, MacOS, DOS)</p></li>
+        <li><p>Cross-platform (Windows, Linux, macOS, DOS)</p></li>
         <li><p>Great if you emulate other DOS systems</p></li>
         <li><p>Included in many distros' repos</p></li>
-        <li><p>Can directly run the original game files</p></li>
+        <li><p>Can run the original game files, no <code>.hdi</code> file needed.</p></li>
         <li><p>Savestates have issues and more difficult to save and load</p></li>
     </ul>
     <h2>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</h2>
@@ -130,7 +133,7 @@ SOFTWARE.
         <li><p>Considered a better choice for serious runs or more accurate emulation</p></li>
         <li><p>Cross-platform as a RetroArch core</p></li>
         <li><p>Great if you already use RetroArch</p></li>
-        <li><p>Can be built from source as <code>xnp21kai</code>, and has an AUR package</p></li>
+        <li><p>Can be built from source as <code>xnp21kai_sdl</code>, and has an AUR package</p></li>
         <li><p>Only supports <code>.hdi</code> and <code>.fdi</code> files</p></li>
         <li><p>Savestates are easier to save and load</p></li>
     </ul>
@@ -271,17 +274,17 @@ BOOT C:</code></pre>
         <li>
             <h3>AUR package (<a href="#np21kai-arch">skipto</a>)</h3>
             <p>Good choice if you use an Arch-based system. Doesn't help if you don't use Arch, by the way.</p>
-			<p>However, the AUR package merely helps automate building from source (see below).</p>
+			<p><b>However, the AUR package only helps automate building the program from source</b> (see below).</p>
         </li>
         <li>
-            <h3>Building from source / xnp21kai (<a href="#np21kai-source">skipto</a>)</h3>
+            <h3>Building from source / xnp21kai_sdl (<a href="#np21kai-source">skipto</a>)</h3>
             <p class="warning"><i><b>
 				Does not have a "stable" branch or binary releases. Will have bugs, missing features, and arbitrary behavior.
 			</b></i></p>
             <p>
-				Not recommended for users new to Linux, users who are unfamiliar with building programs from source, or those who prefer stable programs.
-                Only choose this if you absolutely desire so or have no other options.
+				Not recommended for new Linux users, users who are unfamiliar with building programs from source, or those who prefer stable programs.
             </p>
+            <p>Only choose this if you <i>absolutely desire</i> so, or have no other options.</p>
         </li>
     </ul>
     <h2 id="np21kai-retroarch">RetroArch</h2>
@@ -384,21 +387,21 @@ BOOT C:</code></pre>
             <pre><code class="block">cd np2kai-git &amp;&amp; less PKGBUILD</code></pre>
             <pre><code class="block">makepkg -si np21kai</code></pre>
         </li>
-        <li><p>Proceed with <a href="#adjust-settings-xnp21kai">adjusting the necessary settings</a>.</p></li>
+        <li><p>Proceed with <a href="#adjust-settings-xnp21kai_sdl">adjusting the necessary settings</a>.</p></li>
     </ol>
     <p><sup>*</sup> Currently as of writing, the <code>PKGBUILD</code> will create 6 versions of np21kai by default</p>
     <ul>
         <li><code>xnp2kai</code></li>
-        <li><code>xnp21kai</code></li>
-        <li><code>xnp21kai_HAXM</code></li>
+        <li><code>xnp21kai_sdl</code></li>
+        <li><code>xnp21kai_HAXM_sdl</code></li>
     </ul>
     <p>and their SDL equivalents with the <code>_sdl</code> suffix at the end.</p>
-    <h2 id="np21kai-source">Building from source (xnp21kai)</h2>
+    <h2 id="np21kai-source">Building from source (xnp21kai_sdl)</h2>
     <p class="warning"><i>
-        The steps below may not be the most up-to-date. Steps are also highly subject to change.
+        The steps below may not be the most up-to-date. Steps are highly subject to change. This section is the most flawed part of the guide.
     </i></p>
     <p><i>
-        The steps below are referenced from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">original README document</a>
+        Referenced from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">original README document</a>
         and the <a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=np2kai-git">AUR PKGBUILD file</a>.
     </i></p>
     <ol>
@@ -427,26 +430,27 @@ BOOT C:</code></pre>
             <h4>Apply patches and fixes</h4>
             <p class="warning"><b>
                 Always check commands before running them!
-                Daichungus is not responsible for any damages incurred.
+                THIS GUIDE AND ITS AUTHOR IS NOT RESPONSIBLE FOR ANY DAMAGES INCURRED.
             </b></p>
-            <pre><code class="block">curl -O https://github.com/AZO234/NP2kai/commit/3d23274eefcf9c494358662539c29eebd8996cbf.patch \
-curl -O https://github.com/AZO234/NP2kai/commit/697fac371b414212526aae25e7c9774f167f4ef3.patch \
-curl -O https://github.com/amuramatsu/NP2kai/commit/ad781a4db34bc2364a377cc7bd90b3b99fea1459.patch \
-patch -p1 -i 3d23274eefcf9c494358662539c29eebd8996cbf.patch \
-patch -p1 -i 697fac371b414212526aae25e7c9774f167f4ef3.patch \
-patch -p1 -i ad781a4db34bc2364a377cc7bd90b3b99fea1459.patch \
-sed '/set(COMMON_C_CXX_FLAGS/s/^/#/g' -i CMakeLists.txt \
-sed 's|target_include_directories(NP2kai_SDL2_base INTERFACE|&amp; ${SDL_INCLUDE_DIRS} ${SDL_TTF_INCLUDE_DIRS}|g' -i CMakeLists.txt \
-sed 's|SDL2_ttf/SDL_ttf.h|SDL2/SDL_ttf.h|g' -i sdl/fontmng.c -i x/fontmng.c \
-sed '1i#include &lt;SDL2/SDL_ttf.h&gt;' -i sdl/fontmng.c \
+            <pre><code class="block">curl -O https://github.com/AZO234/NP2kai/commit/3d23274eefcf9c494358662539c29eebd8996cbf.patch &amp;&amp; \
+curl -O https://github.com/AZO234/NP2kai/commit/697fac371b414212526aae25e7c9774f167f4ef3.patch &amp;&amp; \
+curl -O https://github.com/amuramatsu/NP2kai/commit/ad781a4db34bc2364a377cc7bd90b3b99fea1459.patch &amp;&amp; \
+patch -p1 -i 3d23274eefcf9c494358662539c29eebd8996cbf.patch &amp;&amp; \
+patch -p1 -i 697fac371b414212526aae25e7c9774f167f4ef3.patch &amp;&amp; \
+patch -p1 -i ad781a4db34bc2364a377cc7bd90b3b99fea1459.patch &amp;&amp; \
+sed '/set(COMMON_C_CXX_FLAGS/s/^/#/g' -i CMakeLists.txt &amp;&amp; \
+sed 's|target_include_directories(NP2kai_SDL2_base INTERFACE|&amp; ${SDL_INCLUDE_DIRS} ${SDL_TTF_INCLUDE_DIRS}|g' -i CMakeLists.txt &amp;&amp; \
+sed 's|SDL2_ttf/SDL_ttf.h|SDL2/SDL_ttf.h|g' -i sdl/fontmng.c -i x/fontmng.c &amp;&amp; \
+sed '1i#include &lt;SDL2/SDL_ttf.h&gt;' -i sdl/fontmng.c &amp;&amp; \
 sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_base.h</code></pre>
+            <p>If <code>patch</code> tells you that previous patches were detected, enter <code class="blocksmall">y</code>.</p>
         </li>
         <li><p>Create the <code>build</code> directory and create the CMake files.</p>
             <pre><code class="block">mkdir build</code></pre>
             <h3>Default build command (X11 and SDL2)</h3>
             <p><b class="recommended"><i>Recommended for most users, for simplicity ;&#41;</i></b></p>
             <pre><code class="block">cmake . -B build -DBUILD_X=ON</code></pre>
-            <p>This will create <code>xnp21kai</code> (legacy X11 support), and <code>xnp21kai_sdl</code> (more modern version used by RetroArch).</p>
+            <p>This will create <code>xnp21kai_sdl</code> (legacy X11 support), and <code>sdlnp21kai</code> (more modern version used by RetroArch).</p>
             <h3>X11 only, no SDL</h3>
             <pre><code class="block">cmake -S . -B build -DBUILD_X=ON</code></pre>
             <h3>Full install (X11, SDL2, i286, HAXM)</h3>
@@ -495,7 +499,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
                     <td><code>BUILD_SDL</code></td>
                     <td><code>ON</code></td>
                     <td><code>sdl*</code></td>
-                    <td>Creates SDL versions of the following programs.</td>
+                    <td>Creates Wayland versions of the following programs.</td>
                 </tr>
                 <tr>
                     <td><code>USE_SDL</code></td>
@@ -516,8 +520,8 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
                     <td><code>BUILD_HAXM</code></td>
                     <td><code>OFF</code></td>
                     <td>
-                        <code>xnp21kai_HAXM</code>,<br>
-                        <code>xnp21kai_sdl_HAXM</code>
+                        <code>xnp21kai_ HAXM_sdl</code>,<br>
+                        <code>sdlnp21kai_HAXM</code>
                     </td>
                     <td>
                         If set to <code>ON</code>, creates a IA32 version with HAXM, which uses hardware virtualization.<br>
@@ -529,6 +533,11 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
         </li>
         <li>
             <p>Build the program. Errors and warnings are normal.</p>
+            <p class="warning"><b>
+                Recent testing suggests that you might only be able to build the program once,</b>
+                with subsequent attempts ending with the error
+                <code class="blocksmall">ninja: build stopped: subcommand failed.</code>
+            </p>
             <h3>Going into <code>build/</code></h3>
             <pre><code class="block">cd build/</code></pre>
             <pre><code class="block">cmake --build .</code></pre>
@@ -541,30 +550,31 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
             <h3>Without going into <code>build/</code></h3>
             <pre><code class="block">sudo cmake --install build</code></pre>
         </li>
-        <li>Run the program, and <a href="#adjust-settings-xnp21kai">adjust settings</a>
+        <li>Run the program, and <a href="#adjust-settings-xnp21kai_sdl">adjust settings</a>
             <h3>X11 version</h3>
-            <pre><code class="block">xnp21kai</code></pre>
-            <h3>SDL2 version<sup>†</sup></h3>
             <pre><code class="block">xnp21kai_sdl</code></pre>
+            <h3>Wayland version<sup>†</sup></h3>
+            <pre><code class="block">sdlnp21kai</code></pre>
         </li>
     </ol>
     <p><b>
-        <sup>†</sup> <code>xnp21kai_sdl</code> has some differences compared to <code>xnp21kai</code>,
+        <sup>†</sup> <code>sdlnp21kai</code> has some differences compared to <code>xnp21kai_sdl</code>,
         but the most important are as follows:
     </b></p>
     <ul>
         <li>
             <p><b>
-                As of writing, all variants of <code>xnp21kai_sdl</code> can only be ran from the terminal,
-                while all variants of <code>xnp21kai</code> have <code>.desktop</code> shortcuts.
+                As of writing, all variants of <code>sdlnp21kai</code> can only be ran from the terminal,
+                while all variants of <code>xnp21kai_sdl</code> have <code>.desktop</code> shortcuts after using the
+                <code class="blocksmall">sudo make install</code> command.
             </b></p>
         </li>
         <li><p><b>The menu bar is hidden until you press <code class="blocksmall">F11</code></b></p></li>
         <li>
-            <p><code>xnp21kai_sdl</code> can properly scale up to fullscreen, but <code>xnp21kai</code> cannot.</p>
-            <p>Inversely, <code>xnp21kai</code> is able to have a few different window sizes, while <code>xnp21kai_sdl</code> cannot.</p>
+            <p><code>sdlnp21kai</code> can properly scale up to fullscreen, but <code>xnp21kai_sdl</code> cannot.</p>
+            <p>Inversely, <code>xnp21kai_sdl</code> is able to have a few different window sizes, while <code>sdlnp21kai</code> cannot.</p>
         </li>
-        <li><p><code>xnp21kai_sdl</code> uses more resources. Or at least can make your fan spin up.</p></li>
+        <li><p><code>sdlnp21kai</code> uses more resources. Or at least can make your computer's fan spin up.</p></li>
     </ul>
     <h2 id="adjust-settings">Settings to adjust before playing</h2>
     <h3 id="adjust-settings-retroarch">RetroArch</h3>
@@ -593,7 +603,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
         <li><p>Install the <a href="#pc98-files">necessary font and ROM files</a></p></li>
     </ol>
     <p><sup>*</sup> Backspace key on keyboard</p>
-    <h3 id="adjust-settings-xnp21kai">xnp21kai</h3>
+    <h3 id="adjust-settings-xnp21kai_sdl">xnp21kai_sdl</h3>
     <ol>
         <li><p>In the menu bar, adjust these settings for a smooth experience. <b>To apply them, hit "Reset" in "Emulator"</b></p>
             <ul>
@@ -615,19 +625,19 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
                 </li>
             </ul>
         </li>
-        <li><p>Install the <a href="#pc98-files">necessary font and ROM files</a> to <code class="blocksmall">~/.config/xnp21kai/</code></p></li>
+        <li><p>Install the <a href="#pc98-files">necessary font and ROM files</a> to <code class="blocksmall">~/.config/xnp21kai_sdl/</code></p></li>
     </ol>
     <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
-    <p class="warning"><sup>†</sup> Testing by the author in xnp21kai has shown that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
-    <h3>xnp21kai_sdl</h3>
-    <p>The process is similar to <code>xnp21kai</code>, except for the following differences.</p>
+    <p class="warning"><sup>†</sup> Testing by the author in xnp21kai_sdl has shown that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
+    <h3>sdlnp21kai</h3>
+    <p>The process is similar to <code>xnp21kai_sdl</code>, except for the following differences.</p>
     <ul>
         <li><p>The maximum CPU multiplier is <code class="blocksmall">32</code></p></li>
         <li><p>The sampling rate for <code>44100 kHz</code> is visually rounded down to <code class="blocksmall">44KHz</code></p></li>
     </ul>
-    <p>Also note that for some reason, xnp21kai_sdl does not save its settings by default, so you may have to manually create a config folder for it.</p>
+    <p>Also note that for some reason, sdlnp21kai does not save its settings by default, so you may have to manually create a config folder for it.</p>
     <pre><code class="block">cd ~/.config</code></pre>
-    <pre><code class="block">mkdir xnp21kai_sdl</code></pre>
+    <pre><code class="block">mkdir sdlnp21kai</code></pre>
     <pre><code class="block">touch np21kai.cfg</code></pre>
     <p>This will also be relevant for the next section.</p>
     <hr class="light">
@@ -696,26 +706,26 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
             </p>
         </li>
     </ol>
-    <h3>xnp21kai</h3>
-    <p>Copy/move the font and ROM files to <code class="blocksmall">~/.config/xnp21kai</code>.</p>
+    <h3>xnp21kai_sdl</h3>
+    <p>Copy/move the font and ROM files to <code class="blocksmall">~/.config/xnp21kai_sdl</code>.</p>
     <p>If you are using a compatible font besides <code>FONT.ROM</code>, there are two possible options:</p>
     <ul>
         <li>
             <p>
-                Edit <code class="blocksmall">fontfile</code> in <code class="blocksmall">xnp21kairc</code>
+                Edit <code class="blocksmall">fontfile</code> in <code class="blocksmall">xnp21kai_sdlrc</code>
                 to the <i><b>absolute</b></i> filepath of the font.
             </p>
         </li>
         <li>
             <p>
-                Copy/move the font file to <code class="blocksmall">~/.config/xnp21kai</code>.
+                Copy/move the font file to <code class="blocksmall">~/.config/xnp21kai_sdl</code>.
                 Rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
             </p>
         </li>
     </ul>
-    <h3>xnp21kai_sdl</h3>
+    <h3>sdlnp21kai</h3>
     <p>
-        Similar to the process for <code>xnp21kai</code>, but the directory is <code class="blocksmall">~/.config/xnp21kai_sdl</code>,
+        Similar to the process for <code>xnp21kai_sdl</code>, but the directory is <code class="blocksmall">~/.config/sdlnp21kai</code>,
         and the configuration file is <code class="blocksmall">np21kai.cfg</code>.
     </p>
     <hr class="light">
@@ -788,7 +798,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
             <p>To remove the <code>.hdi</code> file, go into the Quick Menu and select "Close Content"</p>
         </li>
     </ol>
-    <h2 id="xnp21kai-running">xnp21kai</h2>
+    <h2 id="xnp21kai_sdl-running">xnp21kai_sdl</h2>
     <ol>
         <li><p>In the menu bar, select "HardDisk"</p></li>
         <li><p>Choose <code>IDE0-0</code><sup>*</sup>, then "Open"</p></li>
@@ -802,11 +812,11 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
     </ol>
     <p>
         <sup>*</sup> If only <code>IDE0-0</code> or <code>IDE0-1</code> is loaded, that will be the default drive.
-        If both are loaded, <code>xnp21kai</code> will prompt you to choose a drive to boot after the memcheck.
+        If both are loaded, <code>xnp21kai_sdl</code> will prompt you to choose a drive to boot after the memcheck.
     </p>
     <p><sup>†</sup> To switch to another <code>.hdi</code>, simply choose "Open" again.</p>
-    <h2 id="xnp21kai_sdl-running">xnp21kai_sdl</h2>
-    <p>Similar to <code>xnp21kai</code>, but with the following differences</p>
+    <h2 id="sdlnp21kai-running">sdlnp21kai</h2>
+    <p>Similar to <code>xnp21kai_sdl</code>, but with the following differences</p>
     <ul>
         <li><p><code>IDE1</code> and <code>IDE2</code> instead of <code>IDE0-0</code> and <code>IDE0-1</code>, respectively.</p></li>
     </ul>
@@ -861,7 +871,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
                 <td>Default setting, does nothing regardless of the value of the time interval.</td>
             </tr>
             <tr>
-                <td>z</td>
+                <td><code>z</code></td>
                 <td><code>x</code></td>
                 <td><code>y</code></td>
                 <td>
@@ -870,19 +880,19 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
                 </td>
             </tr>
             <tr>
-                <td>z</td>
+                <td><code>z</code></td>
                 <td><code>x</code></td>
                 <td><code>0</code></td>
                 <td>Create a savestate at slot <code>x</code> every <code>z</code> seconds.</td>
             </tr>
             <tr>
-                <td>z</td>
+                <td><code>z</code></td>
                 <td><code>0</code></td>
                 <td><code>0</code></td>
                 <td>Create a savestate at the current slot<sup class="warning">†</sup> every <code>z</code> seconds.</td>
             </tr>
             <tr>
-                <td>z</td>
+                <td><code>z</code></td>
                 <td><code>0</code></td>
                 <td><code>y</code></td>
                 <td>Create a savestate from the current slot<sup class="warning">†</sup> to slot <code>y</code>, inclusive, every <code>z</code> seconds.</td>
@@ -931,8 +941,8 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
     <p>Go to "Save States", then click on "Save State" to create a savestate to the current slot.</p>
     <p>To load a savestate from the current slot, click on "Load State".</p>
     <p>To navigate between slots, enter "State Slot" and navigate to your desired slot.</p>
-    <h2>xnp21kai/xnp21kai_sdl</h2>
-    <p>To enable savestates, add the following line to <code>xnp21kairc</code> (or <code>np21kai.cfg</code>)</p>
+    <h2>xnp21kai_sdl/sdlnp21kai</h2>
+    <p>To enable savestates, add the following line to <code>xnp21kai_sdlrc</code> (or <code>np21kai.cfg</code>)</p>
     <pre><code class="blocksmall">STATSAVE = true</code></pre>
     <p>(Re)start the program. There should be a new section in the menu bar titled <code>STAT</code>. Under that, you can save and load two slots.</p>
     <hr class="light">
@@ -969,11 +979,11 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
             </ul>
         </li>
     </ul>
-    <h3>xnp21kai/xnp21kai_sdl</h3>
+    <h3>xnp21kai_sdl/sdlnp21kai</h3>
     <ul>
         <li><p>Your window position and size is not remembered!</p></li>
         <li><p>Your last used <code>.hdi</code> file, however, is remembered!</p></li>
-        <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai</p></li>
+        <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai_sdl</p></li>
         <li><p>There has been issues where closing the window via the "X" button may not cause the program to stop running.</p>
             <p>If that happens, kill the program via the terminal or System Monitor.</p>
         </li>
@@ -996,14 +1006,14 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
     <p>Go back and make sure you set "Fullscreen" to "Yes".</p>
     <p>If you have multiple monitors, and the program launches on the wrong one, you can also add "screen" property.</p>
     <p>The changed settings can be found under System Settings → "Window Management" → "Window Rules" → Pencil icon of "Window settings for com.libretro.RetroArch".</p>
-    <h2>xnp21kai</h2>
+    <h2>xnp21kai_sdl</h2>
     <h3>No sound</h3>
     <p>Try stopping the program and run it again. (<code class="blocksmall">Ctrl+C</code> if launched from the terminal)</p>
     <h3>Can't close/freezes</h3>
     <p>Includes errors being thrown even when pressing <code class="blocksmall">Ctrl+C</code> in the terminal.
         Unfortunately, This is arbitrary behavior that there is no exact solution to so far.
     </p>
-    <p>Testing by the author suggests that directly running <code>xnp21kai</code> from <code>/usr/local/bin/</code>
+    <p>Testing by the author suggests that directly running <code>xnp21kai_sdl</code> from <code>/usr/local/bin/</code>
         may solve this issue if it repeatedly happens.
     </p>
     <h3>Fullscreen isn't fullscreen</h3>
@@ -1035,6 +1045,9 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
             <a href="https://pc98.ne.jp/reslib">PC-9800 Central Community</a>
             | Resource Library
         </li>
+		<li>
+			<a href="https://9800guide.uwu.ai/">NEC PC-9800: An Introduction for Western Beginners</a>
+		</li>
         <li>
             <a href="https://gang-fight.com/projects/98faq/">Gang Fight</a>
             | PC-98 Emulation for Beginners
