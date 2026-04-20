@@ -25,414 +25,414 @@ SOFTWARE.
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>PC-98 Touhou Linux Guide</title>
-    <link rel="canonical" href="https://daichungus.github.io/touhoulinuxguide/pc98">
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all">
-    <meta name="google-site-verification" content="ltcI_na3llrkU_tFgNzedPJ6SttT3XiO4kXdM3j46bY">
+	<meta charset="UTF-8">
+	<title>PC-98 Touhou Linux Guide</title>
+	<link rel="canonical" href="https://daichungus.github.io/touhoulinuxguide/pc98">
+	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all">
+	<meta name="google-site-verification" content="ltcI_na3llrkU_tFgNzedPJ6SttT3XiO4kXdM3j46bY">
 	<meta name="google-site-verification" content="fsTL74NF-9aB7wfYSKk6buOp_4RWVcrTgL2Wg3es-xg">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A no-nonsense guide to running the PC-98 era Touhou games on Linux using RetroArch and DOSBox-X.">
-    <meta name="keywords" content="Touhou, PC-98, PC-98 Touhou, Touhou Linux, Neko Project II, np21, retroarch, anex86, dosbox-x, Touhou guide, PC-98 Touhou Linux, emulation">
-    <meta name="author" content="Daichungus">
-    <meta name="robots" content="index, follow">
+	<meta name="description" content="A no-nonsense guide to running the PC-98 era Touhou games on Linux using RetroArch and DOSBox-X.">
+	<meta name="keywords" content="Touhou, PC-98, PC-98 Touhou, Touhou Linux, Neko Project II, np21, retroarch, anex86, dosbox-x, Touhou guide, PC-98 Touhou Linux, emulation">
+	<meta name="author" content="Daichungus">
+	<meta name="robots" content="index, follow">
 
-    <meta property="og:title" content="PC-98 Touhou Linux Guide">
-    <meta property="og:description" content="A practical guide to running the PC-98 Touhou games on Linux.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://daichungus.github.io/touhoulinuxguide/pc98">
+	<meta property="og:title" content="PC-98 Touhou Linux Guide">
+	<meta property="og:description" content="A practical guide to running the PC-98 Touhou games on Linux.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://daichungus.github.io/touhoulinuxguide/pc98">
 
-    <link rel="icon" type="image/x-icon" href="../image/pc98alice.ico" sizes="any">
-    <link rel="apple-touch-icon" href="../image/pc98alice.ico">
+	<link rel="icon" type="image/x-icon" href="../image/pc98alice.ico" sizes="any">
+	<link rel="apple-touch-icon" href="../image/pc98alice.ico">
 </head>
 
 <body class="classic">
-    <header>
-        <h1>PC-98 Touhou Linux Guide</h1>
-        <h2>By <a href="https://daichungus.github.io">Daichungus</a></h2>
-        <p>Submit issues, contribute, or complain <a href="https://github.com/daichungus/touhoulinuxguide"><u>through the repo</u></a>.</p>
-        <p>This is the guide for the PC-98 era games. <a href="../">The Windows era Touhou guide is here</a>.</p>
-    </header>
-    <hr class="light">
-    <h2 id="disclaimer">Disclaimer</h2>
-    <p>This guide focuses on using <b>DOSBox-X and Neko Project II Kai</b> for a relatively straightforward and consistent experience.</p>
-    <p>It does not cover:</p>
-    <ul>
-        <li>Every possible setup or edge case</li>
-        <li>Running the games rhrough Steam</li>
-        <li>How to obtain copies of the games or play them</li>
-        <li>How to run the games on an actual PC-98 machine</li>
-    </ul>
-    <p>The goal here is to get most users running their PC-98 Touhou games without too much headaches.</p>
-    <p>If you're looking for more advanced or alternative methods, other resources may be better suited.</p>
-    <hr class="light">
-    <h1>Preparing your Linux environment</h1>
-    <h2 id="choosing-distro">Choosing a distro</h2>
-    <p><i><u><a href="#installing-required-software">Skip this section</a></u> if you already have chosen your distro.</i></p>
-    <p>
-        Most major <a href="https://wikipedia.org/wiki/Linux_distribution">distros</a> and
-        <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environments</a>
-        should work well with this guide.
-    </p>
-    <p>The author's only recommendation is to choose a well-known, widely-supported, and stable distro, which includes but is not
-        limited to the following:
-    </p>
-    <ul>
-        <li><a href="https://linuxmint.com/">Linux Mint</a></li>
-        <li><a href="https://ubuntu.com/desktop">Ubuntu</a></li>
-        <li><a href="https://fedoraproject.org/">Fedora</a></li>
-        <li><a href="https://www.debian.org/">Debian</a></li>
-    </ul>
-    <p>This guide has been personally tested by the author with the following distros:</p>
-    <ul>
-        <li>Linux Mint (22.2)</li>
-        <li>Fedora (43)</li>
-        <li>Arch Linux (virtual machine)</li>
-    </ul>
-    <h2 id="installing-required-software">Installing required software</h2>
-    <p>Before continuing, ensure you have the necessary graphics drivers and system firmware installed.</p>
-    <p>Consult your distro's documentation or other online resources for a proper setup (e.g., RPM Fusion for Nvidia
-        drivers on Fedora, multilib repo on Arch, etc.).
-    </p>
-    <ol>
-        <li>Update your repository using your distro's included package manager.
-            <p><b>Debian/Ubuntu/Linux Mint</b></p>
-            <pre><code class="block">sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
-            <p><b>Fedora</b></p>
-            <pre><code class="block">sudo dnf update</code></pre>
-            <p><b>Arch Linux</b></p>
-            <pre><code class="block">sudo pacman -Syu</code></pre>
-        </li>
-        <li>
-            <a href="https://flatpak.org/setup/">Install Flatpak</a> on your distribution.
-            If you do not wish to use Flatpak or already have it, skip this step.
-        </li>
-    </ol>
-    <hr class="light">
-    <h1 id="emulator-list">Choosing an emulator</h1>
-    <h3>Disclaimer</h3>
-    <p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
-    <p>
-        However, they're more likely to have issues and inconsistent behavior when running on Linux through Wine<sup>*</sup>,
-        especially on certain distributions and setups.
-    </p>
-    <p>Some, such as Anex86, T98-Next, and the original Neko Project II, are more than 20 years old!</p>
-    <p><b>Hence, this guide will mainly cover setup of two Linux-native emulators in detail:</b></p>
-    <h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
-    <ul>
-        <li><p>All-around decent choice for most users</p></li>
-        <li><p>Cross-platform (Windows, Linux, macOS, DOS)</p></li>
-        <li><p>Great if you emulate other DOS systems</p></li>
-        <li><p>Included in many distros' repos</p></li>
-        <li><p>Can run the original game files, no <code>.hdi</code> file needed.</p></li>
-        <li><p>Savestates have issues and more difficult to save and load</p></li>
-    </ul>
-    <h2>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</h2>
-    <ul>
-        <li><p>Considered a better choice for serious runs or more accurate emulation</p></li>
-        <li><p>Cross-platform as a RetroArch core</p></li>
-        <li><p>Great if you already use RetroArch</p></li>
-        <li><p>Can be built from source as <code>xnp21kai_sdl</code>, and has an AUR package</p></li>
-        <li><p>Only supports <code>.hdi</code> and <code>.fdi</code> files</p></li>
-        <li><p>Savestates are easier to save and load</p></li>
-    </ul>
-    <h3 id="return-from-emulator">A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</h3>
-    <hr class="light">
-        <h1 id="dosbox-x-setup">DOSBox-X setup</h1>
-    <h2>Installation</h2>
-    <p>Install DOSBox-X through your package manager</p>
-    <p><b>Flatpak</b>    </p>
-    <p class="recommended"><b>Recommended option for most users<sup>*</sup></b></p>
-    <pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
-    <p><b>Debian/Ubuntu/Linux Mint</b></p>
-    <pre><code class="block">sudo apt install dosbox-x</code></pre>
-    <p><b>Fedora</b></p>
-    <pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
-    <pre><code class="block">sudo dnf install dosbox-x</code></pre>
-    <p><b>Arch Linux</b></p>
-    <pre><code class="block">git clone https://aur.archlinux.org/dosbox-x.git</code></pre>
-    <pre><code class="block">cd dosbox-x &amp;&amp; less PKGBUILD</code></pre>
-    <pre><code class="block">makepkg -si dosbox-x</code></pre>
-    <p class="recommended">
-        <sup>*</sup> The Flatpak version helps avoid most inconsistencies between distros
-        and will always be the most up-to-date version,
-        at the cost of taking up more storage and less file permissions by default.
-    </p>
-    <h2>Settings to adjust before playing</h2>
-    <h3>Configuration file</h3>
-    <p>DOSBox-X relies on a configuration file to apply the correct settings for various types of programs.</p>
-    <p>By default, DOSBox-X uses its own config file located at:</p>
-    <ul>
-        <li><p><b>Non-Flatpak</b></p>
-            <pre><code class="block">~/.config/dosbox-x/dosbox-x-(version).conf</code></pre>
-        </li>
-        <li><p><b>Flatpak</b></p>
-            <pre><code class="block">~/.var/app/com.dosbox_x.DOSBox-X/config/dosbox-x/dosbox-x-(version).conf</code></pre>
-        </li>
-    </ul>
-    <p>If the working directory contains a file named
-        <code class="blocksmall">dosbox-x.conf</code>,
-        the settings that it contains will override the respective ones in the default config file.
-    </p>
-    <p class="recommended"><b>
-        As such, a ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
-        Simply save it to the same directory as your <code>.hdi</code> files.</b><br>
-        However, it is recommended that you look at the contents of it to have a basic understanding of what settings are applied.
-    </p>
-    <p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
-    <p><b>Otherwise, <a href="#pc98-files">download a font</a> to the directory, then <a href="#dosbox-x-running">start running the games</a>.</b></p>
-    <h3 id="working-directory">Working directory</h3>
-    <p>The working directory is where DOSBox-X will run. By default, DOSBox-X will ask you to choose a directory in your system.<sup>*</sup></p>
-    <p>If you intend on using DOSBox-X only to play the PC-98 Touhou games,
-        set the directory with the <code>.hdi</code> files as the default working directory <b>in the default config file</b>
-    </p>
-    <pre><code class="block">[dosbox]
+	<header>
+		<h1>PC-98 Touhou Linux Guide</h1>
+		<h2>By <a href="https://daichungus.github.io">Daichungus</a></h2>
+		<p>Submit issues, contribute, or complain <a href="https://github.com/daichungus/touhoulinuxguide"><u>through the repo</u></a>.</p>
+		<p>This is the guide for the PC-98 era games. <a href="../">The Windows era Touhou guide is here</a>.</p>
+	</header>
+	<hr class="light">
+	<h2 id="disclaimer">Disclaimer</h2>
+	<p>This guide focuses on using <b>DOSBox-X and Neko Project II Kai</b> for a relatively straightforward and consistent experience.</p>
+	<p>It does not cover:</p>
+	<ul>
+		<li>Every possible setup or edge case</li>
+		<li>Running the games rhrough Steam</li>
+		<li>How to obtain copies of the games or play them</li>
+		<li>How to run the games on an actual PC-98 machine</li>
+	</ul>
+	<p>The goal here is to get most users running their PC-98 Touhou games without too much headaches.</p>
+	<p>If you're looking for more advanced or alternative methods, other resources may be better suited.</p>
+	<hr class="light">
+	<h1>Preparing your Linux environment</h1>
+	<h2 id="choosing-distro">Choosing a distro</h2>
+	<p><i><u><a href="#installing-required-software">Skip this section</a></u> if you already have chosen your distro.</i></p>
+	<p>
+		Most major <a href="https://wikipedia.org/wiki/Linux_distribution">distros</a> and
+		<a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environments</a>
+		should work well with this guide.
+	</p>
+	<p>The author's only recommendation is to choose a well-known, widely-supported, and stable distro, which includes but is not
+		limited to the following:
+	</p>
+	<ul>
+		<li><a href="https://linuxmint.com/">Linux Mint</a></li>
+		<li><a href="https://ubuntu.com/desktop">Ubuntu</a></li>
+		<li><a href="https://fedoraproject.org/">Fedora</a></li>
+		<li><a href="https://www.debian.org/">Debian</a></li>
+	</ul>
+	<p>This guide has been personally tested by the author with the following distros:</p>
+	<ul>
+		<li>Linux Mint (22.2)</li>
+		<li>Fedora (43)</li>
+		<li>Arch Linux (virtual machine)</li>
+	</ul>
+	<h2 id="installing-required-software">Installing required software</h2>
+	<p>Before continuing, ensure you have the necessary graphics drivers and system firmware installed.</p>
+	<p>Consult your distro's documentation or other online resources for a proper setup (e.g., RPM Fusion for Nvidia
+		drivers on Fedora, multilib repo on Arch, etc.).
+	</p>
+	<ol>
+		<li>Update your repository using your distro's included package manager.
+			<p><b>Debian/Ubuntu/Linux Mint</b></p>
+			<pre><code class="block">sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+			<p><b>Fedora</b></p>
+			<pre><code class="block">sudo dnf update</code></pre>
+			<p><b>Arch Linux</b></p>
+			<pre><code class="block">sudo pacman -Syu</code></pre>
+		</li>
+		<li>
+			<a href="https://flatpak.org/setup/">Install Flatpak</a> on your distribution.
+			If you do not wish to use Flatpak or already have it, skip this step.
+		</li>
+	</ol>
+	<hr class="light">
+	<h1 id="emulator-list">Choosing an emulator</h1>
+	<h3>Disclaimer</h3>
+	<p>There exists several emulators of the PC-98 platform, many of which work very well on Windows or older hardware.</p>
+	<p>
+		However, they're more likely to have issues and inconsistent behavior when running on Linux through Wine<sup>*</sup>,
+		especially on certain distributions and setups.
+	</p>
+	<p>Some, such as Anex86, T98-Next, and the original Neko Project II, are more than 20 years old!</p>
+	<p><b>Hence, this guide will mainly cover setup of two Linux-native emulators in detail:</b></p>
+	<h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
+	<ul>
+		<li><p>All-around decent choice for most users</p></li>
+		<li><p>Cross-platform (Windows, Linux, macOS, DOS)</p></li>
+		<li><p>Great if you emulate other DOS systems</p></li>
+		<li><p>Included in many distros' repos</p></li>
+		<li><p>Can run the original game files, no <code>.hdi</code> file needed.</p></li>
+		<li><p>Savestates have issues and more difficult to save and load</p></li>
+	</ul>
+	<h2>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</h2>
+	<ul>
+		<li><p>Considered a better choice for serious runs or more accurate emulation</p></li>
+		<li><p>Cross-platform as a RetroArch core</p></li>
+		<li><p>Great if you already use RetroArch</p></li>
+		<li><p>Can be built from source as <code>xnp21kai_sdl</code>, and has an AUR package</p></li>
+		<li><p>Only supports <code>.hdi</code> and <code>.fdi</code> files</p></li>
+		<li><p>Savestates are easier to save and load</p></li>
+	</ul>
+	<h3 id="return-from-emulator">A list of other PC-98 emulators can be found <a href="./emulators.html">here</a>.</h3>
+	<hr class="light">
+		<h1 id="dosbox-x-setup">DOSBox-X setup</h1>
+	<h2>Installation</h2>
+	<p>Install DOSBox-X through your package manager</p>
+	<p><b>Flatpak</b>    </p>
+	<p class="recommended"><b>Recommended option for most users<sup>*</sup></b></p>
+	<pre><code class="block">flatpak install flathub com.dosbox_x.DOSBox-X</code></pre>
+	<p><b>Debian/Ubuntu/Linux Mint</b></p>
+	<pre><code class="block">sudo apt install dosbox-x</code></pre>
+	<p><b>Fedora</b></p>
+	<pre><code class="block">sudo dnf copr enable rob72/DOSBox-X</code></pre>
+	<pre><code class="block">sudo dnf install dosbox-x</code></pre>
+	<p><b>Arch Linux</b></p>
+	<pre><code class="block">git clone https://aur.archlinux.org/dosbox-x.git</code></pre>
+	<pre><code class="block">cd dosbox-x &amp;&amp; less PKGBUILD</code></pre>
+	<pre><code class="block">makepkg -si dosbox-x</code></pre>
+	<p class="recommended">
+		<sup>*</sup> The Flatpak version helps avoid most inconsistencies between distros
+		and will always be the most up-to-date version,
+		at the cost of taking up more storage and less file permissions by default.
+	</p>
+	<h2>Settings to adjust before playing</h2>
+	<h3>Configuration file</h3>
+	<p>DOSBox-X relies on a configuration file to apply the correct settings for various types of programs.</p>
+	<p>By default, DOSBox-X uses its own config file located at:</p>
+	<ul>
+		<li><p><b>Non-Flatpak</b></p>
+			<pre><code class="block">~/.config/dosbox-x/dosbox-x-(version).conf</code></pre>
+		</li>
+		<li><p><b>Flatpak</b></p>
+			<pre><code class="block">~/.var/app/com.dosbox_x.DOSBox-X/config/dosbox-x/dosbox-x-(version).conf</code></pre>
+		</li>
+	</ul>
+	<p>If the working directory contains a file named
+		<code class="blocksmall">dosbox-x.conf</code>,
+		the settings that it contains will override the respective ones in the default config file.
+	</p>
+	<p class="recommended"><b>
+		As such, a ready-to-use config file is available for you to <a href="./dosbox-x.conf" download>download</a>;
+		Simply save it to the same directory as your <code>.hdi</code> files.</b><br>
+		However, it is recommended that you look at the contents of it to have a basic understanding of what settings are applied.
+	</p>
+	<p>If you prefer writing your own config file or directly editing the main config file, continue to the next sections.</p>
+	<p><b>Otherwise, <a href="#pc98-files">download a font</a> to the directory, then <a href="#dosbox-x-running">start running the games</a>.</b></p>
+	<h3 id="working-directory">Working directory</h3>
+	<p>The working directory is where DOSBox-X will run. By default, DOSBox-X will ask you to choose a directory in your system.<sup>*</sup></p>
+	<p>If you intend on using DOSBox-X only to play the PC-98 Touhou games,
+		set the directory with the <code>.hdi</code> files as the default working directory <b>in the default config file</b>
+	</p>
+	<pre><code class="block">[dosbox]
 working directory option = default
 working directory default = /your/path/to/pc98touhou/</code></pre>
-    <p><sup>*</sup> If ran from the desktop. If it was ran in the terminal, DOSBox-X uses the current directory as the working directory.</p>
-    <h3>Graphics</h3>
-    <p>To always start in fullscreen, set:</p>
-    <pre><code class="block">[sdl]
+	<p><sup>*</sup> If ran from the desktop. If it was ran in the terminal, DOSBox-X uses the current directory as the working directory.</p>
+	<h3>Graphics</h3>
+	<p>To always start in fullscreen, set:</p>
+	<pre><code class="block">[sdl]
 fullscreen = true
 fullresolution = desktop</code></pre>
-    <p>To ensure the graphics stay consistent, set:</p>
-    <pre><code class="block">[sdl]
+	<p>To ensure the graphics stay consistent, set:</p>
+	<pre><code class="block">[sdl]
 output = openglpp
 
 [render]
 aspect = true
 aspect_ratio = -1:-1</code></pre>
-    <h3>Enabling PC-98 mode</h3>
-    <p>To always enable PC-98 mode, set</p>
-    <pre><code class="block">[dosbox]
+	<h3>Enabling PC-98 mode</h3>
+	<p>To always enable PC-98 mode, set</p>
+	<pre><code class="block">[dosbox]
 machine = pc98</code></pre>
-    <h3>Keyboard</h3>
-    <p>
-        Some DOSBox-X packages (such as the Fedora COPR build) may not enable US keyboard layout in PC-98 mode by default,
-        as the PC-98 was originally meant to be used for Japanese keyboards.
-    </p>
-    <p>This guide assumes most readers are using a US or similar keyboard layout.</p>
-    <p>
-        If your DOSBox-X package does not enable the US layout by default (check in the default config file),
-        and you're using a US layout or similar, set
-    </p>
-    <pre><code class="block">[pc98]
+	<h3>Keyboard</h3>
+	<p>
+		Some DOSBox-X packages (such as the Fedora COPR build) may not enable US keyboard layout in PC-98 mode by default,
+		as the PC-98 was originally meant to be used for Japanese keyboards.
+	</p>
+	<p>This guide assumes most readers are using a US or similar keyboard layout.</p>
+	<p>
+		If your DOSBox-X package does not enable the US layout by default (check in the default config file),
+		and you're using a US layout or similar, set
+	</p>
+	<pre><code class="block">[pc98]
 pc-98 force ibm keyboard layout = true
 pc-98 force JIS keyboard layout = false</code></pre>
-    <p>in either the default config file, or the provided <code>dosbox-x.conf</code> file.</p>
-    <h3>Refresh rate</h3>
-    <p>
-        By default, the refresh rate of DOSBox-X is "unlocked".
-        This means the program is not limited in the number of frames per second (fps) it can produce.
-    </p>
-    <p>
-        For the Touhou games, this means that they will only run around 56 - 57 fps<sup>*</sup>
-        unless the following setting is applied:
-    </p>
-    <pre><code class="block">[video]
+	<p>in either the default config file, or the provided <code>dosbox-x.conf</code> file.</p>
+	<h3>Refresh rate</h3>
+	<p>
+		By default, the refresh rate of DOSBox-X is "unlocked".
+		This means the program is not limited in the number of frames per second (fps) it can produce.
+	</p>
+	<p>
+		For the Touhou games, this means that they will only run around 56 - 57 fps<sup>*</sup>
+		unless the following setting is applied:
+	</p>
+	<pre><code class="block">[video]
 forcerate = 60
 </code></pre>
-    <p>Which will force the games to consistently run at 60 Hz (and thus 60 fps), if possible.</p>
-    <p>
-        <sup>*</sup> The refresh rate for the original PC-9800 series of computers is 56.41 Hz.
-        This means gameplay may appear to be choppy on modern displays, unless adaptive sync has been enabled by the user.
-    </p>
-    <h3>CPU speed</h3>
-    <p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
-    <p>For a consistently smooth experience,<sup>*</sup> set</p>
-    <pre><code class="block">[cpu]
+	<p>Which will force the games to consistently run at 60 Hz (and thus 60 fps), if possible.</p>
+	<p>
+		<sup>*</sup> The refresh rate for the original PC-9800 series of computers is 56.41 Hz.
+		This means gameplay may appear to be choppy on modern displays, unless adaptive sync has been enabled by the user.
+	</p>
+	<h3>CPU speed</h3>
+	<p>The default CPU cycle count (<code>3000</code>) is too low for the Touhou games, resulting in extremely slow gameplay.</p>
+	<p>For a consistently smooth experience,<sup>*</sup> set</p>
+	<pre><code class="block">[cpu]
 cycles = 74000</code></pre>
-    <p>If your hardware allows it,<sup>†</sup> set</p>
-    <pre><code class="block">[cpu]
+	<p>If your hardware allows it,<sup>†</sup> set</p>
+	<pre><code class="block">[cpu]
 core = dynamic_x86</code></pre>
-    <p>
+	<p>
 		<sup>*</sup> In testing, most values between <code>24000</code> and <code>100000</code> worked well for the Touhou games.
 		<code>74000</code> is suggested in this guide for most systems, though you may need to adjust should resource usage be a concern.
 	</p>
-    <p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing by the author with the same number of cycles.</p>
-    <h3 id="autoexec">Auto-execution</h3>
-    <p>This is especially helpful if you intend on always using only one <code>.hdi</code> file<sup>*</sup> and do not want to always type the commands by hand every time you start DOSBox-X.</p>
-    <pre><code class="block">[autoexec]
+	<p><sup>†</sup> DOSBox-X used less of the CPU compared to "Normal" during testing by the author with the same number of cycles.</p>
+	<h3 id="autoexec">Auto-execution</h3>
+	<p>This is especially helpful if you intend on always using only one <code>.hdi</code> file<sup>*</sup> and do not want to always type the commands by hand every time you start DOSBox-X.</p>
+	<pre><code class="block">[autoexec]
 IMGMOUNT C TOUHOU.HDI
 BOOT C:</code></pre>
-    <p>(Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your <code>.hdi</code> file.)</p>
-    <p><sup>*</sup> For example, an <code>.hdi</code> with all the PC-98 Touhou games or a full system</p>
-    <hr class="light">
-    <h1 id="np21kai-setup">Neko Project II Kai setup</h1>
-    <h2>Installation</h2>
-    <p>There are many different ways to have NP21kai installed to your system.</p>
-    <ul>
-        <li>
-            <h3>RetroArch (<a href="#np21kai-retroarch">skipto</a>)</h3>
-            <p class="recommended"><b>Recommended option for most users</b></p>
-            <p>
-                Great and stable choice, especially if you already use RetroArch for other games, but not great if you're tight on storage.
-                Modern UI navigation is biased towards controllers.
-            </p>
-        </li>
-        <li>
-            <h3>AUR package (<a href="#np21kai-arch">skipto</a>)</h3>
-            <p>Good choice if you use an Arch-based system. Doesn't help if you don't use Arch, by the way.</p>
+	<p>(Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual name of your <code>.hdi</code> file.)</p>
+	<p><sup>*</sup> For example, an <code>.hdi</code> with all the PC-98 Touhou games or a full system</p>
+	<hr class="light">
+	<h1 id="np21kai-setup">Neko Project II Kai setup</h1>
+	<h2>Installation</h2>
+	<p>There are many different ways to have NP21kai installed to your system.</p>
+	<ul>
+		<li>
+			<h3>RetroArch (<a href="#np21kai-retroarch">skipto</a>)</h3>
+			<p class="recommended"><b>Recommended option for most users</b></p>
+			<p>
+				Great and stable choice, especially if you already use RetroArch for other games, but not great if you're tight on storage.
+				Modern UI navigation is biased towards controllers.
+			</p>
+		</li>
+		<li>
+			<h3>AUR package (<a href="#np21kai-arch">skipto</a>)</h3>
+			<p>Good choice if you use an Arch-based system. Doesn't help if you don't use Arch, by the way.</p>
 			<p><b>However, the AUR package only helps automate building the program from source</b> (see below).</p>
-        </li>
-        <li>
-            <h3>Building from source / xnp21kai_sdl (<a href="#np21kai-source">skipto</a>)</h3>
-            <p class="warning"><i><b>
+		</li>
+		<li>
+			<h3>Building from source / xnp21kai_sdl (<a href="#np21kai-source">skipto</a>)</h3>
+			<p class="warning"><i><b>
 				Does not have a "stable" branch or binary releases. Will have bugs, missing features, and arbitrary behavior.
 			</b></i></p>
-            <p>
+			<p>
 				Not recommended for new Linux users, users who are unfamiliar with building programs from source, or those who prefer stable programs.
-            </p>
-            <p>Only choose this if you <i>absolutely desire</i> so, or have no other options.</p>
-        </li>
-    </ul>
-    <h2 id="np21kai-retroarch">RetroArch</h2>
-    <p>
-        You may want to familiarize yourself with the
-        <a href="https://docs.libretro.com/image/guides/standard-key-bindings.png">RetroArch standard keyboard bindings</a>
-        before continuing to this section.
-    </p>
-    <ol>
-        <li>
-            <p>Install RetroArch. Choose the version that suits you the most.</p>
-            <p>This guide recommends the latest stable version for most users for consistency and ease of use.</p>
-            <ul>
-                <li>
-                    <p><b>Flatpak</b></p>
-                    <p class="recommended"><b>Recommended for most users</b></p>
-                    <pre><code class="block">flatpak install flathub org.libretro.RetroArch</code></pre>
-                </li>
-                <li><p><b><a href="https://store.steampowered.com/app/1118310/RetroArch/">Steam</a></b></p></li>
-                <li><p><b><a href="https://retroarchofficial.itch.io/retroarch">Itch.io</a></b></p></li>
-                <li>
-                    <p><b>Ubuntu/Linux Mint</b></p>
-                    <pre><code class="block">sudo add-apt-repository ppa:libretro/stable &amp;&amp; sudo apt-get update &amp;&amp; sudo apt-get install retroarch</code></pre>
-                </li>
-                <li>
-                    <p><b>Fedora</b></p>
-                    <p><i>
-                        The default installation of RetroArch also installs a few emulators as weak dependencies.
-                        The command below installs RetroArch without those emulators.
-                    </i></p>
-                    <pre><code class="block">sudo dnf install retroarch retroarch-assets retroarch-database retroarch-filters --setopt=install_weak_deps=False</code></pre>
-                </li>
-                <li>
-                    <p><b>Arch Linux (<a href="https://wiki.archlinux.org/title/RetroArch">Wiki</a>)</b></p>
-                    <pre><code class="block">sudo pacman -Sy retroarch retroarch-assets-xmb retroarch-assets-ozone</code></pre>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <p>Run RetroArch either by GUI or in the terminal.</p>
-            <p><b>Flatpak</b></p>
-            <pre><code class="block">flatpak run org.libretro.RetroArch</code></pre>
-            <p><b>Non-Flatpak</b></p>
-            <pre><code class="block">retroarch</code></pre>
-        </li>
-        <li>
-            <p>
-                If you installed RetroArch through your distro's package manager,
-                follow the next set of instructions. Otherwise you can skip this part.
-            </p>
-            <ol>
-                <li>
-                    <p>
-                        In "Settings" → "User Interface" → "Menu Item Visibility", set
-                        <code class="blocksmall">Show 'Online Updater'</code> and
-                        <code class="blocksmall">Show 'Core Downloader'</code> to <code class="blocksmall">ON</code>.
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Close RetroArch (Esc key twice), then navigate to
-                        <code class="blocksmall">~/.config/retroarch</code>.
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Edit the following settings in <code class="blocksmall">retroarch.cfg</code>, as
-                        this will allow you to install cores without requiring root privileges.
-                    </p>
-                    <pre><code class="block">libretro_directory = "~/.config/retroarch/cores"</code></pre>
-                    <pre><code class="block">libretro_info_path = "~/.config/retroarch/cores/info"</code></pre>
-                </li>
-                <li><p>Launch RetroArch again and continue with the following steps.</p></li>
-            </ol>
-        </li>
-        <li>
-            <p>In the Main Menu, select (Enter/Return key) "Load Core", then "Download Core"</p>
-        </li>
-        <li>
-            <p>Scroll down the list to <b>NEC - PC-98 (Neko Project II Kai)</b>, then select to install it.</p>
-        </li>
-        <li><p><a href="#adjust-settings-retroarch">Adjust settings before playing</a></p></li>
-    </ol>
-    <h2 id="np21kai-arch">AUR package (Arch Linux)</h2>
-    <p>If you're new to Arch, please consider first reading the Arch Wiki article on
-        <a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>,
-        along with the <a href="https://wiki.archlinux.org/title/Makepkg">article on makepkg</a>.
-    </p>
-    <ol>
-        <li>
-            <p>Install gtk2 from the <a href="https://aur.archlinux.org/packages/gtk2">AUR</a></p>
-            <pre><code class="block">git clone https://aur.archlinux.org/gtk2.git</code></pre>
-            <pre><code class="block">cd gtk2 &amp;&amp; less PKGBUILD</code></pre>
-            <pre><code class="block">makepkg -si gtk2</code></pre>
-        </li>
-        <li>
-            <p>Clone the np21kai repo from the <a href="https://aur.archlinux.org/packages/np2kai-git">AUR</a></p>
-            <pre><code class="block">git clone https://aur.archlinux.org/np2kai-git.git</code></pre>
-            <p>Check the PKGBUILD for security, and <a href="#cmake-options-table">modify the CMake flags</a> if desired. <sup>*</sup></p>
-            <pre><code class="block">cd np2kai-git &amp;&amp; less PKGBUILD</code></pre>
-            <pre><code class="block">makepkg -si np21kai</code></pre>
-        </li>
-        <li><p>Proceed with <a href="#adjust-settings-xnp21kai_sdl">adjusting the necessary settings</a>.</p></li>
-    </ol>
-    <p><sup>*</sup> Currently as of writing, the <code>PKGBUILD</code> will create 6 versions of np21kai by default</p>
-    <ul>
-        <li><code>xnp2kai</code></li>
-        <li><code>xnp21kai_sdl</code></li>
-        <li><code>xnp21kai_HAXM_sdl</code></li>
-    </ul>
-    <p>and their SDL equivalents with the <code>_sdl</code> suffix at the end.</p>
-    <h2 id="np21kai-source">Building from source (xnp21kai_sdl)</h2>
-    <p class="warning"><i>
-        The steps below may not be the most up-to-date. Steps are highly subject to change. This section is the most flawed part of the guide.
-    </i></p>
-    <p><i>
-        Referenced from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">original README document</a>
-        and the <a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=np2kai-git">AUR PKGBUILD file</a>.
-    </i></p>
-    <ol>
-        <li>
-            <p>Install the required programs and libraries</p>
-            <h3>Debian/Ubuntu/Linux Mint</h3>
-            <p class="warning"><i>
-                Installing these libraries may cause some of your programs or dependencies to be automatically removed.
-                Always check what packages will be installed and removed before confirmation.
-            </i></p>
-            <p><code class="block">sudo apt install git build-essential cmake ninja-build nasm libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
-                libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev
-                libfontconfig1-dev libssl-dev
-            </code></p>
-            <h3>Fedora</h3>
-            <p><code class="block">sudo dnf group install "development-tools"</code></p>
-            <p>
-                <code class="block">sudo dnf install gcc-c++ cmake ninja-build nasm /usr/lib64/libusb.so SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel sdl2-compat-devel</code>
-            </p>
-        </li>
-        <li><p>Clone <a href="https://github.com/AZO234/NP2kai">the np21kai repo</a></p>
-            <pre><code class="block">git clone https://github.com/AZO234/NP2kai.git</code></pre>
-        </li>
-        <li><p>Navigate to the repo and prepare for building</p>
-            <pre><code class="block">cd NP2kai</code></pre>
-            <h4>Apply patches and fixes</h4>
-            <p class="warning"><b>
-                Always check commands before running them!
-                THIS GUIDE AND ITS AUTHOR IS NOT RESPONSIBLE FOR ANY DAMAGES INCURRED.
-            </b></p>
-            <pre><code class="block">curl -O https://github.com/AZO234/NP2kai/commit/3d23274eefcf9c494358662539c29eebd8996cbf.patch &amp;&amp; \
+			</p>
+			<p>Only choose this if you <i>absolutely desire</i> so, or have no other options.</p>
+		</li>
+	</ul>
+	<h2 id="np21kai-retroarch">RetroArch</h2>
+	<p>
+		You may want to familiarize yourself with the
+		<a href="https://docs.libretro.com/image/guides/standard-key-bindings.png">RetroArch standard keyboard bindings</a>
+		before continuing to this section.
+	</p>
+	<ol>
+		<li>
+			<p>Install RetroArch. Choose the version that suits you the most.</p>
+			<p>This guide recommends the latest stable version for most users for consistency and ease of use.</p>
+			<ul>
+				<li>
+					<p><b>Flatpak</b></p>
+					<p class="recommended"><b>Recommended for most users</b></p>
+					<pre><code class="block">flatpak install flathub org.libretro.RetroArch</code></pre>
+				</li>
+				<li><p><b><a href="https://store.steampowered.com/app/1118310/RetroArch/">Steam</a></b></p></li>
+				<li><p><b><a href="https://retroarchofficial.itch.io/retroarch">Itch.io</a></b></p></li>
+				<li>
+					<p><b>Ubuntu/Linux Mint</b></p>
+					<pre><code class="block">sudo add-apt-repository ppa:libretro/stable &amp;&amp; sudo apt-get update &amp;&amp; sudo apt-get install retroarch</code></pre>
+				</li>
+				<li>
+					<p><b>Fedora</b></p>
+					<p><i>
+						The default installation of RetroArch also installs a few emulators as weak dependencies.
+						The command below installs RetroArch without those emulators.
+					</i></p>
+					<pre><code class="block">sudo dnf install retroarch retroarch-assets retroarch-database retroarch-filters --setopt=install_weak_deps=False</code></pre>
+				</li>
+				<li>
+					<p><b>Arch Linux (<a href="https://wiki.archlinux.org/title/RetroArch">Wiki</a>)</b></p>
+					<pre><code class="block">sudo pacman -Sy retroarch retroarch-assets-xmb retroarch-assets-ozone</code></pre>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>Run RetroArch either by GUI or in the terminal.</p>
+			<p><b>Flatpak</b></p>
+			<pre><code class="block">flatpak run org.libretro.RetroArch</code></pre>
+			<p><b>Non-Flatpak</b></p>
+			<pre><code class="block">retroarch</code></pre>
+		</li>
+		<li>
+			<p>
+				If you installed RetroArch through your distro's package manager,
+				follow the next set of instructions. Otherwise you can skip this part.
+			</p>
+			<ol>
+				<li>
+					<p>
+						In "Settings" → "User Interface" → "Menu Item Visibility", set
+						<code class="blocksmall">Show 'Online Updater'</code> and
+						<code class="blocksmall">Show 'Core Downloader'</code> to <code class="blocksmall">ON</code>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Close RetroArch (Esc key twice), then navigate to
+						<code class="blocksmall">~/.config/retroarch</code>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Edit the following settings in <code class="blocksmall">retroarch.cfg</code>, as
+						this will allow you to install cores without requiring root privileges.
+					</p>
+					<pre><code class="block">libretro_directory = "~/.config/retroarch/cores"</code></pre>
+					<pre><code class="block">libretro_info_path = "~/.config/retroarch/cores/info"</code></pre>
+				</li>
+				<li><p>Launch RetroArch again and continue with the following steps.</p></li>
+			</ol>
+		</li>
+		<li>
+			<p>In the Main Menu, select (Enter/Return key) "Load Core", then "Download Core"</p>
+		</li>
+		<li>
+			<p>Scroll down the list to <b>NEC - PC-98 (Neko Project II Kai)</b>, then select to install it.</p>
+		</li>
+		<li><p><a href="#adjust-settings-retroarch">Adjust settings before playing</a></p></li>
+	</ol>
+	<h2 id="np21kai-arch">AUR package (Arch Linux)</h2>
+	<p>If you're new to Arch, please consider first reading the Arch Wiki article on
+		<a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>,
+		along with the <a href="https://wiki.archlinux.org/title/Makepkg">article on makepkg</a>.
+	</p>
+	<ol>
+		<li>
+			<p>Install gtk2 from the <a href="https://aur.archlinux.org/packages/gtk2">AUR</a></p>
+			<pre><code class="block">git clone https://aur.archlinux.org/gtk2.git</code></pre>
+			<pre><code class="block">cd gtk2 &amp;&amp; less PKGBUILD</code></pre>
+			<pre><code class="block">makepkg -si gtk2</code></pre>
+		</li>
+		<li>
+			<p>Clone the np21kai repo from the <a href="https://aur.archlinux.org/packages/np2kai-git">AUR</a></p>
+			<pre><code class="block">git clone https://aur.archlinux.org/np2kai-git.git</code></pre>
+			<p>Check the PKGBUILD for security, and <a href="#cmake-options-table">modify the CMake flags</a> if desired. <sup>*</sup></p>
+			<pre><code class="block">cd np2kai-git &amp;&amp; less PKGBUILD</code></pre>
+			<pre><code class="block">makepkg -si np21kai</code></pre>
+		</li>
+		<li><p>Proceed with <a href="#adjust-settings-xnp21kai_sdl">adjusting the necessary settings</a>.</p></li>
+	</ol>
+	<p><sup>*</sup> Currently as of writing, the <code>PKGBUILD</code> will create 6 versions of np21kai by default</p>
+	<ul>
+		<li><code>xnp2kai</code></li>
+		<li><code>xnp21kai_sdl</code></li>
+		<li><code>xnp21kai_HAXM_sdl</code></li>
+	</ul>
+	<p>and their SDL equivalents with the <code>_sdl</code> suffix at the end.</p>
+	<h2 id="np21kai-source">Building from source (xnp21kai_sdl)</h2>
+	<p class="warning"><i>
+		The steps below may not be the most up-to-date. Steps are highly subject to change. This section is the most flawed part of the guide.
+	</i></p>
+	<p><i>
+		Referenced from the <a href="https://github.com/AZO234/NP2kai/blob/master/README.md">original README document</a>
+		and the <a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=np2kai-git">AUR PKGBUILD file</a>.
+	</i></p>
+	<ol>
+		<li>
+			<p>Install the required programs and libraries</p>
+			<h3>Debian/Ubuntu/Linux Mint</h3>
+			<p class="warning"><i>
+				Installing these libraries may cause some of your programs or dependencies to be automatically removed.
+				Always check what packages will be installed and removed before confirmation.
+			</i></p>
+			<p><code class="block">sudo apt install git build-essential cmake ninja-build nasm libx11-dev libglib2.0-dev libgtk2.0-dev libsdl2-dev
+				libsdl2-mixer-dev libsdl2-ttf-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libusb-1.0-0-dev libfreetype-dev
+				libfontconfig1-dev libssl-dev
+			</code></p>
+			<h3>Fedora</h3>
+			<p><code class="block">sudo dnf group install "development-tools"</code></p>
+			<p>
+				<code class="block">sudo dnf install gcc-c++ cmake ninja-build nasm /usr/lib64/libusb.so SDL-devel SDL_mixer-devel SDL_ttf-devel SDL2-devel SDL2_mixer-devel SDL2_ttf-devel gtk2-devel libX11-devel fontconfig-devel freetype-devel sdl2-compat-devel</code>
+			</p>
+		</li>
+		<li><p>Clone <a href="https://github.com/AZO234/NP2kai">the np21kai repo</a></p>
+			<pre><code class="block">git clone https://github.com/AZO234/NP2kai.git</code></pre>
+		</li>
+		<li><p>Navigate to the repo and prepare for building</p>
+			<pre><code class="block">cd NP2kai</code></pre>
+			<h4>Apply patches and fixes</h4>
+			<p class="warning"><b>
+				Always check commands before running them!
+				THIS GUIDE AND ITS AUTHOR IS NOT RESPONSIBLE FOR ANY DAMAGES INCURRED.
+			</b></p>
+			<pre><code class="block">curl -O https://github.com/AZO234/NP2kai/commit/3d23274eefcf9c494358662539c29eebd8996cbf.patch &amp;&amp; \
 curl -O https://github.com/AZO234/NP2kai/commit/697fac371b414212526aae25e7c9774f167f4ef3.patch &amp;&amp; \
 curl -O https://github.com/amuramatsu/NP2kai/commit/ad781a4db34bc2364a377cc7bd90b3b99fea1459.patch &amp;&amp; \
 patch -p1 -i 3d23274eefcf9c494358662539c29eebd8996cbf.patch &amp;&amp; \
@@ -443,654 +443,654 @@ sed 's|target_include_directories(NP2kai_SDL2_base INTERFACE|&amp; ${SDL_INCLUDE
 sed 's|SDL2_ttf/SDL_ttf.h|SDL2/SDL_ttf.h|g' -i sdl/fontmng.c -i x/fontmng.c &amp;&amp; \
 sed '1i#include &lt;SDL2/SDL_ttf.h&gt;' -i sdl/fontmng.c &amp;&amp; \
 sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_base.h</code></pre>
-            <p>If <code>patch</code> tells you that previous patches were detected, enter <code class="blocksmall">y</code>.</p>
-        </li>
-        <li><p>Create the <code>build</code> directory and create the CMake files.</p>
-            <pre><code class="block">mkdir build</code></pre>
-            <h3>Default build command (X11 and SDL2)</h3>
-            <p><b class="recommended"><i>Recommended for most users, for simplicity ;&#41;</i></b></p>
-            <pre><code class="block">cmake . -B build -DBUILD_X=ON</code></pre>
-            <p>This will create <code>xnp21kai_sdl</code> (legacy X11 support), and <code>sdlnp21kai</code> (more modern version used by RetroArch).</p>
-            <h3>X11 only, no SDL</h3>
-            <pre><code class="block">cmake -S . -B build -DBUILD_X=ON</code></pre>
-            <h3>Full install (X11, SDL2, i286, HAXM)</h3>
-            <p class="warning"><i>Do this only if you want to mirror the AUR on a non-Arch distro or you want all versions, possibly for your own testing.</i></p>
-            <p>You can also use the command below as a reference for fine-tuning (such as installing to <code>~/.local/bin</code>).</p>
-            <pre>
+			<p>If <code>patch</code> tells you that previous patches were detected, enter <code class="blocksmall">y</code>.</p>
+		</li>
+		<li><p>Create the <code>build</code> directory and create the CMake files.</p>
+			<pre><code class="block">mkdir build</code></pre>
+			<h3>Default build command (X11 and SDL2)</h3>
+			<p><b class="recommended"><i>Recommended for most users, for simplicity ;&#41;</i></b></p>
+			<pre><code class="block">cmake . -B build -DBUILD_X=ON</code></pre>
+			<p>This will create <code>xnp21kai_sdl</code> (legacy X11 support), and <code>sdlnp21kai</code> (more modern version used by RetroArch).</p>
+			<h3>X11 only, no SDL</h3>
+			<pre><code class="block">cmake -S . -B build -DBUILD_X=ON</code></pre>
+			<h3>Full install (X11, SDL2, i286, HAXM)</h3>
+			<p class="warning"><i>Do this only if you want to mirror the AUR on a non-Arch distro or you want all versions, possibly for your own testing.</i></p>
+			<p>You can also use the command below as a reference for fine-tuning (such as installing to <code>~/.local/bin</code>).</p>
+			<pre>
 <code class="block">cmake -S . -B build \
-    -DBUILD_X=ON \
-    -DBUILD_I286=ON \
-    -DBUILD_HAXM=ON \
-    -DUSE_X=ON \
-    -DUSE_SDL=2 \
-    -DUSE_HAXM=OFF \
-    -DUSE_ASYNCCPU=ON \
-    -DUSE_VST3SDK=OFF \
-    -DCMAKE_C_FLAGS="-Wno-implicit-function-declaration -Wno-incompatible-pointer-types -Wno-int-conversion" \
-    -DCMAKE_CXX_FLAGS="-fno-sized-deallocation" \
-    -G Ninja
+	-DBUILD_X=ON \
+	-DBUILD_I286=ON \
+	-DBUILD_HAXM=ON \
+	-DUSE_X=ON \
+	-DUSE_SDL=2 \
+	-DUSE_HAXM=OFF \
+	-DUSE_ASYNCCPU=ON \
+	-DUSE_VST3SDK=OFF \
+	-DCMAKE_C_FLAGS="-Wno-implicit-function-declaration -Wno-incompatible-pointer-types -Wno-int-conversion" \
+	-DCMAKE_CXX_FLAGS="-fno-sized-deallocation" \
+	-G Ninja
 </code></pre>
-        <h3 id="cmake-options-table">Handy CMake flag options</h3>
-        <p>The following table contains not all, but noteworthy CMake options</p>
-        <table>
-            <tbody>
-                <tr>
-                    <th>CMake flag (with <code class="blocksmall">-D</code> prefix)</th>
-                    <th>Default value with just <code class="blocksmall">cmake -D BUILD_X=ON</code></th>
-                    <th>Created program(s) if set to <code>ON</code></th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td><code>CMAKE_INSTALL_PREFIX</code></td>
-                    <td><code>/usr/local</code></td>
-                    <td></td>
-                    <td>
-                        Programs will be installed to <code>/usr/local/bin</code> when the install command is ran.<br>
-                        The AUR installs them to <code>/usr/bin</code> instead.
-                    </td>
-                </tr>
-                <tr>
-                    <td><code>BUILD_X</code></td>
-                    <td><code>ON</code></td>
-                    <td><code>x*</code></td>
-                    <td>Creates X11 versions of the following programs.</td>
-                </tr>
-                <tr>
-                    <td><code>BUILD_SDL</code></td>
-                    <td><code>ON</code></td>
-                    <td><code>sdl*</code></td>
-                    <td>Creates Wayland versions of the following programs.</td>
-                </tr>
-                <tr>
-                    <td><code>USE_SDL</code></td>
-                    <td><code>2</code></td>
-                    <td></td>
-                    <td>Uses SDL2 for the SDL versions of the programs.</td>
-                </tr>
-                <tr>
-                    <td><code>BUILD_I286</code></td>
-                    <td><code>OFF</code></td>
-                    <td>
-                        <code>xnp2kai</code>,
-                        <br><code>sdlnp2kai</code>
-                    </td>
-                    <td>If set to <code>ON</code>, creates the i286 version, which can only run 16-bit operating systems and programs.</td>
-                </tr>
-                <tr>
-                    <td><code>BUILD_HAXM</code></td>
-                    <td><code>OFF</code></td>
-                    <td>
-                        <code>xnp21kai_ HAXM_sdl</code>,<br>
-                        <code>sdlnp21kai_HAXM</code>
-                    </td>
-                    <td>
-                        If set to <code>ON</code>, creates a IA32 version with HAXM, which uses hardware virtualization.<br>
-                        Only use this if you want to, and have an Intel CPU that supports HAXM.<br>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </li>
-        <li>
-            <p>Build the program. Errors and warnings are normal.</p>
-            <p class="warning"><b>
-                Recent testing suggests that you might only be able to build the program once,</b>
-                with subsequent attempts ending with the error
-                <code class="blocksmall">ninja: build stopped: subcommand failed.</code>
-            </p>
-            <h3>Going into <code>build/</code></h3>
-            <pre><code class="block">cd build/</code></pre>
-            <pre><code class="block">cmake --build .</code></pre>
-            <h3>Without going into <code>build/</code></h3>
-            <pre><code class="block">cmake --build build</code></pre>
-        </li>
-        <li><p>Install the program(s) to the system</p>
-            <h3>Default (while in <code>build/</code>)</h3>
-            <pre><code class="block">sudo make install</code></pre>
-            <h3>Without going into <code>build/</code></h3>
-            <pre><code class="block">sudo cmake --install build</code></pre>
-        </li>
-        <li>Run the program, and <a href="#adjust-settings-xnp21kai_sdl">adjust settings</a>
-            <h3>X11 version</h3>
-            <pre><code class="block">xnp21kai_sdl</code></pre>
-            <h3>Wayland version<sup>†</sup></h3>
-            <pre><code class="block">sdlnp21kai</code></pre>
-        </li>
-    </ol>
-    <p><b>
-        <sup>†</sup> <code>sdlnp21kai</code> has some differences compared to <code>xnp21kai_sdl</code>,
-        but the most important are as follows:
-    </b></p>
-    <ul>
-        <li>
-            <p><b>
-                As of writing, all variants of <code>sdlnp21kai</code> can only be ran from the terminal,
-                while all variants of <code>xnp21kai_sdl</code> have <code>.desktop</code> shortcuts after using the
-                <code class="blocksmall">sudo make install</code> command.
-            </b></p>
-        </li>
-        <li><p><b>The menu bar is hidden until you press <code class="blocksmall">F11</code></b></p></li>
-        <li>
-            <p><code>sdlnp21kai</code> can properly scale up to fullscreen, but <code>xnp21kai_sdl</code> cannot.</p>
-            <p>Inversely, <code>xnp21kai_sdl</code> is able to have a few different window sizes, while <code>sdlnp21kai</code> cannot.</p>
-        </li>
-        <li><p><code>sdlnp21kai</code> uses more resources. Or at least can make your computer's fan spin up.</p></li>
-    </ul>
-    <h2 id="adjust-settings">Settings to adjust before playing</h2>
-    <h3 id="adjust-settings-retroarch">RetroArch</h3>
-    <ol>
-        <li>
-            <p>Go back<sup>*</sup> to the previous menu and select the respective core. On the Main Menu, "Start Core" will be in place of "Load Core".</p>
-        </li>
-        <li><p>Start the core without content and press <code>F1</code> to open the Quick Menu</p></li>
-        <li>
-            <p>Select "Core Options", and apply the following settings:</p>
-            <p class="warning"><b>The following two settings are required for smooth gameplay:</b></p>
-            <ul>
-                <li><b>CPU Clock Multiplier</b> = <code class="blocksmall">52</code></li>
-                <li><b>RAM Size</b> = <code class="blocksmall">16</code></li>
-            </ul>
-            <p><b>Optional, but more authentic (or loud) music experience:</b></p>
-            <ul>
-                <li>Sound Board = <code class="blocksmall">PC9801-26K+86</code></li>
-                <li>Volume FM = <code class="blocksmall">100</code></li>
-                <li>Volume SSG = <code class="blocksmall">100</code></li>
-                <li>Volume RHYTHM = <code class="blocksmall">100</code></li>
-                <li>Sound Generator = <code class="blocksmall">Default</code> (or fmgen if available)</li>
-            </ul>
-        </li>
-        <li><p>Go back and restart the core.</p></li>
-        <li><p>Install the <a href="#pc98-files">necessary font and ROM files</a></p></li>
-    </ol>
-    <p><sup>*</sup> Backspace key on keyboard</p>
-    <h3 id="adjust-settings-xnp21kai_sdl">xnp21kai_sdl</h3>
-    <ol>
-        <li><p>In the menu bar, adjust these settings for a smooth experience. <b>To apply them, hit "Reset" in "Emulator"</b></p>
-            <ul>
-                <li>
-                    <b>Emulator</b>
-                    <ul>
-                        <li><b>CPU</b><sup>*</sup> = <code class="blocksmall">2.4576MHz x 52</code></li>
-                        <li>Architecture = <code class="blocksmall">PC-9801VX</code></li>
-                        <li>Sampling Rate = <code class="blocksmall">44100 kHz</code></li>
-                        <li><b>Buffer</b><sup class="warning">†</sup> = <code class="blocksmall">20 ms</code></li>
-                    </ul>
-                </li>
-                <li>
-                    <b>Device</b>
-                    <ul>
-                        <li>Sound = <code class="blocksmall">PC9801-86</code></li>
-                        <li>Memory = <code class="blocksmall">16.6 MB</code></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li><p>Install the <a href="#pc98-files">necessary font and ROM files</a> to <code class="blocksmall">~/.config/xnp21kai_sdl/</code></p></li>
-    </ol>
-    <p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
-    <p class="warning"><sup>†</sup> Testing by the author in xnp21kai_sdl has shown that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
-    <h3>sdlnp21kai</h3>
-    <p>The process is similar to <code>xnp21kai_sdl</code>, except for the following differences.</p>
-    <ul>
-        <li><p>The maximum CPU multiplier is <code class="blocksmall">32</code></p></li>
-        <li><p>The sampling rate for <code>44100 kHz</code> is visually rounded down to <code class="blocksmall">44KHz</code></p></li>
-    </ul>
-    <p>Also note that for some reason, sdlnp21kai does not save its settings by default, so you may have to manually create a config folder for it.</p>
-    <pre><code class="block">cd ~/.config</code></pre>
-    <pre><code class="block">mkdir sdlnp21kai</code></pre>
-    <pre><code class="block">touch np21kai.cfg</code></pre>
-    <p>This will also be relevant for the next section.</p>
-    <hr class="light">
-    <h1 id="pc98-files">ROM and font files</h1>
-    <h2 id="rom-files">ROM files</h2>
-    <p>You <i>may</i> need to install some PC-98 ROM files for your emulator to work properly. These can be found elsewhere online.</p>
-    <p>Neko Project II kai and DOSBox-X both already include most of the necessary ROM files for basic operations.</p>
-    <ul>
-        <li><code>BIOS.ROM</code></li>
-        <li><code>ITF.ROM</code></li>
-        <li><code>SOUND.ROM</code></li>
-        <li><code>FONT.ROM</code> (see <a href="#fonts">next section</a>)</li>
-    </ul>
-    <p>For the Touhou games, you don't need to install these ROM files. However...</p>
-    <h2 id="fonts">Font files</h2>
-    <p><b>Both Neko Project II Kai and DOSBox-X require a font file in order to properly display Japanese characters.</b></p>
-    <p>Some popular font files are available to download from here:</p>
-    <h3>Anex86-compatible fonts</h3>
-    <p class="recommended">Recommended for DOSBox-X</p>
-    <ul>
-        <li><a href="./fonts/FREECG98.BMP" download>FREECG98 font</a><sup class="warning"><b>*</b></sup></li>
-        <li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>
-    </ul>
-    <p><b class="warning"><sup>*</sup> The FREECG98 font does not work with Neko Project II Kai.</b></p>
-    <h3>Neko Project-compatible fonts</h3>
-    <p class="recommended">Recommended for Neko Project II Kai.</p>
-    <ul>
-        <li><a href="./fonts/FONT.BMP" download>Neko Project II font</a></li>
-        <li><a href="./fonts/FONTW.BMP" download>Neko Project 21/W font</a></li>
-    </ul>
-    <h2>Installation</h2>
-    <h3>DOSBox-X</h3>
-    <p>If you have the original ROM files, simply copy/move them to the same directory as your PC-98 Touhou <code>.hdi</code> file(s).</p>
-    <p>Otherwise, DOSBox-X already includes <code>FREECG98.BMP</code> for convenience.</p>
-    <p>
-        To use a different compatible font:
-    </p>
-    <ol>
-        <li><p>Move/copy the file to the working directory.</p></li>
-        <li>
-            <p>
-                Edit the config file so that under the <code class="blocksmall">[pc98]</code> section,
-                <code class="blocksmall">pc-98 anex86 font</code> is set to the font's filename.
-            </p>
-        </li>
-    </ol>
-    <h3>RetroArch</h3>
-    <ol>
-        <li>
-            <p>Navigate to the RetroArch system folder.</p>
-            <b>Flatpak</b>
-            <pre><code class="blocksmall">~/.var/app/org.libretro.RetroArch/config/retroarch/system/</code></pre>
-            <b>Non-Flatpak</b>
-            <pre><code class="blocksmall">~/.config/retroarch/system/</code></pre>
-        </li>
-        <li>
-            <p>Create a directory called <code class="blocksmall">np2kai</code>.</p>
-        </li>
-        <li>
-            <p>
-                Copy/move the files to to <code class="blocksmall">np2kai</code>.
-            </p>
-            <p>
-                If you're using a compatible font besides <code>FONT.ROM</code>,
-                rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
-            </p>
-        </li>
-    </ol>
-    <h3>xnp21kai_sdl</h3>
-    <p>Copy/move the font and ROM files to <code class="blocksmall">~/.config/xnp21kai_sdl</code>.</p>
-    <p>If you are using a compatible font besides <code>FONT.ROM</code>, there are two possible options:</p>
-    <ul>
-        <li>
-            <p>
-                Edit <code class="blocksmall">fontfile</code> in <code class="blocksmall">xnp21kai_sdlrc</code>
-                to the <i><b>absolute</b></i> filepath of the font.
-            </p>
-        </li>
-        <li>
-            <p>
-                Copy/move the font file to <code class="blocksmall">~/.config/xnp21kai_sdl</code>.
-                Rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
-            </p>
-        </li>
-    </ul>
-    <h3>sdlnp21kai</h3>
-    <p>
-        Similar to the process for <code>xnp21kai_sdl</code>, but the directory is <code class="blocksmall">~/.config/sdlnp21kai</code>,
-        and the configuration file is <code class="blocksmall">np21kai.cfg</code>.
-    </p>
-    <hr class="light">
-    <h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
-    <h3>Disclaimer</h3>
-    <p>This guide assumes that you have acquired your copies of the PC-98 Touhou games as <code>.hdi</code> or <code>.fdi</code> file(s)</p>
-    <p>
-        While the author has tested running the games from the original "loose" files
-        (such as those in the <a href="secret.txt">compilation disc</a>),
-        with DOSBox-X, most readers are unlikely to be in a similar situation.
-    </p>
-    <p>Therefore the following sections will not cover on how to run the games from the original files.</p>
-    <p>Regardless, it is highly recommended that you store your <code>.hdi</code> files in a directory named "Games" or "Touhou" for ease of rememberance.</p>
-    <h1 id="dosbox-x-running">DOSBox-X</h1>
-    <h2 id="dosbox-x-running-gui">GUI/Desktop</h2>
-    <ol>
-        <li>
-            <p>If prompted, select the directory with your <code>.hdi</code> files as your working directory.</p>
-        </li>
-        <li><p>Wait for DOSBox-X to finish loading<sup>*</sup>, then run these two commands in DOSBox-X:</p>
-            <pre><code class="block">IMGMOUNT C TOUHOU.HDI</code></pre>
-            <pre><code class="block">BOOT C:</code></pre>
-            Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual
-            filename<sup class="warning">†</sup> of the <code>.hdi</code> file<sup>‡</sup> you want to load.
-        </li>
-        <li><p>Enjoy!</p></li>
-        <li>
-            <p><a href="#dosbox-x-savestates">See this section</a> for information about savestates.</p>
-            <p><a href="#dosbox-tips">See this section</a> on how to remove or change the <code>.hdi</code> file</p>
-        </li>
-    </ol>
-    <p>
-        <sup>*</sup> You should see a CLI with <code class="blocksmall">Z:¥&gt;</code> as the prompt.
-        If not, check your <code>dosbox-x.conf</code> file to see that <code class="blocksmall">machine = pc98</code>.
-    </p>
-    <p class="warning"><b><sup>†</sup> The filename is case-sensitive!</b></p>
-    <p>
-        <sup>‡</sup> Depending on the type of <code>.hdi</code> file you obtained,
-        you'll either directly boot into the game or a menu with the games listed.
-    </p>
-    <h2>Command Line</h2>
-    <ol>
-        <li>
-            <p>Navigate to the directory folder with your <code>.hdi</code>(s) and config file, then run</p>
-            <ul>
-                <li><p><b>Non-Flatpak: </b><code class="blocksmall">dosbox-x</code></p></li>
-                <li><p><b>Flatpak: </b><code class="blocksmall">flatpak run com.dosbox_x.DOSBox-X</code></p></li>
-            </ul>
-        </li>
-        <li>Follow the same remaining steps as <a href="#dosbox-x-running-gui">above</a></li>
-    </ol>
-    <h1>Neko Project II Kai</h1>
-    <h2 id="np21kai-running-retroarch">RetroArch</h2>
-    <ol>
-        <li><p>In the Main Menu, select "Load Core", then "NEC - PC-98 (Neko Project II Kai)"</p></li>
-        <li><p><b>If it's your first time loading the <code>.hdi</code> file:</b></p>
-            <ol>
-                <li><p>Select "Load Content"</p></li>
-                <li><p>Navigate to to directory with the file and select it</p></li>
-            </ol>
-            <p><b>If you have loaded the <code>.hdi</code> file before:</b></p>
-            <ol>
-                <li><p>Select "Playlists", then "History"</p></li>
-                <li><p>Select the <code>.hdi</code> file, then run it.</p></li>
-            </ol>
-        </li>
-        <li><p>Enjoy!</p></li>
-        <li>
-            <p><a href="#np21kai-savestates">See this section</a> for information about savestates.</p>
-            <p>To remove the <code>.hdi</code> file, go into the Quick Menu and select "Close Content"</p>
-        </li>
-    </ol>
-    <h2 id="xnp21kai_sdl-running">xnp21kai_sdl</h2>
-    <ol>
-        <li><p>In the menu bar, select "HardDisk"</p></li>
-        <li><p>Choose <code>IDE0-0</code><sup>*</sup>, then "Open"</p></li>
-        <li><p>Find your Touhou <code>.hdi</code> file and open it.</p></li>
-        <li><p>Reset the emulator.</p></li>
-        <li><p>Enjoy!</p></li>
-        <li>
-            <p><a href="#np21kai-savestates">See this section</a> for information about savestates.</p>
-            <p>To remove<sup>†</sup> the <code>.hdi</code>, simply choose "Remove" on the "hard disk" the <code>.hdi</code> is located in and reset the emulator.</p>
-        </li>
-    </ol>
-    <p>
-        <sup>*</sup> If only <code>IDE0-0</code> or <code>IDE0-1</code> is loaded, that will be the default drive.
-        If both are loaded, <code>xnp21kai_sdl</code> will prompt you to choose a drive to boot after the memcheck.
-    </p>
-    <p><sup>†</sup> To switch to another <code>.hdi</code>, simply choose "Open" again.</p>
-    <h2 id="sdlnp21kai-running">sdlnp21kai</h2>
-    <p>Similar to <code>xnp21kai_sdl</code>, but with the following differences</p>
-    <ul>
-        <li><p><code>IDE1</code> and <code>IDE2</code> instead of <code>IDE0-0</code> and <code>IDE0-1</code>, respectively.</p></li>
-    </ul>
-    <hr class="light">
-    <h1 id="savestates">Using savestates</h1>
-    <p>
-        Savestates allow you to create a "snapshot" of your PC-98 system at any given time, so long as your <code>.hdi</code>
-        file still exists in the same location as when you last used it, and there's enough open slots left.
-    </p>
-    <p>In the context of the PC-98 Touhou games, savestates are useful for applications such as continuing where you left off in-game, or practicing certain sections.</p>
-    <h1 id="dosbox-x-savestates">DOSBox-X</h1>
-    <p>Savestates in DOSBox-X are known to have issues, such as buggy behavior after loading.</p>
-    <p>For most of the Touhou games, the author recommends pausing the game before creating a savestate.</p>
-    <h2>Creating savestates</h2>
-    <h3>Manual method</h3>
-    <p>To create a savestate, navigate to "Capture", then click on "Save state" <b><code class="blocksmall">F12 + S</code></b></p>
-    <p>You'll be prompted to give it a unique name.<sup class="warning">*</sup></p>
-    <p>To store more than one savestate, navigate<sup>†</sup> to an empty slot in "Select save slot" under "Capture". DOSBox-X has 100 empty slots by default.</p>
-    <p>
-        To remove a slot's content without writing any data to it, click "Remove state in slot" under "Select save slot"
-        <i>after you've already selected the slot that you want to clear.</i>
-    </p>
-    <p class="warning">
-        <sup>*</sup> This will overwrite all data in the current selected save slot,
-        so make sure to navigate to the next empty slot if you want to create a separate save state.
-    </p>
-    <p>
-        <sup>†</sup> For faster navigation, use <b><code class="blocksmall">F12 + .</code></b> for the next slot,
-        and <b><code class="blocksmall">F12 + ,</code></b> for the previous slot; both are relative to the current selected save slot.
-    </p>
-    <h3>Auto-saving</h3>
-    <p>
-        DOSBox-X allows for automatic and periodic creations of savestates.
-        This means you can have something akin to "auto-save" in most modern video games.
-    </p>
-    <p>
-        To start creating auto-saves, navigate to "Capture", then "Auto-save settings".
-    </p>
-    <p>Below is a table of possible settings. Note that <code>x, y, z</code> are to be substituted for positive integer values.</p>
-    <table>
-        <tbody>
-            <tr>
-                <th>Time interval (secs)<sup>*</sup></th>
-                <th>Start slot</th>
-                <th>End slot</th>
-                <th>Savestates created</th>
-            </tr>
-            <tr>
-                <td><code>0</code></td>
-                <td><code>0</code></td>
-                <td><code>0</code></td>
-                <td>Default setting, does nothing regardless of the value of the time interval.</td>
-            </tr>
-            <tr>
-                <td><code>z</code></td>
-                <td><code>x</code></td>
-                <td><code>y</code></td>
-                <td>
-                    Iteratively create new savestates in slots <code>x</code> through <code>y</code>, inclusive, every <code>z</code> seconds.<br>
-                    If the current slot is within the range, saving will start on that slot.
-                </td>
-            </tr>
-            <tr>
-                <td><code>z</code></td>
-                <td><code>x</code></td>
-                <td><code>0</code></td>
-                <td>Create a savestate at slot <code>x</code> every <code>z</code> seconds.</td>
-            </tr>
-            <tr>
-                <td><code>z</code></td>
-                <td><code>0</code></td>
-                <td><code>0</code></td>
-                <td>Create a savestate at the current slot<sup class="warning">†</sup> every <code>z</code> seconds.</td>
-            </tr>
-            <tr>
-                <td><code>z</code></td>
-                <td><code>0</code></td>
-                <td><code>y</code></td>
-                <td>Create a savestate from the current slot<sup class="warning">†</sup> to slot <code>y</code>, inclusive, every <code>z</code> seconds.</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>
-        For the Touhou games, since this guide assumes most people are not directly using the original game files,
-        we can ignore settings for individual programs.
-    </p>
-    <p>
-        <sup>*</sup>
-        To reduce the possibility of your system slowing down, it's recommended that the shortest interval for
-        general use be <code class="blocksmall">60</code> seconds.<br>
-        <b>Please also note that this means the game will briefly pause when a new savestate is being created.</b>
-    </p>
-    <p class="warning">
-        <sup>†</sup>
-        Please ensure that you're not overwriting any slots you want to keep or manually save!
-    </p>
-    <h2>Loading savestates</h2>
-    <h3 class="warning">
-        Warning: Before loading a savestate, you <i>must</i> be currently running <i>exactly</i> the same game,
-        from <i>exactly</i> the same <code>.hdi</code> file when you created that savestate.
-    </h3>
-    <p>
-        To load a savestate, select "Load state" <b><code class="blocksmall">F12 + L</code></b>
-        on the selected slot that you want to load it from.
-    </p>
-    <h1 id="np21kai-savestates">Neko Project II Kai</h1>
-    <h2>RetroArch</h2>
-    <p>Savestates can be stored in up to 1000 slots.</p>
-    <p><b><i>
-        Before loading a savestate, you must be currently running the same <code>.hdi</code> file that you want to load the savestate from.
-        Otherwise you'll only see a black screen.
-    </i></b></p>
-    <p></p>
-    <h3>In-game method:</h3>
-    <p><code class="blocksmall">F2</code> to quickly create a savestate to <i>the current</i> slot.</p>
-    <p><code class="blocksmall">F4</code> to quickly load a savestate from <i>the current</i> slot.</p>
-    <p>
-        <code class="blocksmall">F6</code> and <code class="blocksmall">F7</code> to navigate between slots.
-        A thumbnail of the slot's savestate will be shown for reference.
-    </p>
-    <h3>In-menu method:</h3>
-    <p>Go to "Save States", then click on "Save State" to create a savestate to the current slot.</p>
-    <p>To load a savestate from the current slot, click on "Load State".</p>
-    <p>To navigate between slots, enter "State Slot" and navigate to your desired slot.</p>
-    <h2>xnp21kai_sdl/sdlnp21kai</h2>
-    <p>To enable savestates, add the following line to <code>xnp21kai_sdlrc</code> (or <code>np21kai.cfg</code>)</p>
-    <pre><code class="blocksmall">STATSAVE = true</code></pre>
-    <p>(Re)start the program. There should be a new section in the menu bar titled <code>STAT</code>. Under that, you can save and load two slots.</p>
-    <hr class="light">
-    <h1>Important and useful tips</h1>
-    <h2 id="dosbox-tips">DOSBox-X</h2>
-    <ul>
-        <li>
-            <p class="warning">
-            "Restarting the DOSBox-X instance" from the menu will make it unable to mount any <code>.hdi</code> file in your working directory until you close the program.
-            </p>
-            Instead:<br>
-            <ul>
-                <li><p>If you want to use the same <code>.hdi</code> file, Reboot the guest system (<b><code>F12+B</code></b>).</p></li>
-                <li><p>If you want to use a different <code>.hdi</code> file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
-            </ul>
-        </li>
-        <li>
-            <p>
-                If you only use one <code>.hdi</code> file and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically
-                <a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.
-            </p>
-        </li>
-    </ul>
-    <h2>Neko Project II Kai</h2>
-    <h3>RetroArch</h3>
-    <ul>
-        <li><p class="warning">By default, pressing the Esc key twice will quit RetroArch!</p></li>
-        <li>
-            <p>It's recommended to set your <code>.hdi</code> file(s) as favorites to access them faster in the future.</p>
-            <p>There are two ways of adding them to your favorites:</p>
-            <ul>
-                <li><p>Quick Menu → Add to Favorites (while running)</p></li>
-                <li><p>Playlist → History → your <code>.hdi</code> file(s) → Add to Favorites</p></li>
-            </ul>
-        </li>
-    </ul>
-    <h3>xnp21kai_sdl/sdlnp21kai</h3>
-    <ul>
-        <li><p>Your window position and size is not remembered!</p></li>
-        <li><p>Your last used <code>.hdi</code> file, however, is remembered!</p></li>
-        <li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai_sdl</p></li>
-        <li><p>There has been issues where closing the window via the "X" button may not cause the program to stop running.</p>
-            <p>If that happens, kill the program via the terminal or System Monitor.</p>
-        </li>
-    </ul>
-    <h2>Other</h2>
-    <ul>
-        <li>
-            <p>Make sure to run this command before using older emulators (Neko Project II, Anex86, T98-Next, etc.) with Wine:</p>
-            <pre><code class="block">winetricks ddr=gdi</code></pre>
-        </li>
-    </ul>
-    <hr class="light">
-    <h1>Common Issues</h1>
-    <p>This section is under expansion. Submit issues and fixes <a href="https://github.com/daichungus/touhoulinuxguide/issues">through the repo</a>.</p>
-    <h2>RetroArch</h2>
-    <h3>Flatpak version can't go fullscreen in KDE</h3>
-    <p>Right click on the title bar of the window.</p>
-    <p>Go to "More Actions" → "Special Window actions".</p>
-    <p>In the new window, click "Add property" in the bottom left. Find "Fullscreen" in the list and add it.</p>
-    <p>Go back and make sure you set "Fullscreen" to "Yes".</p>
-    <p>If you have multiple monitors, and the program launches on the wrong one, you can also add "screen" property.</p>
-    <p>The changed settings can be found under System Settings → "Window Management" → "Window Rules" → Pencil icon of "Window settings for com.libretro.RetroArch".</p>
-    <h2>xnp21kai_sdl</h2>
-    <h3>No sound</h3>
-    <p>Try stopping the program and run it again. (<code class="blocksmall">Ctrl+C</code> if launched from the terminal)</p>
-    <h3>Can't close/freezes</h3>
-    <p>Includes errors being thrown even when pressing <code class="blocksmall">Ctrl+C</code> in the terminal.
-        Unfortunately, This is arbitrary behavior that there is no exact solution to so far.
-    </p>
-    <p>Testing by the author suggests that directly running <code>xnp21kai_sdl</code> from <code>/usr/local/bin/</code>
-        may solve this issue if it repeatedly happens.
-    </p>
-    <h3>Fullscreen isn't fullscreen</h3>
-    <p>Unfortunately there is currently no option to scale up the display.</p>
-    <hr class="light">
-    <h1>Additional Resources and References</h1>
-    <ul>
-        <li>
-            <a href="https://dosbox-x.com/wiki/Guide%3APC%E2%80%9098-emulation-in-DOSBox%E2%80%90X">DOSBox-X</a>
-            | PC-98 setup
-        </li>
-        <li>
-            <a href="https://www.retroarch.com/index.php?page=linux-instructions">RetroArch</a>
-            | Linux installation instructions
-        </li>
-        <li>
-            <a href="https://maribelhearn.com/faq/pc98">Maribel Hearn</a>
-            | PC-98 Guide
-        </li>
-        <li>
-            <a href="https://github.com/thepg24/TouhouDeck">TouhouDeck</a>
-            | Helpful script for the Steam Deck
-        </li>
-        <li>
-            <a href="https://nc-roadgeek.neocities.org/mima/pc98-neko">Feeva</a>
-            | Neko Project II (original Windows ver.) guide for Touhou
-        </li>
-        <li>
-            <a href="https://pc98.ne.jp/reslib">PC-9800 Central Community</a>
-            | Resource Library
-        </li>
+		<h3 id="cmake-options-table">Handy CMake flag options</h3>
+		<p>The following table contains not all, but noteworthy CMake options</p>
+		<table>
+			<tbody>
+				<tr>
+					<th>CMake flag (with <code class="blocksmall">-D</code> prefix)</th>
+					<th>Default value with just <code class="blocksmall">cmake -D BUILD_X=ON</code></th>
+					<th>Created program(s) if set to <code>ON</code></th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td><code>CMAKE_INSTALL_PREFIX</code></td>
+					<td><code>/usr/local</code></td>
+					<td></td>
+					<td>
+						Programs will be installed to <code>/usr/local/bin</code> when the install command is ran.<br>
+						The AUR installs them to <code>/usr/bin</code> instead.
+					</td>
+				</tr>
+				<tr>
+					<td><code>BUILD_X</code></td>
+					<td><code>ON</code></td>
+					<td><code>x*</code></td>
+					<td>Creates X11 versions of the following programs.</td>
+				</tr>
+				<tr>
+					<td><code>BUILD_SDL</code></td>
+					<td><code>ON</code></td>
+					<td><code>sdl*</code></td>
+					<td>Creates Wayland versions of the following programs.</td>
+				</tr>
+				<tr>
+					<td><code>USE_SDL</code></td>
+					<td><code>2</code></td>
+					<td></td>
+					<td>Uses SDL2 for the SDL versions of the programs.</td>
+				</tr>
+				<tr>
+					<td><code>BUILD_I286</code></td>
+					<td><code>OFF</code></td>
+					<td>
+						<code>xnp2kai</code>,
+						<br><code>sdlnp2kai</code>
+					</td>
+					<td>If set to <code>ON</code>, creates the i286 version, which can only run 16-bit operating systems and programs.</td>
+				</tr>
+				<tr>
+					<td><code>BUILD_HAXM</code></td>
+					<td><code>OFF</code></td>
+					<td>
+						<code>xnp21kai_ HAXM_sdl</code>,<br>
+						<code>sdlnp21kai_HAXM</code>
+					</td>
+					<td>
+						If set to <code>ON</code>, creates a IA32 version with HAXM, which uses hardware virtualization.<br>
+						Only use this if you want to, and have an Intel CPU that supports HAXM.<br>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</li>
+		<li>
+			<p>Build the program. Errors and warnings are normal.</p>
+			<p class="warning"><b>
+				Recent testing suggests that you might only be able to build the program once,</b>
+				with subsequent attempts ending with the error
+				<code class="blocksmall">ninja: build stopped: subcommand failed.</code>
+			</p>
+			<h3>Going into <code>build/</code></h3>
+			<pre><code class="block">cd build/</code></pre>
+			<pre><code class="block">cmake --build .</code></pre>
+			<h3>Without going into <code>build/</code></h3>
+			<pre><code class="block">cmake --build build</code></pre>
+		</li>
+		<li><p>Install the program(s) to the system</p>
+			<h3>Default (while in <code>build/</code>)</h3>
+			<pre><code class="block">sudo make install</code></pre>
+			<h3>Without going into <code>build/</code></h3>
+			<pre><code class="block">sudo cmake --install build</code></pre>
+		</li>
+		<li>Run the program, and <a href="#adjust-settings-xnp21kai_sdl">adjust settings</a>
+			<h3>X11 version</h3>
+			<pre><code class="block">xnp21kai_sdl</code></pre>
+			<h3>Wayland version<sup>†</sup></h3>
+			<pre><code class="block">sdlnp21kai</code></pre>
+		</li>
+	</ol>
+	<p><b>
+		<sup>†</sup> <code>sdlnp21kai</code> has some differences compared to <code>xnp21kai_sdl</code>,
+		but the most important are as follows:
+	</b></p>
+	<ul>
+		<li>
+			<p><b>
+				As of writing, all variants of <code>sdlnp21kai</code> can only be ran from the terminal,
+				while all variants of <code>xnp21kai_sdl</code> have <code>.desktop</code> shortcuts after using the
+				<code class="blocksmall">sudo make install</code> command.
+			</b></p>
+		</li>
+		<li><p><b>The menu bar is hidden until you press <code class="blocksmall">F11</code></b></p></li>
+		<li>
+			<p><code>sdlnp21kai</code> can properly scale up to fullscreen, but <code>xnp21kai_sdl</code> cannot.</p>
+			<p>Inversely, <code>xnp21kai_sdl</code> is able to have a few different window sizes, while <code>sdlnp21kai</code> cannot.</p>
+		</li>
+		<li><p><code>sdlnp21kai</code> uses more resources. Or at least can make your computer's fan spin up.</p></li>
+	</ul>
+	<h2 id="adjust-settings">Settings to adjust before playing</h2>
+	<h3 id="adjust-settings-retroarch">RetroArch</h3>
+	<ol>
+		<li>
+			<p>Go back<sup>*</sup> to the previous menu and select the respective core. On the Main Menu, "Start Core" will be in place of "Load Core".</p>
+		</li>
+		<li><p>Start the core without content and press <code>F1</code> to open the Quick Menu</p></li>
+		<li>
+			<p>Select "Core Options", and apply the following settings:</p>
+			<p class="warning"><b>The following two settings are required for smooth gameplay:</b></p>
+			<ul>
+				<li><b>CPU Clock Multiplier</b> = <code class="blocksmall">52</code></li>
+				<li><b>RAM Size</b> = <code class="blocksmall">16</code></li>
+			</ul>
+			<p><b>Optional, but more authentic (or loud) music experience:</b></p>
+			<ul>
+				<li>Sound Board = <code class="blocksmall">PC9801-26K+86</code></li>
+				<li>Volume FM = <code class="blocksmall">100</code></li>
+				<li>Volume SSG = <code class="blocksmall">100</code></li>
+				<li>Volume RHYTHM = <code class="blocksmall">100</code></li>
+				<li>Sound Generator = <code class="blocksmall">Default</code> (or fmgen if available)</li>
+			</ul>
+		</li>
+		<li><p>Go back and restart the core.</p></li>
+		<li><p>Install the <a href="#pc98-files">necessary font and ROM files</a></p></li>
+	</ol>
+	<p><sup>*</sup> Backspace key on keyboard</p>
+	<h3 id="adjust-settings-xnp21kai_sdl">xnp21kai_sdl</h3>
+	<ol>
+		<li><p>In the menu bar, adjust these settings for a smooth experience. <b>To apply them, hit "Reset" in "Emulator"</b></p>
+			<ul>
+				<li>
+					<b>Emulator</b>
+					<ul>
+						<li><b>CPU</b><sup>*</sup> = <code class="blocksmall">2.4576MHz x 52</code></li>
+						<li>Architecture = <code class="blocksmall">PC-9801VX</code></li>
+						<li>Sampling Rate = <code class="blocksmall">44100 kHz</code></li>
+						<li><b>Buffer</b><sup class="warning">†</sup> = <code class="blocksmall">20 ms</code></li>
+					</ul>
+				</li>
+				<li>
+					<b>Device</b>
+					<ul>
+						<li>Sound = <code class="blocksmall">PC9801-86</code></li>
+						<li>Memory = <code class="blocksmall">16.6 MB</code></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><p>Install the <a href="#pc98-files">necessary font and ROM files</a> to <code class="blocksmall">~/.config/xnp21kai_sdl/</code></p></li>
+	</ol>
+	<p><sup>*</sup> The default multiplier of 20 should be enough for most systems, but can result in slowdowns on sections with large amount of enemies or danmaku.</p>
+	<p class="warning"><sup>†</sup> Testing by the author in xnp21kai_sdl has shown that a buffer of 100 ms or more will result in noticeable sound delay, especially for sound effects.</p>
+	<h3>sdlnp21kai</h3>
+	<p>The process is similar to <code>xnp21kai_sdl</code>, except for the following differences.</p>
+	<ul>
+		<li><p>The maximum CPU multiplier is <code class="blocksmall">32</code></p></li>
+		<li><p>The sampling rate for <code>44100 kHz</code> is visually rounded down to <code class="blocksmall">44KHz</code></p></li>
+	</ul>
+	<p>Also note that for some reason, sdlnp21kai does not save its settings by default, so you may have to manually create a config folder for it.</p>
+	<pre><code class="block">cd ~/.config</code></pre>
+	<pre><code class="block">mkdir sdlnp21kai</code></pre>
+	<pre><code class="block">touch np21kai.cfg</code></pre>
+	<p>This will also be relevant for the next section.</p>
+	<hr class="light">
+	<h1 id="pc98-files">ROM and font files</h1>
+	<h2 id="rom-files">ROM files</h2>
+	<p>You <i>may</i> need to install some PC-98 ROM files for your emulator to work properly. These can be found elsewhere online.</p>
+	<p>Neko Project II kai and DOSBox-X both already include most of the necessary ROM files for basic operations.</p>
+	<ul>
+		<li><code>BIOS.ROM</code></li>
+		<li><code>ITF.ROM</code></li>
+		<li><code>SOUND.ROM</code></li>
+		<li><code>FONT.ROM</code> (see <a href="#fonts">next section</a>)</li>
+	</ul>
+	<p>For the Touhou games, you don't need to install these ROM files. However...</p>
+	<h2 id="fonts">Font files</h2>
+	<p><b>Both Neko Project II Kai and DOSBox-X require a font file in order to properly display Japanese characters.</b></p>
+	<p>Some popular font files are available to download from here:</p>
+	<h3>Anex86-compatible fonts</h3>
+	<p class="recommended">Recommended for DOSBox-X</p>
+	<ul>
+		<li><a href="./fonts/FREECG98.BMP" download>FREECG98 font</a><sup class="warning"><b>*</b></sup></li>
+		<li><a href="./fonts/ANEX86.BMP" download>Anex86 font</a></li>
+	</ul>
+	<p><b class="warning"><sup>*</sup> The FREECG98 font does not work with Neko Project II Kai.</b></p>
+	<h3>Neko Project-compatible fonts</h3>
+	<p class="recommended">Recommended for Neko Project II Kai.</p>
+	<ul>
+		<li><a href="./fonts/FONT.BMP" download>Neko Project II font</a></li>
+		<li><a href="./fonts/FONTW.BMP" download>Neko Project 21/W font</a></li>
+	</ul>
+	<h2>Installation</h2>
+	<h3>DOSBox-X</h3>
+	<p>If you have the original ROM files, simply copy/move them to the same directory as your PC-98 Touhou <code>.hdi</code> file(s).</p>
+	<p>Otherwise, DOSBox-X already includes <code>FREECG98.BMP</code> for convenience.</p>
+	<p>
+		To use a different compatible font:
+	</p>
+	<ol>
+		<li><p>Move/copy the file to the working directory.</p></li>
+		<li>
+			<p>
+				Edit the config file so that under the <code class="blocksmall">[pc98]</code> section,
+				<code class="blocksmall">pc-98 anex86 font</code> is set to the font's filename.
+			</p>
+		</li>
+	</ol>
+	<h3>RetroArch</h3>
+	<ol>
+		<li>
+			<p>Navigate to the RetroArch system folder.</p>
+			<b>Flatpak</b>
+			<pre><code class="blocksmall">~/.var/app/org.libretro.RetroArch/config/retroarch/system/</code></pre>
+			<b>Non-Flatpak</b>
+			<pre><code class="blocksmall">~/.config/retroarch/system/</code></pre>
+		</li>
+		<li>
+			<p>Create a directory called <code class="blocksmall">np2kai</code>.</p>
+		</li>
+		<li>
+			<p>
+				Copy/move the files to to <code class="blocksmall">np2kai</code>.
+			</p>
+			<p>
+				If you're using a compatible font besides <code>FONT.ROM</code>,
+				rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
+			</p>
+		</li>
+	</ol>
+	<h3>xnp21kai_sdl</h3>
+	<p>Copy/move the font and ROM files to <code class="blocksmall">~/.config/xnp21kai_sdl</code>.</p>
+	<p>If you are using a compatible font besides <code>FONT.ROM</code>, there are two possible options:</p>
+	<ul>
+		<li>
+			<p>
+				Edit <code class="blocksmall">fontfile</code> in <code class="blocksmall">xnp21kai_sdlrc</code>
+				to the <i><b>absolute</b></i> filepath of the font.
+			</p>
+		</li>
+		<li>
+			<p>
+				Copy/move the font file to <code class="blocksmall">~/.config/xnp21kai_sdl</code>.
+				Rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
+			</p>
+		</li>
+	</ul>
+	<h3>sdlnp21kai</h3>
+	<p>
+		Similar to the process for <code>xnp21kai_sdl</code>, but the directory is <code class="blocksmall">~/.config/sdlnp21kai</code>,
+		and the configuration file is <code class="blocksmall">np21kai.cfg</code>.
+	</p>
+	<hr class="light">
+	<h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
+	<h3>Disclaimer</h3>
+	<p>This guide assumes that you have acquired your copies of the PC-98 Touhou games as <code>.hdi</code> or <code>.fdi</code> file(s)</p>
+	<p>
+		While the author has tested running the games from the original "loose" files
+		(such as those in the <a href="secret.txt">compilation disc</a>),
+		with DOSBox-X, most readers are unlikely to be in a similar situation.
+	</p>
+	<p>Therefore the following sections will not cover on how to run the games from the original files.</p>
+	<p>Regardless, it is highly recommended that you store your <code>.hdi</code> files in a directory named "Games" or "Touhou" for ease of rememberance.</p>
+	<h1 id="dosbox-x-running">DOSBox-X</h1>
+	<h2 id="dosbox-x-running-gui">GUI/Desktop</h2>
+	<ol>
+		<li>
+			<p>If prompted, select the directory with your <code>.hdi</code> files as your working directory.</p>
+		</li>
+		<li><p>Wait for DOSBox-X to finish loading<sup>*</sup>, then run these two commands in DOSBox-X:</p>
+			<pre><code class="block">IMGMOUNT C TOUHOU.HDI</code></pre>
+			<pre><code class="block">BOOT C:</code></pre>
+			Substitute <code class="blocksmall">TOUHOU.HDI</code> with the actual
+			filename<sup class="warning">†</sup> of the <code>.hdi</code> file<sup>‡</sup> you want to load.
+		</li>
+		<li><p>Enjoy!</p></li>
+		<li>
+			<p><a href="#dosbox-x-savestates">See this section</a> for information about savestates.</p>
+			<p><a href="#dosbox-tips">See this section</a> on how to remove or change the <code>.hdi</code> file</p>
+		</li>
+	</ol>
+	<p>
+		<sup>*</sup> You should see a CLI with <code class="blocksmall">Z:¥&gt;</code> as the prompt.
+		If not, check your <code>dosbox-x.conf</code> file to see that <code class="blocksmall">machine = pc98</code>.
+	</p>
+	<p class="warning"><b><sup>†</sup> The filename is case-sensitive!</b></p>
+	<p>
+		<sup>‡</sup> Depending on the type of <code>.hdi</code> file you obtained,
+		you'll either directly boot into the game or a menu with the games listed.
+	</p>
+	<h2>Command Line</h2>
+	<ol>
+		<li>
+			<p>Navigate to the directory folder with your <code>.hdi</code>(s) and config file, then run</p>
+			<ul>
+				<li><p><b>Non-Flatpak: </b><code class="blocksmall">dosbox-x</code></p></li>
+				<li><p><b>Flatpak: </b><code class="blocksmall">flatpak run com.dosbox_x.DOSBox-X</code></p></li>
+			</ul>
+		</li>
+		<li>Follow the same remaining steps as <a href="#dosbox-x-running-gui">above</a></li>
+	</ol>
+	<h1>Neko Project II Kai</h1>
+	<h2 id="np21kai-running-retroarch">RetroArch</h2>
+	<ol>
+		<li><p>In the Main Menu, select "Load Core", then "NEC - PC-98 (Neko Project II Kai)"</p></li>
+		<li><p><b>If it's your first time loading the <code>.hdi</code> file:</b></p>
+			<ol>
+				<li><p>Select "Load Content"</p></li>
+				<li><p>Navigate to to directory with the file and select it</p></li>
+			</ol>
+			<p><b>If you have loaded the <code>.hdi</code> file before:</b></p>
+			<ol>
+				<li><p>Select "Playlists", then "History"</p></li>
+				<li><p>Select the <code>.hdi</code> file, then run it.</p></li>
+			</ol>
+		</li>
+		<li><p>Enjoy!</p></li>
+		<li>
+			<p><a href="#np21kai-savestates">See this section</a> for information about savestates.</p>
+			<p>To remove the <code>.hdi</code> file, go into the Quick Menu and select "Close Content"</p>
+		</li>
+	</ol>
+	<h2 id="xnp21kai_sdl-running">xnp21kai_sdl</h2>
+	<ol>
+		<li><p>In the menu bar, select "HardDisk"</p></li>
+		<li><p>Choose <code>IDE0-0</code><sup>*</sup>, then "Open"</p></li>
+		<li><p>Find your Touhou <code>.hdi</code> file and open it.</p></li>
+		<li><p>Reset the emulator.</p></li>
+		<li><p>Enjoy!</p></li>
+		<li>
+			<p><a href="#np21kai-savestates">See this section</a> for information about savestates.</p>
+			<p>To remove<sup>†</sup> the <code>.hdi</code>, simply choose "Remove" on the "hard disk" the <code>.hdi</code> is located in and reset the emulator.</p>
+		</li>
+	</ol>
+	<p>
+		<sup>*</sup> If only <code>IDE0-0</code> or <code>IDE0-1</code> is loaded, that will be the default drive.
+		If both are loaded, <code>xnp21kai_sdl</code> will prompt you to choose a drive to boot after the memcheck.
+	</p>
+	<p><sup>†</sup> To switch to another <code>.hdi</code>, simply choose "Open" again.</p>
+	<h2 id="sdlnp21kai-running">sdlnp21kai</h2>
+	<p>Similar to <code>xnp21kai_sdl</code>, but with the following differences</p>
+	<ul>
+		<li><p><code>IDE1</code> and <code>IDE2</code> instead of <code>IDE0-0</code> and <code>IDE0-1</code>, respectively.</p></li>
+	</ul>
+	<hr class="light">
+	<h1 id="savestates">Using savestates</h1>
+	<p>
+		Savestates allow you to create a "snapshot" of your PC-98 system at any given time, so long as your <code>.hdi</code>
+		file still exists in the same location as when you last used it, and there's enough open slots left.
+	</p>
+	<p>In the context of the PC-98 Touhou games, savestates are useful for applications such as continuing where you left off in-game, or practicing certain sections.</p>
+	<h1 id="dosbox-x-savestates">DOSBox-X</h1>
+	<p>Savestates in DOSBox-X are known to have issues, such as buggy behavior after loading.</p>
+	<p>For most of the Touhou games, the author recommends pausing the game before creating a savestate.</p>
+	<h2>Creating savestates</h2>
+	<h3>Manual method</h3>
+	<p>To create a savestate, navigate to "Capture", then click on "Save state" <b><code class="blocksmall">F12 + S</code></b></p>
+	<p>You'll be prompted to give it a unique name.<sup class="warning">*</sup></p>
+	<p>To store more than one savestate, navigate<sup>†</sup> to an empty slot in "Select save slot" under "Capture". DOSBox-X has 100 empty slots by default.</p>
+	<p>
+		To remove a slot's content without writing any data to it, click "Remove state in slot" under "Select save slot"
+		<i>after you've already selected the slot that you want to clear.</i>
+	</p>
+	<p class="warning">
+		<sup>*</sup> This will overwrite all data in the current selected save slot,
+		so make sure to navigate to the next empty slot if you want to create a separate save state.
+	</p>
+	<p>
+		<sup>†</sup> For faster navigation, use <b><code class="blocksmall">F12 + .</code></b> for the next slot,
+		and <b><code class="blocksmall">F12 + ,</code></b> for the previous slot; both are relative to the current selected save slot.
+	</p>
+	<h3>Auto-saving</h3>
+	<p>
+		DOSBox-X allows for automatic and periodic creations of savestates.
+		This means you can have something akin to "auto-save" in most modern video games.
+	</p>
+	<p>
+		To start creating auto-saves, navigate to "Capture", then "Auto-save settings".
+	</p>
+	<p>Below is a table of possible settings. Note that <code>x, y, z</code> are to be substituted for positive integer values.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>Time interval (secs)<sup>*</sup></th>
+				<th>Start slot</th>
+				<th>End slot</th>
+				<th>Savestates created</th>
+			</tr>
+			<tr>
+				<td><code>0</code></td>
+				<td><code>0</code></td>
+				<td><code>0</code></td>
+				<td>Default setting, does nothing regardless of the value of the time interval.</td>
+			</tr>
+			<tr>
+				<td><code>z</code></td>
+				<td><code>x</code></td>
+				<td><code>y</code></td>
+				<td>
+					Iteratively create new savestates in slots <code>x</code> through <code>y</code>, inclusive, every <code>z</code> seconds.<br>
+					If the current slot is within the range, saving will start on that slot.
+				</td>
+			</tr>
+			<tr>
+				<td><code>z</code></td>
+				<td><code>x</code></td>
+				<td><code>0</code></td>
+				<td>Create a savestate at slot <code>x</code> every <code>z</code> seconds.</td>
+			</tr>
+			<tr>
+				<td><code>z</code></td>
+				<td><code>0</code></td>
+				<td><code>0</code></td>
+				<td>Create a savestate at the current slot<sup class="warning">†</sup> every <code>z</code> seconds.</td>
+			</tr>
+			<tr>
+				<td><code>z</code></td>
+				<td><code>0</code></td>
+				<td><code>y</code></td>
+				<td>Create a savestate from the current slot<sup class="warning">†</sup> to slot <code>y</code>, inclusive, every <code>z</code> seconds.</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		For the Touhou games, since this guide assumes most people are not directly using the original game files,
+		we can ignore settings for individual programs.
+	</p>
+	<p>
+		<sup>*</sup>
+		To reduce the possibility of your system slowing down, it's recommended that the shortest interval for
+		general use be <code class="blocksmall">60</code> seconds.<br>
+		<b>Please also note that this means the game will briefly pause when a new savestate is being created.</b>
+	</p>
+	<p class="warning">
+		<sup>†</sup>
+		Please ensure that you're not overwriting any slots you want to keep or manually save!
+	</p>
+	<h2>Loading savestates</h2>
+	<h3 class="warning">
+		Warning: Before loading a savestate, you <i>must</i> be currently running <i>exactly</i> the same game,
+		from <i>exactly</i> the same <code>.hdi</code> file when you created that savestate.
+	</h3>
+	<p>
+		To load a savestate, select "Load state" <b><code class="blocksmall">F12 + L</code></b>
+		on the selected slot that you want to load it from.
+	</p>
+	<h1 id="np21kai-savestates">Neko Project II Kai</h1>
+	<h2>RetroArch</h2>
+	<p>Savestates can be stored in up to 1000 slots.</p>
+	<p><b><i>
+		Before loading a savestate, you must be currently running the same <code>.hdi</code> file that you want to load the savestate from.
+		Otherwise you'll only see a black screen.
+	</i></b></p>
+	<p></p>
+	<h3>In-game method:</h3>
+	<p><code class="blocksmall">F2</code> to quickly create a savestate to <i>the current</i> slot.</p>
+	<p><code class="blocksmall">F4</code> to quickly load a savestate from <i>the current</i> slot.</p>
+	<p>
+		<code class="blocksmall">F6</code> and <code class="blocksmall">F7</code> to navigate between slots.
+		A thumbnail of the slot's savestate will be shown for reference.
+	</p>
+	<h3>In-menu method:</h3>
+	<p>Go to "Save States", then click on "Save State" to create a savestate to the current slot.</p>
+	<p>To load a savestate from the current slot, click on "Load State".</p>
+	<p>To navigate between slots, enter "State Slot" and navigate to your desired slot.</p>
+	<h2>xnp21kai_sdl/sdlnp21kai</h2>
+	<p>To enable savestates, add the following line to <code>xnp21kai_sdlrc</code> (or <code>np21kai.cfg</code>)</p>
+	<pre><code class="blocksmall">STATSAVE = true</code></pre>
+	<p>(Re)start the program. There should be a new section in the menu bar titled <code>STAT</code>. Under that, you can save and load two slots.</p>
+	<hr class="light">
+	<h1>Important and useful tips</h1>
+	<h2 id="dosbox-tips">DOSBox-X</h2>
+	<ul>
+		<li>
+			<p class="warning">
+			"Restarting the DOSBox-X instance" from the menu will make it unable to mount any <code>.hdi</code> file in your working directory until you close the program.
+			</p>
+			Instead:<br>
+			<ul>
+				<li><p>If you want to use the same <code>.hdi</code> file, Reboot the guest system (<b><code>F12+B</code></b>).</p></li>
+				<li><p>If you want to use a different <code>.hdi</code> file in the same working directory, reset the virtual machine (<b><code>F12+R</code></b>).</p></li>
+			</ul>
+		</li>
+		<li>
+			<p>
+				If you only use one <code>.hdi</code> file and only use DOSBox-X for that purpose, it's useful to make DOSBox-X automatically
+				<a href="#autoexec">load it</a> every time <a href="#working-directory">you run DOSBox-X</a>.
+			</p>
+		</li>
+	</ul>
+	<h2>Neko Project II Kai</h2>
+	<h3>RetroArch</h3>
+	<ul>
+		<li><p class="warning">By default, pressing the Esc key twice will quit RetroArch!</p></li>
+		<li>
+			<p>It's recommended to set your <code>.hdi</code> file(s) as favorites to access them faster in the future.</p>
+			<p>There are two ways of adding them to your favorites:</p>
+			<ul>
+				<li><p>Quick Menu → Add to Favorites (while running)</p></li>
+				<li><p>Playlist → History → your <code>.hdi</code> file(s) → Add to Favorites</p></li>
+			</ul>
+		</li>
+	</ul>
+	<h3>xnp21kai_sdl/sdlnp21kai</h3>
+	<ul>
+		<li><p>Your window position and size is not remembered!</p></li>
+		<li><p>Your last used <code>.hdi</code> file, however, is remembered!</p></li>
+		<li><p>When ran from the terminal, closing the terminal emulator will also close xnp21kai_sdl</p></li>
+		<li><p>There has been issues where closing the window via the "X" button may not cause the program to stop running.</p>
+			<p>If that happens, kill the program via the terminal or System Monitor.</p>
+		</li>
+	</ul>
+	<h2>Other</h2>
+	<ul>
+		<li>
+			<p>Make sure to run this command before using older emulators (Neko Project II, Anex86, T98-Next, etc.) with Wine:</p>
+			<pre><code class="block">winetricks ddr=gdi</code></pre>
+		</li>
+	</ul>
+	<hr class="light">
+	<h1>Common Issues</h1>
+	<p>This section is under expansion. Submit issues and fixes <a href="https://github.com/daichungus/touhoulinuxguide/issues">through the repo</a>.</p>
+	<h2>RetroArch</h2>
+	<h3>Flatpak version can't go fullscreen in KDE</h3>
+	<p>Right click on the title bar of the window.</p>
+	<p>Go to "More Actions" → "Special Window actions".</p>
+	<p>In the new window, click "Add property" in the bottom left. Find "Fullscreen" in the list and add it.</p>
+	<p>Go back and make sure you set "Fullscreen" to "Yes".</p>
+	<p>If you have multiple monitors, and the program launches on the wrong one, you can also add "screen" property.</p>
+	<p>The changed settings can be found under System Settings → "Window Management" → "Window Rules" → Pencil icon of "Window settings for com.libretro.RetroArch".</p>
+	<h2>xnp21kai_sdl</h2>
+	<h3>No sound</h3>
+	<p>Try stopping the program and run it again. (<code class="blocksmall">Ctrl+C</code> if launched from the terminal)</p>
+	<h3>Can't close/freezes</h3>
+	<p>Includes errors being thrown even when pressing <code class="blocksmall">Ctrl+C</code> in the terminal.
+		Unfortunately, This is arbitrary behavior that there is no exact solution to so far.
+	</p>
+	<p>Testing by the author suggests that directly running <code>xnp21kai_sdl</code> from <code>/usr/local/bin/</code>
+		may solve this issue if it repeatedly happens.
+	</p>
+	<h3>Fullscreen isn't fullscreen</h3>
+	<p>Unfortunately there is currently no option to scale up the display.</p>
+	<hr class="light">
+	<h1>Additional Resources and References</h1>
+	<ul>
+		<li>
+			<a href="https://dosbox-x.com/wiki/Guide%3APC%E2%80%9098-emulation-in-DOSBox%E2%80%90X">DOSBox-X</a>
+			| PC-98 setup
+		</li>
+		<li>
+			<a href="https://www.retroarch.com/index.php?page=linux-instructions">RetroArch</a>
+			| Linux installation instructions
+		</li>
+		<li>
+			<a href="https://maribelhearn.com/faq/pc98">Maribel Hearn</a>
+			| PC-98 Guide
+		</li>
+		<li>
+			<a href="https://github.com/thepg24/TouhouDeck">TouhouDeck</a>
+			| Helpful script for the Steam Deck
+		</li>
+		<li>
+			<a href="https://nc-roadgeek.neocities.org/mima/pc98-neko">Feeva</a>
+			| Neko Project II (original Windows ver.) guide for Touhou
+		</li>
+		<li>
+			<a href="https://pc98.ne.jp/reslib">PC-9800 Central Community</a>
+			| Resource Library
+		</li>
 		<li>
 			<a href="https://9800guide.uwu.ai/">NEC PC-9800: An Introduction for Western Beginners</a>
 		</li>
-        <li>
-            <a href="https://gang-fight.com/projects/98faq/">Gang Fight</a>
-            | PC-98 Emulation for Beginners
-        </li>
-        <li>
-            <a href="https://46okumen.com/pc-98-emulation/">46 Okumen</a>
-            | PC-98 Emulation
-        </li>
-        <li>
-            <a href="https://gu4n.github.io/br2/instructions.html">Gu4n</a>
-            | T98-Next setup instructions
-        </li>
-        <li>
-            <a href="https://www.zophar.net/pc98.html">Zophar's Domain</a>
-            | PC-98 emulators for Windows
-        </li>
-        <li>
-            <a href="https://docs.libretro.com/library/neko_project_ii_kai/">Libretro</a>
-            | NP2kai documentation
-        </li>
-        <li>
-            <a href="https://touhou-memories.com/post/190684950124/configure-anex86">Touhou Memories</a>
-            | Anex86 configuration
-        </li>
-        <li>
-            <a href="https://retro-type.com/PC98/files/BIOS/PC98Ce2-model-S2D-Bios/Backup-of-Ce2-Bios/Backup-of-Ce2-Bios/Extracted%20Bios%20Files/PC9821-Ce2-S2D-Bios-MKBIOS/">Retro-Type</a>
-            | PC-98 BIOS ROM files
-        </li>
-        <li><a href="../">Windows Touhou on Linux Guide</a></li>
-    </ul>
-    <hr class="light">
-    <h2>Special Thanks</h2>
-    <p>The author thanks the following for their support:</p>
-    <ul>
-        <li>B0N</li>
-        <li>PC-98 Touhou Discord server</li>
-        <li>The Touhou Club @ The Ohio State University</li>
-    </ul>
-    <hr class="light">
-    <footer>
-        <p id="last-updated"></p>
-        <script src="../js/time.js"></script>
-    </footer>
+		<li>
+			<a href="https://gang-fight.com/projects/98faq/">Gang Fight</a>
+			| PC-98 Emulation for Beginners
+		</li>
+		<li>
+			<a href="https://46okumen.com/pc-98-emulation/">46 Okumen</a>
+			| PC-98 Emulation
+		</li>
+		<li>
+			<a href="https://gu4n.github.io/br2/instructions.html">Gu4n</a>
+			| T98-Next setup instructions
+		</li>
+		<li>
+			<a href="https://www.zophar.net/pc98.html">Zophar's Domain</a>
+			| PC-98 emulators for Windows
+		</li>
+		<li>
+			<a href="https://docs.libretro.com/library/neko_project_ii_kai/">Libretro</a>
+			| NP2kai documentation
+		</li>
+		<li>
+			<a href="https://touhou-memories.com/post/190684950124/configure-anex86">Touhou Memories</a>
+			| Anex86 configuration
+		</li>
+		<li>
+			<a href="https://retro-type.com/PC98/files/BIOS/PC98Ce2-model-S2D-Bios/Backup-of-Ce2-Bios/Backup-of-Ce2-Bios/Extracted%20Bios%20Files/PC9821-Ce2-S2D-Bios-MKBIOS/">Retro-Type</a>
+			| PC-98 BIOS ROM files
+		</li>
+		<li><a href="../">Windows Touhou on Linux Guide</a></li>
+	</ul>
+	<hr class="light">
+	<h2>Special Thanks</h2>
+	<p>The author thanks the following for their support:</p>
+	<ul>
+		<li>B0N</li>
+		<li>PC-98 Touhou Discord server</li>
+		<li>The Touhou Club @ The Ohio State University</li>
+	</ul>
+	<hr class="light">
+	<footer>
+		<p id="last-updated"></p>
+		<script src="../js/time.js"></script>
+	</footer>
 </body>
 
 </html>

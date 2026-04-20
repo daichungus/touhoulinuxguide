@@ -11,14 +11,14 @@
 - ***For legal reasons, direct hyperlinks to third-party websites that distribute unauthorized copies of the Touhou Project games are not allowed.***
 - Pull request titles and descriptions should be as accurate and concise as possible.
 
-    **Good example**: "Add instructions for installation and configuration of Lutris and Wine on NixOS"
+	**Good example**: "Add instructions for installation and configuration of Lutris and Wine on NixOS"
 
-    **Less ideal example**: "added some stuff related to nixos"
+	**Less ideal example**: "added some stuff related to nixos"
 - Entries in the additional references and resources sections should follow this style:
 ```
 <li>
-    <a href="yourlink.com">Name of the Main Website</a>
-    | Name of the Page or a short description
+	<a href="yourlink.com">Name of the Main Website</a>
+	| Name of the Page or a short description
 </li>
 ```
 - The HTML file *should always be valid*. To check if your working copy is valid, use [the online W3C tool](https://validator.w3.org/#validate_by_upload).
