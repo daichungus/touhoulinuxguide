@@ -988,48 +988,69 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 			</p>
 			<p>
 				If you're using a compatible font besides <code>FONT.ROM</code>,
-				rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
+				rename the file to <code class="blocksmall">font.bmp</code>
+				(case-insensitive).
 			</p>
 		</li>
 	</ol>
 	<h3>xnp21kai_sdl</h3>
-	<p>Copy/move the font and ROM files to <code class="blocksmall">~/.config/xnp21kai_sdl</code>.</p>
-	<p>If you are using a compatible font besides <code>FONT.ROM</code>, there are two possible options:</p>
+	<p>
+		Copy/move the font and ROM files to
+		<code class="blocksmall">~/.config/xnp21kai_sdl</code>.
+	</p>
+	<p>
+		If you are using a compatible font besides <code>FONT.ROM</code>,
+		there are two possible options:
+	</p>
 	<ul>
 		<li>
 			<p>
-				Edit <code class="blocksmall">fontfile</code> in <code class="blocksmall">xnp21kai_sdlrc</code>
+				Edit <code class="blocksmall">fontfile</code>
+				in <code class="blocksmall">xnp21kai_sdlrc</code>
 				to the <i><b>absolute</b></i> filepath of the font.
 			</p>
 		</li>
 		<li>
 			<p>
-				Copy/move the font file to <code class="blocksmall">~/.config/xnp21kai_sdl</code>.
-				Rename the file to <code class="blocksmall">font.bmp</code> (case-insensitive).
+				Copy/move the font file to
+				<code class="blocksmall">~/.config/xnp21kai_sdl</code>.
+				Rename the file to <code class="blocksmall">font.bmp</code>
+				(case-insensitive).
 			</p>
 		</li>
 	</ul>
 	<h3>sdlnp21kai</h3>
 	<p>
-		Similar to the process for <code>xnp21kai_sdl</code>, but the directory is <code class="blocksmall">~/.config/sdlnp21kai</code>,
-		and the configuration file is <code class="blocksmall">np21kai.cfg</code>.
+		Similar to the process for <code>xnp21kai_sdl</code>,
+		but the directory is
+		<code class="blocksmall">~/.config/sdlnp21kai</code>,
+		and the configuration file is
+		<code class="blocksmall">np21kai.cfg</code>.
 	</p>
 	<hr class="light">
 	<h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
 	<h3>Disclaimer</h3>
-	<p>This guide assumes that you have acquired your copies of the PC-98 Touhou games as <code>.hdi</code> or <code>.fdi</code> file(s)</p>
+	<p>
+		This guide assumes that most readers have acquired their copies of
+		the PC-98 Touhou games in the form of <code>.hdi</code> files.
+	</p>
 	<p>
 		While the author has tested running the games from the original "loose"
 		files (such as those in the <a href="secret.txt">compilation disc</a>),
 		with DOSBox-X, most readers are unlikely to be in a similar situation.
 	</p>
-	<p>
-		Therefore the following sections will not cover on how to run the games
-		from the original files.
+	<p class="warning">
+		As such, this guide assumes the reader knows how
+		(or willing to learn)
+		to navigate a DOS
+		environment with commands such as
+		<code class="blocksmall">cd</code> and
+		<code class="blocksmall">dir</code> to understand terms such as
+		"navigate to the directory containing Mystic Square".
 	</p>
 	<p>
 		Regardless, it is highly recommended that you store your
-		<code>.hdi</code> files in a directory named "Games" or "Touhou"
+		game files in a directory named "Games" or "Touhou"
 		for ease of rememberance.
 	</p>
 	<h1 id="dosbox-x-running">DOSBox-X</h1>
