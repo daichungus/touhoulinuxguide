@@ -247,11 +247,11 @@ SOFTWARE.
 		<a href="./dosbox-x.conf" download>download</a>;
 		Simply save it to the same directory as your game files.</b><br>
 	</p>
-	<p class="recommended"><i>
+	<p class="recommended"><b><i>
 		It is recommended that you look at its contents to have
 		a basic understanding of what settings are applied, and adjust values
-		for optimal performance on your system.
-	</i></p>
+		for an optimal experience on your system.
+	</i></b></p>
 	<p>
 		If you prefer writing your own config file or directly editing the main
 		config file, continue to the next sections.
@@ -380,6 +380,10 @@ core = dynamic_x86</code></pre>
 		Depending on how you're accessing the Touhou games, there are two
 		formats that one can follow.
 	</p>
+	<p><b>
+		For more information, see
+		<a href="#dosbox-x-running">the steps for running the games</a>.
+	</b></p>
 	<h4>HDI file</h4>
 	<pre><code class="block">[autoexec]
 IMGMOUNT A: TOUHOU.HDI
@@ -1040,20 +1044,46 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 		with DOSBox-X, most readers are unlikely to be in a similar situation.
 	</p>
 	<p class="warning">
-		As such, this guide assumes the reader knows how
-		(or willing to learn)
-		to navigate a DOS
-		environment with commands such as
+		As such, this guide assumes the reader already knows how
+		to use <a href="./dos-commands.html">DOS commands</a> such as
 		<code class="blocksmall">cd</code> and
 		<code class="blocksmall">dir</code> to understand terms such as
-		"navigate to the directory containing Mystic Square".
+		"navigate to your desired game's directory".
 	</p>
 	<p>
 		Regardless, it is highly recommended that you store your
 		game files in a directory named "Games" or "Touhou"
 		for ease of rememberance.
 	</p>
+	<h3>Sound configuration</h3>
+	<p>
+		If you are running Lotus Land Story or Mystic Square for the
+		first time, you'll need to configure the sound.
+	</p>
+	<p>
+		After running the game, there will be
+		<a href="images/th05_setup1.png">a screen</a>
+		to configure the music. Select the first option (ステレオFM音源)
+		for a full FM synthesis experience.
+	</p>
+	<p>
+		<a href="images/th05_setup2.png">Another screen</a> will appear
+		to configure the sound effects. Select the first option
+		(FM音源) for emulator compatability and
+		avoid annoying your eardrums.
+	</p>
+	<p>
+		The difference between the two games for this step is that
+		one has Gengetsu in the background and Shinki in the other.
+		<small><i>Wow, this is elite ball knowledge.</i></small>
+	</p>
 	<h1 id="dosbox-x-running">DOSBox-X</h1>
+	<h3>Disclaimer</h3>
+	<p>
+		The <code class="blocksmall">A:</code> drive will be used as an example
+		drive letter, but you can use any letter from the English alphabet, so
+		long as it isn't already mounted.
+	</p>
 	<h2 id="dosbox-x-running-gui">GUI/Desktop</h2>
 	<ol>
 		<li>
@@ -1065,15 +1095,15 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 		<li>
 			<p>
 				Wait for DOSBox-X to finish loading<sup>*</sup>,
-				then run these the following commands in DOSBox-X,
-				depending on how your Touhou games are stored.
+				then run these the following commands<sup>†</sup>
+				in DOSBox-X, depending on how your Touhou games are stored.
 			</p>
 			<h3>HDI file</h3>
-			<pre><code class="block">IMGMOUNT A: TOUHOU.HDI</code></pre>
+			<pre><code class="block">IMGMOUNT A: /path/to/TOUHOU.HDI</code></pre>
 			<pre><code class="block">BOOT A:</code></pre>
 			<p>
 				Substitute <code class="blocksmall">TOUHOU.HDI</code>
-				with the actual filename<sup class="warning">†</sup> of the
+				with the actual filename<sup class="warning">‡</sup> of the
 				<code>.hdi</code> file you want to load.
 			</p>
 			<h3>Loose files</h3>
@@ -1089,7 +1119,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 			</p>
 			<h3>Non-auto-executing HDI file</h3>
 			<p>
-				Navigate to your desired game, and run
+				Navigate to your desired game's directory, and run
 				<code class="blocksmall">GAME.BAT</code>
 			</p>
 			<h3>Loose files</h3>
@@ -1112,13 +1142,44 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 	</ol>
 	<p>
 		<sup>*</sup>
-		You should see a CLI with
+		You should see a screen with
 		<code class="blocksmall">Z:¥&gt;</code>
 		as the prompt.
 		If not, check your <code>dosbox-x.conf</code> file to see that
 		<code class="blocksmall">machine = pc98</code>.
 	</p>
-	<p class="warning"><b><sup>†</sup> The filename is case-sensitive!</b></p>
+	<p>
+		<sup>†</sup>
+		The commands themselves are case-insensitive and can be typed in
+		lowecase. Mounting and unmounting drives do not require a colon after
+		the drive letter as well. The following examples are valid commands.
+	</p>
+	<ul>
+		<li>
+			<p>Mount a directory to the <code>A:</code> drive:</p>
+			<p><code class="block">mount a /path/to/touhou</code></p>
+		</li>
+		<li>
+			<p>Mount an <code>.hdi</code> to the <code>B:</code> drive:</p>
+			<p><code class="block">mount b /path/to/touhou.hdi</code></p>
+		</li>
+		<li>
+			<p>Switch to the <code>C:</code> drive without booting anything</p>
+			<p>
+				<code class="block">c:</code>
+			</p>
+		</li>
+		<li>
+			<p>Unmounting the <code>D:</code> drive</p>
+			<p>
+				<code class="block">MoUNt -u D</code>
+			</p>
+		</li>
+	</ul>
+	<p class="warning"><b>
+		<sup>‡</sup>
+		The path and filename is case-sensitive!
+	</b></p>
 	<h2>Command Line</h2>
 	<ol>
 		<li>
@@ -1181,12 +1242,12 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 			Run the game.
 			<h3>Auto-executing HDI file</h3>
 			<p>
-				This hould immediately boot into
+				This should immediately boot into
 				the game or a graphical menu.
 			</p>
 			<h3>Non-auto-executing HDI file</h3>
 			<p>
-				Navigate to your desired game, and run
+				Navigate to your desired game's directory, and run
 				<code class="blocksmall">GAME.BAT</code>
 			</p>
 		</li>
@@ -1211,24 +1272,26 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 			Run the game.
 			<h3>Auto-executing HDI file</h3>
 			<p>
-				This hould immediately boot into
+				This should immediately boot into
 				the game or a graphical menu.
 			</p>
 			<h3>Non-auto-executing HDI file</h3>
 			<p>
-				Navigate to your desired game, and run
+				Navigate to your desired game's directory, and run
 				<code class="blocksmall">GAME.BAT</code>
+			</p>
+		</li>
+		<li>
+			<p>
+				To remove<sup>†</sup> the <code>.hdi</code>,
+				simply choose "Remove" on the "hard disk" the <code>.hdi</code>
+				is located in and reset the emulator.
 			</p>
 		</li>
 		<li>
 			<p>
 				<a href="#np21kai-savestates">See this section</a>
 				for information about savestates.
-			</p>
-			<p>
-				To remove<sup>†</sup> the <code>.hdi</code>,
-				simply choose "Remove" on the "hard disk" the <code>.hdi</code>
-				is located in and reset the emulator.
 			</p>
 		</li>
 	</ol>
@@ -1498,6 +1561,12 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 					</p>
 				</li>
 			</ul>
+		</li>
+		<li>
+			<p>
+				To unmount a drive while in the shell:
+			</p>
+			<pre><code class="block">MOUNT -U A:</code></pre>
 		</li>
 		<li>
 			<p>
