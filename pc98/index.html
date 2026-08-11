@@ -55,8 +55,10 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 	<ul>
 		<li>Every possible setup or edge case</li>
 		<li>Running the games through Steam</li>
-		<li>How to obtain copies of the games or play them</li>
+		<li>How to obtain copies of the games</li>
+		<li>Gameplay strategies</li>
 		<li>How to run the games on an actual PC-98 machine</li>
+		<li>Controller setup (WIP)</li>
 	</ul>
 	<p>
 		The goal here is to get most users running their PC-98 Touhou games
@@ -145,43 +147,32 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 		Linux-native emulators in detail:
 	</b></p>
 	<h2><b>DOSBox-X</b> (<a href="#dosbox-x-setup">skip to setup</a>)</h2>
+	<h3>Pros</h3>
 	<ul>
 		<li><p>All-around decent choice for most users</p></li>
-		<li><p>Cross-platform (Windows, Linux, macOS, DOS)</p></li>
-		<li><p>Great if you emulate other DOS systems</p></li>
 		<li><p>Included in many distros' repos</p></li>
-		<li>
-			<p>
-				Can run the original game files
-				without an <code>.hdi</code> file.
-			</p>
-		</li>
-		<li>
-			<p>
-				Savestates have issues and more difficult to save and load
-			</p>
-		</li>
+		<li><p>Can run the original game files without an <code>.hdi</code> file.</p></li>
+		<li><p>Can run the Touhou games at true 60 FPS</p></li>
+	</ul>
+	<h3>Cons</h3>
+	<ul>
+		<li><p>Controller support is more limited</p></li>
+		<li><p>Savestates have issues and more difficult to save and load</p></li>
+		<li><p>Settings require editing a configuration file</p></li>
+		<li><p>Requires knowledge of basic CLI terminology and concepts</p></li>
+		<li><p>CPU cycle tuning is more manual</p></li>
 	</ul>
 	<h2>Neko Project II Kai (<a href="#np21kai-setup">skip to setup</a>)</h2>
+	<h3>Pros</h3>
 	<ul>
-		<li>
-			<p>
-				Considered a better choice for serious runs
-				or more accurate emulation
-			</p>
-		</li>
-		<li><p>Cross-platform as a RetroArch core</p></li>
-		<li><p>Great if you already use RetroArch</p></li>
-		<li>
-			<p>
-				Can be built from source as <code>xnp21kai_sdl</code>,
-				and has an AUR package
-			</p>
-		</li>
-		<li>
-			<p>Only supports <code>.hdi</code> and <code>.fdi</code> files</p>
-		</li>
+		<li><p>Considered a better choice for serious runs (closer accuracy)</p></li>
+		<li><p>Available as a RetroArch core (better controller support)</p></li>
+		<li><p>Can be built from source as <code>xnp21kai_sdl</code> and has an AUR package</p></li>
 		<li><p>Savestates are easier to save and load</p></li>
+	</ul>
+	<h3>Cons</h3>
+	<ul>
+		<li><p>Only supports <code>.hdi</code> and <code>.fdi</code> files</p></li>
 	</ul>
 	<h3 id="return-from-emulator">
 		A list of other PC-98 emulators can be found
@@ -209,12 +200,33 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 		at the cost of using more storage and less file permissions by default.
 	</p>
 	<h2>Settings to adjust before playing</h2>
+	<h3 id="working-directory">Default working directory</h3>
+	<p>
+		The default working directory is where
+		DOSBox-X will always first run on startup.
+	</p>
+	<p>
+		DOSBox-X will ask you to choose a directory in your system when it's ran
+		for the first time, usually after an update.<sup>*</sup>
+	</p>
+	<p>
+		Set the directory with the Touhou games as the default
+		working directory <b>in the default config file</b>
+		if you intend on using DOSBox-X only to play the PC-98 Touhou games.
+	</p>
+	<pre><code class="block">[dosbox]
+working directory option  = default
+working directory default = /your/path/to/pc98touhou/</code></pre>
+		<p><sup>*</sup>
+		If ran from the desktop. If using a CLI shell in a terminal emulator,
+		DOSBox-X will always use the current working directory it was ran in.
+	</p>
 	<h3>Configuration file</h3>
 	<p>
-		DOSBox-X relies on a configuration file to apply the correct settings
-		for various types of programs.
+		DOSBox-X relies on a system of configuration files
+		to allow the use to apply optimal settings for various DOS systems.
 	</p>
-	<p>By default, DOSBox-X uses its own config file located at:</p>
+	<p>The default configuration file for each version of DOSBox-X is located at:</p>
 	<ul>
 		<li><p><b>Non-Flatpak</b></p>
 			<pre><code class="block">~/.config/dosbox-x/dosbox-x-(version).conf</code></pre>
@@ -224,62 +236,104 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 		</li>
 	</ul>
 	<p>
-		If the working directory contains a file named
+		However, if a working directory contains a file named
 		<code class="blocksmall">dosbox-x.conf</code>,
-		the settings that it contains will override the respective ones in the default config file.
+		its settings will override the values specified
+		in the default config file.
 	</p>
-	<p class="recommended"><b>
-		As such, a ready-to-use config file is available for you to
+	<h3 class="recommended"><b>
+		A ready-to-use config file is available for you to
 		<a href="./dosbox-x.conf" download>download</a>;
-		Simply save it to the same directory as your game files.</b><br>
-	</p>
-	<p class="recommended"><b><i>
+		Simply save it to the same directory as your game files.</b>
+	</h3>
+	<h3 class="recommended">
 		It is recommended that you look at its contents to have
-		a basic understanding of what settings are applied, and adjust values
-		for an optimal experience on your system.
-	</i></b></p>
+		a basic understanding of what settings are applied,
+		and adjust values according to the following sections
+		for an optimal experience on your own system.
+	</h3>
 	<p>
-		If you prefer writing your own config file or directly editing the main
-		config file, continue to the next sections.
+		But once you have everything tuned for your needs, you should be ready to
+		<a href="#running-pc98-touhou">start running the games</a>.
 	</p>
-	<p><b>
-		Otherwise, <a href="#pc98-files">download a font</a> to the directory,
-		then <a href="#dosbox-x-running">start running the games</a>.
+	<h2>
+		<i class="warning">IMPORTANT!</i>
+		[cpu] settings
+	</h2>
+	<p>
+		The default CPU cycle count (<code>3000</code>) is too low for the
+		Touhou games, resulting in extremely slow gameplay.
+	</p>
+	<p>
+		For reference, the rough <code>cycle</code> value to emulate an
+		<a href="https://en.wikipedia.org/wiki/I486">Intel 486</a> @ 66 MHz
+		on a host CPU equivalent to the
+		<a href="https://en.wikipedia.org/wiki/Pentium_III">Intel Pentium III</a>
+		@ 1.0 GHz is
+		<code>26800</code>.
+	</p>
+	<p>Which is precisely the CPU requirement for:</p>
+		<ul>
+			<li><i><a href="https://en.touhouwiki.net/wiki/Phantasmagoria_of_Dim.Dream">PoDD</a></i></li>
+			<li><i><a href="https://en.touhouwiki.net/wiki/Lotus_Land_Story">LLS</a></i></li>
+			<li><i><a href="https://en.touhouwiki.net/wiki/Mystic_Square">MS</a></i></li>
+		</ul>
+	<p>
+		Nevertheless, the following value should allow DOSBox-X to smoothly run
+		the PC-98 Touhou games on most modern machines:
+	</p>
+	<pre><code class="block">cycles = 30000</code></pre>
+	<p class="warning"><b>
+		You may need to adjust the specific value depending on the capabilities
+		of your host machine's CPU. Older or weaker CPU's benefit from a lower
+		cycle count.
 	</b></p>
-	<h3 id="working-directory">Working directory</h3>
+	<p>If you find that CPU usage is too high on your host machine, set</p>
+	<pre><code class="block">core = simple</code></pre>
+	<p>(Or better yet, close programs you aren't using at the moment...)</p>
+	<h2>[video] settings</h2>
 	<p>
-		The working directory is where DOSBox-X will run. By default,
-		DOSBox-X will ask you to choose a directory in your system.<sup>*</sup>
+		By default, the refresh rate of DOSBox-X is "unlocked".
+		This means the program is theoretically not limited in the number of
+		frames per second (FPS) it can output to the screen.
 	</p>
 	<p>
-		If you intend on using DOSBox-X only to play the PC-98 Touhou games,
-		set the directory with the <code>.hdi</code> files as the default
-		working directory <b>in the default config file</b>.
+		Since the refresh rate for the actual PC-98 computers is
+		around 56.41 Hz, the Touhou games will run at a maximum
+		framerate between 56 to 57 FPS with this setting.
 	</p>
-	<pre><code class="block">[dosbox]
-working directory option = default
-working directory default = /your/path/to/pc98touhou/</code></pre>
-	<p><sup>*</sup>
-		If ran from the desktop. If it was ran in the terminal,
-		DOSBox-X uses the current directory as the working directory.
+	<p>
+		<b>
+			To force the games to run at 60 FPS:
+		</b>
 	</p>
-	<h3>Graphics</h3>
+	<pre><code class="block">forcerate = 60</code></pre>
+	<h2>[sdl] settings</h2>
 	<p>To always start in fullscreen, set:</p>
-	<pre><code class="block">[sdl]
-fullscreen = true
+	<pre><code class="block">fullscreen     = true
 fullresolution = desktop</code></pre>
-	<p>To ensure the graphics stay consistent, set:</p>
-	<pre><code class="block">[sdl]
-output = openglpp
-
-[render]
-aspect = true
-aspect_ratio = -1:-1</code></pre>
-	<h3>Enabling PC-98 mode</h3>
-	<p>To always enable PC-98 mode, set</p>
-	<pre><code class="block">[dosbox]
-machine = pc98</code></pre>
-	<h3>Keyboard</h3>
+	<p>To ensure the graphics stay pixel-perfect, set:</p>
+	<pre><code class="block">output = openglpp</code></pre>
+	<h2>[render] settings</h2>
+	<p>To maintain the original 16:10 aspect ratio of the PC-98, set</p>
+	<pre><code class="block">aspect        = true
+aspect_ratio  = -1:-1</code></pre>
+	<p>
+		On 16:9 displays, there will be large black borders in fullscreen mode,
+		but this is normal and ensures the pixels stay sharp.
+	</p>
+	<h2>[pc98] settings</h2>
+	<h3>Font settings</h3>
+	<p>
+		By default, DOSBox-X will use its own font (<code>FREECG98.BMP</code>),
+		which should be satisfactory for most readers.
+	</p>
+	<p>
+		If you want to specify a
+		<a href="#fonts"> different font</a>, set
+	</p>
+	<pre><code class="block">pc-98 anex86 font = /path/to/your/soundfont</code></pre>
+	<h3>Keyboard layout</h3>
 	<p>
 		Some DOSBox-X packages (such as the Fedora COPR build) may not enable
 		the US keyboard layout in PC-98 mode by default,
@@ -294,70 +348,65 @@ machine = pc98</code></pre>
 		(check in the default config file),
 		and you're using a US layout or similar, set
 	</p>
-	<pre><code class="block">[pc98]
-pc-98 force ibm keyboard layout = true
+	<pre><code class="block">pc-98 force ibm keyboard layout = true
 pc-98 force JIS keyboard layout = false</code></pre>
 	<p>
 		in either the default config file, or the provided
 		<code>dosbox-x.conf</code> file.
 	</p>
-	<h3>Refresh rate</h3>
+	<h2>[dosbox] settings</h2>
+	<p>To always enable PC-98 mode with 16 MB of memory, set</p>
+	<pre><code class="block">machine = pc98
+memsize = 16</code></pre>
 	<p>
-		By default, the refresh rate of DOSBox-X is "unlocked".
-		This means the program is not limited in the number of
-		frames per second (fps) it can produce.
+		Unless you have an anemic amount of memory on your host machine,
+		in which a <code>memsize</code> value between
+		<code>2</code> to <code>4</code>
+		should be sufficient.
+	</p>
+	<h2>[joystick] settings</h2>
+	<h3>Autofire</h3>
+	<p>
+		This only affects the gameplay of
+		<a href="https://en.touhouwiki.net/wiki/Phantasmagoria_of_Dim.Dream">PoDD</a>,
+		as the other Touhou games have built-in autofire.
 	</p>
 	<p>
-		For the Touhou games, this means that they will only run around
-		56 to 57 fps<sup>*</sup> unless the following setting is applied:
+		However, if the following is applied:
 	</p>
-	<pre><code class="block">[video]
-forcerate = 60
-</code></pre>
+	<pre><code class="blocksmall">autofire = true</code></pre>
 	<p>
-		Which will force the games to consistently run at 60 Hz
-		(and thus 60 fps), if possible.
+		then player(s) using joystick(s) can continously shoot
+		but cannot send a charged attack to their opponent.
 	</p>
+	<p>
+		Furthermore, it makes setting the gameplay difficulty in the
+		Options menu quite difficult.
+	</p>
+	<h2>[midi] settings</h2>
+	<p>
+		Only
+		<a href="https://en.touhouwiki.net/wiki/Story_of_Eastern_Wonderland">SoEW</a>
+		has MIDI support, so this is optional unless you really want to listen
+		to the
+		<a href="https://youtu.be/ut5D3uVyXDU">Roland SC-88 Pro version of the Five Magic Stones' theme</a>.
+	</p>
+	<p>So if you want MIDI playback, then set</p>
+	<pre><code class="block">mididevice = fluidsynth</code></pre>
+	<p>if you have FluidSynth installed on your system.</p>
+	<p>
+		By default, FluidSynth will use its default soundfont. To specify
+		a different soundfont<sup>*</sup>, set
+	</p>
+	<pre><code class="block">fluid.soundfont = /path/to/your/soundfont</code></pre>
 	<p>
 		<sup>*</sup>
-		The refresh rate for the original PC-9800 series of computers is around
-		<code>56.41</code> Hz.
-		This means gameplay can appear to be choppy on modern displays unless
-		adaptive sync has been enabled by the user.
+		You must do this if you're using the Flatpak version of DOSBox-X,
+		and the soundfont must be located in a directory owned by you.
+		In other words, even if you want to use the default FluidSynth soundfont,
+		you must have it located within your home directory.
 	</p>
-	<h3>CPU speed</h3>
-	<p>
-		The default CPU cycle count (<code>3000</code>) is too low for the
-		Touhou games, resulting in extremely slow gameplay.
-	</p>
-	<p>
-		Likewise, a value set too high can result in slowdowns as well,
-		especially on machines with an older or slower CPU.
-	</p>
-	<p class="recommended">
-		For a smooth experience across most modern machines, set
-	</p>
-	<pre><code class="block">[cpu]
-cycles = 30000</code></pre>
-	<p class="warning"><b>
-		You may need to adjust the specific value depending on the capabilities
-		of your machine's CPU. Older or weaker CPU's benefit from a lower
-		cycle count.
-	</b></p>
-	<p>
-		The recommended lower and upper bound values are respectively
-		<code>10000</code>
-		and
-		<code>72000</code>.
-	</p>
-	<p>If your hardware allows it,<sup>†</sup> set</p>
-	<pre><code class="block">[cpu]
-core = dynamic_x86</code></pre>
-	<p><sup>†</sup>
-		DOSBox-X used less of the CPU compared to "Normal" during testing
-		by the author on their x86 machines with the same number of cycles.
-	</p>
-	<h3 id="autoexec">Auto-execution</h3>
+	<h2 id="autoexec">[autoexec] settings</h2>
 	<p>
 		This is especially helpful if you intend on always using only one
 		<code>.hdi</code> file<sup>*</sup> and do not want to always type the
@@ -367,25 +416,23 @@ core = dynamic_x86</code></pre>
 		Depending on how you're accessing the Touhou games, there are two
 		formats that one can follow.
 	</p>
-	<p><b>
+	<h3><b>
 		For more information, see
-		<a href="#dosbox-x-running">the steps for running the games</a>.
-	</b></p>
-	<h4>HDI file</h4>
-	<pre><code class="block">[autoexec]
-IMGMOUNT A: TOUHOU.HDI
+		<a href="#dosbox-x-running">the steps for running the games within DOSBox-X</a>.
+	</b></h3>
+	<h3>HDI file</h3>
+	<pre><code class="block">IMGMOUNT A: /path/to/TOUHOU.HDI
 BOOT A:</code></pre>
 	<p>
 		Substitute <code class="blocksmall">TOUHOU.HDI</code>
-		with the actual name of your <code>.hdi</code> file.
+		with the actual path to your <code>.hdi</code> file.
 	</p>
-	<h4>Loose files</h4>
+	<h3>Loose files</h3>
 	<p>
-		This is if you store the Touhou games outside an <code>.hdi</code> file
-		on your host system.
+		This is if you store the Touhou game files directly on your host system,
+		such as after extracting from the PC-98 Touhou Compilation Disc.
 	</p>
-	<pre><code class="block">[autoexec]
-MOUNT A: /path/to/touhou/games/
+	<pre><code class="block">MOUNT A: /path/to/touhou/games/
 A:</code></pre>
 	<p>
 		Substitute <code class="blocksmall">/path/to/touhou/games/</code>
@@ -400,24 +447,25 @@ A:</code></pre>
 			<h3>RetroArch (<a href="#np21kai-retroarch">skipto</a>)</h3>
 			<p class="recommended"><b>Recommended option for most users</b></p>
 			<p>
-				Great and stable choice, especially if you already use
+				Stable choice, especially if you already use
 				RetroArch for other games,
 				but not great if you're tight on storage.
 			</p>
 			<p>
-				Modern UI navigation is biased towards controllers.
+				Also boasts good controller support;
+				all contols have have a button on a modern controller.
 			</p>
 		</li>
 		<li>
 			<h3>AUR package (<a href="#np21kai-arch">skipto</a>)</h3>
 			<p>
-				Good choice if you use an Arch-based system.
+				Decent choice if you use an Arch-based system.
 				Doesn't help if you don't use Arch, by the way.
 			</p>
 			<p>
 				<b>
-					However, the AUR package only helps automate building
-					the program from source
+					However, the AUR package only helps to automate building
+					the program from source, so it's not a guaranteed method.
 				</b>
 				(see below).
 			</p>
@@ -429,12 +477,12 @@ A:</code></pre>
 			</h3>
 			<p class="warning"><i><b>
 				Does not have a "stable" branch or binary releases.
-				Will have bugs, missing features, and arbitrary behavior.
+				Possibly contains bugs, missing features, and arbitrary behavior.
 			</b></i></p>
 			<p>
 				Not recommended for new Linux users,
 				users who are unfamiliar with building programs from source,
-				or those who preferstable programs.
+				or those who prefer stable and consistently buildable programs.
 			</p>
 			<p>
 				Only choose this if you <i>absolutely desire</i> so,
@@ -446,8 +494,7 @@ A:</code></pre>
 	<p>
 		You may want to familiarize yourself with the
 		<a href="https://docs.libretro.com/image/guides/standard-key-bindings.png">
-			RetroArch standard keyboard bindings
-		</a>
+			RetroArch standard keyboard bindings</a>
 		before continuing to this section.
 	</p>
 	<ol>
@@ -535,10 +582,14 @@ A:</code></pre>
 		<li><p><a href="#adjust-settings-retroarch">Adjust settings before playing</a></p></li>
 	</ol>
 	<h2 id="np21kai-arch">AUR package (Arch Linux)</h2>
-	<p>If you're new to Arch, please consider first reading the Arch Wiki article on
+	<p>
+		If you're new to Arch, please consider first reading the Arch Wiki article on
 		<a href="https://wiki.archlinux.org/title/Arch_User_Repository">how to install packages from the AUR</a>,
 		along with the <a href="https://wiki.archlinux.org/title/Makepkg">article on makepkg</a>.
 	</p>
+	<p class="warning"><b>
+		Always inspect the <code>PKGBUILD</code> file before building the project.
+	</b></p>
 	<ol>
 		<li>
 			<p>Install gtk2 from the <a href="https://aur.archlinux.org/packages/gtk2">AUR</a></p>
@@ -1020,6 +1071,13 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 	</p>
 	<hr class="light">
 	<h1 id="running-pc98-touhou">Running the PC-98 Touhou games</h1>
+	<p>Hyperlinks to specific instructions:</p>
+	<ul>
+		<li><a href="#dosbox-x-running">DOSBox-X</a></li>
+		<li><a href="#np21kai-running-retroarch">Neko Project II Kai (RetroArch)</a></li>
+		<li><a href="xnp21kai_sdl-running">xnp21kai_sdl</a></li>
+	</ul>
+	<p></p>
 	<h3>Disclaimer</h3>
 	<p>
 		This guide assumes that most readers have acquired their copies of
@@ -1632,16 +1690,13 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 		</li>
 	</ul>
 	<hr class="light">
-	<h1>Common Issues</h1>
+	<h1>Common Issues and Questions</h1>
 	<p>
 		This section is under expansion. Submit issues and fixes
-		<a href="https://github.com/daichungus/touhoulinuxguide/issues">
-			through the repo
-		</a>
-		.
+		<a href="https://github.com/daichungus/touhoulinuxguide/issues">through the repo</a>.
 	</p>
 	<h2>RetroArch</h2>
-	<h3>Flatpak version can't go fullscreen in KDE</h3>
+	<h3>Flatpak version can't go fullscreen in KDE!</h3>
 	<p>Right click on the title bar of the window.</p>
 	<p>Go to "More Actions" → "Special Window actions".</p>
 	<p>
@@ -1661,13 +1716,31 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 		→ "Window Rules"
 		→ Pencil icon of "Window settings for com.libretro.RetroArch".
 	</p>
+	<h3>Can't use the stick on my controller!</h3>
+	<p>
+		Quick Menu
+		→ Controls
+		→ Port 1 Controls
+		→ Analog to Digital Type
+		→ Left Analog (Forced)
+	</p>
+	<p>or</p>
+	<p>
+		Main Menu
+		→ Settings
+		→ Input
+		→ RetroPad Binds
+		→ Port 1 Controls
+		→ Analog to Digital Type
+		→ Left Analog (Forced)
+	</p>
 	<h2>xnp21kai_sdl</h2>
-	<h3>No sound</h3>
+	<h3>No sound!</h3>
 	<p>
 		Try stopping the program and run it again.
 		(<code class="blocksmall">Ctrl+C</code> if launched from the terminal)
 	</p>
-	<h3>Can't close/freezes</h3>
+	<h3>Can't close/freezes!</h3>
 	<p>
 		Includes errors being thrown even when pressing
 		<code class="blocksmall">Ctrl+C</code> in the terminal.
@@ -1679,7 +1752,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 		<code>xnp21kai_sdl</code> from <code>/usr/local/bin/</code>
 		may solve this issue if it repeatedly happens.
 	</p>
-	<h3>Fullscreen isn't fullscreen</h3>
+	<h3>Fullscreen isn't fullscreen!</h3>
 	<p>Unfortunately there is currently no option to scale up the display.</p>
 	<hr class="light">
 	<h1>Additional Resources and References</h1>
