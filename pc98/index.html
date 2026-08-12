@@ -153,10 +153,11 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 		<li><p>Included in many distros' repos</p></li>
 		<li><p>Can run the original game files without an <code>.hdi</code> file.</p></li>
 		<li><p>Can run the Touhou games at true 60 FPS</p></li>
+		<li><p>Controllers recognizable as separate joysticks (multiplayer compatible)</p></li>
 	</ul>
 	<h3>Cons</h3>
 	<ul>
-		<li><p>Controller support is more limited</p></li>
+		<li><p>Controller input is more limited</p></li>
 		<li><p>Savestates have issues and more difficult to save and load</p></li>
 		<li><p>Settings require editing a configuration file</p></li>
 		<li><p>Requires knowledge of basic CLI terminology and concepts</p></li>
@@ -173,6 +174,7 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 	<h3>Cons</h3>
 	<ul>
 		<li><p>Only supports <code>.hdi</code> and <code>.fdi</code> files</p></li>
+		<li><p>Controller inputs are emulated keyboard inputs in RetroArch</p></li>
 	</ul>
 	<h3 id="return-from-emulator">
 		A list of other PC-98 emulators can be found
@@ -359,11 +361,17 @@ pc-98 force JIS keyboard layout = false</code></pre>
 	<pre><code class="block">machine = pc98
 memsize = 16</code></pre>
 	<p>
-		Unless you have an anemic amount of memory on your host machine,
-		in which a <code>memsize</code> value between
-		<code>2</code> to <code>4</code>
-		should be sufficient.
+		If you have an anemic amount of memory on your host machine
+		or prefer "accuracy", a <code>memsize</code> value of
+		<code>2</code> or <code>4</code> should be sufficient.
 	</p>
+	<p>
+		If you're comfortable with the DOS interface and/or familiar with
+		the interface DOSBox-X, you can disable the startup screen and
+		welcome banner for faster performance.
+	</p>
+	<pre><code class="block">fastbioslogo = true
+startbanner  = true</code></pre>
 	<h2>[joystick] settings</h2>
 	<h3>Autofire</h3>
 	<p>
@@ -453,7 +461,13 @@ A:</code></pre>
 			</p>
 			<p>
 				Also boasts good controller support;
-				all contols have have a button on a modern controller.
+				all controls have have a button on a modern controller.
+				However, it can only emulate keyboard inputs, not an actual
+				joystick.
+			</p>
+			<p>
+				In other words, multiplayer gameplay with controllers in PoDD
+				will not be possible.
 			</p>
 		</li>
 		<li>
