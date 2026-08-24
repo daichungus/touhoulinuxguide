@@ -312,15 +312,30 @@ working directory default = /your/path/to/pc98touhou/</code></pre>
 	<p>To always start in fullscreen, set:</p>
 	<pre><code class="block">fullscreen     = true
 fullresolution = desktop</code></pre>
-	<p>To ensure the graphics stay pixel-perfect, set:</p>
+	<p>To ensure the graphics stay pixel-perfect regardless of your monitor resolution, set:</p>
 	<pre><code class="block">output = openglpp</code></pre>
+	<p>If you have a 16:9 monitor and are fine with a bit of stretching, set:</p>
+	<pre><code class="block">output = openglnb</code></pre>
 	<h2>[render] settings</h2>
 	<p>To maintain the original 16:10 aspect ratio of the PC-98, set</p>
 	<pre><code class="block">aspect        = true
 aspect_ratio  = -1:-1</code></pre>
 	<p>
-		On 16:9 displays, there will be large black borders in fullscreen mode,
+		On 16:9 displays, there will be black borders in fullscreen mode,
 		but this is normal and ensures the pixels stay sharp.
+	</p>
+	<p>
+		If <code class="blocksmall">output = openglpp</code> in <code>[sdl]</code>,
+		then there will be black borders on all four sides.
+	</p>
+	<p>
+		But if <code class="blocksmall">output = openglnb</code>,
+		then there will only be black borders on the left and right sides.
+	</p>
+	<p>
+		If you have a 16:9 monitor and don't mind stretched graphics,
+		you can set <code class="blocksmall">aspect = false</code> and
+		<code class="blocksmall">output = openglnb</code>.
 	</p>
 	<h2>[pc98] settings</h2>
 	<h3>Font settings</h3>
