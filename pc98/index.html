@@ -299,7 +299,7 @@ working directory default = /your/path/to/pc98touhou/</code></pre>
 	</p>
 	<p>
 		Since the refresh rate for the actual PC-98 computers is
-		around 56.41 Hz, the Touhou games will run at a maximum
+		around 56.423 Hz, the Touhou games will run at a maximum
 		framerate between 56 to 57 FPS with this setting.
 	</p>
 	<p>
@@ -312,12 +312,25 @@ working directory default = /your/path/to/pc98touhou/</code></pre>
 	<p>To always start in fullscreen, set:</p>
 	<pre><code class="block">fullscreen     = true
 fullresolution = desktop</code></pre>
-	<p>To ensure the graphics stay pixel-perfect regardless of your monitor resolution, set:</p>
+	<p>
+		To ensure the graphics stay pixel-perfect<sup>*</sup>
+		regardless of any other setting, set:
+	</p>
 	<pre><code class="block">output = openglpp</code></pre>
 	<p>If you have a 16:9 monitor and are fine with a bit of stretching, set:</p>
 	<pre><code class="block">output = openglnb</code></pre>
+	<p>
+		<sup>*</sup>
+		Keep in mind that setting
+		<code class="blocksmall">output = openglpp</code>
+		will override any scalers. So if you want to try
+		<a href="https://www.dosbox.com/wiki/Scaler">any of the scalers</a>
+		(see the <code>[render]</code> section below)
+		provided by DOSBox-X, set <code class="blocksmall">output</code>
+		to a different value.
+	</p>
 	<h2>[render] settings</h2>
-	<p>To maintain the original 16:10 aspect ratio of the PC-98, set</p>
+	<p>To always maintain the original 16:10 aspect ratio of the PC-98, set</p>
 	<pre><code class="block">aspect        = true
 aspect_ratio  = -1:-1</code></pre>
 	<p>
@@ -325,17 +338,34 @@ aspect_ratio  = -1:-1</code></pre>
 		but this is normal and ensures the pixels stay sharp.
 	</p>
 	<p>
-		If <code class="blocksmall">output = openglpp</code> in <code>[sdl]</code>,
+		If <code class="blocksmall">output = openglpp</code>
+		(OpenGL perfect)
+		in <code>[sdl]</code>,
 		then there will be black borders on all four sides.
 	</p>
 	<p>
-		But if <code class="blocksmall">output = openglnb</code>,
+		But if <code class="blocksmall">output = openglnb</code>
+		(OpenGL nearest),
 		then there will only be black borders on the left and right sides.
 	</p>
 	<p>
-		If you have a 16:9 monitor and don't mind stretched graphics,
+		If you have a 16:9 monitor and don't want any black bars,
 		you can set <code class="blocksmall">aspect = false</code> and
 		<code class="blocksmall">output = openglnb</code>.
+	</p>
+	<p>
+		To enable the use of any scaler,
+		add <code class="blocksmall">forced</code>
+		after the scaler that you want to use.
+		(The default scaler is the example shown below)
+	</p>
+	<pre><code class="block">scaler = normal2x forced</code></pre>
+	<p>
+		Note that this will also scale the menu bar in windowed mode.
+	</p>
+	<p>
+		Also note that any <code>3x</code> scalers might disable entering
+		fullscreen for 1080p displays, if the 16:10 aspect ratio is enforced.
 	</p>
 	<h2>[pc98] settings</h2>
 	<h3>Font settings</h3>
@@ -747,7 +777,8 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 					<td><code>/usr/local</code></td>
 					<td></td>
 					<td>
-						Programs will be installed to <code>/usr/local/bin</code> when the install command is ran.<br>
+						Programs will be installed to <code>/usr/local/bin</code>
+						when running <code>install</code>.<br>
 						The AUR installs them to <code>/usr/bin</code> instead.
 					</td>
 				</tr>
@@ -1053,7 +1084,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 		</li>
 		<li>
 			<p>
-				Copy/move the files to to <code class="blocksmall">np2kai</code>.
+				Copy/move the files to <code class="blocksmall">np2kai</code>.
 			</p>
 			<p>
 				If you're using a compatible font besides <code>FONT.ROM</code>,
@@ -1169,7 +1200,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 		<li>
 			<p>
 				Wait for DOSBox-X to finish loading<sup>*</sup>,
-				then run these the following commands<sup>†</sup>
+				then run the following commands<sup>†</sup>
 				in DOSBox-X, depending on how your Touhou games are stored.
 			</p>
 			<h3>HDI file</h3>
@@ -1225,7 +1256,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 	<p>
 		<sup>†</sup>
 		The commands themselves are case-insensitive and can be typed in
-		lowecase. Mounting and unmounting drives do not require a colon after
+		lowercase. Mounting and unmounting drives do not require a colon after
 		the drive letter as well. The following examples are valid commands.
 	</p>
 	<ul>
@@ -1252,7 +1283,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 	</ul>
 	<p class="warning"><b>
 		<sup>‡</sup>
-		The path and filename is case-sensitive!
+		The path and filename are case-sensitive!
 	</b></p>
 	<h2>Command Line</h2>
 	<ol>
@@ -1302,7 +1333,7 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 				<li><p>Select "Load Content"</p></li>
 				<li>
 					<p>
-						Navigate to to directory with the file and select it.
+						Navigate to the directory with the file and select it.
 					</p>
 				</li>
 			</ol>
