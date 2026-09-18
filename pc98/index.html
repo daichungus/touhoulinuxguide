@@ -585,7 +585,10 @@ A:</code></pre>
 					<a href="https://store.steampowered.com/app/1118310/RetroArch/">Steam</a>
 				</b></p></li>
 				<li><p><b>
-					<a href="https://retroarchofficial.itch.io/retroarch">Itch.io</a>
+					<a href="https://retroarchofficial.itch.io/retroarch">itch.io</a>
+				</b></p></li>
+				<li><p><b>
+					<a href="https://appimage.github.io/RetroArch/">AppImage</a> (unofficial)
 				</b></p></li>
 				<li>
 					<p><b>Ubuntu/Linux Mint</b></p>
@@ -613,6 +616,9 @@ A:</code></pre>
 			<pre><code class="block">flatpak run org.libretro.RetroArch</code></pre>
 			<p><b>Non-Flatpak</b></p>
 			<pre><code class="block">retroarch</code></pre>
+			<p><b>AppImage</b></p>
+			<p class="recommended"><i>It is highly recommended to use an AppImage manager such as AppManager</i></p>
+			<pre><code>code class="block">/path/to/RetroArch-Linux-x86_64.AppImage</code></pre>
 		</li>
 		<li>
 			<p>
@@ -1093,8 +1099,10 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 			<p>Navigate to the RetroArch system folder.</p>
 			<b>Flatpak</b>
 			<pre><code class="blocksmall">~/.var/app/org.libretro.RetroArch/config/retroarch/system/</code></pre>
-			<b>Non-Flatpak</b>
+			<b>Non-Flatpak (default)</b>
 			<pre><code class="blocksmall">~/.config/retroarch/system/</code></pre>
+			<b>AppImage<sup>*</sup></b>
+			<pre><code class="blocksmall">/path/to/RetroArch-Linux-x86_64.AppImage.home/.config/retroarch/system/</code></pre>
 		</li>
 		<li>
 			<p>Create a directory called <code class="blocksmall">np2kai</code>.</p>
@@ -1110,6 +1118,10 @@ sed 's|#include &lt;SDL3/SDL.h&gt;|#include &lt;SDL2/SDL.h&gt;|g' -i compiler_ba
 			</p>
 		</li>
 	</ol>
+	<p><sup>*</sup>
+		The AppImage uses a portable home directory. If not present within the same
+		directory as the AppImage, the default location will be used isntead.
+	</p>
 	<h3>xnp21kai_sdl</h3>
 	<p>
 		Copy/move the font and ROM files to
