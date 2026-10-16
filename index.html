@@ -40,7 +40,15 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 	</header>
 	<hr class="light">
 	<h2 id="disclaimer">Disclaimer</h2>
-	<p>This guide focuses on using <b>Lutris with Wine<sup>*</sup></b> for a relatively straightforward and consistent experience.</p>
+	<p>
+		This guide focuses on using the following
+		<a href="https://www.winehq.org/">Wine</a><sup>*</sup> runtime managers
+		for a relatively straightforward and consistent experience.
+	</p>
+	<ul>
+		<li><a href="https://lutris.net/">Lutris</a></li>
+		<li><a href="https://heroicgameslauncher.com/">Heroic Games Launcher</a></li>
+	</ul>
 	<p>It does not cover:</p>
 	<ul>
 		<li>Every possible setup or edge case</li>
@@ -54,59 +62,69 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 	<p>The goal here is to get most users running their Touhou games without too much headaches.</p>
 	<p>If you're looking for more advanced or alternative methods, other resources may be better suited.</p>
 	<p>
-		<b><sup>*</sup></b> The regular version of Wine may not always work for your system,
+		<sup>*</sup> The regular version of Wine may not always work for your system,
 		so this guide touches on <a href="#lutris-alternate-wine">alternate Wine versions</a> as well.
 	</p>
 	<hr class="light">
 	<h1 id="linux-env-setup">Preparing your Linux environment</h1>
 	<h2 id="choosing-distro">Choosing a distro</h2>
 	<p><i><u><a href="#installing-required-software">Skip this section</a></u> if you already have chosen your distro.</i></p>
-	<p>Most major <a href="https://wikipedia.org/wiki/Linux_distribution">distros</a> and
+	<p>
+		Most major <a href="https://wikipedia.org/wiki/Linux_distribution">distros</a> and
 		<a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environments</a>
-		should work well with this guide.</p>
-	<p>The author's only recommendation is to choose a well-known, widely-supported, and stable distro,
+		should work well with this guide.
+	</p>
+	<p>
+		The author's only recommendation is to choose
+		a well-known, widely-supported, and stable distro,
 		which includes but is not limited to the following:
 	</p>
 	<ul>
 		<li><a href="https://linuxmint.com/">Linux Mint</a></li>
 		<li><a href="https://ubuntu.com/desktop">Ubuntu</a></li>
-		<li><a href="https://fedoraproject.org/">Fedora</a></li>
 		<li><a href="https://www.debian.org/">Debian</a></li>
+		<li><a href="https://fedoraproject.org/">Fedora</a></li>
 	</ul>
-	<p>This guide has been personally tested by the author with the following distros:</p>
+	<p>
+		The latest version of this guide has been personally tested
+		by the author for the following Linux distros:
+	</p>
 	<ul>
-		<li>Linux Mint (22.1, 22.2)</li>
-		<li>Ubuntu (24.04)</li>
-		<li>Fedora (42-44)</li>
+		<li>Fedora (44)</li>
 	</ul>
+	<p><small><i>
+		Tested distros in past versions of this guide
+		include Linux Mint 22.1 - 22.2 and Ubuntu 24.04;
+		some steps may still be the same for newer versions
+		of these distros but have not been tested yet.
+	</i></small></p>
 	<h2 id="installing-required-software">Installing required software</h2>
 	<p>Before continuing, ensure you have the necessary graphics drivers and system firmware installed.</p>
-	<p>Consult your distro's documentation or other online resources for a proper setup (e.g., RPM Fusion for Nvidia
+	<p>
+		Consult your distro's documentation or other online resources for a proper setup (e.g., RPM Fusion for Nvidia
 		drivers on Fedora, multilib repo on Arch, etc.).
 	</p>
-	<ol>
-		<li>Update your repository using your distro's package manager.
-			<p><b>Debian/Ubuntu/Linux Mint</b></p>
-				<pre><code class="block">sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
-			<p><b>Fedora</b></p>
-				<pre><code class="block">sudo dnf update</code></pre>
-			<p><b>Arch Linux</b></p>
-				<pre><code class="block">sudo pacman -Su</code></pre>
-			<p><b>Flatpak<sup>*</sup></b></p>
-				<pre><code class="block">flatpak update</code></pre>
-		</li>
-		<li>Install <a href="https://www.winehq.org/">Wine</a><sup>†</sup> and <a href="https://lutris.net/">Lutris</a>.
-			<p><b>Debian/Ubuntu/Linux Mint</b></p>
-				<pre><code class="block">sudo apt install wine lutris</code></pre>
-			<p><b>Fedora</b></p>
-				<pre><code class="block">sudo dnf install wine lutris</code></pre>
-			<p><b>Arch Linux</b></p>
-				<pre><code class="block">sudo pacman -S wine wine-mono wine-gecko lutris</code></pre>
-			<p><b>Flatpak<sup>*</sup> (for Lutris)</b></p>
-				<pre><code class="block">flatpak install flathub net.lutris.Lutris</code></pre>
-		</li>
-	</ol>
-	<p><sup>*</sup> Consult the <a href="https://flatpak.org/setup/">official quick setup guide</a> if Flatpak is not already installed on your system</p>
+	<p>
+		In addition, both Lutris and Heroic have Flatpak versions available as well.
+		Consult the <a href="https://flatpak.org/setup/">official quick setup guide</a>
+		if Flatpak is not already installed on your system.
+	</p>
+	<p>Install the game manager and necessary dependencies.<sup>†</sup></p>
+	<h3>Lutris</h3>
+	<h4>Debian/Ubuntu/Linux Mint</h4>
+	<pre><code class="block">sudo apt install wine lutris</code></pre>
+	<h4>Fedora</h4>
+	<pre><code class="block">sudo dnf install wine lutris</code></pre>
+	<h4>Arch Linux</h4>
+	<pre><code class="block">sudo pacman -S wine wine-mono wine-gecko lutris</code></pre>
+	<h4>Flatpak</h4>
+	<pre><code class="block">flatpak install flathub net.lutris.Lutris</code></pre>
+	<h3>Heroic</h3>
+	<h4>Flatpak <i class="recommended">(recommended)</i></h4>
+	<p class="recommended"><b></b></p>
+	<pre><code class="block">flatpak install flathub com.heroicgameslauncher.hgl</code></pre>
+	<h4>AppImage and Others</h4>
+	<p><i>See the <a href="https://heroicgameslauncher.com/downloads">Heroic downloads page</a>.</i></p>
 	<p><sup>†</sup> If you want to use a newer version of Wine, consider <a href="https://wine.htmlvalidator.com/">adding the WineHQ repo</a> to your package manager.</p>
 	<hr class="light">
 	<h1 id="installing-thcrap">Installing THCRAP patches</h1>
