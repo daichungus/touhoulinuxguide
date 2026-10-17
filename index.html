@@ -19,7 +19,7 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="A no-nonsense guide to running Touhou games on most Linux distributions with Lutris, Wine, and thcrap.">
-	<meta name="keywords" content="Touhou, Touhou Linux, Wine, Lutris, thcrap, Touhou Project, Touhou, Touhou wine guide, Touhou Linux, Touhou guide">
+	<meta name="keywords" content="Touhou, Touhou Linux, Wine, Lutris, Heroic, thcrap, Touhou Project, Touhou, Touhou wine guide, Touhou Linux, Touhou guide">
 	<meta name="author" content="Daichungus">
 	<meta name="robots" content="index, follow">
 
@@ -141,7 +141,7 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 		should be able to installed through your distro's default
 		package manager.
 	</p>
-	<h3>Flatseal</h3>
+	<h3 id="install-flatseal">Flatseal</h3>
 	<p>
 		Allows you to edit the permissions of Flatpak programs installed
 		of your system. This is particularly useful if the program
@@ -157,8 +157,11 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 	<p><b>Skip to <a href="#running-touhou">this section</a> if you do not want to play with THCRAP patches,
 		or if you already have THCRAP patches installed and do not want to install more.
 	</b></p>
-	<p>If your Touhou game folders each have their own thcrap folders and English exe, it is recommended to delete them
-		and follow this section.</p>
+	<p>
+		If your Touhou game folders each have their own thcrap folders and English executable,
+		it is recommended to delete those duplicate folders and executables,
+		and follow this section instead.
+	</p>
 	<p>Please note the following:</p>
 	<ul>
 		<li><p>Each <code>/your/path/to/</code> is a placeholder for where you installed the software.</p></li>
@@ -514,6 +517,11 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 	<p><sup>‡</sup> There should be a small window that has the name "Touhou Community Reliant Automatic Patcher".</p>
 	<h2 id="heroic-setup">Running with Heroic</h2>
 	<p>
+		If you're using the Flatpak version, it is recommended to
+		<a href="#install-flatseal">install and use <b>Flatseal</b></a>
+		to enable access to wherever your games may be located.
+	</p>
+	<p>
 		When launched for the first time, Heroic will ask you to connect an
 		account from a supported platform. This is not necessary for this guide.
 	</p>
@@ -544,9 +552,75 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 		"Actions" column.
 	</p>
 	<h3>Adding a game</h3>
+	<p>
+		Navigate to <b>Library</b> and click on the <b>ADD GAME</b> button.
+	</p>
+	<p>
+		Once you enter the name of the game, Heroic will automatically
+		search <a href="https://www.steamgriddb.com/">SteamGridDB</a> for
+		cover art of your game. Note that this may include non-official
+		images being automatically chosen for your game.
+		Otherwise you can choose a local image or another image from
+		SteamGridDB.
+	</p>
+	<p>
+		Choose <b>Windows</b> for the platform version to install.
+		Expand the <b>Show Wine Settings</b> dropdown bar for more
+		detailed settings.
+	</p>
+	<p>
+		It is not recommended to use a shared Wine prefix, since it can cause
+		problems if their dependencies conflict with each other.
+	</p>
+	<p>
+		Likewise, it is best not to change the <b>WinePrefix</b> format
+		(<code class="blocksmall">/home/yourname/Games/Heroic/Prefixes/Title</code> by default)
+		in order to keep the process consistent.
+	</p>
+	<p>
+		You can choose a specific Wine runner under <b>Wine version</b>.
+		The default option should be the best.
+	</p>
+	<p>
+		The main difference between the various ways to run the Touhou games
+		is largely determined by the <b>Select Executable</b> field.
+	</p>
+	<p>
+		If the displayed path to the executable contains pseudo-random numbers
+		and letters (not the exact intended path), that means Heroic does not
+		have access to the directory. For the Flatpak version, this can be
+		fixed with Flatseal.
+	</p>
+	<p>
+		Unless you intend to install from the CD of a Touhou game into one of
+		the Wine prefixes, it is recommended to select <b>FINISH</b>
+		after you have finished adding your game.
+	</p>
 	<h4>Vanilla Touhou (no patches)</h4>
+	<p>
+		Simply enter the path to the game's <code>.exe</code> program.
+	</p>
+	<p><i><small>
+		A solution towards running game with the Japanese locale has not been
+		found for Heroic yet.
+	</small></i></p>
 	<h4>Touhou with Vsync patches</h4>
+	<p>
+		Simply enter the path to the location of the <code>vpatch.exe</code>
+		program.
+	</p>
 	<h4>Touhou with THCRAP patches</h4>
+	<p>
+		Enter the path to your <code class="blocksmall">thcrap_loader.exe</code>,
+		program. Select <b>FINISH</b>, then right click
+		on the added game's Library entry before choosing <b>Settings</b>.
+	</p>
+	<p>
+		In the <b>Advanced</b> tab, set the <b>Game Arguments</b> to be
+		<code class="blocksmall">example.js thXX</code>,
+		where <code>example.js</code> is your preferred patch or
+		custom patch stack, and <code>thXX</code> is your corresponding game.
+	</p>
 	<h2 id="running-touhou-cli">Running from the Command Line</h2>
 	<h3 id="vanilla-touhou-cli">Vanilla Touhou (no patches)<sup>*</sup></h3>
 	<p>Replace <code>thXX.exe</code> with the executable for your specific game:</p>
