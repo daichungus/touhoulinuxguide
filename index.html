@@ -109,8 +109,7 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 		Consult the <a href="https://flatpak.org/setup/">official quick setup guide</a>
 		if Flatpak is not already installed on your system.
 	</p>
-	<p>Install the game manager and necessary dependencies.<sup>†</sup></p>
-	<h3>Lutris</h3>
+	<h2>Lutris</h2>
 	<h4>Debian/Ubuntu/Linux Mint</h4>
 	<pre><code class="block">sudo apt install wine lutris</code></pre>
 	<h4>Fedora</h4>
@@ -119,12 +118,39 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 	<pre><code class="block">sudo pacman -S wine wine-mono wine-gecko lutris</code></pre>
 	<h4>Flatpak</h4>
 	<pre><code class="block">flatpak install flathub net.lutris.Lutris</code></pre>
-	<h3>Heroic</h3>
+	<h2>Heroic</h2>
 	<h4>Flatpak <i class="recommended">(recommended)</i></h4>
 	<p class="recommended"><b></b></p>
 	<pre><code class="block">flatpak install flathub com.heroicgameslauncher.hgl</code></pre>
 	<h4>AppImage and Others</h4>
 	<p><i>See the <a href="https://heroicgameslauncher.com/downloads">Heroic downloads page</a>.</i></p>
+	<h2>Useful tools</h2>
+	<p>
+		Not strictly necessary for running the games,
+		but can help with adding games or configuring settings.
+	</p>
+	<h3>Winetricks and winecfg</h3>
+	<p>
+		Helps with adjusting systemwide Wine settings and installing
+		some Windows components
+	</p>
+	<p>
+		<code class="blocksmall">winetricks</code>
+		and
+		<code class="blocksmall">winecfg</code>
+		should be able to installed through your distro's default
+		package manager.
+	</p>
+	<h3>Flatseal</h3>
+	<p>
+		Allows you to edit the permissions of Flatpak programs installed
+		of your system. This is particularly useful if the program
+		does not have access to user files by default.
+	</p>
+	<pre><code class="block">flatpak install flathub com.github.tchx84.Flatseal</code></pre>
+	<h3><a href="https://davidotek.github.io/protonup-qt/">ProtonUp-Qt</a></h3>
+	<p>Graphical manager of GE-Proton runners installed system-wide.</p>
+	<pre><code class="block">flatpak install flathub net.davidotek.pupgui2</code></pre>
 	<p><sup>†</sup> If you want to use a newer version of Wine, consider <a href="https://wine.htmlvalidator.com/">adding the WineHQ repo</a> to your package manager.</p>
 	<hr class="light">
 	<h1 id="installing-thcrap">Installing THCRAP patches</h1>
@@ -402,8 +428,16 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 			such as <code>06</code>. (e.g. th06 for EoSD)</p>
 		</li>
 	</ul>
+	<p>
+		Skip to <a href="#running-touhou-cli">"Running from the Command Line"</a>
+		if you want to directly use the system-wide Wine runner and
+		launch the games from your terminal.
+	</p>
+	<p>
+		Skip to <a href="#heroic-setup">Running with Heroic</a>
+		if you've installed Heroic Games Launcher instead of Lutris.
+	</p>
 	<h2 id="lutris-setup">Running with Lutris</h2>
-	<p>Skip to <a href="#running-touhou-cli">this section</a> if you don't want to use Lutris.</p>
 	<h3 id="lutris-alternate-wine">Installing alternate Wine versions</h3>
 	<p>
 		While this guide recommends using your system's latest version of Wine,
@@ -478,6 +512,41 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 	<p><sup>†</sup> Game names are located in <code>games.js</code> within the <code>config</code> folder of the
 		<code>thcrap</code> folder</p>
 	<p><sup>‡</sup> There should be a small window that has the name "Touhou Community Reliant Automatic Patcher".</p>
+	<h2 id="heroic-setup">Running with Heroic</h2>
+	<p>
+		When launched for the first time, Heroic will ask you to connect an
+		account from a supported platform. This is not necessary for this guide.
+	</p>
+	<h3>Using the Wine Manager</h3>
+	<p>
+		On the left side, there is a tab labeled "Wine Manager". Click it
+		to reveal two lists. Each list contains various specific versions of
+		<code>Proton-CachyOS</code> and <code>GE-Proton</code>.
+	</p>
+	<p>
+		In theory, most of the specific versions of either
+		version of Proton should be able to run most of the Touhou games
+		without much issue.
+	</p>
+	<p>
+		However, this guide recommends installing the
+		<b>latest version of GE-Proton</b>,
+		since it has been reported by various users to be one of the
+		better supported versions of Wine.
+	</p>
+	<p>
+		To see all the the downloadable versions of GE-Proton, click on the
+		"GE-Proton" tab near the top of the page. It should be the
+		topmost entry in the list.
+	</p>
+	<p>
+		Install it by clicking on the rightmost download button in the
+		"Actions" column.
+	</p>
+	<h3>Adding a game</h3>
+	<h4>Vanilla Touhou (no patches)</h4>
+	<h4>Touhou with Vsync patches</h4>
+	<h4>Touhou with THCRAP patches</h4>
 	<h2 id="running-touhou-cli">Running from the Command Line</h2>
 	<h3 id="vanilla-touhou-cli">Vanilla Touhou (no patches)<sup>*</sup></h3>
 	<p>Replace <code>thXX.exe</code> with the executable for your specific game:</p>
